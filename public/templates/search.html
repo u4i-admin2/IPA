@@ -1,0 +1,215 @@
+{%
+    extends 'base.html'
+%}{%
+    load static i18n
+%}
+
+{% block content %}
+<script>
+var dimensions = {{dimensions | safe}};
+</script>
+<div ng-controller="search" class="search">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="infoText">{% trans "Select a database to search on the right and either use the search box or filters below to narrow down your results." context "Search explanation" %}</div>
+
+        </div>
+        <div class="col-md-12">
+            <div class="most_recent_prison" ng-if="current_prison">{% trans "Searching detained prisoners from" context "Search prisoners by prison title" %} <b>{$ current_prison $}</b></div>
+        </div>
+    </div>
+    <div class="col-xs-12  dottedline-seperator ng-scope"></div>
+    <div class="row"></div>
+    <div class="row">
+        {% if request.ipa_site == 'ipa' %}
+            <div class="col-md-4">
+                <div ng-click="setData('prisoners')" ng-class="searchGroup == 'prisoners' ? 'squareBtn on' : 'squareBtn' ">{% trans "Prisoners" context "Search mode link" %}</div>
+            </div>
+        {% endif %}
+        {% if request.ipa_site == 'ipa' %}
+        <div class="col-md-4">
+        {% elif request.ipa_site == 'aea' %}
+        <div class="col-md-6">
+        {% endif %}
+            <div ng-click="setData('prisons')" ng-class="searchGroup == 'prisons' ? 'squareBtn on' : 'squareBtn' ">{% trans "Prisons" context "Search mode link" %}</div>
+        </div>
+        {% if request.ipa_site == 'ipa' %}
+        <div class="col-md-4">
+        {% elif request.ipa_site == 'aea' %}
+        <div class="col-md-6">
+        {% endif %}
+            <div ng-click="setData('judges')" ng-class="searchGroup == 'judges' ? 'squareBtn on' : 'squareBtn' ">{% trans "Judges" context "Search mode link" %}</div>
+        </div>
+    </div>
+    <div class="col-xs-12  dottedline-seperator ng-scope"></div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="refine">{% trans "Refine By" context "Search filter expand/collapse link" %}<i class="icon-down-dir"></i><i class="icon-up-dir" style="display:none"></i></div>
+                </div>
+                <div class="col-xs-6 clear">
+                    <div class="clearFilters" ng-click="resetFilters()"><span class="icon-cancel cancel"></span>{% trans "Clear All" context "Search filter “Clear All” link" %}</div>
+                </div>
+            </div>
+            {% if request.ipa_site == 'ipa' %}
+                {% include 'filters_prisoner.html' %}
+            {% endif %}
+            {% include 'filters_judges.html' %}
+            {% include 'filters_prisons.html' %}
+        </div>
+        <div class="col-md-9">
+            <input class="littleSearch" type="text" placeholder="{% trans 'Search' context "Search result input placeholder" %}" ng-model="searchtext">
+            <div class="savingBlocker">
+                <div class="savingForground"></div>
+                <div class="loadingText">loading</div>
+                <div class="loading"></div>
+            </div>
+            <div class="resultsCount">{% trans "Results" context "Search results" %} {$ main_results.length $}</div>
+            <div class="searchResult" dir-paginate="result in main_results = (_data | mainFilter:mainsearch | filter:searchtext) | itemsPerPage: 10" >
+                <div class="row">
+                    <a ng-href="{$'/{{LANGUAGE_CODE }}/'+searchGroup.substring(0, searchGroup.length - 1)+'/' + result.id + '/'$}" target="_blank">
+                        <div class="col-xs-3">
+                            <div class="imageHolder">
+                                <img ng-if="searchGroup != 'prisons'" class="profileImage" alt="{% trans 'Profile Image' %}" ng-src="{$ result.picture_200x200 $}" src="{% static 'public/img/profile_temp.png' %}?v=2019-08-28" />
+                                <img ng-if="searchGroup == 'prisons'" class="profileImage" alt="{% trans 'Profile Image' %}" ng-src="{$ result.picture_200x200 $}" src="{% static 'public/img/prison.png' %}?v=2019-08-28" />
+                            </div>
+                        </div>
+                        <div class="col-xs-9">
+                            <div ng-if="searchGroup == 'prisoners'" class="resultInfo">
+                                <div class="row">
+                                    <div class="col-xs-6  ">
+                                        <h3>{%
+                                            trans "Name"
+                                            context "Search result label (Prisoner)"
+                                        %}</h3>
+                                        <h4>{$ result.name $}</h4>
+                                    </div>
+                                    <div class=" col-xs-6  ">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6  ">
+                                        <h3>{%
+                                            trans "Activity persecuted for"
+                                            context "Search result label (Prisoner)"
+                                        %}</h3>
+                                        <h4>{$ result.latest_activity_persecuted_for_name_{{LANGUAGE_CODE}} $}</h4>
+                                    </div>
+                                    <div class=" col-xs-6  ">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="searchGroup == 'prisons'" class="resultInfo">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <h3>{% trans "name" %}</h3>
+                                        <h4>{$ result.name $}</h4>
+                                    </div>
+                                    <div
+                                        ng-if="ipa.site === 'aea'"
+                                        class="col-xs-6"
+                                    >
+                                        <h3>{%
+                                            trans "Victims"
+                                            context "Search result label (Prison) (AeA)"
+                                        %}</h3>
+                                        <h4>{$ result.total_victim_count $}</h4>
+                                    </div>
+                                    <div
+                                        ng-if="ipa.site === 'ipa'"
+                                        class="col-xs-6"
+                                    >
+                                        <h3>{%
+                                            trans "Political Prisoners"
+                                            context "Search result label (Prison) (IPA)"
+                                        %}</h3>
+                                        <h4>{$ result.prisoners_incarcerated $}</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6  ">
+                                        <h3>{%
+                                            trans "Capacity"
+                                            context "Search result label (Prison)"
+                                        %}</h3>
+                                        <h4 ng-if="result.capacity">{$ result.capacity $}</h4>
+                                    </div>
+                                    <div class=" col-xs-6  ">
+                                        <h3>{%
+                                            trans "Administered by"
+                                            context "Search result label (Prison)"
+                                        %}</h3>
+                                        <h4>{$ result.administered_by == "pdotj" ? "{% trans "Prisons Division of the Judiciary" context "Search (Prison) “administered by” value" %}" : "" $}
+                                            {$ result.administered_by == "irgc" ? "{% trans "IRGC" context "Search (Prison) “administered by” value" %}" : "" $}
+                                            {$ result.administered_by == "police" ? "{% trans "Police" context "Search (Prison) “administered by” value" %}" : "" $}
+                                            {$ result.administered_by == "moi" ? "{% trans "Ministry of Intelligence" context "Search (Prison) “administered by” value" %}" : "" $}
+                                         </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="searchGroup == 'judges'" class="resultInfo">
+                                <div class="row">
+                                    <div class="col-xs-6  ">
+                                        <h3>{%
+                                            trans "Name"
+                                            context "Search result label (Judge)"
+                                        %}</h3>
+                                        <h4>{$ result.name $}</h4>
+                                    </div>
+                                    <div class=" col-xs-6  ">
+                                        <h3>{%
+                                            trans "Court and Branch"
+                                            context "Search result label (Judge)"
+                                        %}</h3>
+                                        <h4>{$ result.court_and_branch $}</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div
+                                        ng-if="ipa.site === 'aea'"
+                                        class="col-xs-6"
+                                    >
+                                        <h3>{%
+                                            trans "Total Victims"
+                                            context "Search result label (Judge) (AeA)"
+                                        %}</h3>
+                                        <h4 ng-if="result.total_victim_count">{$ result.total_victim_count $}</h4>
+                                    </div>
+
+                                    <div
+                                        ng-if="ipa.site === 'ipa'"
+                                        class="col-xs-6"
+                                    >
+                                        <h3>{%
+                                            trans "Total Verdicts"
+                                            context "Search result label (Judge) (IPA)"
+                                        %}</h3>
+                                        <h4 ng-if="result.total_verdicts">{$ result.total_verdicts $}</h4>
+                                    </div>
+
+                                    <div
+                                        ng-if="ipa.site === 'ipa'"
+                                        class="col-xs-6"
+                                    >
+                                        <h3>{%
+                                            trans "Average Sentence Years"
+                                            context "Search result label (Judge) (IPA)"
+                                        %}</h3>
+                                        <h4 ng-if="result.average_sentence">{$ result.average_sentence $}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <dir-pagination-controls boundary-links="true"  template-url="{% static 'public/js/dirPagination.tpl.html' %}?v=2019-08-28"></dir-pagination-controls>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

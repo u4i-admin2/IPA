@@ -1,0 +1,12 @@
+.fa {
+    direction: rtl;
+
+    .icon-right-dir {
+        @include transform(rotate(180deg));
+
+        &.open {
+            @include transform(rotate(90deg));
+        }
+    }
+}
+

@@ -1,0 +1,419 @@
+/* TILES MENU */
+.tiles-menu {
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #ddd;
+}
+
+/* tile width is determined in JavaScript */
+.tiles-menu .item {
+    position: relative;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    text-align: center;
+    padding: 8px 0px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    html.aea & {
+        color: $ipaGreen;
+        background-color: $ipaGreenLight;
+    }
+    html.ipa & {
+        color: $ipaTeal;
+        background-color: $ipaBlueLight;
+    }
+
+    &.contains-information-box {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    p {
+        margin: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+html.aea .tiles-menu .item {
+    width: 20%;
+    width: calc(20% - 16px);
+    margin: 0;
+    margin: calc(8px);
+}
+
+html.ipa .tiles-menu .item {
+    width: 16.66667%;
+    width: calc((100% / 6) - 16px);
+    margin: 0;
+    margin: calc(8px);
+}
+
+.tiles-menu .item:hover, .tiles-menu .item.selected {
+    html.aea & {
+        color: $ipaWhite;
+        background-color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        color: $ipaWhite;
+        background-color: $ipaOrangeLight;
+    }
+}
+
+@media (max-width: 1128px) {
+    .tiles-menu .item {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 991px) {
+    html.aea .tiles-menu .item,
+    html.ipa .tiles-menu .item {
+        width: 33.33333%;
+        width: calc((100% / 3) - 16px);
+    }
+}
+
+@media (max-width: 480px) {
+    .tiles-menu .item {
+        font-size: 12px;
+    }
+}
+
+/*---
+TILES
+---*/
+.tiles-container {
+    width: 100%;
+    position: relative;
+
+    /* required for tile positioning */
+}
+
+.tiles-container .tile .inner {
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.tiles-container .tile .inner .tilesvis-info {
+    position: absolute;
+    top: 65%;
+    height: 35%;
+    width: 100%;
+}
+
+.tiles-container .tile .inner .tilesvis-info-tint {
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    -webkit-border-radius: 0 0 16px 16px;
+    -moz-border-radius: 0 0 16px 16px;
+    border-radius: 0 0 16px 16px;
+
+    html.aea & {
+        background-color: $ipaGreen;
+    }
+    html.ipa & {
+        background-color: $ipaTeal;
+    }
+}
+
+.tiles-container .tile.selected .tilesvis-info-tint, .tiles-container .tile:hover .tilesvis-info-tint {
+    html.aea & {
+        background-color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        background-color: $ipaOrangeLight;
+    }
+}
+
+.tiles-container .tile .inner .tilesvis-value {
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 0%;
+
+    @include positionLeft(10%);
+}
+
+.tiles-container .tile .inner .tilesvis-surname {
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 55%;
+
+    @include positionLeft(10%);
+
+    width: 90%;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+html.ltr .tiles-container .tile .inner .tilesvis-surname {
+    padding-right: 18px;
+}
+html.rtl .tiles-container .tile .inner .tilesvis-surname {
+    padding-left: 18px;
+}
+
+.tiles-container .tile .tilesvis-tint {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+
+    html.aea & {
+        background-color: $ipaGreen;
+    }
+    html.ipa & {
+        background-color: $ipaTeal;
+    }
+}
+
+.tiles-container .tile.selected .tilesvis-tint, .tiles-container .tile:hover .tilesvis-tint {
+    position: absolute;
+
+    html.aea & {
+        background-color: $ipaGreen;
+    }
+    html.aea & {
+        background-color: $ipaTeal;
+    }
+}
+
+@media (max-width: 768px) {
+    .tiles-container .tile .inner {
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+    .tiles-container .tile .inner .tilesvis-info-tint {
+        -webkit-border-radius: 0 0 10px 10px;
+        -moz-border-radius: 0 0 10px 10px;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .tiles-container .tile .tilesvis-tint {
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+    }
+}
+
+/*-------------------
+CIRCLE VIS INFO PANEL
+-------------------*/
+.tiles-container .circlevis .circlevis-about {
+    font-size: 18px;
+    color: #46484A;
+}
+
+.tiles-container .circlevis-about-tablet .circlevis-about-inner .circlevis-aboutjudge {
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #ccc;
+}
+
+.tiles-container .circlevis .circlevis-about-inner {
+    position: relative;
+    height: 100%;
+}
+
+.tiles-container .circlevis .circlevis-about .circlevis-close-panel {
+    text-align: right;
+    font-size: 30px;
+    position: relative;
+    top: -5px;
+    fill: #808080;
+}
+
+.tiles-container .circlevis .circlevis-about .circlevis-close-panel svg {
+    cursor: pointer;
+}
+
+.tiles-container .circlevis .circlevis-about .circlevis-value {
+    font-size: 1.9em;
+
+    html.aea & {
+        color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        color: $ipaOrangeLight;
+    }
+}
+
+.tiles-container .circlevis .circlevis-about a {
+    html.aea & {
+        color: $ipaGreenDark;
+    }
+    html.ipa & {
+        color: $ipaTeal;
+    }
+}
+
+.tiles-container .circlevis .circlevis-biography {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.tiles-container .circlevis .circlevis-explanation {
+    font-size: 0.9em;
+    font-style: italic;
+    color: #929292;
+    margin-bottom: 1%;
+    padding-top: 6px;
+    border-top: 1px dotted #ccc;
+}
+
+.tiles-container .circlevis .circlevis-about .circlevis-legend {
+    position: absolute;
+    bottom: 0;
+}
+
+.tiles-container .circlevis .circlevis-about .circlevis-legend .circlevis-item {
+    display: inline-block;
+    padding-left: 1%;
+    width: 48%;
+    cursor: default;
+}
+
+/*--------
+CIRCLE VIS
+--------*/
+.tiles-container div > .circlevis {
+    z-index: 100;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.circlevis a {
+    text-decoration: none;
+}
+
+.circlevis .hover-layer {
+    fill: none;
+    pointer-events: all;
+}
+
+.tiles-container .circlevis svg circle {
+    stroke: none;
+}
+
+.tiles-container .circlevis .circlevis-vis-grid circle, .tiles-container .circlevis .circlevis-vis-grid line {
+    stroke: #ccc;
+    stroke-width: 1px;
+    fill: none;
+    stroke-dasharray: 1,4;
+}
+
+.circlevis-vis-tooltip {
+    display: none;
+    position: absolute;
+    background-color: #EDA85F;
+    opacity: 0.9;
+    color: white;
+    font-size: 13px;
+
+    /*width: 180px;*/
+    /*height: 70px;*/
+    pointer-events: none;
+    padding: 7px;
+}
+
+.circlevis-vis-tooltip-inner {
+    height: 69px;
+}
+
+.circlevis-vis-tooltip svg {
+    position: absolute;
+    top: 83px;
+    left: 20px;
+}
+
+.circlevis-vis-tooltip svg path {
+    fill: #EDA85F;
+}
+
+.circlevis-vis-tooltip img {
+    position: absolute;
+    max-width: 34px;
+    max-height: 34px;
+    left: 7px;
+}
+
+.circlevis-vis-prisoner {
+    cursor: pointer;
+}
+
+.circlevis-vis-tooltip .circlevis-name, .circlevis-vis-tooltip .circlevis-name {
+    padding-left: 40px;
+}
+
+.circlevis-vis-tooltip .circlevis-name, .circlevis-vis-tooltip .circlevis-dob {
+    padding-left: 40px;
+}
+
+.circlevis-dob {
+    height: 18px;
+    width: 100%;
+}
+
+.linkOuts {
+    text-transform: uppercase;
+}
+
+/*--------
+RESPONSIVE
+--------*/
+/* phone width */
+.tiles-container .circlevis .circlevis-about-phone .circlevis-aboutjudge {
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 10px;
+}
+
+.tiles-container .circlevis .circlevis-about-phone .circlevis-sentenced {
+    margin-top: 10px;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 10px;
+}
+
+/* tablet-portrait */
+.tiles-container .circlevis .circlevis-about-tablet .circlevis-sentenced {
+    position: absolute;
+    right: 0px;
+    top: 0;
+    text-align: right;
+}
+
+/* full */
+.tiles-container .circlevis .circlevis-about-full {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 84%;
+}
+
+.tiles-container .circlevis .circlevis-about-full.circlevis-vis-tablet-landscape {
+    height: 81%;
+}
+
+.tiles-container .circlevis .circlevis-about-full .circlevis-sentenced {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+}

@@ -1,0 +1,86 @@
+<!-- judge -->
+<div ng-controller="maincontroller" ng-cloak>
+    <div ng-show="disabelPrisons">
+        <div class="row">
+            <div class="col-xs-9">
+                <div class="section">
+                    Prisons is not currently availble.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-hide="disabelPrisons">
+        <div alert-pop-up></div>
+        <div publish-pop-up></div>
+        <div unpublish-pop-up></div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div ng-hide="method == 'POST'" class="section">
+                    <div ng-include="ipa.staticPrefix + 'ui/templates/photoUpload.html'"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-9">
+                <div class="section">
+                    <div class="section-title ">
+                        <span class="title">BASIC INFO</span><span class="toggleSection  icon-minus"> </span>
+                    </div>
+                    <div class="row sectionHide">
+                        <div prison-basic-info></div>
+                    </div>
+                </div>
+                <div ng-hide="method == 'POST'" class="section visible">
+                    <div class="section-title">
+                        <span class="title">ADDTIONAL INFO</span><span class="toggleSection  icon-plus"> </span>
+                    </div>
+                    <div class="row sectionHide" style="display:none">
+                        <div prison-additional-info></div>
+                    </div>
+                </div>
+                <div ng-hide="method == 'POST'" class="section visible">
+                    <div class="section-title">
+                        <span class="title">SUPPORTING EVIDENCE</span><span class="toggleSection icon-plus"> </span>
+                    </div>
+                    <div class="sectionHide" style="display:none">
+                        <div supporting-evidence></div>
+                    </div>
+                </div>
+                <div ng-hide="method == 'POST'" class="section visible">
+                    <div class="section-title">
+                        <span class="title">TIMELINE</span><span class="toggleSection icon-plus"> </span>
+                    </div>
+                    <div class="row sectionHide" style="display:none">
+                        <div timeline></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div ng-hide="method == 'POST'" class="section">
+                    <div class="section-title">
+                        <span class="title">SOURCES</span><span class="toggleSection icon-minus"> </span>
+                    </div>
+                    <div class="sectionHide">
+                        <div source></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-hide="method == 'POST'">
+            <div class=" savepublish">
+                <div class="section">
+                    <button name="delete" ng-click="deleteItem()" class="btn btn-primary pull-left marginV save">DELETE</button>
+                    <button name="pubish" ng-click="publishItem()" class="btn btn-primary pull-left marginV publish ">PUBLISH</button>
+                    <button name="unpubish" ng-click="unpublishItem()" class="btn btn-primary pull-left marginV publish ">UNPUBLISH</button>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div ng-hide="method == 'POST'" conflicts-consideration></div>
+    </div>
+    <div class="areyousure">
+        Are you sure?
+        <button ng-click="deleteItemData()">yes</button>
+        <button ng-click="cancelDelete()">no</button>
+    </div>
+</div>

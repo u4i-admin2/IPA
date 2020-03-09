@@ -1,0 +1,40 @@
+{# footer.html #} {% load i18n static %}
+<div class="clearfix"></div>
+<footer>
+    <div class="container">
+        <nav>
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="{% url 'public:homepage' %}" class="logo"></a>
+                </div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="fTitle">{% trans "follow us" %}</div>
+                            <div class="fItem"> <a href="https://www.facebook.com/United4IranFB" target="_blank"><span class="icon icon-facebook"></span>  <font class="fInfo">[English]</font></a></div>
+                            <div class="fItem"> <a href="https://www.facebook.com/United4IranFB" target="_blank"><span class="icon icon-facebook"></span> <font class="fInfo">[فارسی]</font></a></div>
+                            <div class="fItem"> <a href="https://twitter.com/united4iran" target="_blank"><span class="icon icon-twitter"></span> </a></div>
+                            <!-- <div> <span class="icon-instagram"></span> </div>
+                            <div> <span class="icon-rss-1"></span> </div>  -->
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="fTitle">{% trans "connect" %}</div>
+                            <div class="fItem"><a href="http://united4iran.org/contact" target="_blank">{% trans "contact" %}</a></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                    <div class="fTitle">{% trans "powered by" %}:</div>
+                    <div><a href='https://smallmedia.org.uk/' target="_blank"><img class="sml" alt="Small Media" src="{% static 'public/img/small-media-logo.svg' %}?v=2019-08-28"></a></div>
+                    <div>
+                        <font class="fInfo">{% trans "Copyright 2015 United For Iran." %}
+                            <br>{% trans "All Rights Reserved" %}</font>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</footer>

@@ -1,0 +1,26 @@
+{% extends 'ui/users/base_offline.html' %}{% load ui_tags static %}{% load i18n %}
+{% block body %}
+{% if form.errors %}
+<p>{% trans "Your username and password didn't match. Please try again." %}</p>
+
+{{ form.errors }}
+{% endif %}
+
+<div class='section col-md-4 col-md-offset-2 LoginBox'>
+<div class="section-title">
+<span class="title">{% trans 'Login' %}</span>
+</div>
+<form method="POST">
+{% csrf_token %}
+<label class="control-label" for="textinput">{{ form.username.label_tag}}</label>
+{{ form.username|addattr:"class:form-control,placeholder:Username" }}
+<label class="control-label" for="textinput">{{ form.password.label_tag }}</label>
+{{ form.password|addattr:"class:form-control,placeholder:Password" }}
+<br>
+<div><a href="{% url 'account_reset_password' %}">Reset Password</a></div>
+
+<input type="submit" value="login" class="btn btn-primary marginV" />
+<input type="hidden" name="next" value="{{ next }}"/>
+</form>
+</div>
+{% endblock %}

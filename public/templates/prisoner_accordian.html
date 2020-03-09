@@ -1,0 +1,163 @@
+{%
+    load
+        static i18n
+%}
+<div class="row">
+    <div class="col-sm-12 thick-border">
+        <h2>{% trans "ARRESTS" %}</h2>
+
+        {{ django_prerendered_component_html.information_overlay_trigger_button.arrests }}
+    </div>
+</div>
+<div class="row">
+    <div ng-repeat="arrest in entityData.arrests | orderBy:arrestDate:arrestOrder" ng-init="arrestIndex = $index" class=" clearfix">
+        <div class="row arrest arrest{$$index$}" ng-click="openClose($event, $index)">
+            <div class="col-sm-12">
+                <div class="arrestArrow arrestArrow{$$index$} icon-right-dir"></div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-xs-6 ">
+                        <h3>{% trans "Date of arrest" %}</h3>
+                        <div class="date">
+                            <span ng-if="'{{LANGUAGE_CODE}}' == 'en'"><font ng-if="arrest.arrest_day">{$arrest['arrest_day' + dLang ] $}/</font><font ng-if="arrest.arrest_month">{$arrest['arrest_month' + dLang ] $}/</font><font>{$arrest['arrest_year' + dLang ] $}</font></span>
+                            <span ng-if="'{{LANGUAGE_CODE}}' == 'fa'"><font>{$arrest['arrest_year' + dLang ] $}</font><font ng-if="arrest.arrest_month">/{$arrest['arrest_month' + dLang ] $}</font><font ng-if="arrest.arrest_day">/{$arrest['arrest_day' + dLang ] $}</font></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-with-information-box">
+                        <h3>{% trans "Activity persecuted for" %}</h3>
+
+                        <ng-bind-html
+                            ng-bind-html="trustAsHtml(
+                                prisonerPrerenderedComponentHtml
+                                    .informationOverlayTriggerButton
+                                    .activityPersecutedForById
+                                    [arrest.activity_persecuted_for_id]
+                            )"
+                        ></ng-bind-html>
+
+                        <div>{$ arrest.activity_persecuted_for['name_' + lang ] $}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-xs-12 col-with-information-box">
+                        <h3>{% trans "charged with" %}</h3>
+
+                        <div class="paddingB" ng-repeat="charged in arrest.charged_with_objs">{$ charged['name_' + lang ] $}</div>
+
+                        <ng-bind-html
+                            ng-if="(arrest.charged_with_ids[0] !== 'undefined')"
+                            ng-bind-html="trustAsHtml(
+                                prisonerPrerenderedComponentHtml
+                                    .informationOverlayTriggerButton
+                                    .chargedWithById
+                                    [arrest.charged_with_ids[0]]
+                            )"
+                        ></ng-bind-html>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-xs-6 ">
+                        <h3>{% trans "Sentence" %}</h3>
+                        <div>
+                            {$ getHighestsentance(arrest.sentences) $}
+                        </div>
+                    </div>
+                    <div class="col-xs-6 ">
+                        <h3>{% trans "city, province of arrest" %}</h3>
+                        <div>{$ arrest.city['name_' + lang ] $}<i ng-if="arrest.city.province">{$ ipa.commaCharacter $} </i> {$ arrest.city.province['name_' + lang ] $}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="dottedline"></div>
+        </div>
+        <div class="unexpanded expandArea expandArea{$$index$} col-xs-12 ">
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <div class="row ">
+                        <div class="col-xs-12 col-sm-5">
+                            <div class="row paddingBLarge" ng-repeat="sentence in arrest.sentences" ng-init="sentenceIndex = $index">
+                                <div class="col-xs-5 ">
+                                    <h3>{% trans "Judge" %}</h3>
+                                    <div><a ng-href="{$'../../judge/' + sentence.judge.id$}">{$ sentence.judge['forename_' + lang ] $} {$ sentence.judge['surname_' + lang ] $}</a></div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <h3> {% trans "Years" %} </h3>
+                                    <div>{$ sentence.sentence_years $}</div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <h3>{% trans "Procedural Violation" %}</h3>
+                                    <div ng-if="!sentence.behaviours.length">{% trans "Unknown" %}</div>
+                                    <div ng-repeat="behaviour in sentence.behaviours" ng-init="behaviourIndex = $index">
+                                        <span ng-if=" behaviour.description_{{LANGUAGE_CODE}} " ng-mouseover="showTip( '_' + arrestIndex + sentenceIndex + behaviourIndex)" ng-mouseout="showTip( '_' + arrestIndex + sentenceIndex + behaviourIndex)" class="icon-info-circled">
+                                        <div ng-if=" behaviour.description_{{LANGUAGE_CODE}} " class="toolTipHolder {$ '_' + arrestIndex + sentenceIndex + behaviourIndex $}">
+                                            <div class="toolTip">
+                                                <div class="kjh">{$ behaviour.description_{{LANGUAGE_CODE}} $}</div>
+                                                <div class="triangle-down"></div>
+                                            </div>
+                                        </div>
+                                        </span> {$ behaviour.behaviour_type.name_{{LANGUAGE_CODE}} $}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-7">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-xs-12 ">
+                                            <h3>{% trans "Domestic law violated" %}</h3>
+                                            <div class="paddingB" ng-repeat=" domestic in arrest.domestic_law_violated_objs ">{$ domestic['name_' + lang ] $}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-xs-12 ">
+                                            <h3>{% trans "International law violated" %}</h3>
+                                            <div class="paddingB" ng-repeat=" international in arrest.international_law_violated_objs ">{$ international['name_' + lang ] $}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div ng-if="arrest.detentions.length " class="col-xs-12  dottedline-seperator"></div>
+            </div>
+            <div class="row">
+                <div ng-repeat="detention in arrest.detentions | orderBy:detentionDate:detentionOrder" class="prison col-sm-12">
+                    <div class="row">
+                        <div class="mobileClear">
+                            <div class="col-xs-6 col-sm-2 ">
+                                <h3>{% trans "Prison" %}</h3>
+                                <div><a ng-href="{$'../../prison/' + detention.prison_id$}">{$detention.prison['name_' + lang ]$}</a></div>
+                            </div>
+                            <div class="col-xs-6 col-sm-2 ">
+                                <h3>{% trans "Date of incarceration" %}</h3>
+                                <div class="date"><span ng-if="'{{LANGUAGE_CODE}}' == 'en'">{$detention['detention_day' + dLang] $}<if ng-if="detention['detention_day' + dLang]">/</if>{$detention['detention_month' + dLang]$}<if ng-if="detention['detention_month' + dLang]">/</if>{$detention['detention_year' + dLang]$}</span><span ng-if="'{{LANGUAGE_CODE}}' == 'fa'">{$detention['detention_year' + dLang]$}<if ng-if="detention['detention_month' + dLang]">/</if>{$detention['detention_month' + dLang]$}<if ng-if="detention['detention_day' + dLang]">/</if>{$detention['detention_day' + dLang] $}</span></div>
+                            </div>
+                        </div>
+                        <div class="mobileClear ">
+                            <div class="col-xs-6 col-sm-4 ">
+                                <h3>{% trans "Treatment in prison" %}</h3>
+                                <span ng-repeat="treatment in detention.treatment_objs"><font ng-if="!$first">{$ ipa.commaCharacter $} </font>{$ treatment['name_' + lang ] $}</span>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 ">
+                                <h3>{% trans "Type of Detention" %}</h3>
+                                <div>{$ detention.detention_type == 'detained_before_sentencing' ? '{% trans "Detained Before Sentencing" %}' : '' $} {$ detention.detention_type == 'sentenced' ? '{% trans "Sentenced" %}' : '' $} {$ detention.detention_type == 'transferred' ? '{% trans "Transferred" %}' : '' $}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ django_prerendered_component_html.information_overlay.arrests }}

@@ -1,0 +1,46 @@
+.invisible {
+    float: none !important;
+    height: auto !important;
+    line-height: initial !important;
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.linkOverlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+
+    /* It’s sometimes useful to enable this declaration during
+    development to make it easier to select elements in browser dev
+    tools. */
+    /* pointer-events: none; */
+}
+
+.imageButton {
+    background-color: transparent;
+    background-origin: content-box;
+    background-position: 49.9999% 49.9999%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-mask-composite: add;
+    mask-composite: add;
+    -webkit-mask-origin: content-box;
+    mask-origin: content-box;
+    -webkit-mask-position: 49.9999% 49.9999%;
+    mask-position: 49.9999% 49.9999%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+    text-indent: -9999px;
+    padding: 0.25em;
+    border: none;
+}

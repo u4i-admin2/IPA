@@ -1,0 +1,25 @@
+<div class="conflictsConsideration">
+    <div class="section">
+        <div class="section-title">
+            <span class="title">CONFLICTS &#38; CONSIDERATION</span><span class="toggleSection icon-plus"> </span>
+        </div>
+        <div class="sectionHide">
+            <form name="conflictsconsideration" class="commentsform" novalidate ng-submit="conflictsconsideration.$valid && addComment()">
+                <div class="form-group" ng-class="{'has-error' : conflictsconsideration.$submitted && conflictsconsideration.commment.$error.required }">
+                    <textarea class="form-control" required name="commment" ng-model="_comment.comment"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary addComment">ADD COMMENT
+                    <span class="icon-plus"></span></button>
+                <div class="clearfix"></div>
+            </form>
+            <div class="commentHolder">
+                <div ng-repeat="item in current.comments" class="comment">
+                    <div class="name">{$item.user$}<font ng-click="delete(item.id , 'comment')" class="icon-cancel"></font><span class="commentDate">{$ item.created.substring(0, 9) $} {$ item.created.substring(11, 16) $} </span></div>
+                    <div ng-bind-html="getText(item.comment)" ></div>
+                    <!--            <button class="btn btn-primary ">REPLAY</button>
+                <div class="clearfix"></div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

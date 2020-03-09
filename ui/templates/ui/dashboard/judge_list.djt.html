@@ -1,0 +1,49 @@
+{% extends 'ui/base.html' %} {% block content %}
+<div class="filters"></div>
+<div ng-controller="judges" ng-cloak>
+    <div class="searchTitle">Judges</div>
+    <a  href="new" name="save" class="btn btn-primary addnew">ADD JUDGE</a>
+    <table ng-table="tableParams">
+        <tr class="header">
+            <th ng-click="order('forename_en')">First name</th>
+            <th ng-click="order('surname_en')">Last name</th>
+            <th ng-click="order('court_and_branch')">Court & Branch</th>
+            <th ng-click="order('judge_type')">Judge Type</th>
+            <th ng-click="order('updated')">Last updated</th>
+            <th ng-click="order('updated_by')">Last edited by</th>
+            <th ng-click="order('is_published')">Profile status</th>
+            <th>EDIT</th>
+        </tr>
+        <tr ng-class-odd="'odd'" ng-class-even="'even'" ng-class="{'first': $first , 'last': $last ,}" ng-repeat="judges in data">
+            <td>
+                {$ judges.forename_en $}
+            </td>
+            <td>
+                {$ judges.surname_en $}
+            </td>
+            <td>
+                {$ judges.court_and_branch.name_en $}
+            </td>
+            <td>
+                {$ judges.judge_type $}
+            </td>
+            <td>
+                {$ judges.updated.substring(0, 9) $} {$ judges.updated.substring(11, 16) $}
+            </td>
+            <td>
+                {$ judges.updated_by $}
+            </td>
+            <td>
+                {$ judges.is_published ? 'published' : 'not published'$}
+            </td>
+            <td>
+                <a href="{$ judges.id $} ">EDIT</a>
+            </td>
+        </tr>
+    </table>
+    <div class="pagination">
+        <button ng-show="prev" ng-click="paginate( prev )" class="btn btn-primary">PREV</button>
+        <button ng-show="next" ng-click="paginate( next )" class="btn btn-primary">NEXT</button>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+@value breakpoints: 'breakpoints.module.css';
+@value colours: 'colours.module.css';
+@value general: 'general.module.css';
+
+@value (
+    smallMaxWidth
+) from breakpoints;
+
+@value (
+    ipaBlack
+) from colours;
+
+.container {
+    composes: container from global;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 4em;
+}
+
+.heading {
+    composes: invisible from general;
+}
+
+.description {
+    color: ipaBlack;
+    flex: 1 1 auto;
+    max-width: 50%;
+    font-size: 1.25em;
+    text-align: center;
+    margin: 1em 0;
+}
+
+@media (max-width: smallMaxWidth) {
+    .description {
+        max-width: 100%;
+    }
+}

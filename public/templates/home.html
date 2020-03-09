@@ -1,0 +1,36 @@
+{%
+    extends 'base.html'
+%}{%
+    load
+        blocktrans
+        trans
+    from i18n
+%}{%
+    load
+        classname
+        home_nav_boxes
+        home_showcase
+        inject_search_variables
+    from public_tags
+%}{%
+    load
+        static
+    from static
+%}
+
+{% block content %}
+    <div class="ipa_home {% classname 'container' %}">
+        <h1 class="{% classname 'heading' %}">{% trans 'Iran Prison Atlas' %}</h1>
+
+        {# Translators: Site description text at top of homepage. #}
+        <p class="{% classname 'description' %}">{% trans 'Our goal is to share information on individuals, advocate for all political prisoners and highlight systematic abuses by the Islamic Republic of Iran' context 'Home' %}</p>
+
+        {% home_nav_boxes %}
+
+        {% if request.ipa_site == 'aea' %}
+            {% home_showcase item_type='featured_news' %}
+        {% elif request.ipa_site == 'ipa' %}
+            {% home_showcase item_type='prisoner' %}
+        {% endif %}
+    </div>
+{% endblock %}

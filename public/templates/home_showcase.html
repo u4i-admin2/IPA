@@ -1,0 +1,23 @@
+{%
+    load
+        classname
+        home_showcase_item_prisoner
+        home_showcase_item_featured_news
+    from public_tags
+%}{%
+    load
+        static
+    from static
+%}<section class="ipa_home_showcase {% classname 'container' %}">
+    <h2 class="{% classname 'heading' %}">{{ title }}</h2>
+
+    <ul class="{% classname 'list' %}">
+        {% for item in items %}
+            {% if item_type == 'prisoner' %}
+                {% home_showcase_item_prisoner prisoner=item %}
+            {% elif item_type == 'featured_news' %}
+                {% home_showcase_item_featured_news featured_news=item %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</section>

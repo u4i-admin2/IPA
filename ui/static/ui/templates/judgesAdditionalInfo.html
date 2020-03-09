@@ -1,0 +1,111 @@
+<!-- Former Position -->
+<div class="statics">
+    <div class="row">
+        <div class="col-xs-6 formEnglish">
+            <div class="subTitle">
+                Position
+            </div>
+        </div>
+        <div class="col-xs-6 formFarsi">
+            <div class="subTitle">
+                مقام
+            </div>
+        </div>
+    </div>
+    <div ng-repeat="position in current.positions" class="position row">
+        <div class="col-xs-6 formEnglish">
+            <div>{$position.judicial_position.name_en$}
+                <font class="icon-cancel" ng-click="delete(position.id , 'position')"></font>
+                <font ng-click="editFormerPosition($index , position.id)" class="icon-pencil"></font>
+            </div>
+            <div>{$position.court_and_branch.name_en$}</div>
+            <div>{$position.started_year$}<font ng-if="position.started_year_fa && position.ended_year_fa" > - </font>{$position.ended_year$}</div>
+        </div>
+        <div class="col-xs-6 formFarsi">
+            <div>{$position.judicial_position.name_fa$}
+                <font class="icon-cancel" ng-click="delete(position.id , 'position')"></font>
+                <font ng-click="editFormerPosition($index , position.id)" class="icon-pencil"></font>
+            </div>
+            <div>{$position.court_and_branch.name_fa$}</div>
+            <div>{$position.started_year_fa | pNumber$} <font ng-if="position.started_year_fa && position.ended_year_fa" > - </font> {$position.ended_year_fa | pNumber$}</div>
+        </div>
+    </div>
+</div>
+<!-- form positions -->
+<form class="row" name="formerPosition" novalidate ng-submit="formerPosition.$valid && addFormerPosition()">
+    <div class="col-xs-6 formEnglish">
+        <!-- judicialposition -->
+        <div class="form-group judicialposition" ng-class="{'has-error' : formerPosition.$submitted && formerPosition.judicialposition.$error.required }">
+            <label class="control-label" for="textinput">Judicial Position</label>
+            <input autocomplete="off" required ng-change="predict('judicialposition' , judgeAddtionalInfo.judicialposition , 'judgeAddtionalInfo' ,'judicialpositionDD','judges' ,'name')" ng-model="judgeAddtionalInfo.judicialposition" id="textinput" name="judicialposition" placeholder="Judicial Position" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeAddtionalInfo.judicialpositionDD" ng-show="judgeAddtionalInfo.judicialpositionDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeAddtionalInfo.judicialpositionDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!-- Court and Branch -->
+        <div class="form-group judicialposition" ng-class="{'has-error' : formerPosition.$submitted && formerPosition.courtandbranch_fa.$error.required }">
+            <label class="control-label" for="textinput">Court and Branch</label>
+            <input autocomplete="off" required ng-value="" ng-change="predict('courtandbranch' , judgeAddtionalInfo.courtandbranch ,  'judgeAddtionalInfo' ,'courtandbranchDD','judges','name')" ng-model="judgeAddtionalInfo.courtandbranch" id="textinput" name="courtandbranch_fa" placeholder="Court and Branch" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeAddtionalInfo.courtandbranchDD" ng-show="judgeAddtionalInfo.courtandbranchDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeAddtionalInfo.courtandbranchDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : formerPosition.$submitted }">
+            <label class="control-label" for="textinput">Start Date</label>
+            <dateyear local-model="'sd'" validation-prop="" required="" this-name="start" />
+            <div ng-show="formerPosition.$submitted && !formerPosition.$valid">
+                <div class="error" ng-hide="date.sd.year.text > 0 ">Please set year</div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : formerPosition.$submitted }">
+            <label class="control-label" for="textinput">End Date</label>
+            <dateyear local-model="'ed'" required="" this-name="end" />
+            <div ng-show="formerPosition.$submitted && !formerPosition.$valid">
+                <div class="error" ng-hide="date.ed.year.text > 0 ">Please set year</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <!-- judicialposition -->
+        <div class="form-group judicialposition" ng-class="{'has-error' : formerPosition.$submitted && formerPosition.judicialposition.$error.required }">
+            <label class="control-label" for="textinput">مقام قضایی</label>
+            <input autocomplete="off" required ng-change="predict('judicialposition' , judgeAddtionalInfo.judicialposition_fa , 'judgeAddtionalInfo' ,'judicialpositionDD_fa','judges' ,'name')" ng-model="judgeAddtionalInfo.judicialposition_fa" id="textinput" name="judicialposition" placeholder="مقام قضایی" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeAddtionalInfo.judicialpositionDD" ng-show="judgeAddtionalInfo.judicialpositionDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeAddtionalInfo.judicialpositionDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+        </div>
+        <!-- Court and Branch -->
+        <div class="form-group judicialposition" ng-class="{'has-error' : formerPosition.$submitted && formerPosition.courtandbranch_fa.$error.required }">
+            <label class="control-label" for="textinput">دادگاه و شعبه</label>
+            <input autocomplete="off" required ng-value="" ng-change="predict('courtandbranch' , judgeAddtionalInfo.courtandbranch_fa ,  'judgeAddtionalInfo' ,'courtandbranchDD_fa','judges','name')" ng-model="judgeAddtionalInfo.courtandbranch_fa" id="textinput" name="courtandbranch_fa" placeholder="دادگاه و شعبه" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeAddtionalInfo.courtandbranchDD" ng-show="judgeAddtionalInfo.courtandbranchDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeAddtionalInfo.courtandbranchDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : formerPosition.$submitted }">
+            <label class="control-label" for="textinput">تاریخ شروع</label>
+            <datefayear local-model="'sd'" required="" />
+            <div ng-show="formerPosition.$submitted && !formerPosition.$valid">
+                <div class="error" ng-hide="date.sd.year_j.text > 0 ">لطفا سال را وارد کنید</div>
+            </div>
+            <!-- <div class="error"  ng-show="formerPosition.$submitted">Please choose start date</div> -->
+            <div class="form-group" ng-class="{'has-error' : formerPosition.$submitted }">
+                <label class="control-label" for="textinput">تاریخ پایان</label>
+                <datefayear local-model="'ed'" required="" />
+                <div ng-show="formerPosition.$submitted && !formerPosition.$valid">
+                    <div class="error" ng-hide="date.ed.year_j.text > 0 ">لطفا سال را وارد کنید</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" id="submitBasicInfo" class="btn btn-primary submitButton">Save Position</button>
+    <button ng-show="editFormerPositionStatus" ng-click="cancelEditPosition($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>

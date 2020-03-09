@@ -1,0 +1,84 @@
+{% load static i18n %}
+<div ng-cloak class="col-sm-4">
+    <h2 class="underline-thin extend-right  thick-border-mobile paddingV-mobile">{% trans "Supporting evidence" %}</h2>
+    <div class="padderV">
+        <div ng-if=" type == 'prisoner' " class="filters row">
+            <div class="col-xs-6 col-sm-12 col-md-6 ">
+                <div ng-click="filterEvidence('')" ng-class="{'selected' : filter.file_type == '' }" class="filter-btn">{% trans "All" %}</div>
+            </div>
+            <div class="col-xs-6 col-sm-12 col-md-6">
+                <div ng-click="filterEvidence('prisoner_activism')" ng-class="{'selected' : filter.file_type == 'prisoner_activism' }" class="filter-btn">{% trans "Prisoner's Activism" %}</div>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-3">
+                <div ng-click="filterEvidence('court')" ng-class="{'selected' : filter.file_type == 'court' }" class="filter-btn">{% trans "Court" %}</div>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-3">
+                <div ng-click="filterEvidence('media')" ng-class="{'selected' : filter.file_type == 'media' }" class="filter-btn">{% trans "Media" %}</div>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-3">
+                <div ng-click="filterEvidence('family')" ng-class="{'selected' : filter.file_type == 'family' }" class="filter-btn">{% trans "Family" %}</div>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-3">
+                <div ng-click="filterEvidence('campaigns')" ng-class="{'selected' : filter.file_type == 'campaigns' }" class="filter-btn">{% trans "Campaigns" %}</div>
+            </div>
+        </div>
+        <div ng-if=" type == 'judge' " class="filters row">
+            <div class="col-xs-6 col-sm-12 col-md-6 ">
+                <div ng-click="filterEvidence('')" ng-class="{'selected' : filter.file_type == '' }" class="filter-btn">{% trans "All" %}</div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div ng-click="filterEvidence('rulings')" ng-class="{'selected' : filter.file_type == 'rulings' }" class="filter-btn">{% trans "Rulings" %}</div>
+            </div>
+            <div class="col-xs-4 col-sm-6 col-md-4">
+                <div ng-click="filterEvidence('verdicts')" ng-class="{'selected' : filter.file_type == 'verdicts' }" class="filter-btn">{% trans "Verdicts" %}</div>
+            </div>
+            <div class="col-xs-4 col-sm-6 col-md-4">
+                <div ng-click="filterEvidence('transcripts')" ng-class="{'selected' : filter.file_type == 'transcripts' }" class="filter-btn">{% trans "Transcripts" %}</div>
+            </div>
+            <div class="col-xs-4 col-sm-6 col-md-4">
+                <div ng-click="filterEvidence('images')" ng-class="{'selected' : filter.file_type == 'images' }" class="filter-btn">{% trans "Images" %}</div>
+            </div>
+        </div>
+        <div ng-if=" type == 'prison' " class="filters row">
+            <div class="col-xs-6 col-sm-12 col-md-6 ">
+                <div ng-click="filterEvidence('')" ng-class="{'selected' : filter.file_type == '' }" class="filter-btn">{% trans "All" %}</div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div ng-click="filterEvidence('visual_records')" ng-class="{'selected' : filter.file_type == 'visual_records' }" class="filter-btn">{% trans "Visual Records" %}</div>
+            </div>
+            <div class="col-xs-4 col-sm-6 col-md-4">
+                <div ng-click="filterEvidence('mistreatments')" ng-class="{'selected' : filter.file_type == 'mistreatments' }" class="filter-btn">{% trans "Mistreatments" %}</div>
+            </div>
+            <div class="col-xs-4 col-sm-6 col-md-4">
+                <div ng-click="filterEvidence('testimonials')" ng-class="{'selected' : filter.file_type == 'testimonials' }" class="filter-btn">{% trans "Testimonials" %}</div>
+            </div>
+            <div class="col-xs-4 col-sm-6 col-md-4">
+                <div ng-click="filterEvidence('campaigns')" ng-class="{'selected' : filter.file_type == 'campaigns' }" class="filter-btn">{% trans "Campaigns" %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-if="!entityData.files.length" class="col-xs-12" ></div>
+            <div ng-repeat="file in entityData.files | filter:filter | limitTo:limit" class="col-xs-6 file ">
+                <a ng-href="{$file.file$}" target="_blank" class="">
+                    <div class="fileHover">
+                        <div class="hoverText">
+                            <font class="text-uppercase "><b>{$ file.file_type.replace("_" , " ")$}</b></font>
+                            <br/><span class="hideTabletOnly" >{$ file['description_' +lang]$}</span>
+                        </div>
+                    </div>
+                    <img
+                        alt="{% trans 'Supporting Evidence Thumbnail' %}"
+                        class="supporting-image"
+                        ng-src="{$
+                            file.file_thumb_resized
+                                ? file.file_thumb_resized
+                                : ipa.staticPrefix + 'public/img/supporting_evidence.png'
+                        $}"
+                    />
+                </a>
+            </div>
+            <span class="icon-plus" ng-show="limit <  entityData.files.length" ng-click="addMoreEvidence()"></span>
+        </div>
+    </div>
+    <div class="underline-thin  extend-right "></div>
+</div>

@@ -1,0 +1,49 @@
+{%
+    extends 'base.html'
+%}{%
+    load static i18n
+%}{%
+    load
+        information_overlay
+        information_overlay_trigger_button
+    from public_tags
+%}
+
+{% block content %}
+
+<script>
+    var tilesJson = {{ judges|safe }};
+    var judgesPrerenderedComponentHtml = (
+        {{js_prerendered_component_html_encoded | safe}}
+    );
+</script>
+<div ng-controller="judges" class="tilesHolder">
+    <div class="row heading">
+        <div class="col-sm-4  gradiant">
+            <h1 class="indexTitle">{% trans "JUDGES" %} </h1>
+
+            {{ django_prerendered_component_html.information_overlay_trigger_button.judges }}
+
+            <div class="thick-line"></div>
+        </div>
+        <div class="col-sm-8  social socialPholder underline-thin ">
+            <div class="socialP">
+                <font>{% trans "Share Visualization" %}</font>
+                <a target="_blank" ng-href="{$ 'https://twitter.com/intent/tweet?url=' + url $}" class="icon-twitter"></a>
+                <a target="_blank" ng-href="{$ 'https://www.facebook.com/sharer/sharer.php?u=' + url $}" class="icon-facebook"></a>
+                <span class="pad"></span>
+            </div>
+        </div>
+    </div>
+    <div class="topMargin20"></div>
+    <div class="row">
+        <div class="tiles-menu"></div>
+        <div class="tiles-container"></div>
+    </div>
+</div>
+
+{{ django_prerendered_component_html.information_overlay.judges }}
+{{ django_prerendered_component_html.information_overlay.lashes }}
+{{ django_prerendered_component_html.information_overlay.misconduct }}
+
+{% endblock %}

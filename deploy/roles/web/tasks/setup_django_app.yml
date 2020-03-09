@@ -1,0 +1,29 @@
+---
+
+- name: Install packages required by the Django app inside virtualenv
+  pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
+  tags:
+    - requirements
+
+- name: Run Migrations
+  shell: . {{ virtualenv_path }}/bin/activate
+         && . {{ virtualenv_path }}/bin/postactivate
+         && cd {{ django_dir }}
+         && python manage.py migrate --noinput --settings={{ django_settings_file }}
+  when: run_django_migrate
+  tags:
+    - django
+    - migrate
+
+- name: Run Django collectstatic
+  shell: . {{ virtualenv_path }}/bin/activate
+         && . {{ virtualenv_path }}/bin/postactivate
+         && cd {{ django_dir }}
+         && python manage.py collectstatic --noinput --settings={{ django_settings_file }}
+  when: run_django_collectstatic
+  tags:
+    - django
+    - collectstatic
+
+
+

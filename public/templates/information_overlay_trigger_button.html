@@ -1,0 +1,31 @@
+{%
+    load
+        classname
+    from public_tags
+%}{%
+    load
+        static
+    from static
+%}<button
+    class="
+        ipa-information-overlay-trigger-button
+        ipa-information-overlay-trigger-button-{{ information_overlay_slug }}
+        {% if position_type == 'absolute' %}
+            {% classname 'buttonAbsolute' %}
+        {% endif %}
+    "
+    data-action="click->ipa-information-overlay-trigger-button#onClick"
+    data-controller="ipa-information-overlay-trigger-button"
+    data-ipa-information-overlay-trigger-button-information-overlay-slug="{{ information_overlay_slug }}"
+    type="button"
+>
+    Open information box
+</button>
+<style>
+    html.ltr .ipa-information-overlay-trigger-button-{{ information_overlay_slug }} {
+        transform: translate(-{{ position_offset_x }}, {{ position_offset_y }});
+    }
+    html.rtl .ipa-information-overlay-trigger-button-{{ information_overlay_slug }} {
+        transform: translate({{ position_offset_x }}, {{ position_offset_y }});
+    }
+</style>

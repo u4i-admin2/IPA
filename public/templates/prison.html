@@ -1,0 +1,168 @@
+{%
+    extends 'base.html'
+%}{%
+    load static i18n
+%}
+
+{% block content %}
+<script>
+var viewData = {{data | safe}};
+var type = 'prison';
+</script>
+
+<div ng-controller="prison">
+{% if user.is_authenticated %}<a ng-href="{$'/dashboard/prisons/'+  entityData.id $}" target="_blank">{% trans "Edit Profile" %}</a> {% endif %}
+    <div quotes>{% include 'quotes.html' %}</div>
+    {# profile #}
+    <div class="row gradiant topSpacer">
+        <div class="col-sm-6 underline-thin no-border-mobile">
+            <div class="_matcher">
+                <h3>{% trans "Prison" %} </h3></div>
+            <div class="matcher">
+                <h1>{$ entityData.name_{{LANGUAGE_CODE}} $}</h1>
+            </div>
+        </div>
+        <div class="col-xs-12  dottedline-seperator showOnMobile top-border"></div>
+        <div
+            ng-if="ipa.site === 'aea'"
+            class="col-sm-2 col-xs-6 profile-info-header"
+        >
+            <div class="_matcher">
+                <h3> {% trans "Victims" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ viewData.total_victims $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+        <div
+            ng-if="ipa.site === 'ipa'"
+            class="col-sm-2 col-xs-6 profile-info-header"
+        >
+            <div class="_matcher">
+                <h3> {% trans "Political Prisoners" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ viewData.political_prisoners $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+        <div class="col-sm-4 col-xs-6 profile-info-header">
+            <div class="_matcher">
+                <h3> {% trans "Prison Capacity" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ entityData.capacity $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 social">
+            <a target="_blank" ng-href="{$ 'https://twitter.com/intent/tweet?url=' + url $}" class="icon-twitter"></a>
+            <a target="_blank" ng-href="{$ 'https://www.facebook.com/sharer/sharer.php?u=' + url $}" class="icon-facebook"></a>
+            <font>{% trans "Share" %} {$ entityData.name_{{LANGUAGE_CODE}} $}<i ng-if="'en' == '{{LANGUAGE_CODE}}' ">'s {% trans "Profile" %} </i> </font>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-xs-6 col-sm-2">
+                    <div class="imageHolder">
+                        <img
+                            alt="{% trans 'Profile Image' %}"
+                            class=" profileImage"
+                            src="{% static 'public/img/prison.png' %}?v=2019-08-28"
+                            ng-src="{$ entityData.picture $}"
+                        />
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-12">
+                            <h3> {% trans "Address" %}</h3>
+                            <h4>{$ entityData.address_{{LANGUAGE_CODE}} $}</h4>
+                        </div>
+                        <div class="  col-sm-6">
+                            <h3>{% trans "Dean of Prison" %}</h3>
+                            <h4>{$ entityData.dean_name_{{LANGUAGE_CODE}}  $}</h4></div>
+                        <div class="  col-sm-6">
+                            <h3>{% trans "Date Prison was opened" %}</h3>
+                            <h4>{$ entityData['opened_year' + dLang] $}</h4></div>
+                        <div class=" col-sm-12">
+                            <h3>{% trans "Administered by" %}</h3>
+                            <h4>
+                                {$ entityData.administered_by == "pdotj" ? "{% trans "Prisons Division of the Judiciary" %}" : "" $}
+                                {$ entityData.administered_by == "irgc" ? "{% trans "IRGC" %}" : "" $}
+                                {$ entityData.administered_by == "police" ? "{% trans "Police" %}" : "" $}
+                                {$ entityData.administered_by == "moi" ? "{% trans "Ministry of Intelligence" %}" : "" $}
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12  col-sm-4 tod">
+                    <h3>{% trans "Physical structure" %}</h3>
+                    <p>{$ entityData.physical_structure_{{LANGUAGE_CODE}}$}</p>
+                    <h3>{% trans "Size and density" %}</h3>
+                    <p>{$ entityData.size_and_density_{{LANGUAGE_CODE}}$}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 positions underline-thin">
+        </div>
+        <div class="col-xs-12">
+            <h3>{% trans "Facilities" %}</h3>
+        </div>
+        <div class="col-sm-8  profile-info-header">
+            {% include 'icons/sleeping_accommodation.html' %} {% include 'icons/television.html' %} {% include 'icons/training_workshops.html' %} {% include 'icons/public_phone.html' %} {% include 'icons/medical_clinic.html' %} {% include 'icons/library.html' %} {% include 'icons/kitchen.html' %} {% include 'icons/gym.html' %} {% include 'icons/distance_learning.html' %} {% include 'icons/cooling_heating_units.html' %} {% include 'icons/conjugal_room.html' %} {% include 'icons/commissary.html' %}
+            <div class="thick-line hideOnMobile"></div>
+        </div>
+        <div class="col-sm-4 underline-thin">
+            <div class="factInfoHolder">
+                <div>
+                    <h4 class="factName">{$ selectedName $}</h4>
+                </div>
+                <div class="selectedInfo">{$ selectedInfo $}</div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="ipa.site === 'ipa'" class="row">
+        <div class="holder"><a ng-href="{$'/{{LANGUAGE_CODE}}/search/#/?data=prisoners&current_prison=' + entityData.name_{{LANGUAGE_CODE}} $}" class="filter-btn reverseTimeline tab-btn">{% trans "See all prisoners" %} {$ prisoner.forename_{{LANGUAGE_CODE}} $} {$ prisoner.surname_{{LANGUAGE_CODE}} $}</a></div>
+    </div>
+    <div class="row">
+        {% if request.ipa_site == 'aea' %}
+            {% include 'profile_chart.html' with
+                is_primary=True
+                variant='proceduralViolations'
+            %}
+            {% include 'profile_chart.html' with
+                is_primary=False
+                variant='humanRightsViolations'
+            %}
+        {% elif request.ipa_site == 'ipa' %}
+            {% include 'profile_chart.html' with
+                is_primary=True
+                variant='mistreatments'
+            %}
+        {% endif %}
+    </div>
+    <div class="row topSpacer">
+        <div timeline>
+            {% include 'timeline.html' %}
+        </div>
+        <div class="explanation col-sm-4">
+            <h2 class="explanationSubtitle underline-thin extend-right  thick-border-mobile paddingV-mobile">{% trans "Explanation" %}</h2>
+            <p
+                class="explanationBody"
+                ng-if="explanationBody"
+                ng-bind-html="explanationBody"
+            ></p>
+        </div>
+        <div supporting-evidence class="supportingEvidence">
+            {% include 'supporting_evidence.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

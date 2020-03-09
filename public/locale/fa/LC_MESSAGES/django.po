@@ -1,0 +1,1479 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-17 17:19+0000\n"
+"PO-Revision-Date: 2020-01-16 18:09-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#: public/models.py:20
+msgid "Slug"
+msgstr ""
+
+#: public/models.py:21
+msgid "Title"
+msgstr "عنوان"
+
+#: public/models.py:22
+msgid "content"
+msgstr "محتوا"
+
+#: public/models.py:34
+msgid "page"
+msgstr "صفحه"
+
+#: public/models.py:35
+msgid "pages"
+msgstr "صفحات"
+
+#: public/serializers.py:139 public/templates/filters_judges.html:37
+#: public/templates/filters_judges.html:39
+#: public/templates/prisoner_accordian.html:92
+#: public/templates/prisoners.html:135 public/templates/prisoners.html:145
+#: public/templates/prisons.html:179 public/utils.py:171 public/views.py:546
+#: public/views.py:547 public/views.py:558 public/views.py:563
+msgid "Unknown"
+msgstr "‎نامشخص"
+
+#: public/templates/filters_judges.html:4
+#: public/templates/filters_prisoner.html:4
+#: public/templates/filters_prisons.html:4
+msgid "basic information"
+msgstr "اطلاعات اولیه"
+
+#: public/templates/filters_judges.html:7
+#: public/templates/filters_prisoner.html:26 public/templates/judge.html:152
+#: public/templates/prisoner.html:80
+msgid "Age"
+msgstr "‎سن"
+
+#: public/templates/filters_judges.html:21
+msgid "Judge type 1"
+msgstr "قاضی نوع یک"
+
+#: public/templates/filters_judges.html:27
+msgid "Cleric"
+msgstr "روحانی"
+
+#: public/templates/filters_judges.html:33
+msgid "Not cleric"
+msgstr "غیرروحانی"
+
+#: public/templates/filters_judges.html:46
+msgid "Judge type 2"
+msgstr "قاضی نوع دو"
+
+#: public/templates/filters_judges.html:52 public/templates/judge.html:148
+msgid "Research"
+msgstr "تحقیق"
+
+#: public/templates/filters_judges.html:58 public/templates/judge.html:145
+msgid "Primary"
+msgstr "دادگاه بدوی"
+
+#: public/templates/filters_judges.html:64 public/templates/judge.html:147
+msgid "Appeal"
+msgstr "دادگاه تجدید نظر"
+
+#: public/templates/filters_judges.html:70 public/templates/judge.html:146
+msgid "Supreme"
+msgstr "دیوان عالی کشور"
+
+#: public/templates/filters_judges.html:77
+msgid "judicial position"
+msgstr "سمت قضایی"
+
+#: public/templates/filters_judges.html:81
+#: public/templates/filters_prisoner.html:44
+#: public/templates/filters_prisoner.html:62
+#: public/templates/filters_prisoner.html:85
+#: public/templates/filters_prisoner.html:162
+#: public/templates/filters_prisoner.html:180
+#: public/templates/filters_prisoner.html:203
+#: public/templates/filters_prisoner.html:252
+#: public/templates/filters_prisoner.html:275
+#: public/templates/filters_prisons.html:56
+#: public/templates/filters_prisons.html:74
+#: public/templates/filters_prisons.html:92
+msgid "Search"
+msgstr "جست‌وجو"
+
+#: public/templates/filters_judges.html:97
+#: public/templates/filters_prisoner.html:268
+#: public/templates/filters_prisons.html:108
+msgid "Additional information"
+msgstr "اطلاعات بیشتر"
+
+#: public/templates/filters_judges.html:100
+#: public/templates/filters_prisoner.html:293
+#: public/templates/filters_prisons.html:111
+msgid "DOCS/QUOTES"
+msgstr "اسناد و نقل قول‌ها"
+
+#: public/templates/filters_judges.html:106
+msgid "Show judges with supporting documents"
+msgstr "نمایش نمایه قضات دارای شواهد تأییدکننده"
+
+#: public/templates/filters_judges.html:112
+msgid "Show judges with quotes"
+msgstr "نمایش نمایه قضاتی که نقل قول دارند"
+
+#: public/templates/filters_prisoner.html:7 public/templates/prisoner.html:76
+#: public/templates/prisons.html:181
+msgid "Gender"
+msgstr "جنسیت"
+
+#: public/templates/filters_prisoner.html:13 public/templates/prisoner.html:77
+msgid "Male"
+msgstr "‎مرد"
+
+#: public/templates/filters_prisoner.html:19 public/templates/prisoner.html:77
+msgid "Female"
+msgstr "‎زن"
+
+#: public/templates/filters_prisoner.html:40
+msgid "religions"
+msgstr "‏‎مذاهب"
+
+#: public/templates/filters_prisoner.html:58
+msgid "Ethnicities"
+msgstr "‎اتنیک‌ها"
+
+#: public/templates/filters_prisoner.html:78
+msgid "Sentencing"
+msgstr "احکام"
+
+#: public/templates/filters_prisoner.html:81
+#: public/templates/filters_prisons.html:70 public/templates/prisoner.html:67
+#: public/templates/prisoner_accordian.html:26
+#: public/templates/prisons.html:183
+msgid "Activity persecuted for"
+msgstr "حوزه فعالیت"
+
+#: public/templates/filters_prisoner.html:108
+#: public/templates/prisoner_accordian.html:151
+msgid "Sentenced"
+msgstr "‎حکم"
+
+#: public/templates/filters_prisoner.html:112
+#: public/templates/prisoner_accordian.html:87
+msgid "Years"
+msgstr "سال"
+
+#: public/templates/filters_prisoner.html:127 public/views.py:744
+msgid "Life"
+msgstr "حبس ابد"
+
+#: public/templates/filters_prisoner.html:133
+msgid "Flogging"
+msgstr "شلاق"
+
+#: public/templates/filters_prisoner.html:139
+msgid "Fine"
+msgstr "جریمه"
+
+#: public/templates/filters_prisoner.html:145 public/views.py:740
+msgid "Execution"
+msgstr "اعدام"
+
+#: public/templates/filters_prisoner.html:151 public/views.py:742
+msgid "Exile"
+msgstr "تبعید"
+
+#: public/templates/filters_prisoner.html:158
+#: public/templates/prisoner_accordian.html:44
+msgid "charged with"
+msgstr "‎اتهام منجر به محکومیت"
+
+#: public/templates/filters_prisoner.html:176
+msgid "Sentenced by"
+msgstr "محکومیت توسط"
+
+#: public/templates/filters_prisoner.html:196
+msgid "detention"
+msgstr "بازداشت"
+
+#: public/templates/filters_prisoner.html:199
+#: public/templates/nav_header.html:72 public/templates/prison.html:16
+#: public/templates/prisoner_accordian.html:136
+msgid "Prison"
+msgstr "‎زندان"
+
+#: public/templates/filters_prisoner.html:217
+msgid "Detention Status "
+msgstr "وضعیت بازداشت"
+
+#: public/templates/filters_prisoner.html:221
+msgid "Entered Prison After Date"
+msgstr "ورود به زندان پس از تاریخ"
+
+#: public/templates/filters_prisoner.html:227
+msgid "Exited Prison Before Date"
+msgstr "خروج از زندان پیش از تاریخ"
+
+#: public/templates/filters_prisoner.html:233
+msgid "In Prison On Date"
+msgstr "در زندان در تاریخ"
+
+#: public/templates/filters_prisoner.html:241
+msgid "Show detained prisoners"
+msgstr "نمایش زندانیان در بازداشت"
+
+#: public/templates/filters_prisoner.html:248
+#: public/templates/filters_prisons.html:88
+#: public/templates/prisoner_accordian.html:146
+msgid "Treatment in prison"
+msgstr "‎بدرفتاری در زندان"
+
+#: public/templates/filters_prisoner.html:271
+msgid "Affiliations"
+msgstr "عضویت یا ارتباط با"
+
+#: public/templates/filters_prisoner.html:299
+msgid "Show prisoners with supporting documents"
+msgstr "نمایش نمایه زندانیان دارای شواهد تأییدکننده"
+
+#: public/templates/filters_prisoner.html:305
+msgid "Show prisoners with quotes"
+msgstr "نمایش نمایه زندانیانی که نقل قول دارند"
+
+#: public/templates/filters_prisons.html:7
+msgid "capacity"
+msgstr "‎ظرفیت اسمی زندان"
+
+#: public/templates/filters_prisons.html:21 public/templates/prison.html:89
+#: public/templates/prisons.html:197
+msgid "Administered by"
+msgstr "نهاد اداره‌کننده"
+
+#: public/templates/filters_prisons.html:27 public/templates/prison.html:94
+#: public/templates/prisons.html:219
+msgid "Ministry of Intelligence"
+msgstr "وزارت اطلاعات"
+
+#: public/templates/filters_prisons.html:33 public/templates/prison.html:92
+#: public/templates/prisons.html:235
+msgid "IRGC"
+msgstr "سپاه پاسداران"
+
+#: public/templates/filters_prisons.html:39 public/templates/prison.html:91
+#: public/templates/prisons.html:211
+msgid "Prisons Division of the Judiciary"
+msgstr "سازمان زندان‌های قوه قضاییه"
+
+#: public/templates/filters_prisons.html:45 public/templates/prison.html:93
+#: public/templates/prisons.html:227
+msgid "Police"
+msgstr "پلیس"
+
+#: public/templates/filters_prisons.html:52
+msgid "facility"
+msgstr "‎امکانات احتمالی زندان"
+
+#: public/templates/filters_prisons.html:117
+msgid "Show prisons with supporting documents"
+msgstr "نمایش نمایه زندانیان دارای شواهد تاییدکننده"
+
+#: public/templates/filters_prisons.html:123
+msgid "Show prisons with quotes"
+msgstr "نمایش نمایه زندانیانی که نقل قول دارند"
+
+#: public/templates/footer.html:13
+msgid "follow us"
+msgstr "ما را دنبال کنید"
+
+#: public/templates/footer.html:21
+msgid "connect"
+msgstr "اتصال"
+
+#: public/templates/footer.html:22
+msgid "contact"
+msgstr "تماس با ما"
+
+#: public/templates/footer.html:30
+msgid "powered by"
+msgstr "طراحی از "
+
+#: public/templates/footer.html:33
+msgid "Copyright 2015 United For Iran."
+msgstr "کپی رایت ۲۰۱۵ اتحاد برای ایران"
+
+#: public/templates/footer.html:34
+msgid "All Rights Reserved"
+msgstr "کلیه حقوق محفوظ است"
+
+#: public/templates/home.html:15
+msgid "Iran Prison Atlas"
+msgstr "اطلس زندان‌های ایران"
+
+#. Translators: Site description text at top of homepage.
+#: public/templates/home.html:18
+msgctxt "Home"
+msgid "Our goal is to share information on individuals, advocate for all political prisoners and highlight systematic abuses by the Islamic Republic of Iran"
+msgstr "هدف ما حمایت از زندانیان سیاسی از طریق انتشار اطلاعات و پرده‌برداری از نقض سازمان‌یافته حقوق آن‌ها در ایران است"
+
+#: public/templates/home_showcase_item_featured_news.html:27
+msgctxt "Home showcase (AeA featured news)"
+msgid "Read more"
+msgstr "بیش‌تر بخوانید"
+
+#: public/templates/home_showcase_item_prisoner.html:28
+#, python-format
+msgctxt "Home showcase (IPA prisoner)"
+msgid "%(age)s years old"
+msgstr "%(age)s ساله"
+
+#: public/templates/judge.html:9 public/templates/prison.html:10
+#: public/templates/prisoner.html:14
+msgid "Edit Profile"
+msgstr "ویرایش ‏‎نمایه"
+
+#: public/templates/judge.html:25 public/templates/nav_header.html:64
+#: public/templates/prisoner_accordian.html:83
+msgid "Judge"
+msgstr "‎قاضی"
+
+#: public/templates/judge.html:36
+msgctxt "Judge heading (AeA)"
+msgid "Total Amputations"
+msgstr "تعداد کل نقص عضوهای شناسایی‌شده"
+
+#: public/templates/judge.html:48
+msgctxt "Judge heading (AeA)"
+msgid "Total Executions"
+msgstr "تعداد کل اعدام‌های شناسایی‌شده"
+
+#: public/templates/judge.html:60
+msgctxt "Judge heading (AeA)"
+msgid "Total Floggings"
+msgstr "تعداد کل شلاق‌های شناسایی‌شده"
+
+#: public/templates/judge.html:72
+msgctxt "Judge heading (AeA)"
+msgid "Total Victims"
+msgstr "تعداد کل قربانیان"
+
+#: public/templates/judge.html:84
+msgctxt "Judge heading (IPA)"
+msgid "Total Sentenced Yrs"
+msgstr "‎جمع حبس ‫(‬سال‫)"
+
+#: public/templates/judge.html:96
+msgctxt "Judge heading (IPA)"
+msgid "total verdicts"
+msgstr "‫‎تعداد احکام"
+
+#: public/templates/judge.html:108
+msgctxt "Judge heading (IPA)"
+msgid "AVG. sentence yrs"
+msgstr "‎میانگین حبس (سال)"
+
+#: public/templates/judge.html:120 public/templates/prison.html:60
+#: public/templates/prisoner.html:47
+msgid "Share"
+msgstr "هم‌رسانی ‎نمایه"
+
+#: public/templates/judge.html:120 public/templates/prison.html:60
+#: public/templates/prisoner.html:47
+msgid "Profile"
+msgstr "‎نمایه"
+
+#: public/templates/judge.html:129 public/templates/prison.html:69
+#: public/templates/prisoner.html:56 public/templates/prisoners.html:157
+#: public/templates/profile_chart.html:56
+#: public/templates/profile_chart.html:97 public/templates/search.html:71
+#: public/templates/search.html:72
+msgid "Profile Image"
+msgstr "تصویر نمایه"
+
+#: public/templates/judge.html:139 public/templates/prisoner.html:87
+#: public/templates/prisoners.html:52 public/templates/prisoners.html:64
+#: public/templates/prisoners.html:73 public/templates/prisoners.html:148
+#: public/templates/prisons.html:180
+msgid "Ethnicity"
+msgstr "‎اتنیک"
+
+#: public/templates/judge.html:143
+msgid "Judge type"
+msgstr "‎نوع قاضی"
+
+#: public/templates/judge.html:155
+msgid "Place of birth"
+msgstr "‎شهر محل تولد"
+
+#: public/templates/judge.html:160 public/templates/judge.html:171
+#: public/templates/prisoner.html:107
+msgid "BIOGRAPHY"
+msgstr "‎"
+
+#: public/templates/judge.html:167
+msgid "Most Recent Sentence"
+msgstr "‎آخرین حکم سیاسی"
+
+#: public/templates/judge.html:177
+msgid "Year"
+msgstr "‎سال"
+
+#: public/templates/judge.html:178
+msgid "Position"
+msgstr "مقام "
+
+#: public/templates/judge.html:183
+msgid "Current"
+msgstr "فعلی"
+
+#: public/templates/judge.html:200
+msgid "See all sentenced by"
+msgstr "‎مشاهده تمامی افراد محکوم‌شده توسط"
+
+#: public/templates/judge.html:221 public/templates/prison.html:149
+#: public/templates/prisoner.html:122
+msgid "Explanation"
+msgstr "توضیحات"
+
+#: public/templates/judges.html:17 public/templates/nav_header.html:138
+msgid "JUDGES"
+msgstr "قضات"
+
+#: public/templates/judges.html:25 public/templates/prisoners.html:33
+#: public/templates/prisons.html:17
+msgid "Share Visualization"
+msgstr "هم‌رسانی تصویر"
+
+#: public/templates/nav_header.html:68 public/templates/prisoner.html:21
+msgid "Prisoner"
+msgstr "‏‎زندانی"
+
+#: public/templates/nav_header.html:76
+msgid "Advanced Search"
+msgstr "جست‌وجوی پیشرفته"
+
+#: public/templates/nav_header.html:132 public/templates/prisoners.html:16
+msgid "Prisoners"
+msgstr "زندانیان"
+
+#: public/templates/nav_header.html:143 public/templates/prisons.html:12
+msgid "PRISONS"
+msgstr "‏‎زندان‌ها"
+
+#: public/templates/nav_header.html:148 public/templates/page.html:8
+msgid "about"
+msgstr "درباره اطلس"
+
+#. Translators: Act now (united4iran.org) link
+#: public/templates/nav_header.html:153
+#: public/templatetags/public/nav_header.py:115
+msgctxt "Navigation header"
+msgid "Act now"
+msgstr "اقدام کنید"
+
+#: public/templates/prison.html:27
+msgid "Victims"
+msgstr "قربانیان"
+
+#: public/templates/prison.html:39 public/templates/prisons.html:165
+msgid "Political Prisoners"
+msgstr "‏‎زندانیان سیاسی"
+
+#: public/templates/prison.html:48
+msgid "Prison Capacity"
+msgstr "‎ظرفیت زندان"
+
+#: public/templates/prison.html:79
+msgid "Address"
+msgstr "‏‎آدرس"
+
+#: public/templates/prison.html:83
+msgid "Dean of Prison"
+msgstr "‎رئیس زندان"
+
+#: public/templates/prison.html:86
+msgid "Date Prison was opened"
+msgstr "‎تاریخ افتتاح زندان"
+
+#: public/templates/prison.html:100
+msgid "Physical structure"
+msgstr "‎ساختار فیزیکی"
+
+#: public/templates/prison.html:102
+msgid "Size and density"
+msgstr "‎اندازه و تراکم"
+
+#: public/templates/prison.html:112
+msgid "Facilities"
+msgstr "‎امکانات احتمالی زندان"
+
+#: public/templates/prison.html:128
+msgid "See all prisoners"
+msgstr "مشاهده همه زندانیان"
+
+#: public/templates/prisoner.html:29
+#: public/templates/prisoner_accordian.html:63
+msgid "Sentence"
+msgstr "حکم"
+
+#: public/templates/prisoner.html:63
+msgid "CURRENT DETENTION STATUS"
+msgstr "‎وضعیت فعلی"
+
+#: public/templates/prisoner.html:69
+msgid "SECONDARY ACTIVITIES"
+msgstr "حوزه‌های دیگر فعالیت"
+
+#: public/templates/prisoner.html:84 public/templates/prisoners.html:54
+#: public/templates/prisoners.html:75 public/templates/prisoners.html:150
+#: public/templates/prisons.html:182
+msgid "Religion"
+msgstr "‎مذهب"
+
+#: public/templates/prisoner.html:90
+msgid "Country of citzenship"
+msgstr "تابعیت"
+
+#: public/templates/prisoner.html:93
+msgid "Affiliated with"
+msgstr "‫‎عضویت یا ارتباط با"
+
+#: public/templates/prisoner.html:98
+msgid "RELATED TO"
+msgstr "‎نسبت خانوادگی با"
+
+#: public/templates/prisoner_accordian.html:5
+msgid "ARRESTS"
+msgstr "پرونده‌ها / ‎بازداشت‌ها"
+
+#: public/templates/prisoner_accordian.html:19
+msgid "Date of arrest"
+msgstr "‎تاریخ دستگیری / احضار"
+
+#: public/templates/prisoner_accordian.html:69
+msgid "city, province of arrest"
+msgstr "‎محل احضار / دستگیری"
+
+#: public/templates/prisoner_accordian.html:91
+msgid "Procedural Violation"
+msgstr "‎تخلفات قضائی"
+
+#: public/templates/prisoner_accordian.html:110
+msgid "Domestic law violated"
+msgstr "‎قوانین داخلی نقض‌شده"
+
+#: public/templates/prisoner_accordian.html:118
+msgid "International law violated"
+msgstr "‎قوانین بین‌المللی نقض شده"
+
+#: public/templates/prisoner_accordian.html:140
+msgid "Date of incarceration"
+msgstr "تاریخ دستگیری / انتقال"
+
+#: public/templates/prisoner_accordian.html:150
+msgid "Type of Detention"
+msgstr "‎نوع بازداشت"
+
+#: public/templates/prisoner_accordian.html:151
+msgid "Detained Before Sentencing"
+msgstr "‎بازداشت موقت"
+
+#: public/templates/prisoner_accordian.html:151
+msgid "Transferred"
+msgstr "‎ انتقال"
+
+#: public/templates/prisoners.html:43 public/templates/prisoners.html:50
+#: public/templates/prisoners.html:71 public/templates/prisoners.html:146
+msgid "activity"
+msgstr "‏‎فعالیت"
+
+#: public/templates/prisoners.html:51 public/templates/prisoners.html:72
+#: public/templates/prisoners.html:147
+msgid "charges"
+msgstr "‎اتهام منجر به محکومیت"
+
+#: public/templates/prisoners.html:53 public/templates/prisoners.html:74
+#: public/templates/prisoners.html:149
+#: public/templates/supporting_evidence.html:50
+msgid "Mistreatments"
+msgstr "بدرفتاری"
+
+#: public/templates/prisoners.html:55 public/templates/prisoners.html:76
+#: public/templates/prisoners.html:151
+msgid "Sentences"
+msgstr "احکام"
+
+#: public/templates/prisoners.html:59
+msgid "Select different variables in the two drop-down menus above to get an overview of the backgrounds, conditions and treatment of political prisoners in Iran."
+msgstr "با انتخاب متغیرهای مختلف در دو منوی بالا به زمینه، شرایط و نحوه برخورد با زندانیان سیاسی در ایران نگاه دقیق‌تری بیاندازید."
+
+#: public/templates/prisoners.html:92
+msgid "Status of prisoners (OFF/ON)"
+msgstr "وضعیت زندانیان (خاموش/روشن)"
+
+#: public/templates/prisoners.html:100 public/templates/prisons.html:204
+#: public/templates/supporting_evidence.html:7
+#: public/templates/supporting_evidence.html:27
+#: public/templates/supporting_evidence.html:44
+msgid "All"
+msgstr "همه"
+
+#: public/templates/prisoners.html:107
+msgid "Detained"
+msgstr "بازداشت"
+
+#: public/templates/prisoners.html:114
+msgid "Released"
+msgstr "آزاد شد"
+
+#: public/templates/prisoners.html:121
+msgid "Executed"
+msgstr "اعدام شد"
+
+#: public/templates/prisoners.html:128
+msgid "Passed Away"
+msgstr "مرگ در زندان"
+
+#: public/templates/prisons.html:41
+msgid "The map only displays prisons which currently hold political prisoners, the 'Administered By' tab displays the total number of prisons."
+msgstr "نقشه بالا تنها زندان‌‌هایی را نمایش می‌دهد که در حال حاضر زندانی سیاسی دارند؛ اما اطلاعات نوار «نهاد اداره‌کننده» زندان‌هایی که پیش‌تر زندانی سیاسی داشته‌اند را نیز شامل می‌شود."
+
+#: public/templates/prisons.html:44
+msgid "reset"
+msgstr "تنظیم مجدد"
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:58
+msgctxt "Prisons map chart data set (AeA)"
+msgid "Procedural Violations"
+msgstr "‎تخلفات قضائی"
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:65
+msgctxt "Prisons map chart data set (AeA)"
+msgid "Human Rights Violations"
+msgstr "نقض حقوق بشر"
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:74
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Ethnicity"
+msgstr "‎اتنیک"
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:81
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Gender"
+msgstr "جنسیت"
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:88
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Religion"
+msgstr "‎مذهب"
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:95
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Activity persecuted for"
+msgstr "حوزه فعالیت"
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:102
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Charged With"
+msgstr "‎اتهام منجر به محکومیت"
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:109
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Mistreatment In Prison"
+msgstr "بدرفتاری در زندان"
+
+#: public/templates/prisons.html:120 public/templates/prisons.html:163
+msgid "Prison Selected"
+msgstr "زندان انتخاب‌شده"
+
+#. Translators: Label for above total count at the top of the chart
+#: public/templates/prisons.html:126
+msgctxt "Prisons map chart heading (AeA)"
+msgid "Victims"
+msgstr "قربانیان"
+
+#. Translators: Label for total count at the top of the chart
+#: public/templates/prisons.html:130
+msgctxt "Prisons map chart heading (IPA)"
+msgid "Political Prisoners"
+msgstr "‎زندانیان سیاسی"
+
+#: public/templates/prisons.html:140
+msgid "View Profile"
+msgstr "‏‎نمایه "
+
+#: public/templates/prisons.html:148
+msgctxt "Prisons map chart heading (AeA)"
+msgid "View All Reports"
+msgstr "مشاهده همه گزارش‌ها"
+
+#: public/templates/prisons.html:152
+msgctxt "Prisons map chart heading (IPA)"
+msgid "View All Prisoners"
+msgstr "مشاهده همه زندانیان"
+
+#: public/templates/prisons.html:184
+msgid "Charged With"
+msgstr "‎اتهام منجر به محکومیت"
+
+#: public/templates/prisons.html:185
+msgid "Mistreatment In Prison"
+msgstr "بدرفتاری در زندان"
+
+#: public/templates/prisons.html:186
+msgid "Human Rights Violations"
+msgstr "نقض حقوق بشر"
+
+#: public/templates/prisons.html:187
+msgid "Procedural Violations"
+msgstr "‎تخلفات قضائی"
+
+#. Translators: Appears before victim count in hover tooltip (e.g. "15 victims")
+#: public/templates/prisons.html:250
+msgctxt "Prisons map hover tooltip"
+msgid "victims"
+msgstr "قربانیان"
+
+#. Translators: Appears before prisoner count in hover tooltip (e.g. "15 prisoners")
+#: public/templates/prisons.html:253
+msgctxt "Prisons map hover tooltip"
+msgid "Prisoners"
+msgstr "زندانیان"
+
+#: public/templates/profile_chart.html:13
+msgid "Visualization"
+msgstr "مصورسازی"
+
+#: public/templates/profile_chart.html:17
+msgctxt "Profile chart title"
+msgid "Human rights violations"
+msgstr "نقض حقوق بشر"
+
+#: public/templates/profile_chart.html:21
+msgctxt "Profile chart title"
+msgid "Procedural violations"
+msgstr "‎تخلفات قضائی"
+
+#: public/templates/profile_chart.html:25
+msgctxt "Profile chart title"
+msgid "Mistreatments in prison"
+msgstr "بدرفتاری در زندان"
+
+#: public/templates/profile_chart.html:47
+msgctxt "Profile chart sidebar title"
+msgid "Selected Report"
+msgstr "گزارش انتخاب‌شده"
+
+#: public/templates/profile_chart.html:51
+msgctxt "Profile chart sidebar title"
+msgid "Selected Prisoner"
+msgstr "زندانی انتخاب‌شده"
+
+#: public/templates/profile_chart.html:73
+msgctxt "Profile chart sidebar label (AeA)"
+msgid "Number of Victims"
+msgstr "تعداد قربانیان"
+
+#: public/templates/profile_chart.html:77
+msgctxt "Profile chart sidebar label (AeA)"
+msgid "Detention Date"
+msgstr "تاریخ بازداشت"
+
+#: public/templates/profile_chart.html:82
+msgid "Detention Date"
+msgstr "تاریخ دستگیری"
+
+#: public/templates/profile_chart.html:85
+msgctxt "Profile chart sidebar label (AeA)"
+msgid "Domestic Laws Violated"
+msgstr "نقض قوانین داخلی"
+
+#: public/templates/profile_chart.html:89
+msgctxt "Profile chart sidebar label (AeA)"
+msgid "International Laws Violated"
+msgstr "نقض قوانین بین‌المللی"
+
+#: public/templates/profile_chart.html:101
+msgid "See full profile"
+msgstr "مشاهده نمایه کامل"
+
+#: public/templates/profile_chart.html:105
+msgctxt "Profile chart sidebar label (IPA)"
+msgid "Date Arrested"
+msgstr "‎تاریخ بازداشت"
+
+#: public/templates/profile_chart.html:106
+msgctxt "Profile chart sidebar label (IPA)"
+msgid "Activity"
+msgstr "فعالیت"
+
+#: public/templates/profile_chart.html:107
+msgctxt "Profile chart sidebar label (IPA)"
+msgid "Charged"
+msgstr "‎اتهام منجر به محکومیت"
+
+#: public/templates/profile_chart.html:108
+msgctxt "Profile chart sidebar label (IPA)"
+msgid "Sentenced"
+msgstr "‎حکم"
+
+#: public/templates/search.html:10
+msgctxt "Search explanation"
+msgid "Select a database to search on the right and either use the search box or filters below to narrow down your results."
+msgstr "برای محدود کردن نتایج، گزینه‌های مورد نظر خود را در ستون‌های سمت راست انتخاب کنید"
+
+#: public/templates/search.html:14
+msgctxt "Search prisoners by prison title"
+msgid "Searching detained prisoners from"
+msgstr "زندانی‌های فعلی زندان"
+
+#: public/templates/search.html:22
+msgctxt "Search mode link"
+msgid "Prisoners"
+msgstr "‏‎زندانی"
+
+#: public/templates/search.html:30
+msgctxt "Search mode link"
+msgid "Prisons"
+msgstr "‎زندان"
+
+#: public/templates/search.html:37
+msgctxt "Search mode link"
+msgid "Judges"
+msgstr "‎قاضی"
+
+#: public/templates/search.html:46
+msgctxt "Search filter expand/collapse link"
+msgid "Refine By"
+msgstr "گزینه‌ها"
+
+#: public/templates/search.html:49
+msgctxt "Search filter “Clear All” link"
+msgid "Clear All"
+msgstr "مجدد"
+
+#: public/templates/search.html:59
+msgctxt "Search result input placeholder"
+msgid "Search"
+msgstr "جست‌وجو"
+
+#: public/templates/search.html:65
+msgctxt "Search results"
+msgid "Results"
+msgstr "نتایج"
+
+#: public/templates/search.html:79
+msgctxt "Search result label (Prisoner)"
+msgid "Name"
+msgstr "نام"
+
+#: public/templates/search.html:88
+msgctxt "Search result label (Prisoner)"
+msgid "Activity persecuted for"
+msgstr "‎حوزه فعالیت"
+
+#: public/templates/search.html:99
+msgid "name"
+msgstr "نام"
+
+#: public/templates/search.html:106
+msgctxt "Search result label (Prison) (AeA)"
+msgid "Victims"
+msgstr "‎میانگین حبس (سال)"
+
+#: public/templates/search.html:113
+msgctxt "Search result label (Prison) (IPA)"
+msgid "Political Prisoners"
+msgstr "‏‎زندانیان سیاسی"
+
+#: public/templates/search.html:119
+msgctxt "Search result label (Prison)"
+msgid "Capacity"
+msgstr "‏‎ظرفیت زندان"
+
+#: public/templates/search.html:123
+msgctxt "Search result label (Prison)"
+msgid "Administered by"
+msgstr "نهاد اداره‌کننده"
+
+#: public/templates/search.html:124
+msgctxt "Search (Prison) “administered by” value"
+msgid "Prisons Division of the Judiciary"
+msgstr "سازمان زندان‌های قوه قضاییه"
+
+#: public/templates/search.html:125
+msgctxt "Search (Prison) “administered by” value"
+msgid "IRGC"
+msgstr "سپاه پاسداران"
+
+#: public/templates/search.html:126
+msgctxt "Search (Prison) “administered by” value"
+msgid "Police"
+msgstr "پلیس"
+
+#: public/templates/search.html:127
+msgctxt "Search (Prison) “administered by” value"
+msgid "Ministry of Intelligence"
+msgstr "وزارت اطلاعات"
+
+#: public/templates/search.html:135
+msgctxt "Search result label (Judge)"
+msgid "Name"
+msgstr "نام"
+
+#: public/templates/search.html:139
+msgctxt "Search result label (Judge)"
+msgid "Court and Branch"
+msgstr "دادگاه و شعبه"
+
+#: public/templates/search.html:148
+msgctxt "Search result label (Judge) (AeA)"
+msgid "Total Victims"
+msgstr "‎تعداد قربانیان"
+
+#: public/templates/search.html:156
+msgctxt "Search result label (Judge) (IPA)"
+msgid "Total Verdicts"
+msgstr "‎تعداد احکام"
+
+#: public/templates/search.html:164
+msgctxt "Search result label (Judge) (IPA)"
+msgid "Average Sentence Years"
+msgstr "‎میانگین حبس (سال)"
+
+#: public/templates/supporting_evidence.html:3
+msgid "Supporting evidence"
+msgstr "‎شواهد تأییدکننده"
+
+#: public/templates/supporting_evidence.html:10
+msgid "Prisoner's Activism"
+msgstr "‎فعالیت‌های زندانی"
+
+#: public/templates/supporting_evidence.html:13
+msgid "Court"
+msgstr "‎دادگاه"
+
+#: public/templates/supporting_evidence.html:16
+msgid "Media"
+msgstr "‎رسانه "
+
+#: public/templates/supporting_evidence.html:19
+msgid "Family"
+msgstr "‎خانواده"
+
+#: public/templates/supporting_evidence.html:22
+#: public/templates/supporting_evidence.html:56
+msgid "Campaigns"
+msgstr "کمپین‌ها"
+
+#: public/templates/supporting_evidence.html:30
+msgid "Rulings"
+msgstr "‎احکام"
+
+#: public/templates/supporting_evidence.html:33
+msgid "Verdicts"
+msgstr "‎دستورات"
+
+#: public/templates/supporting_evidence.html:36
+msgid "Transcripts"
+msgstr "‎رونوشت‌ها"
+
+#: public/templates/supporting_evidence.html:39
+msgid "Images"
+msgstr "‏‎عکس‌ها "
+
+#: public/templates/supporting_evidence.html:47
+msgid "Visual Records"
+msgstr "‎مدارک تصویری"
+
+#: public/templates/supporting_evidence.html:53
+msgid "Testimonials"
+msgstr "‎شهادت‌نامه‌ها"
+
+#: public/templates/supporting_evidence.html:70
+msgid "Supporting Evidence Thumbnail"
+msgstr "‏‪‎شواهد تأییدکنند‬ه"
+
+#: public/templates/timeline.html:4
+msgid "Timeline"
+msgstr "‎گاه‌شمار"
+
+#: public/templates/timeline.html:17
+msgid "see source"
+msgstr "مشاهده منبع"
+
+#. Translators: Nav box description text (small text under divider)
+#: public/templatetags/public/home_nav_boxes.py:74
+msgctxt "Home nav box"
+msgid "Click to explore the sentences handed down by some of Iran’s harshest judges"
+msgstr "برای بررسی احکام قضاتی که در سرکوب جامعه مدنی و نقض آزادی‌های بنیادین نقش دارند، اینجا کلیک کنید."
+
+#. Translators: Nav box description title (large text beneath number)
+#: public/templatetags/public/home_nav_boxes.py:82
+msgctxt "Home nav box"
+msgid "Judges"
+msgstr "‎قاضی"
+
+#. Translators: Nav box description text (small text under divider)
+#: public/templatetags/public/home_nav_boxes.py:102
+msgctxt "Home nav box"
+msgid "Click to explore the lives and sentences of Iran’s political prisoners"
+msgstr "برای دست‌یابی به اطلاعات بیش‌تر درباره شرح حال و شرایط زندانیان سیاسی ایران، اینجا کلیک کنید."
+
+#. Translators: Nav box description title (large text beneath number)
+#: public/templatetags/public/home_nav_boxes.py:110
+msgctxt "Home nav box"
+msgid "Prisoners"
+msgstr "‏‎زندانی"
+
+#. Translators: Nav box description text (small text under divider)
+#: public/templatetags/public/home_nav_boxes.py:129
+msgctxt "Home nav box"
+msgid "Click to explore the prisons that hold Iran’s political prisoners behind their bars"
+msgstr "برای بررسی زندان‌هایی که زندانیان سیاسی ایران در آن‌ها نگهداری می‌شوند،‌ اینجا کلیک کنید."
+
+#. Translators: Nav box description title (large text beneath number)
+#: public/templatetags/public/home_nav_boxes.py:137
+msgctxt "Home nav box"
+msgid "Prisons"
+msgstr "‎زندان"
+
+#: public/templatetags/public/home_showcase.py:42
+msgctxt "Home showcase (IPA prisoner)"
+msgid "Prisoner showcase"
+msgstr "نمایه‌های برگزیده"
+
+#: public/templatetags/public/home_showcase.py:58
+msgctxt "Home showcase (AeA featured news)"
+msgid "Featured news showcase"
+msgstr "مقا‌له‌های برگزیده"
+
+#. Translators: Used if prisoner has no forename and surname
+#: public/templatetags/public/home_showcase_item_prisoner.py:167
+msgctxt "Home showcase (IPA prisoner)"
+msgid "Name unknown"
+msgstr "ناشناس"
+
+#. Translators: Prisoners page link
+#: public/templatetags/public/nav_header.py:67
+msgctxt "Navigation header"
+msgid "Prisoners"
+msgstr "‏‎زندانی"
+
+#. Translators: Prisons page link
+#: public/templatetags/public/nav_header.py:80
+msgctxt "Navigation header"
+msgid "Prisons"
+msgstr "‫‎زندان"
+
+#. Translators: Judges page link
+#: public/templatetags/public/nav_header.py:90
+msgctxt "Navigation header"
+msgid "Judges"
+msgstr "‫‎قاضی"
+
+#. Translators: Blog (prisonatlas.com) link
+#: public/templatetags/public/nav_header.py:98
+msgctxt "Navigation header"
+msgid "Blog"
+msgstr "بخش خبری"
+
+#. Translators: About page link
+#: public/templatetags/public/nav_header.py:126
+msgctxt "Navigation header"
+msgid "About"
+msgstr "درباره اطلس"
+
+#. Translators: Boxed IPA link
+#: public/templatetags/public/nav_header.py:181
+msgctxt "Navigation header"
+msgid "Political prisoners"
+msgstr "زندانیان سیاسی"
+
+#. Translators: Boxed AeA link
+#: public/templatetags/public/nav_header.py:186
+msgctxt "Navigation header"
+msgid "Non-political prisoners"
+msgstr "زندانیان غیر سیاسی"
+
+#. Translators: Social media/search engine site description
+#: public/utils.py:388
+#, python-brace-format
+msgctxt "Home"
+msgid "Prisons across Iran are serving out sentences issued by {judge_count} judges. Want to find out more? Explore Atlas Agahi."
+msgstr "زندان‌ها در سرتاسر ایران در حال اجرای احکام صادره از سوی {judge_count} قاضی هستند. اگر مایل هستید بیشتر بدانید، از اطلس زندانیان غیرسیاسی بازدید کنید."
+
+#. Translators: Social media/search engine site description
+#: public/utils.py:397
+#, python-brace-format
+msgctxt "Home"
+msgid "{prisoner_count} political prisoners are currently detained in {prison_count} prisons across Iran serving out sentences issued by {judge_count} judges. Want to find out more? Explore Iran Prison Atlas."
+msgstr "هم‌اکنون حدود {prisoner_count} زندانی سیاسی شناسایی‌شده در {prison_count} زندان ایران در بازداشت به سر می‌برند. {judge_count} قاضی احکام آن‌ها را صادر کرده‌اند. اگر مایل هستید بیش‌تر بدانید، از اطلس زندان‌های ایران بازدید کنید."
+
+#: public/utils.py:430
+msgctxt "General"
+msgid "Atlas Agahi"
+msgstr "اطلس زندانیان غیرسیاسی"
+
+#: public/utils.py:435
+msgctxt "General"
+msgid "Iran Prison Atlas"
+msgstr "اطلس زندان‌های ایران"
+
+#: public/views.py:217 public/views.py:331
+#, python-format
+msgid "%d Prisons"
+msgstr "‏%d زندان"
+
+#: public/views.py:218
+#, python-format
+msgid "%(prisoners_count)d political prisoners are currently detained in %(prisons_count)d prisons across Iran. Explore our visualization to find out more."
+msgstr "%(prisoners_count)d زندانی سیاسی در حال حاضر در %(prisons_count)d زندان ایران نگهداری می‌شوند. برای اطلاعات بیشتر گزارش مصور ما را ببینید."
+
+#: public/views.py:392 public/views.py:488
+#, python-format
+msgid "%(prison)s | %(count)d prisoners detained"
+msgstr "%(prison)s | با %(count)d زندانی"
+
+#: public/views.py:430
+msgctxt "Prison error message"
+msgid "Prison not found"
+msgstr "زندان مورد نظر یافت نشد"
+
+#: public/views.py:694
+#, python-format
+msgid "%d Political Prisoners"
+msgstr "%d زندانی سیاسی"
+
+#: public/views.py:695
+#, python-format
+msgid "%(count)d political prisoners are currently serving a cumulative total of %(total_years)d years in Iran's prisons. Explore our visualization to find out more."
+msgstr "%(count)d زندانی سیاسی در ایران در حال حاضر در حال گذراندن مجموعاً %(total_years)d سال محکومیت هستند. برای اطلاعات بیش‌تر گزارش مصور ما را ببینید."
+
+#: public/views.py:748
+#, python-format
+msgid "Fine: %s Rial"
+msgstr "جریمه: %s ریال"
+
+#: public/views.py:750
+#, python-format
+msgid "%s lashes"
+msgstr "‏%s  ضربه شلاق"
+
+#: public/views.py:753
+#, python-format
+msgid "%s years"
+msgstr "‏%s سال"
+
+#: public/views.py:755
+#, python-format
+msgid "%s year"
+msgstr "‏%s سال"
+
+#: public/views.py:758
+#, python-format
+msgid "%s months"
+msgstr "‏%s ماه"
+
+#: public/views.py:760
+#, python-format
+msgid "%s month"
+msgstr "‏%s ماه"
+
+#: public/views.py:849
+msgctxt "Prisoner(s) information box description"
+msgid "Arrests description"
+msgstr ""
+
+#: public/views.py:853
+msgctxt "Prisoner(s) information box title"
+msgid "Arrests"
+msgstr ""
+
+#: public/views.py:864
+msgctxt "Prisoner(s) information box description"
+msgid "Sentence description"
+msgstr ""
+
+#: public/views.py:868
+msgctxt "Prisoner(s) information box title"
+msgid "Sentence"
+msgstr ""
+
+#: public/views.py:1030
+msgctxt "Judges information box description"
+msgid "Judges description"
+msgstr ""
+
+#: public/views.py:1034
+msgctxt "Judges information box title"
+msgid "Judges"
+msgstr ""
+
+#: public/views.py:1044
+msgctxt "Judges information box description"
+msgid "Lashes description"
+msgstr ""
+
+#: public/views.py:1048
+#, fuzzy
+#| msgid "%s lashes"
+msgctxt "Judges information box title"
+msgid "Lashes"
+msgstr "‏%s  ضربه شلاق"
+
+#: public/views.py:1058
+msgctxt "Judges information box description"
+msgid "Misconduct description"
+msgstr ""
+
+#: public/views.py:1062
+msgctxt "Judges information box title"
+msgid "Misconduct"
+msgstr ""
+
+#: public/views.py:1114 public/views.py:1238
+#, python-format
+msgid "%d Judges"
+msgstr "%d قاضی"
+
+#: public/views.py:1115 public/views.py:1239
+#, python-format
+msgid "%(judges_count)d judges have handed out %(sentences_count)d sentences to Iran's political prisoners. Explore our visualization to find out more."
+msgstr "%(judges_count)d قاضی %(sentences_count)d حکم علیه زندانیان سیاسی صادر کرده‌اند. برای اطلاعات بیشتر گزارش مصور ما را ببینید."
+
+#: public/views.py:1299 public/views.py:1360
+msgctxt "Search"
+msgid "Search"
+msgstr "جست‌وجو"
+
+#. Translators: Appears if the server can’t deal with a
+#. request because it contains bad/invalid data, e.g. if an
+#. invalid review is submitted
+#: public/views_v2/error.py:72
+msgctxt "Error title"
+msgid "Bad request"
+msgstr "درخواست خطا"
+
+#. Translators: Default error page title
+#: public/views_v2/error.py:78
+msgctxt "Error title"
+msgid "The page you are looking for does not exist"
+msgstr "چنین صفحه ای در وبسایت یافت نشد."
+
+#. Translators: Default error page title
+#: public/views_v2/error.py:84
+msgctxt "Error message"
+msgid "Please contact us if you think this is an error"
+msgstr "اگر فکر می‌کنید که اشتباهی رخ داده است، لطفاْ با ما تماس بگیرید."
+
+#. Translators: Appears if the server can’t deal with a
+#. request because of an unexpected server issue.
+#: public/views_v2/error.py:91
+msgctxt "Error title"
+msgid "Internal server error"
+msgstr "خطای سرور داخلی"
+
+#: public/views_v2/judge_aea.py:115
+msgctxt "Report sentence human rights violation"
+msgid "Amputations"
+msgstr "نقص عضو"
+
+#: public/views_v2/judge_aea.py:120
+msgctxt "Report sentence human rights violation"
+msgid "Executions"
+msgstr "اعدام"
+
+#: public/views_v2/judge_aea.py:125
+msgctxt "Report sentence human rights violation"
+msgid "Floggings"
+msgstr "شلاق"
+
+#: public/views_v2/judge_aea.py:245
+#, python-format
+msgid "%(name)s | %(count)d Reports"
+msgstr "%(name)s | %(count)d گزارش‌ها"
+
+#: public/views_v2/judge_ipa.py:188
+#, python-format
+msgid "%(name)s | %(count)d Sentences Issued"
+msgstr "‏%(name)s | %(count)d حکم صادره"
+
+#, fuzzy
+#~| msgid "Procedural Violations"
+#~ msgctxt "Prisons map (AeA) chart data set"
+#~ msgid "Procedural Violations"
+#~ msgstr "‎تخلفات قضائی"
+
+#, fuzzy
+#~| msgid "Ethnicity"
+#~ msgctxt "Prisons map (IPA) chart data set"
+#~ msgid "Ethnicity"
+#~ msgstr "‎قومیت"
+
+#, fuzzy
+#~| msgid "Gender"
+#~ msgctxt "Prisons map (IPA) chart data set"
+#~ msgid "Gender"
+#~ msgstr "جنسیت"
+
+#, fuzzy
+#~| msgid "Religion"
+#~ msgctxt "Prisons map (IPA) chart data set"
+#~ msgid "Religion"
+#~ msgstr "‎مذهب"
+
+#, fuzzy
+#~| msgid "Activity Persecuted for"
+#~ msgctxt "Prisons map (IPA) chart data set"
+#~ msgid "Activity Persecuted for"
+#~ msgstr "‏‎فعالیت منجر به پیگرد قانونی"
+
+#, fuzzy
+#~| msgid "Charged With"
+#~ msgctxt "Prisons map (IPA) chart data set"
+#~ msgid "Charged With"
+#~ msgstr "‏‎اتهامات رسمی"
+
+#, fuzzy
+#~| msgid "Mistreatment In Prison"
+#~ msgctxt "Prisons map (IPA) chart data set"
+#~ msgid "Mistreatment In Prison"
+#~ msgstr "سوء رفتار در زندان"
+
+#, fuzzy
+#~| msgid "Political Prisoners"
+#~ msgctxt "Prisons map (IPA) chart heading"
+#~ msgid "Political Prisoners"
+#~ msgstr "‏‎زندانیان سیاسی"
+
+#~ msgctxt "Prisons map (AeA) data set"
+#~ msgid "Procedural Violations"
+#~ msgstr "‫‎تخلفات قضائی"
+
+#~ msgctxt "Prisons map (IPA) data set"
+#~ msgid "Ethnicity"
+#~ msgstr "‎قومیت"
+
+#~ msgctxt "Prisons map (IPA) data set"
+#~ msgid "Gender"
+#~ msgstr "جنسیت"
+
+#~ msgctxt "Prisons map (IPA) data set"
+#~ msgid "Religion"
+#~ msgstr "‎مذهب"
+
+#~ msgctxt "Prisons map (IPA) data set"
+#~ msgid "Activity Persecuted for"
+#~ msgstr "‏‎فعالیت منجر به پیگرد قانونی"
+
+#~ msgctxt "Prisons map (IPA) data set"
+#~ msgid "Charged With"
+#~ msgstr "‏‎اتهامات رسمی"
+
+#~ msgctxt "Prisons map (IPA) data set"
+#~ msgid "Mistreatment In Prison"
+#~ msgstr "سوء رفتار در زندان"
+
+#, fuzzy
+#~| msgid "Ethnicity"
+#~ msgctxt "Prisons map (AeA) data set"
+#~ msgid "Ethnicity"
+#~ msgstr "‎قومیت"
+
+#, fuzzy
+#~| msgid "Gender"
+#~ msgctxt "Prisons map (AeA) data set"
+#~ msgid "Gender"
+#~ msgstr "جنسیت"
+
+#, fuzzy
+#~| msgid "Religion"
+#~ msgctxt "Prisons map (AeA) data set"
+#~ msgid "Religion"
+#~ msgstr "‎مذهب"
+
+#, fuzzy
+#~| msgid "Activity Persecuted for"
+#~ msgctxt "Prisons map (AeA) data set"
+#~ msgid "Activity Persecuted for"
+#~ msgstr "‏‎فعالیت منجر به پیگرد قانونی"
+
+#, fuzzy
+#~| msgid "Charged With"
+#~ msgctxt "Prisons map (AeA) data set"
+#~ msgid "Charged With"
+#~ msgstr "‏‎اتهامات رسمی"
+
+#, fuzzy
+#~| msgid "Mistreatment In Prison"
+#~ msgctxt "Prisons map (AeA) data set"
+#~ msgid "Mistreatment In Prison"
+#~ msgstr "سوء رفتار در زندان"
+
+#~ msgid "The page does not exist"
+#~ msgstr "صفحه موجود نمی‌باشد"
+
+#~ msgid "Please"
+#~ msgstr "لطفاً"
+
+#~ msgid "contact us"
+#~ msgstr "با ما تماس بگیرید"
+
+#~ msgid "Something went wrong"
+#~ msgstr "خطایی رخ داده است"
+
+#~ msgid "Sorry, something went wrong."
+#~ msgstr "متاسفانه خطایی رخ داده است."
+
+#~ msgid "Home"
+#~ msgstr "خانه"
+
+#~ msgid "Click to explore the prisons that hold Iran’s political prisoners behind their bars"
+#~ msgstr "برای بررسی زندان‌هایی که زندانیان سیاسی ایران در آنها نگهداری می‌شوند‌ اینجا کلیک کنید."
+
+#~ msgid "Search based on capacity, facilities, ..."
+#~ msgstr "جست‌و‌جو بر‌اساس ظرفیت، امکانات و ..."
+
+#~ msgid "Click to explore the lives and sentences of Iran’s political prisoners"
+#~ msgstr "برای اطلاعات بیشتر در مورد شرح حال و شرایط زندانیان سیاسی ایران، اینجا کلیک کنید."
+
+#~ msgid "Search based on age, gender, accusation, ..."
+#~ msgstr "جست‌و‌جو بر‌اساس سن، جنسیت، اتهامات و ..."
+
+#~ msgid "Click to explore the sentences handed down by some of Iran’s harshest judges"
+#~ msgstr "برای بررسی احکام برخی از سختگیرترین قضات ایران اینجا کلیک کنید."
+
+#~ msgid "Search based on age, position, type, ..."
+#~ msgstr "جست‌و‌جو بر‌اساس سن، مقام، نوع و ..."
+
+#~ msgid "Our goal is to share information on individuals, advocate for all political prisoners and highlight systematic abuses by the Islamic Republic of Iran"
+#~ msgstr "هدف ما حمایت از زندانیان سیاسی از طریق انتشار اطلاعات و پرده برداری از نقض سازمان یافته حقوق آنها در ایران است"
+
+#~ msgid "About"
+#~ msgstr "درباره"
+
+#~ msgid "Prisoner Visualization"
+#~ msgstr "مصورسازی زندانیان"
+
+#~ msgid "Prisons Visualization"
+#~ msgstr "مصورسازی زندان‌ها"
+
+#~ msgid "Search based on age, gender, ..."
+#~ msgstr "جست‌و‌جو بر‌اساس سن، جنسیت و ..."

@@ -1,0 +1,9 @@
+---
+
+create_rds: no
+db_name: united
+db_user:  united
+db_password: '{{db_live_password}}'
+# db_live_password lives in vault/secrets.yml
+db_host: 'sm-db-postgres-virt'
+postgresql_version: 9.3

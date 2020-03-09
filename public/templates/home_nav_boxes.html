@@ -1,0 +1,47 @@
+{%
+    load
+        classname
+    from public_tags
+%}{%
+    load
+        static
+    from static
+%}<nav class="ipa_home_nav_boxes {% classname 'nav' %}">
+    <ul class="{% classname 'navList' %}">
+        {% for nav_box_info in nav_box_infos %}
+            <li
+                class="{% classname 'navListItem' %}"
+                style="background-image: url('{% static nav_box_info.background_img_src %}?v=2019-08-28');"
+            >
+                <a
+                    class="{% classname 'navListItemLink' %}"
+                    href="{{ nav_box_info.href }}"
+                >
+                    <h2
+                        class="{% classname 'navListItemHeading' %}"
+                    ><span
+                        class="{% classname 'navListItemCount' %}"
+                    >{{ nav_box_info.count }}</span> <span
+                        class="{% classname 'navListItemName' %}"
+                    >{{ nav_box_info.name }}</span></h2>
+                </a>
+
+                <hr
+                    aria-hidden="true"
+                    class="{% classname 'navListItemHr' %}"
+                />
+
+                <p
+                    class="{% classname 'navListItemDescription' %}"
+                >{{ nav_box_info.description }}</p>
+
+                <a
+                    aria-hidden="true"
+                    class="{% classname 'navLinkItemLinkOverlay' %}"
+                    href="{{ nav_box_info.href }}"
+                    tabindex="-1"
+                ></a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

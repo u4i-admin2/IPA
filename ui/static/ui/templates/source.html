@@ -1,0 +1,84 @@
+<!-- 
+
+SOURCE 
+
+-->
+<form name="sourceForm" novalidate ng-submit="sourceForm.$valid && addSource(edit)">
+    <!-- 
+
+    LINK 
+
+    -->
+    <div class="form-group judicialposition" ng-class="{'has-error' : sourceForm.$submitted && sourceForm.Link.$error.required || sourceForm.Link.$error.url }">
+        <label class="control-label" for="textinput">Link</label>
+        <input ng-model="source.link" name="Link"  placeholder="Link" class="form-control input-md" type="text">
+        <div class="error" ng-show="sourceForm.Link.$error.url">Not valid url!</div>
+    </div>
+    <!-- 
+
+    SOURCE 
+
+    -->
+    <div class="form-group judicialposition" ng-class="{'has-error' : sourceForm.$submitted && sourceForm._source.$error.required }">
+        <label class="control-label" for="textinput">Source</label>
+        <input required ng-model="source.name" name="_source" placeholder="Source" class="form-control input-md" type="text">
+    </div>
+    <!-- 
+
+    Description 
+
+    -->
+    <div class="form-group judicialposition" ng-class="{'has-error' : sourceForm.$submitted && source.description.$error.required }">
+        <label class="control-label" for="textinput">Description</label>
+        <textarea ng-model="source.description" name="description" placeholder="Description" class="form-control input-md" type="text"></textarea>
+    </div>
+    <!-- 
+
+    Field Name 
+
+    -->
+    <div class="fieldName">
+        <label class="control-label" for="textinput">Field Name</label>
+        <div class="input-group">
+            <input autocomplete="off" ng-value="" ng-change="search('_related_fields' , source._related_fields ,  'source' ,'related_fieldsDD','core_types' , 'name')" ng-model="source._related_fields" val="" id="textinput" name="textinput" placeholder="Field Name" class="form-control input-md" type="text">
+            <span ng-click="addToList('_related_fields' , 'related_fields', 'source')" class="input-group-addon pointer">
+        <span  class="icon-plus"></span>
+            </span>
+        </div>
+        <div class="holder">
+            <div ng-model="source.related_fieldsDD" ng-show="source.related_fieldsDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in source.related_fieldsDD ">{$ item.name_en $} </div>
+            </div>
+        </div>
+        <div>
+            <div ng-repeat="item in source._related_fields_array">
+                <div ng-click="removeFromList($index , '_related_fields' , 'related_fields' , 'source')" class="fieldname">{$ item.name_en $}
+                    <div class="remove"> X </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 
+
+    Submit 
+
+    -->
+    <div class="row">
+        <br/>
+        <button id="addSource" type="submit" name="addSource" class="btn btn-primary submitButton">Save Source</button>
+        <button ng-show="edit" ng-click="cancelEdit($event)" class="btn btn-primary submitButton">Cancel</button>
+    </div>
+    <div class="filter">
+    </div>
+    <div class="sourceHolder">
+        <div class="source" ng-repeat="item in current.sources">
+            <div class="sourceName">{$ item.name $}</div>
+            <a ng-click="delete(item.id , 'source')" class="icon-cancel"></a>
+            <a ng-click="setEdit(item.id , $index)" class="icon-pencil"></a>
+            <div class="descriptionName">{$ item.description $}</div>
+            <div  class="linkName"><a ng-show="item.link" target="_blank" ng-href="{$item.link$}"> Link<span class="icon-link-ext"></span></a></div>
+            <div class="relatedFields">{$ item.related_fields $}</div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+@value colours: 'colours.module.css';
+@value general: 'general.module.css';
+
+@value (
+    ipaBlack
+) from colours;
+
+.button {
+    composes: imageButton from general;
+    color: ipaBlack;
+    display: block;
+    width: 2em;
+    height: 2em;
+    background-image: url('../img/info-circle.svg?v=2020-01-15');
+}
+
+.buttonAbsolute {
+    composes: button;
+    position: absolute;
+    top: 50%;
+    top: calc(50% - 1em);
+    top: 0;
+}
+
+:global(html.ltr) .buttonAbsolute {
+    right: 0;
+}
+:global(html.rtl) .buttonAbsolute {
+    left: 0;
+}

@@ -1,0 +1,45 @@
+@value colours: 'colours.module.css';
+
+@value (
+    ipaBlack
+) from colours;
+
+.container {
+    color: ipaBlack;
+    display: block;
+    overflow: hidden;
+    font-family: inherit;
+    width: 100%;
+    margin: 4em 0 0 0;
+    font-size: 16px;
+}
+
+.heading {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 16px 0;
+}
+.heading::after {
+    display: block;
+    content: ' ';
+    width: 100%;
+    max-width: 768px;
+    border-bottom: 3px solid rgb(51, 51, 51);
+    margin: 16px auto 0 auto;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    width: calc(100% + 2em);
+}
+:global(html.ltr) .list {
+    margin-left: 0;
+    margin-left: calc(-1em);
+}
+:global(html.rtl) .list {
+    margin-right: 0;
+    margin-right: calc(-1em);
+}

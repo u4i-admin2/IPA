@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'Nazanin';
+    src: url("../../public/font/BNazanin.eot");
+    src: url("../../public/font/BNazanin.eot?#iefix") format("embedded-opentype"), url("../../public/font/BNazanin.woff") format("woff"), url("../../public/font/BNazanin.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ipaFieldset,
+.ipaFieldset * {
+    box-sizing: border-box;
+}
+
+.ipaFieldset .form-row {
+    position: relative;
+    padding: 1em 0;
+    width: calc(100% + 2em);
+    margin-left: calc(-1em);
+    border-bottom: none;
+}
+
+.ipaFieldset .form-row::after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: calc(100% - 2em);
+    margin-left: 1em;
+    border-bottom: 1px solid #eee;
+}
+
+.ipaFieldset .form-row > div {
+    border: 0px solid transparent;
+    border-right-width: 1em;
+    border-left-width: 1em;
+    margin: 0;
+}
+
+.ipaFieldset.columns1 .form-row > div {
+    width: calc(100% / 1);
+}
+.ipaFieldset.columns2 .form-row > div {
+    width: calc(100% / 2);
+}
+.ipaFieldset.columns3 .form-row > div {
+    width: calc(100% / 3);
+}
+.ipaFieldset.columns4 .form-row > div {
+    width: calc(100% / 4);
+}
+.ipaFieldset.columns5 .form-row > div {
+    width: calc(100% / 5);
+}
+.ipaFieldset.columns6 .form-row > div {
+    width: calc(100% / 6);
+}
+
+.ipaFieldset .form-row > div label:not(.vCheckboxLabel) {
+    width: 100%;
+    height: 1.5em;
+    line-height: 1.5em;
+    margin-bottom: 0.5em;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ipaFieldset .form-row > div .help {
+    display: none;
+}
+
+.ipaFieldset .field-box input[type='text'],
+.ipaFieldset .field-box textarea {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.ipaFieldset .field-box input[name$="_fa"][type='text'],
+.ipaFieldset .field-box textarea[name$="_fa"] {
+    direction: rtl;
+    font-family: 'Nazanin', sans-serif;
+}
+
+.ipaFieldset .form-row > div .vTextField,
+.ipaFieldset .form-row > div .vLargeTextField,
+.ipaFieldset .form-row > div .related-widget-wrapper,
+.ipaFieldset .form-row > div .related-widget-wrapper select,
+.ipaFieldset .form-row > div .related-widget-wrapper .select2 {
+    width: 100% !important;
+    margin: 0;
+}
+
+.ipaFieldset .markdownx {
+    width: 100%;
+}
+.ipaFieldset .markdownx .markdownx-editor,
+.ipaFieldset .markdownx .markdownx-preview {
+    width: 100%;
+}
+
+.ipaInline .inline-related,
+.ipaInline .inline-related .ipaFieldset {
+    border: 0px solid transparent;
+    border-top-width: 1em;
+    border-left-width: 1em;
+}
+.ipaInline .inline-related .ipaFieldset:last-of-type {
+    border-bottom-width: 1em;
+}
+
+.ipaInline .inline-related h3 {
+    border: 1px solid #eee;
+}
+
+.ipaInline.fieldsetInlineRelatedItemsCollapsible .inline-related h3 {
+    cursor: pointer;
+}
+
+.ipaInline.fieldsetInlineRelatedItemsCollapsible .add-row {
+    margin-top: 1em;
+}
+
+.ipaInline.fieldsetInlineRelatedItemsCollapsible .inline-related:not(.isExpanded) > *:not(h3) {
+    display: none;
+}

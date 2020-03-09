@@ -1,0 +1,145 @@
+<div class="col-xs-12">
+    <div class="staticView row">
+        <div class="col-xs-6 formEnglish">
+            <button ng-click="editPrisonInfo($event)" class="btn btn-primary edit">EDIT
+                <font class="icon-pencil"></font>
+            </button>
+        </div>
+        <div class="col-xs-6 formFarsi">
+            <button ng-click="editPrisonInfo($event)" class="btn btn-primary edit">EDIT
+                <font class="icon-pencil"></font>
+            </button>
+        </div>
+    </div>
+    <div class="row addInfo">
+        <div class="col-xs-6 formEnglish">
+            <div class="form-group">
+                <label class="control-label" for="textinput">Physical Structure </label>
+                <div>{$ current.physical_structure_en $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Size & Density</label>
+                <div>{$ current.size_and_density_en $}
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label class="control-label" for="textinput">Medicine and Nutrition</label>
+                <div>{$ current.medicine_and_nutrition_en $}
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label class="control-label" for="textinput">Facility</label>
+                <div ng-repeat="fac in current.facilities_objs">{$ fac.name_en $}
+                <div class="indent" ng-if="fac.id == facDesc.facility" ng-repeat="facDesc in current.facilitylinks">{$facDesc.description_en$}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 formFarsi">
+            <div class="form-group">
+                <label class="control-label" for="textinput">Physical Structure</label>
+                <div>{$ current.physical_structure_fa $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Size & Density</label>
+                <div>{$ current.size_and_density_fa $}
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label class="control-label" for="textinput">Medicine and Nutrition</label>
+                <div>{$ current.medicine_and_nutrition_fa $}
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label class="control-label" for="textinput">Facility</label>
+                <div ng-repeat="fac in current.facilities_objs">{$ fac.name_fa $}
+                    <div class="indent" ng-if="fac.id == facDesc.facility" ng-repeat="facDesc in current.facilitylinks">{$facDesc.description_fa$}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prisonAdditionalInfo -->
+<form name="prisonAdditionalInfoForm" class="prisonAdditionalInfoForm" novalidate ng-submit="prisonAdditionalInfoForm.$valid && addPrisonAdictionalInfo()">
+    <div class="col-xs-6 formEnglish ">
+        <!-- Physical Structure -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Physical Structure</label>
+            <textarea rows="10" maxlength="1000" ng-model="prisonAdditionalInfo.physical_structure_en" name="physical_structure_fa" placeholder="Physical Structure" class="form-control input-md" type="text"></textarea>
+        </div>
+        <!-- Size and Density -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Size and Density</label>
+            <textarea maxlength="250" ng-model="prisonAdditionalInfo.size_and_density_en" name="size_and_density_en" placeholder="Size and Density" class="form-control input-md" type="text"></textarea>
+        </div>
+        <!-- Medicine and Nutrition -->
+        <!-- <div class="form-group">
+            <label class="control-label" for="textinput">Medicine and Nutrition</label>
+            <textarea maxlength="250" ng-model="prisonAdditionalInfo.medicine_and_nutrition_en" name="medicine_and_nutrition_en" placeholder="Medicine and Nutrition" class="form-control input-md" type="text"></textarea>
+        </div> -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Facility</label>
+            <br/>
+            <div class="row">
+                <label for="checkboxes-0" class="checkbox-inline col-xs-6 " ng-repeat="checkbox in facility | orderBy:'name_en'">
+                    <input type="checkbox" ng-checked="prisonAdditionalInfo.facilities.indexOf(checkbox.id) >=  0 ? checkbox.id : ''" ng-model="prisonAdditionalInfo.fact[checkbox.id]" ng-true-value="{$checkbox.id$}">
+                    <span class="checkBox" ng-class="{'checked': prisonAdditionalInfo.fact[checkbox.id]==checkbox.id}"></span><span class="checkboxLabel">{$ checkbox.name_en $}</span>
+                </label>
+            </div>
+            <!-- add Facility -->
+            <!-- <label class="control-label" for="textinput">Add Facility</label>
+            <div class="input-group">
+                <input placeholder="Facility Name" ng-model="prisonAdditionalInfo.facility" class="form-control input-md" type="text">
+                <span ng-click="addFacility()" class="input-group-addon pointer">
+                    <span  class="icon-plus"></span>
+                </span>
+            </div> -->
+        </div>
+        <div class="form-group" ng-show="prisonAdditionalInfo.fact[checkbox.id]==checkbox.id" ng-repeat="checkbox in facility | orderBy:'name_en'">
+            <label class="control-label" for="textinput">{$ checkbox.name_en $}</label>
+            <textarea class="form-control input-md" placeholder="More Information" ng-model="prisonAdditionalInfo[checkbox.id].description_en" maxlength="140"></textarea>
+        </div>
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <!-- Physical Structure -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Physical Structure</label>
+            <textarea rows="10" maxlength="1000" ng-model="prisonAdditionalInfo.physical_structure_fa" name="physical_structure_fa" placeholder="Physical Structure" class="form-control input-md" type="text"></textarea>
+        </div>
+        <!-- Size and Density -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Size and Density</label>
+            <textarea maxlength="250" ng-model="prisonAdditionalInfo.size_and_density_fa" name="size_and_density_fa" placeholder="Size and Density" class="form-control input-md" type="text"></textarea>
+        </div>
+        <!-- Medicine and Nutrition -->
+        <!-- <div class="form-group">
+            <label class="control-label" for="textinput">Medicine and Nutrition</label>
+            <textarea maxlength="250" ng-model="prisonAdditionalInfo.medicine_and_nutrition_fa" name="medicine_and_nutrition_fa" placeholder="Medicine and Nutrition" class="form-control input-md" type="text"></textarea>
+        </div> -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Facility</label>
+            <br/>
+            <div class="row">
+                <label for="checkboxes-0" class="checkbox-inline col-xs-6 " ng-repeat="checkbox in facility | orderBy:'name_en'">
+                    <input type="checkbox" ng-checked="prisonAdditionalInfo.facilities_ids.indexOf(checkbox.id) >=  0 ? checkbox.id : ''" ng-model="prisonAdditionalInfo.fact[checkbox.id]" ng-true-value="{$checkbox.id$}">
+                    <span class="checkBox" ng-class="{'checked': prisonAdditionalInfo.fact[checkbox.id]==checkbox.id}"></span><span class="checkboxLabel">{$ checkbox.name_fa $}</span>
+                </label>
+            </div>
+            <!-- add Facility -->
+            <!-- <label class="control-label" for="textinput">Add Facility</label>
+            <div class="input-group">
+                <input placeholder="Facility Name" ng-model="prisonAdditionalInfo.facility" class="form-control input-md" type="text">
+                <font ng-click="addFacility()" class="input-group-addon pointer">
+                    <font class="icon-plus"></font>
+                </font>
+            </div> -->
+        </div>
+        <div class="form-group" ng-show="prisonAdditionalInfo.fact[checkbox.id]==checkbox.id" ng-repeat="checkbox in facility | orderBy:'name_en'">
+            <label class="control-label" for="textinput">{$ checkbox.name_fa $}</label>
+            <textarea class="form-control input-md" placeholder="More Information" ng-model="prisonAdditionalInfo[checkbox.id].description_fa" maxlength="140" ></textarea>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">Save Addiotional Info</button>
+    <button ng-click="showArrestDetailsForm($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>

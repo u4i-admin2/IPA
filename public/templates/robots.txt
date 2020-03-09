@@ -1,0 +1,5 @@
+User-agent: *
+
+Sitemap: http://{{ request.META.HTTP_HOST }}/en/sitemap.xml
+Sitemap: http://{{ request.META.HTTP_HOST }}/fa/sitemap.xml
+

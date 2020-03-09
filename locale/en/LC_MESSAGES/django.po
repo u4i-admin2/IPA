@@ -1,0 +1,1228 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-17 17:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: api/search.py:62
+#, python-format
+msgid "You must specify %r parameter."
+msgstr ""
+
+#: api/viewsets.py:183
+msgid "Items of this collection can only be updated, the collection itself cannot be browsed or retrieved from."
+msgstr ""
+
+#: api/viewsets.py:194
+msgid "No file specified."
+msgstr ""
+
+#: api/viewsets.py:203
+msgid "The uploaded file was not an image."
+msgstr ""
+
+#: core_types/models.py:30
+msgid "Created"
+msgstr ""
+
+#: core_types/models.py:34
+msgid "Last Updated"
+msgstr ""
+
+#: core_types/models.py:39
+msgid "Created By"
+msgstr ""
+
+#: core_types/models.py:47
+msgid "Last Updated By"
+msgstr ""
+
+#: core_types/models.py:53 core_types/models.py:141 report/models.py:128
+#: report/models.py:195
+msgid "Approved for publishing?"
+msgstr ""
+
+#: core_types/models.py:152 core_types/models.py:174 core_types/models.py:312
+#: prisons/models.py:14
+msgid "Name"
+msgstr ""
+
+#: core_types/models.py:179
+msgid "Quote"
+msgstr ""
+
+#: core_types/models.py:183
+msgid "Source"
+msgstr ""
+
+#: core_types/models.py:188 core_types/models.py:189
+msgid "Quote Evidence"
+msgstr ""
+
+#: core_types/models.py:202
+msgid "File Name"
+msgstr ""
+
+#: core_types/models.py:206 core_types/models.py:277 core_types/models.py:316
+msgid "Description"
+msgstr ""
+
+#: core_types/models.py:211
+msgid "Data"
+msgstr ""
+
+#: core_types/models.py:215
+msgid "Thumbnail"
+msgstr ""
+
+#: core_types/models.py:222 core_types/models.py:223
+msgid "File Evidence"
+msgstr ""
+
+#: core_types/models.py:236
+msgid "Year Of Event"
+msgstr ""
+
+#: core_types/models.py:241
+msgid "Month Of Event"
+msgstr ""
+
+#: core_types/models.py:246
+msgid "Day Of Event"
+msgstr ""
+
+#: core_types/models.py:251
+msgid "Persian Year Of Event"
+msgstr ""
+
+#: core_types/models.py:256
+msgid "Persian Month Of Event"
+msgstr ""
+
+#: core_types/models.py:261
+msgid "Persian Day Of Event"
+msgstr ""
+
+#: core_types/models.py:266
+msgid "Timeline Date Is Estimate?"
+msgstr ""
+
+#: core_types/models.py:281
+msgid "Timeline Event"
+msgstr ""
+
+#: core_types/models.py:306
+msgid "Link"
+msgstr ""
+
+#: core_types/models.py:321
+msgid "Related Fields"
+msgstr ""
+
+#: core_types/models.py:324
+msgid ""
+"\n"
+"            Comma-separated list of field names this source relates to.\n"
+"        "
+msgstr ""
+
+#: core_types/models.py:342
+#, python-format
+msgid "%r is not a valid tag for %s"
+msgstr ""
+
+#: core_types/models.py:360
+msgid "User"
+msgstr ""
+
+#: core_types/models.py:366
+msgid "Creation Date"
+msgstr ""
+
+#: core_types/models.py:369
+msgid "Comment Text"
+msgstr ""
+
+#: core_types/models.py:374 core_types/models.py:375
+msgid "Conflicts And Considerations"
+msgstr ""
+
+#: core_types/models.py:384 core_types/models.py:411
+msgid "Province"
+msgstr ""
+
+#: core_types/models.py:389
+msgid "Is located in Iran"
+msgstr ""
+
+#: core_types/models.py:393
+msgid "City"
+msgstr ""
+
+#: core_types/models.py:394
+msgid "Cities"
+msgstr ""
+
+#: core_types/models.py:399
+msgid "Country"
+msgstr ""
+
+#: core_types/models.py:400
+msgid "Countries"
+msgstr ""
+
+#: core_types/models.py:405 judges/models.py:72 prisoners/models.py:123
+msgid "Ethnicity"
+msgstr ""
+
+#: core_types/models.py:406
+msgid "Ethnicities"
+msgstr ""
+
+#: core_types/models.py:412
+msgid "Provinces"
+msgstr ""
+
+#: core_types/models.py:417 prisoners/models.py:116
+msgid "Religion"
+msgstr ""
+
+#: core_types/models.py:418
+msgid "Religions"
+msgstr ""
+
+#: ipa/settings/base.py:149
+msgid "Persian"
+msgstr ""
+
+#: ipa/settings/base.py:150 news/models.py:13
+msgid "English"
+msgstr ""
+
+#: judges/models.py:14 prisoners/models.py:53 prisoners/models.py:493
+msgid "First Name"
+msgstr ""
+
+#: judges/models.py:20 prisoners/models.py:59 prisoners/models.py:499
+msgid "Surname"
+msgstr ""
+
+#: judges/models.py:24 prisoners/models.py:73
+msgid "Birth Year (Gregorian)"
+msgstr ""
+
+#: judges/models.py:29 prisoners/models.py:78
+msgid "Birth Month (Gregorian)"
+msgstr ""
+
+#: judges/models.py:34 prisoners/models.py:83
+msgid "Birth Day (Gregorian)"
+msgstr ""
+
+#: judges/models.py:39 prisoners/models.py:88
+msgid "Birth Year (Persian)"
+msgstr ""
+
+#: judges/models.py:44 prisoners/models.py:93
+msgid "Birth Month (Persian)"
+msgstr ""
+
+#: judges/models.py:49 prisoners/models.py:98
+msgid "Birth Day (Persian)"
+msgstr ""
+
+#: judges/models.py:54
+msgid "Birth Date Is Estimate?"
+msgstr ""
+
+#: judges/models.py:60 prisoners/models.py:104
+msgid "Birth Village/City"
+msgstr ""
+
+#: judges/models.py:66 prisoners/models.py:110
+msgid "Birth Province"
+msgstr ""
+
+#: judges/models.py:77
+msgid "Picture"
+msgstr ""
+
+#: judges/models.py:82
+msgid "Cleric"
+msgstr ""
+
+#: judges/models.py:83
+msgid "Not cleric"
+msgstr ""
+
+#: judges/models.py:84 judges/models.py:90
+msgid "Unknown"
+msgstr ""
+
+#: judges/models.py:86
+msgid "Is Cleric?"
+msgstr ""
+
+#: judges/models.py:91
+msgid "Research"
+msgstr ""
+
+#: judges/models.py:92 ui/templates/account/email.html:28
+msgid "Primary"
+msgstr ""
+
+#: judges/models.py:93
+msgid "Appeal"
+msgstr ""
+
+#: judges/models.py:94
+msgid "Supreme"
+msgstr ""
+
+#: judges/models.py:96 judges/models.py:104 judges/models.py:234
+msgid "Judge Type"
+msgstr ""
+
+#: judges/models.py:110 judges/models.py:228
+msgid "Court and Branch"
+msgstr ""
+
+#: judges/models.py:115 prisoners/models.py:245
+msgid "Biography"
+msgstr ""
+
+#: judges/models.py:120 judges/models.py:126 judges/models.py:132
+#: judges/models.py:138 prisoners/models.py:250 prisoners/models.py:256
+#: prisons/models.py:133 prisons/models.py:139 prisons/models.py:145
+#: prisons/models.py:151 report/models.py:95 report/models.py:101
+msgid "Any extra explanation needed to be added to this prisoner"
+msgstr ""
+
+#: judges/models.py:164 prisoners/models.py:808
+msgid "Judge"
+msgstr ""
+
+#: judges/models.py:239
+msgid "Term Started Year (Gregorian)"
+msgstr ""
+
+#: judges/models.py:244
+msgid "Term Started Month (Gregorian)"
+msgstr ""
+
+#: judges/models.py:249
+msgid "Term Started Day (Gregorian)"
+msgstr ""
+
+#: judges/models.py:254
+msgid "Term Started Year (Persian)"
+msgstr ""
+
+#: judges/models.py:259
+msgid "Term Started Month (Persian)"
+msgstr ""
+
+#: judges/models.py:264
+msgid "Term Started Day (Persian)"
+msgstr ""
+
+#: judges/models.py:269
+msgid "Term Ended Year (Gregorian)"
+msgstr ""
+
+#: judges/models.py:274
+msgid "Term Ended Month (Gregorian)"
+msgstr ""
+
+#: judges/models.py:279
+msgid "Term Ended Day (Gregorian)"
+msgstr ""
+
+#: judges/models.py:284
+msgid "Term Ended Year (Persian)"
+msgstr ""
+
+#: judges/models.py:289
+msgid "Term Ended Month (Persian)"
+msgstr ""
+
+#: judges/models.py:294
+msgid "Term Ended Day (Persian)"
+msgstr ""
+
+#: judges/models.py:299
+msgid "Position"
+msgstr ""
+
+#: judges/models.py:318
+msgid "Rulings"
+msgstr ""
+
+#: judges/models.py:319
+msgid "Verdicts"
+msgstr ""
+
+#: judges/models.py:320
+msgid "Transcripts"
+msgstr ""
+
+#: judges/models.py:321 prisoners/models.py:452 prisons/models.py:237
+#: report/models.py:140
+msgid "Campaigns"
+msgstr ""
+
+#: judges/models.py:338
+msgid "Sentence Type"
+msgstr ""
+
+#: judges/models.py:341
+msgid "Finality"
+msgstr ""
+
+#: judges/models.py:343
+msgid "Finality of the sentence, i.e. how important this judgement is relative to other judgements made as part of the same arrest. The sentence whose type has the highest finality dictates the ultimate sentence length."
+msgstr ""
+
+#: judges/models.py:352
+msgid "Type of Judicial Behaviour"
+msgstr ""
+
+#: judges/models.py:360
+msgid "Judicial Position"
+msgstr ""
+
+#: judges/models.py:361
+msgid "Judicial Positions"
+msgstr ""
+
+#: judges/models.py:366
+msgid "Court And Branch"
+msgstr ""
+
+#: judges/models.py:367
+msgid "Courts And Branches"
+msgstr ""
+
+#: news/models.py:14
+msgid "Farsi"
+msgstr ""
+
+#: prisoners/models.py:41
+msgid "Prisoner is currently in detention"
+msgstr ""
+
+#: prisoners/models.py:42
+msgid "When this status is selected, should the prisoner be considered as currently incarcerated? This affects list view filtering."
+msgstr ""
+
+#: prisoners/models.py:47 prisoners/models.py:136
+msgid "Detention Status"
+msgstr ""
+
+#: prisoners/models.py:48
+msgid "Detention Statuses"
+msgstr ""
+
+#: prisoners/models.py:62
+msgid "Male"
+msgstr ""
+
+#: prisoners/models.py:63
+msgid "Female"
+msgstr ""
+
+#: prisoners/models.py:66
+msgid "Gender"
+msgstr ""
+
+#: prisoners/models.py:129
+msgid "Prisoner Picture"
+msgstr ""
+
+#: prisoners/models.py:141
+msgid "Needs attention"
+msgstr ""
+
+#: prisoners/models.py:146
+msgid "Countries Of Residence"
+msgstr ""
+
+#: prisoners/models.py:150 prisoners/models.py:740 report/models.py:258
+msgid "Detention Year (Gregorian)"
+msgstr ""
+
+#: prisoners/models.py:155 prisoners/models.py:745 report/models.py:263
+msgid "Detention Month (Gregorian)"
+msgstr ""
+
+#: prisoners/models.py:160 prisoners/models.py:750 report/models.py:268
+msgid "Detention Day (Gregorian)"
+msgstr ""
+
+#: prisoners/models.py:165 prisoners/models.py:755 report/models.py:273
+msgid "Detention Year (Persian)"
+msgstr ""
+
+#: prisoners/models.py:170 prisoners/models.py:760 report/models.py:278
+msgid "Detention Month (Persian)"
+msgstr ""
+
+#: prisoners/models.py:175 prisoners/models.py:765 report/models.py:283
+msgid "Detention Day (Persian)"
+msgstr ""
+
+#: prisoners/models.py:180 prisoners/models.py:770 report/models.py:293
+msgid "Detention date is approximate?"
+msgstr ""
+
+#: prisoners/models.py:191 prisoners/models.py:196
+msgid "Most recent activity (cached for search results)"
+msgstr ""
+
+#: prisoners/models.py:201 prisoners/models.py:206
+msgid "Most recent secondary activity (cached for search results)"
+msgstr ""
+
+#: prisoners/models.py:211 prisoners/models.py:216
+msgid "Most recent tertiary activity (cached for search results)"
+msgstr ""
+
+#: prisoners/models.py:221
+msgid "Most recent sentence of most recent arrrest, if any (cached for search results)"
+msgstr ""
+
+#: prisoners/models.py:227
+msgid "Prison of most recent detention of most recent arrest (cached for search results)"
+msgstr ""
+
+#: prisoners/models.py:233 prisoners/models.py:239
+msgid "Judge name of most recent sentence of most recent arrest (cached for search results)"
+msgstr ""
+
+#: prisoners/models.py:380
+msgid "Prisoner"
+msgstr ""
+
+#: prisoners/models.py:381
+msgid "Prisoners"
+msgstr ""
+
+#: prisoners/models.py:448
+msgid "Prisoner's activism"
+msgstr ""
+
+#: prisoners/models.py:449 prisoners/models.py:816
+msgid "Court"
+msgstr ""
+
+#: prisoners/models.py:450
+msgid "Media"
+msgstr ""
+
+#: prisoners/models.py:451
+msgid "Family"
+msgstr ""
+
+#: prisoners/models.py:484
+msgid "Relationship Type"
+msgstr ""
+
+#: prisoners/models.py:506 prisoners/models.py:859 prisoners/models.py:880
+msgid "Type"
+msgstr ""
+
+#: prisoners/models.py:515
+msgid "Alleged or confirmed?"
+msgstr ""
+
+#: prisoners/models.py:519
+msgid "Relationship"
+msgstr ""
+
+#: prisoners/models.py:530
+msgid "Affiliated Organization"
+msgstr ""
+
+#: prisoners/models.py:548
+msgid "Affiliation"
+msgstr ""
+
+#: prisoners/models.py:559
+msgid "Persecuted Activity"
+msgstr ""
+
+#: prisoners/models.py:560
+msgid "Persecuted Activities"
+msgstr ""
+
+#: prisoners/models.py:576 prisoners/models.py:649
+msgid "Case ID"
+msgstr ""
+
+#: prisoners/models.py:577
+msgid "Case IDs"
+msgstr ""
+
+#: prisoners/models.py:592
+msgid "Arrest Year (Gregorian)"
+msgstr ""
+
+#: prisoners/models.py:597
+msgid "Arrest Month (Gregorian)"
+msgstr ""
+
+#: prisoners/models.py:602
+msgid "Arrest Day (Gregorian)"
+msgstr ""
+
+#: prisoners/models.py:607
+msgid "Arrest Year (Persian)"
+msgstr ""
+
+#: prisoners/models.py:612
+msgid "Arrest Month (Persian)"
+msgstr ""
+
+#: prisoners/models.py:617
+msgid "Arrest Day (Persian)"
+msgstr ""
+
+#: prisoners/models.py:623
+msgid "Activity Persecuted For"
+msgstr ""
+
+#: prisoners/models.py:629
+msgid "Secondary Activity"
+msgstr ""
+
+#: prisoners/models.py:636
+msgid "Tertiary Activity"
+msgstr ""
+
+#: prisoners/models.py:643 report/models.py:68
+msgid "City of arrest"
+msgstr ""
+
+#: prisoners/models.py:656
+msgid "Province of arrest"
+msgstr ""
+
+#: prisoners/models.py:662 report/models.py:74
+msgid "Charged with"
+msgstr ""
+
+#: prisoners/models.py:667 prisoners/models.py:914 prisoners/models.py:915
+#: report/models.py:79
+msgid "Domestic Law Violated"
+msgstr ""
+
+#: prisoners/models.py:672 report/models.py:84
+msgid "International law violated"
+msgstr ""
+
+#: prisoners/models.py:679
+msgid "Arrest"
+msgstr ""
+
+#: prisoners/models.py:698 prisoners/models.py:699
+msgid "Treatment In Prison"
+msgstr ""
+
+#: prisoners/models.py:716 prisons/models.py:160 report/models.py:239
+msgid "Prison"
+msgstr ""
+
+#: prisoners/models.py:722 report/models.py:245
+msgid "Detained before Sentencing"
+msgstr ""
+
+#: prisoners/models.py:723 report/models.py:246
+msgid "Sentenced"
+msgstr ""
+
+#: prisoners/models.py:724 report/models.py:247
+msgid "Transferred"
+msgstr ""
+
+#: prisoners/models.py:728 report/models.py:251
+msgid "Detention Type"
+msgstr ""
+
+#: prisoners/models.py:736 report/models.py:289
+msgid "Treatment in prison"
+msgstr ""
+
+#: prisoners/models.py:777 report/models.py:300
+msgid "Detention"
+msgstr ""
+
+#: prisoners/models.py:821
+msgid "Death Penalty"
+msgstr ""
+
+#: prisoners/models.py:825
+msgid "Exiled"
+msgstr ""
+
+#: prisoners/models.py:829
+msgid "Life"
+msgstr ""
+
+#: prisoners/models.py:833
+msgid "Social Deprivation"
+msgstr ""
+
+#: prisoners/models.py:838
+msgid "Fine (Rials)"
+msgstr ""
+
+#: prisoners/models.py:843
+msgid "Number Of Lashes"
+msgstr ""
+
+#: prisoners/models.py:848
+msgid "Sentence Months"
+msgstr ""
+
+#: prisoners/models.py:853
+msgid "Sentence Years"
+msgstr ""
+
+#: prisoners/models.py:866
+msgid "Sentence"
+msgstr ""
+
+#: prisoners/models.py:884
+msgid "Description of Behaviour"
+msgstr ""
+
+#: prisoners/models.py:892
+msgid "Sentence Judicial Behaviour"
+msgstr ""
+
+#: prisoners/models.py:906 report/models.py:39
+msgid "Charged With"
+msgstr ""
+
+#: prisoners/models.py:923 prisoners/models.py:924
+msgid "International Law Violated"
+msgstr ""
+
+#: prisons/models.py:18
+msgid "Address"
+msgstr ""
+
+#: prisons/models.py:22
+msgid "Dean Name"
+msgstr ""
+
+#: prisons/models.py:28
+msgid "Dean E-mail"
+msgstr ""
+
+#: prisons/models.py:34
+msgid "Dean Telephone"
+msgstr ""
+
+#: prisons/models.py:40
+msgid "Capacity"
+msgstr ""
+
+#: prisons/models.py:45
+msgid "Estimated Capacity"
+msgstr ""
+
+#: prisons/models.py:49
+msgid "Latitude"
+msgstr ""
+
+#: prisons/models.py:54
+msgid "Longitude"
+msgstr ""
+
+#: prisons/models.py:59
+msgid "Year Of Opening"
+msgstr ""
+
+#: prisons/models.py:64
+msgid "Month Of Opening"
+msgstr ""
+
+#: prisons/models.py:69
+msgid "Day Of Opening"
+msgstr ""
+
+#: prisons/models.py:74
+msgid "Persian Year Of Opening"
+msgstr ""
+
+#: prisons/models.py:79
+msgid "Persian Month Of Opening"
+msgstr ""
+
+#: prisons/models.py:84
+msgid "Persian Day Of Opening"
+msgstr ""
+
+#: prisons/models.py:89
+msgid "Ministry of Information"
+msgstr ""
+
+#: prisons/models.py:90
+msgid "Police"
+msgstr ""
+
+#: prisons/models.py:91
+msgid "IRGC"
+msgstr ""
+
+#: prisons/models.py:92
+msgid "Prisons Division of the Judiciary"
+msgstr ""
+
+#: prisons/models.py:95
+msgid "Administered By"
+msgstr ""
+
+#: prisons/models.py:102
+msgid "Physical Structure"
+msgstr ""
+
+#: prisons/models.py:107
+msgid "Size And Density"
+msgstr ""
+
+#: prisons/models.py:112
+msgid "Medicine And Nutrition"
+msgstr ""
+
+#: prisons/models.py:118 prisons/models.py:254
+msgid "Prison Facility"
+msgstr ""
+
+#: prisons/models.py:122
+msgid "Prison Picture"
+msgstr ""
+
+#: prisons/models.py:128
+msgid "Bio"
+msgstr ""
+
+#: prisons/models.py:234 report/models.py:137
+msgid "Visual records"
+msgstr ""
+
+#: prisons/models.py:235 report/models.py:138
+msgid "Mistreatments"
+msgstr ""
+
+#: prisons/models.py:236 report/models.py:139
+msgid "Testimonials"
+msgstr ""
+
+#: report/models.py:30 report/models.py:31
+msgid "Human Right Violated"
+msgstr ""
+
+#: report/models.py:44
+msgid "Report Picture"
+msgstr ""
+
+#: report/models.py:62
+msgid "Number of victims in the report"
+msgstr ""
+
+#: report/models.py:89
+msgid "Human Rights violated"
+msgstr ""
+
+#: report/models.py:181
+msgid "Report Sentence"
+msgstr ""
+
+#: report/models.py:182
+msgid "Report Sentences"
+msgstr ""
+
+#: ui/templates/account/account_inactive.html:5
+#: ui/templates/account/account_inactive.html:8
+msgid "Account Inactive"
+msgstr ""
+
+#: ui/templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr ""
+
+#: ui/templates/account/email.html:5
+msgid "Account"
+msgstr ""
+
+#: ui/templates/account/email.html:8
+msgid "E-mail Addresses"
+msgstr ""
+
+#: ui/templates/account/email.html:10
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: ui/templates/account/email.html:24
+msgid "Verified"
+msgstr ""
+
+#: ui/templates/account/email.html:26
+msgid "Unverified"
+msgstr ""
+
+#: ui/templates/account/email.html:34
+msgid "Make Primary"
+msgstr ""
+
+#: ui/templates/account/email.html:35
+msgid "Re-send Verification"
+msgstr ""
+
+#: ui/templates/account/email.html:36
+msgid "Remove"
+msgstr ""
+
+#: ui/templates/account/email.html:43
+msgid "Warning:"
+msgstr ""
+
+#: ui/templates/account/email.html:43
+msgid "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: ui/templates/account/email.html:48
+msgid "Add E-mail Address"
+msgstr ""
+
+#: ui/templates/account/email.html:53
+msgid "Add E-mail"
+msgstr ""
+
+#: ui/templates/account/email.html:62
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: ui/templates/account/email/email_confirmation_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because user %(user_display)s at %(site_domain)s has given yours as an e-mail address to connect their account.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s\n"
+msgstr ""
+
+#: ui/templates/account/email/email_confirmation_message.txt:7
+#, python-format
+msgid ""
+"Thank you from %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: ui/templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: ui/templates/account/email/password_reset_key_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because you or someone else has requested a password for your user account at %(site_domain)s.\n"
+"It can be safely ignored if you did not request a password reset. Click the link below to reset your password."
+msgstr ""
+
+#: ui/templates/account/email/password_reset_key_message.txt:8
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr ""
+
+#: ui/templates/account/email/password_reset_key_message.txt:10
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: ui/templates/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr ""
+
+#: ui/templates/account/email_confirm.html:6
+#: ui/templates/account/email_confirm.html:10
+#: ui/templates/account/email_confirmed.html:6
+#: ui/templates/account/email_confirmed.html:11
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: ui/templates/account/email_confirm.html:16
+#, python-format
+msgid "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address for user %(user_display)s."
+msgstr ""
+
+#: ui/templates/account/email_confirm.html:20
+msgid "Confirm"
+msgstr ""
+
+#: ui/templates/account/email_confirm.html:27
+#, python-format
+msgid "This e-mail confirmation link expired or is invalid. Please <a href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: ui/templates/account/email_confirmed.html:15
+#, python-format
+msgid "You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address for user %(user_display)s."
+msgstr ""
+
+#: ui/templates/account/login.html:6 ui/templates/account/login.html:10
+#: ui/templates/account/login.html:43
+msgid "Sign In"
+msgstr ""
+
+#: ui/templates/account/login.html:15
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign up</a>\n"
+"for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: ui/templates/account/login.html:25
+msgid "or"
+msgstr ""
+
+#: ui/templates/account/login.html:32
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"<a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+
+#: ui/templates/account/login.html:42
+msgid "Forgot Password?"
+msgstr ""
+
+#: ui/templates/account/logout.html:5 ui/templates/account/logout.html:8
+#: ui/templates/account/logout.html:17
+msgid "Sign Out"
+msgstr ""
+
+#: ui/templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: ui/templates/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: ui/templates/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: ui/templates/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: ui/templates/account/messages/email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: ui/templates/account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: ui/templates/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr ""
+
+#: ui/templates/account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr ""
+
+#: ui/templates/account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr ""
+
+#: ui/templates/account/messages/primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr ""
+
+#: ui/templates/account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr ""
+
+#: ui/templates/account/password_change.html:5
+#: ui/templates/account/password_change.html:8
+#: ui/templates/account/password_change.html:13
+#: ui/templates/account/password_reset_from_key.html:4
+#: ui/templates/account/password_reset_from_key.html:7
+#: ui/templates/account/password_reset_from_key_done.html:4
+#: ui/templates/account/password_reset_from_key_done.html:7
+#: ui/templates/ui/users/password_change.djt.html:9
+msgid "Change Password"
+msgstr ""
+
+#: ui/templates/account/password_reset.html:6
+#: ui/templates/account/password_reset.html:11
+#: ui/templates/account/password_reset_done.html:6
+#: ui/templates/account/password_reset_done.html:9
+msgid "Password Reset"
+msgstr ""
+
+#: ui/templates/account/password_reset.html:18
+msgid "Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it."
+msgstr ""
+
+#: ui/templates/account/password_reset.html:23
+msgid "Reset My Password"
+msgstr ""
+
+#: ui/templates/account/password_reset.html:26
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: ui/templates/account/password_reset_done.html:15
+msgid "We have sent you an e-mail. Please contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: ui/templates/account/password_reset_from_key.html:7
+msgid "Bad Token"
+msgstr ""
+
+#: ui/templates/account/password_reset_from_key.html:11
+#, python-format
+msgid "The password reset link was invalid, possibly because it has already been used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</a>."
+msgstr ""
+
+#: ui/templates/account/password_reset_from_key.html:17
+msgid "change password"
+msgstr ""
+
+#: ui/templates/account/password_reset_from_key.html:20
+#: ui/templates/account/password_reset_from_key_done.html:8
+msgid "Your password is now changed."
+msgstr ""
+
+#: ui/templates/account/password_set.html:5
+#: ui/templates/account/password_set.html:8
+#: ui/templates/account/password_set.html:13
+msgid "Set Password"
+msgstr ""
+
+#: ui/templates/account/signup.html:5
+msgid "Signup"
+msgstr ""
+
+#: ui/templates/account/signup.html:8 ui/templates/account/signup.html:18
+msgid "Sign Up"
+msgstr ""
+
+#: ui/templates/account/signup.html:10
+#, python-format
+msgid "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: ui/templates/account/signup_closed.html:5
+#: ui/templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: ui/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: ui/templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr ""
+
+#: ui/templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: ui/templates/account/verification_sent.html:5
+#: ui/templates/account/verification_sent.html:8
+#: ui/templates/account/verified_email_required.html:5
+#: ui/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: ui/templates/account/verification_sent.html:10
+msgid "We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: ui/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: ui/templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: ui/templates/account/verified_email_required.html:20
+#, python-format
+msgid "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-mail address</a>."
+msgstr ""
+
+#: ui/templates/ui/users/login.djt.html:4
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: ui/templates/ui/users/login.djt.html:11
+msgid "Login"
+msgstr ""
+
+#: ui/templates/ui/users/password_change.djt.html:17
+msgid "Please correct the error below."
+msgstr ""
+
+#: ui/templates/ui/users/password_change.djt.html:19
+msgid "Please correct the errors below."
+msgstr ""
+
+#: ui/templates/ui/users/password_change.djt.html:24
+msgid "Please enter your old password, for security's sake, and then enter your new password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: ui/templates/ui/users/password_change.djt.html:29
+msgid "Old password"
+msgstr ""
+
+#: ui/templates/ui/users/password_change.djt.html:33
+msgid "New password"
+msgstr ""
+
+#: ui/templates/ui/users/password_change.djt.html:37
+msgid "Password (again)"
+msgstr ""
+
+#: ui/templates/ui/users/password_change_done.djt.html:4
+msgid "Your password has been changed successfully."
+msgstr ""

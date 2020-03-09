@@ -1,0 +1,41 @@
+{%
+    extends 'base.html'
+%}{%
+    load static i18n cropping
+%}
+
+{% block content %}
+<div class="page">
+
+    <div class="row heading">
+        <div class="col-sm-4  gradiant">
+            <h1 class="indexTitle">{% trans 'about' %}</h1>
+
+            <div class="thick-line"></div>
+        </div>
+        <div class="col-sm-8  social socialPholder underline-thin ">
+        </div>
+    </div>
+    <div>
+
+        <img
+            class="mainImage img-responsive"
+            src="{% static 'public/img/about_image.png' %}?v=2019-08-28"
+        />
+
+    </div>
+    <div class="row">
+        <div class="col-sm-3 sidebard">
+
+        {% for menuItem in pages %}
+            <div >
+                <a class="submenu {% if menuItem.id == page.id %}selected{% endif %}"  href="{% url 'public:about_page' menuItem.slug %} ">{{menuItem.title}} </a>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="col-sm-9 content">{{page.content | safe}}</div>
+    </div>
+
+    <div class="pageTop"> <span class="icon-up-dir"></span></div>
+</div>
+{% endblock %}

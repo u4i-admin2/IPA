@@ -1,0 +1,81 @@
+{% load static %}
+<!doctype html>
+<html lang="en" ng-app="unitedForIran">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>UNITED FOR IRAN</title>
+    <meta name="description" content="United for Iran">
+    <meta name="author" content="SitePoint">
+    <!-- css -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'ui/css/fontello.css' %}?v=2019-08-28">
+    <link rel="stylesheet" href="{% static 'ui/css/select.min.css' %}?v=2019-08-28">
+    <link rel="stylesheet" href="{% static 'ui/css/style.css' %}?v=2019-08-28">
+    <link rel="icon" href="{% static 'public/img/favicon.ico' %}?v=2019-08-28">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script>
+        var AppConfig = {
+            is_superuser: {% if is_superuser %}true{% else %}false{% endif %}
+        };
+        var ipa = {
+            staticPrefix: '{% get_static_prefix %}',
+        };
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="container container-fixed">
+            <a href="/dashboard" class="logo">UNITED FOR <b>IRAN</b></a>
+            {% block navmenu %}
+            {% if request.user.is_staff %}
+            <span class="menu">
+                    <a class="first" href="{% url 'ui:dashboard:prisoner_list' %}">PRISONERS <font>{{item_counts.prisoners}}</font></a>
+                    <a href="{% url 'ui:dashboard:prison_list' %}">PRISONS <font>{{item_counts.prisons}}</font></a>
+                    <a  href="{% url 'ui:dashboard:judge_list' %}">JUDGES <font>{{item_counts.judges}}</font></a>
+                    <span class="search">
+                    <span class="icon-search"></span>
+            <input id="searchBox"placeholder="search" type="text" /></span>
+            </span>
+            <span class="side-menu"><a ng-controller="downloadcsv" ng-click="_downloadcsv()" class="dcsv first">DOWNLOAD CSV</a><a href="{% url 'ui:users:password_change' %}" class="icon-user "></a><a href="{% url 'ui:users:logout' %}" class="icon-power"></a></span>
+            {% endif %}
+            {% endblock navmenu %}
+        </div>
+    </nav>
+
+    <div class="container padderB container-fixed">
+        <section>
+            {% block body %} {% block content %} (no content) {% endblock %} {% endblock %}
+        </section>
+        <footer>
+        </footer>
+    </div>
+    <div class="background"></div>
+    <div class="savingBlocker">
+        <div class="savingForground"></div>
+        <h1>Saving</h1>
+        <div class='loading'></div>
+    </div>
+
+    {% block inline-scripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.js"></script>
+    <script src="{% static 'ui/js/select.min.js' %}?v=2019-08-28"></script>
+    <script src="{% static 'ui/js/persian.min.js' %}?v=2019-08-28"></script>
+    <script src="{% static 'ui/js/angularpersian.min.js' %}?v=2019-08-28"></script>
+    <script src="{% static 'ui/js/angular-validation.min.js' %}?v=2019-08-28"></script>
+    <script src="{% static 'ui/js/jalaali.js' %}?v=2019-08-28"></script>
+    <script src="{% static 'ui/js/angular-file-upload.min.js' %}?v=2019-08-28"></script>
+    <script src="{% static 'ui/js/checklist-model.js' %}?v=2019-08-28"></script>
+    <!-- build:js --><script src="{% static 'ui/js/appDash.js' %}"></script><!-- endbuild -->
+    {% endblock %}
+</body>
+
+</html>

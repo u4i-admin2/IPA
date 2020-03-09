@@ -1,0 +1,39 @@
+
+$ipaBlack: #333333;
+$ipaBlueLight: #e3f3f7;
+$ipaBlueOff: #d1ebf1;
+$ipaBluePale: #f3f8f8;
+$ipaGreen: #56c087;
+$ipaGreenOff: #c7ead7;
+// Used because $ipaGreen has poor contrast against $ipaGreenPale
+$ipaGreenDark: #00873e;
+$ipaGreenLight: #E6F5ED;
+$ipaGreenPale: #f4fbf7;
+$ipaGreyPale: #F3F3F3;
+$ipaGreyDark: #4a4a4a;
+$ipaOrangeDark: #df8651;
+$ipaOrangeDarkTranslucent: rgba(223, 134, 81, 0.9);
+$ipaOrangeLight: #efa954;
+$ipaOrangeLightTranslucent: rgba(234, 172, 95, 0.9);
+$ipaTeal: #2a9ebb;
+$ipaWhite: #ffffff;
+
+.gradiant {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f4f9f9+99 */
+    background: rgb(255, 255, 255);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(244, 249, 249, 1) 99%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(99%, rgba(244, 249, 249, 1)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(244, 249, 249, 1) 99%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(244, 249, 249, 1) 99%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(244, 249, 249, 1) 99%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(244, 249, 249, 1) 99%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f9f9',GradientType=0 );
+    /* IE6-9 */
+}

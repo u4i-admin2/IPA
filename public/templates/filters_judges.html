@@ -1,0 +1,120 @@
+{% load static i18n %}
+<div ng-if="searchGroup == 'judges'" class="row allFilters">
+    <div class="col-xs-12">
+        <div class="filterSection">{% trans "basic information" %} <span class="icon-minus"></span> </div>
+        <div class="filtersHolder" style="display: block;">
+            <div class="filterHolder filter-age">
+                <div class="filterSubSection">{% trans "Age" %} <span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <rzslider
+                                rz-slider-model="mainsearch.age.min"
+                                rz-slider-high="mainsearch.age.max"
+                                rz-slider-options="sliderOptions.age"
+                            ></rzslider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filterHolder filter-is_cleric">
+                <div class="filterSubSection">{% trans "Judge type 1" %} <span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('is_cleric' , 'True')" ng-class="infilter('is_cleric','True') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Cleric" %}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('is_cleric' , 'False')" ng-class="infilter('is_cleric','False') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Not cleric" %}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('is_cleric' , '{% trans "Unknown" %}')" ng-class="infilter('is_cleric','{% trans "Unknown" %}') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Unknown" %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filterHolder filter-judge_type">
+                <div class="filterSubSection">{% trans "Judge type 2" %} <span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('judge_type' , 'research')" ng-class="infilter('judge_type','research') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Research" %}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('judge_type' , 'primary')" ng-class="infilter('judge_type','primary') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Primary" %}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('judge_type' , 'appeal')" ng-class="infilter('judge_type','appeal') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Appeal" %}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('judge_type' , 'supreme')" ng-class="infilter('judge_type','supreme') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Supreme" %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filterHolder filter-judge_type_secondary">
+                <div class="filterSubSection">{% trans "judicial position" %}<span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input class="littleSearch" ng-show="filterObj.judicial_position.length >10" type="text" placeholder="{% trans 'Search' %}" ng-model="userSearchactivities">
+                        </div>
+                        <div class="filtersScroll">
+                            <div class="col-xs-12" ng-repeat="_filter in filterObj.judicial_position  | filter:userSearchjudicial_position ">
+                                <div ng-click="setFilter('judge_type_secondary' , _filter )" ng-class="infilter('judge_type_secondary',_filter) ? 'filterBTN row on' : 'filterBTN row'">
+                                    <div class="col-xs-1"><span class="filterDot "></span></div>
+                                    <div class="col-xs-10">{$ _filter $}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="filterSection addinfo">{% trans "Additional information" %} <span class="icon-plus"></span> </div>
+        <div class="filtersHolder">
+            <div class="filterHolder filter-files filter-quotes">
+                <div class="filterSubSection">{% trans "DOCS/QUOTES" %} <span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('files' , true)" ng-class="infilter('files',true) ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Show judges with supporting documents" %}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 ">
+                            <div ng-click="setFilter('quotes' , true)" ng-class="infilter('quotes',true) ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Show judges with quotes" %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

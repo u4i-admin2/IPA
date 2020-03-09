@@ -1,0 +1,239 @@
+{%
+    extends 'base.html'
+%}{%
+    load static i18n
+%}
+
+{% block content %}
+<script>
+var viewData = {{data | safe}};
+var type = 'judge';
+</script>
+<div ng-controller="judge">
+    {% if user.is_authenticated %}<a ng-href="{$'/dashboard/judges/'+  entityData.id $}" target="_blank">{% trans "Edit Profile" %}</a> {% endif %}
+    <div quotes>{% include 'quotes.html' %}</div>
+    {# profile #}
+    <div class="row gradiant topSpacer">
+        <div
+            class="
+                {% if request.ipa_site == 'aea' %}
+                    col-sm-4
+                {% elif request.ipa_site == 'ipa' %}
+                    col-sm-6
+                {% endif %}
+                underline-thin
+                no-border-mobile
+            "
+        >
+            <div class="_matcher">
+                <h3>{% trans "Judge" %} </h3></div>
+            <div class="matcher">
+                <h1>{$ entityData.forename_{{LANGUAGE_CODE}} $} {$ entityData.surname_{{LANGUAGE_CODE}} $}</h1>
+            </div>
+        </div>
+        <div class="col-xs-12  dottedline-seperator showOnMobile top-border"></div>
+        <div
+            class="col-sm-2 col-xs-3 profile-info-header"
+            ng-if="ipa.site === 'aea'"
+        >
+            <div class="_matcher">
+                <h3 class="toph3"> {% trans "Total Amputations" context "Judge heading (AeA)" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ viewData.total_amputations || 0 $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+        <div
+            class="col-sm-2 col-xs-3 profile-info-header"
+            ng-if="ipa.site === 'aea'"
+        >
+            <div class="_matcher">
+                <h3 class="toph3"> {% trans "Total Executions" context "Judge heading (AeA)" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ viewData.total_executions || 0 $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+        <div
+            class="col-sm-2 col-xs-3 profile-info-header"
+            ng-if="ipa.site === 'aea'"
+        >
+            <div class="_matcher">
+                <h3 class="toph3"> {% trans "Total Floggings" context "Judge heading (AeA)" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ viewData.total_floggings || 0 $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+        <div
+            class="col-sm-2 col-xs-3 profile-info-header"
+            ng-if="ipa.site === 'aea'"
+        >
+            <div class="_matcher">
+                <h3 class="toph3"> {% trans "Total Victims" context "Judge heading (AeA)" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ viewData.total_victims || 0 $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+        <div
+            class="col-sm-2 col-xs-4 profile-info-header"
+            ng-if="ipa.site === 'ipa'"
+        >
+            <div class="_matcher">
+                <h3 class="toph3"> {% trans "Total Sentenced Yrs" context "Judge heading (IPA)" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ viewData.total_time_sentenced $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+        <div
+            class="col-sm-2 col-xs-4 profile-info-header"
+            ng-if="ipa.site === 'ipa'"
+        >
+            <div class="_matcher">
+                <h3 class="toph3"> {% trans "total verdicts" context "Judge heading (IPA)" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ viewData.total_sentences $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+        <div
+            class="col-sm-2 col-xs-4 profile-info-header"
+            ng-if="ipa.site === 'ipa'"
+        >
+            <div class="_matcher">
+                <h3 class="toph3"> {% trans "AVG. sentence yrs" context "Judge heading (IPA)" %}</h3>
+            </div>
+            <div class="matcher">
+                <h1>{$ viewData.average_sentence $}</h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 social">
+            <a target="_blank" ng-href="{$ 'https://twitter.com/intent/tweet?url=' + url $}" class="icon-twitter"></a>
+            <a target="_blank" ng-href="{$ 'https://www.facebook.com/sharer/sharer.php?u=' + url $}" class="icon-facebook"></a>
+            <font>{% trans "Share" %} {$ entityData.forename_{{LANGUAGE_CODE}} $} {$ entityData.surname_{{LANGUAGE_CODE}} $}<i ng-if="'en' == '{{LANGUAGE_CODE}}' ">'s {% trans "Profile" %}</i></font>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-xs-6 col-sm-2">
+                    <div class="imageHolder">
+                        <img
+                            alt="{% trans 'Profile Image' %}"
+                            class="profileImage"
+                            src="{% static 'public/img/judge.png' %}?v=2019-08-28"
+                            ng-src="{$ entityData.picture_200x200 $}"
+                        />
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <div class="row">
+                        <div class="col-xs-12  col-sm-6">
+                            <h3> {% trans "Ethnicity" %}</h3>
+                            <h4>{$ entityData.ethnicity.name_{{LANGUAGE_CODE}} $}</h4>
+                        </div>
+                        <div class=" col-xs-12  col-sm-6">
+                            <h3>{% trans "Judge type" %}</h3>
+                            <h4>
+                                {$ entityData.judge_type == "primary" ? "{% trans "Primary" %}" : "" $}
+                                {$ entityData.judge_type == "supreme" ? "{% trans "Supreme" %}" : "" $}
+                                {$ entityData.judge_type == "appeal" ? "{% trans "Appeal" %}" : "" $}
+                                {$ entityData.judge_type == "research" ? "{% trans "Research" %}" : "" $}
+                            </h4>
+                        </div>
+                        <div class=" col-xs-12  col-sm-6">
+                            <h3>{% trans "Age" %}</h3>
+                            <h4>{$ calcAge( entityData.dob_year , entityData.dob_month , entityData.dob_day )  $}</h4></div>
+                        <div class="col-xs-12  col-sm-6">
+                            <h3>{% trans "Place of birth" %}</h3>
+                            <h4>{$entityData.birth_city.name_{{LANGUAGE_CODE}} $}</h4></div>
+                    </div>
+                </div>
+                <div class="col-xs-12  col-sm-4 tod hideOnMobile">
+                    <h3>{% trans "BIOGRAPHY" %}</h3>
+                    <div>{$entityData.biography_{{LANGUAGE_CODE}}$}</div>
+                </div>
+                <div
+                    class="col-sm-6"
+                    ng-if="ipa.site === 'ipa'"
+                >
+                    <h3>{% trans "Most Recent Sentence" %}</h3>
+                    <div class="mostRecent"><a ng-if="viewData.sentence_id" href="{$ '/{{LANGUAGE_CODE}}/prisoner/' + viewData.sentence_id + '/' $} ">{$viewData.sentence$}</a><span ng-if="!viewData.sentence_id">{$viewData.sentence$}</span></div>
+                </div>
+                <div class="col-xs-12  col-sm-4 tod showOnMobile">
+                    <h3>{% trans "BIOGRAPHY" %}</h3>
+                    <div>{$entityData.biography_{{LANGUAGE_CODE}}$}</div>
+                </div>
+                <div class="col-xs-12 col-sm-8 positions">
+                    <h2 class="underline-thin "></h2>
+                    <div class="row">
+                        <h3 class='col-xs-3 topMargin20'>{% trans "Year" %}</h3>
+                        <h3 class='col-xs-9 topMargin20'>{% trans "Position" %}</h3>
+                    </div>
+                    <div ng-repeat="position in entityData.positions | orderBy:positionOrder:true">
+                        <div ng-if="!$first" class='dottedline-seperator seprator-pos '></div>
+                        <div class="row">
+                            <h4 ng-if="$first" class='col-xs-3 header-pos'>{% trans "Current" %}</h4>
+                            <h4 ng-if="$first" class='col-xs-9 header-pos'>{$ position.judicial_position.name_{{LANGUAGE_CODE}} $}{$ ipa.commaCharacter $}
+                        {$ position.court_and_branch.name_{{LANGUAGE_CODE}} $}</h4>
+                            <span ng-if="!$first" class='col-xs-3'>{$ position['ended_year' + dLang] $}</span>
+                            <span ng-if="!$first" class='col-xs-9'>{$ position.judicial_position.name_{{LANGUAGE_CODE}} $}{$ ipa.commaCharacter $}
+                        {$ position.court_and_branch.name_{{LANGUAGE_CODE}} $}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div
+            class="holder"
+            ng-if="ipa.site === 'ipa'"
+        >
+            <h2 class="underline-thin"><a ng-href="{$ getJudgeSearch(entityData , '{{LANGUAGE_CODE}}') $}" class="filter-btn reverseTimeline tab-btn">{% trans "See all sentenced by" %} {$ entityData.forename_{{LANGUAGE_CODE}} $} {$ entityData.surname_{{LANGUAGE_CODE}} $}</a></h2>
+        </div>
+
+        <div class="col-sm-12 thick-border hideOnMobile"></div>
+    </div>
+    <div class="row">
+        {% include 'profile_chart.html' with
+            is_primary=True
+            variant="proceduralViolations"
+        %}
+
+        {% if request.ipa_site == 'aea' %}
+            {% include 'profile_chart.html' with
+                is_primary=False
+                variant='humanRightsViolations'
+            %}
+        {% endif %}
+    </div>
+    <div class="row topSpacer">
+        <div timeline>
+            {% include 'timeline.html' %}
+        </div>
+        <div class="explanation col-sm-4">
+            <h2 class="explanationSubtitle underline-thin extend-right  thick-border-mobile paddingV-mobile">{% trans "Explanation" %}</h2>
+            <p
+                class="explanationBody"
+                ng-if="explanationBody"
+                ng-bind-html="explanationBody"
+            ></p>
+        </div>
+        <div supporting-evidence class="supportingEvidence">
+            {% include 'supporting_evidence.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

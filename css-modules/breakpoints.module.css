@@ -1,0 +1,7 @@
+@value tabletMaxWidth: 1024px;
+@value largeMinWidth: 1200px;
+@value mediumMaxWidth: 1199px;
+@value mediumMinWidth: 992px;
+@value smallMaxWidth: 991px;
+@value smallMinWidth: 768px;
+@value extraSmallMaxWidth: 767px;

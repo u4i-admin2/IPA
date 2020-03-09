@@ -1,0 +1,24 @@
+{% load static i18n %}
+<div ng-cloak class="col-sm-8 ">
+    <div class="holder">
+        <h2 class="underline-thin  extend-left  thick-border-mobile">{% trans "Timeline" %}</h2>
+        <a class="filter-btn reverseTimeline" ng-click="reverseTimeline()">{$ reverseTile $}</a></div>
+    <div class="padderV">
+        <div
+            class="row padderVP"
+            ng-repeat="timeline in timelineItemsWithCurrentLanguageDescription | orderBy:predicate:reverse | limitTo:timeLimit"
+        >
+            <div class="col-xs-3">
+                <h6 ng-if=" '{{LANGUAGE_CODE}}' == 'en' " class="time date"><b>{$timeline['day' + dLang]$}<font ng-if="timeline['day' + dLang] && timeline['month' + dLang]" >/</font>{$timeline['month' + dLang]$}<font ng-if="timeline['year' + dLang] && timeline['month' + dLang]" >/</font>{$timeline['year' + dLang]$}</b></h6>
+
+                <h6 ng-if=" '{{LANGUAGE_CODE}}' == 'fa' " class="time date"><b>{$timeline['year' + dLang]$}<font ng-if="timeline['year' + dLang] && timeline['month' + dLang]" >/</font>{$timeline['month' + dLang]$}<font ng-if="timeline['day' + dLang] && timeline['month' + dLang]" >/</font>{$timeline['day' + dLang]$}</b></h6>
+
+                </div>
+            <div class="col-xs-9"><span ng-bind-html="timeline['description_' + lang + '_html']"></span><span ng-show="timeline['source_link']"> (<a href="{$ timeline['source_link'] $}">{% trans "see source" %}</a>)</span>
+            </div>
+        </div>
+        <div ng-if="!timelineItemsWithCurrentLanguageDescription.length"></div>
+        <span class="icon-plus" ng-show="timeLimit < timelineItemsVisible(lang)" ng-click="addMoreTimeLine()"></span>
+    </div>
+    <div class="underline-thin  extend-left "></div>
+</div>

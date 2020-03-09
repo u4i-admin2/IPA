@@ -1,0 +1,62 @@
+{%
+    load
+        blocktrans
+    from i18n
+%}{%
+    load
+        classname
+    from public_tags
+%}<li class="{% classname 'item' %} ipa_home_showcase_item_prisoner">
+    <article class="{% classname 'content' %}">
+        <a class="{% classname 'nameLink' %}" href="{{ prisoner_info.url }}">
+            <h3
+                class="{% classname 'name' %}"
+            >{{ prisoner_info.name }}</h3>
+        </a>
+
+        <img
+            alt=""
+            class="{% classname 'picture' %}"
+            src="{{ prisoner_info.picture_path }}"
+        />
+
+        {% if
+            prisoner_info.age
+            or prisoner_info.country
+            or prisoner_info.religion
+            or prisoner_info.ethnicity
+        %}
+            <footer class="{% classname 'meta' %}">
+                {% if prisoner_info.age %}
+                    <p
+                        class="{% classname 'age' %}"
+                    >{% blocktrans with age=prisoner_info.age context 'Home showcase (IPA prisoner)' %}{{ age }} years old{% endblocktrans %}</p>
+                {% endif %}
+
+                {% if prisoner_info.country %}
+                    <p
+                        class="{% classname 'country' %}"
+                    >{{ prisoner_info.country }}</p>
+                {% endif %}
+
+                {% if prisoner_info.religion %}
+                    <p
+                        class="{% classname 'religion' %}"
+                    >{{ prisoner_info.religion }}</p>
+                {% endif %}
+
+                {% if prisoner_info.ethnicity %}
+                    <p
+                        class="{% classname 'ethnicity' %}"
+                    >{{ prisoner_info.ethnicity }}</p>
+                {% endif %}
+            </footer>
+        {% endif %}
+
+        {% if prisoner_info.biography %}
+            <p
+                class="{% classname 'biography' %}"
+            >{{ prisoner_info.biography }}</p>
+        {% endif %}
+    </article>
+</li>

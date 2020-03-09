@@ -1,0 +1,15 @@
+<div ng-controller="uploadPhoto">
+    <div class="profilePicHolder">
+        <div class="overFlowHidden" ng-show="current.picture_resized">
+            <img class="profilePic" ng-src="{$ current.picture_resized $}" />
+        </div>
+        <span class="icon-pencil"></span>
+        <span ng-click="deletePhoto()" class="icon-cancel"></span>
+    </div>
+    <button class="selectFile" ng-file-select="submitForm($files)" ng-model="files">Select File</button>
+</div>
+<div id="uploadError" class="upload-error"></div>
+<div ng-controller="judges">
+    <div class="mainName">{$ current.forename_en $} {$ current.surname_en $}</div>
+    <div class="mainName bioTop">{$ current.biography_en $} </div>
+    <div>

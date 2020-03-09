@@ -1,0 +1,128 @@
+<!-- timeline -->
+<!-- 
+
+Static view  
+
+-->
+<div class="col-xs-12 timelineHolder">
+    <div class="timeline" ng-repeat="item in current.timeline | orderBy:['year', 'month', 'day']:true">
+        <div class="row">
+            <div class="col-xs-6 formEnglish ">
+                <font class="date">{$item.day$} / {$item.month$} / {$item.year$} : {$ item.timeline_is_estimate ? 'Actual' : 'Estimated' $}</font>
+                <font ng-click="delete(item.id , 'timeline')" class="icon-cancel"></font>
+                <font ng-click="editTimeline(current.timeline.indexOf(item), item.id)" class="icon-pencil"></font>
+            </div>
+            <div class="col-xs-6 formFarsi ">
+                <font class="date">{$item.day_fa | pNumber$} / {$item.month_fa | pNumber $} / {$item.year_fa | pNumber $} : {$ item.timeline_is_estimate ? 'Actual' : 'Estimated' $}</font>
+                <font ng-click="delete(item.id , 'timeline')" class="icon-cancel"></font>
+                <font ng-click="editTimeline(current.timeline.indexOf(item) , item.id)" class="icon-pencil"></font>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 formEnglish ">
+                <div class="description">{$ item.description_en $}</div>
+            </div>
+            <div class="col-xs-6 formFarsi ">
+                <div class="description">{$ item.description_fa $}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<form name="timelineForm" novalidate ng-submit="timelineForm.$valid && addTimeline()">
+    <!-- 
+
+    english 
+
+    -->
+    <div class="col-xs-6 formEnglish ">
+        <div class="subTitle">
+            ADD ENTRY
+        </div>
+        <!-- 
+
+        Date of Entry 
+
+        -->
+        <label class="control-label" for="textinput">Date of Entry</label>
+        <date local-model="'tld'" />
+        <!--<div ng-show="timelineForm.$submitted">
+            <div class="error" ng-hide="date.tld.day.value > 0 ">Please set day </div>
+            <div class="error" ng-hide="date.tld.month.value > 0  ">Please set month </div>
+            <div class="error" ng-hide="date.tld.year.text > 0 ">Please set year</div>
+        </div>-->
+        <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="timeline.timeline_is_estimate" ng-value="false" type="radio">
+                <span class="radioBtn" ng-click='timeline.timeline_is_estimate = false' ng-class="{'checked': timeline.timeline_is_estimate==false}"></span> <span class="radioTag">Estimated</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="timeline.timeline_is_estimate" ng-value="true" type="radio">
+                <span class="radioBtn" ng-click='timeline.timeline_is_estimate = true' ng-class="{'checked': timeline.timeline_is_estimate==true}"></span> <span class="radioTag">Actual</span>
+            </label>
+        </div>
+        <!-- 
+
+        Description 
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : timelineForm.$submitted && timelineForm.Description_en.$error.required}">
+            <label class="control-label" for="textinput">Description</label>
+            <textarea ng-model="timeline.description_en" name="Description_en" placeholder="Description" class="form-control input-md" type="text"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="timeline_source">Source Link</label>
+            <input ng-model="timeline.source_link" name="source_link" placeholder="Link" class="form-control input-md ng-valid ng-touched ng-dirty ng-valid-parse" type="text" >
+        </div>
+
+    </div>
+    <!-- 
+
+    Farsi
+
+    -->
+    <div class="col-xs-6 formFarsi">
+        <div class="subTitle">
+            ایجاد رکورد
+        </div>
+        <!-- 
+
+        Date of Entry 
+
+        -->
+        <label class="control-label" for="textinput">تاریخ ثبت</label>
+        <datefa local-model="'tld'"  />
+        <!-- <div ng-show="timelineForm.$submitted">
+            <div class="error" ng-hide="date.tld.day_j.text > 0 ">Please set day </div>
+            <div class="error" ng-hide="date.tld.month_j.value > 0  ">Please set month </div>
+            <div class="error" ng-hide="date.tld.year_j.text > 0 ">Please set year</div>
+        </div> -->
+        <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="timeline.timeline_is_estimate" ng-value="false" type="radio">
+                <span class="radioBtn" ng-click='timeline.timeline_is_estimate = false' ng-class="{'checked': timeline.timeline_is_estimate==false}"></span> <span class="radioTag">حدودی</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="timeline.timeline_is_estimate" ng-value="true" type="radio">
+                <span class="radioBtn" ng-click='timeline.timeline_is_estimate = true' ng-class="{'checked': timeline.timeline_is_estimate==true}"></span> <span class="radioTag">حقیقی</span>
+            </label>
+        </div>
+        <!-- 
+
+        Description 
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : timelineForm.$submitted && timelineForm.Description_fa.$error.required}">
+            <label class="control-label" for="textinput">توضیحات</label>
+            <textarea ng-model="timeline.description_fa" name="Description_fa" placeholder="توضحیات" class="form-control input-md" type="text"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="timeline_source">منبع لینک</label>
+            <input ng-model="timeline.source_link" name="source_link" placeholder="Link" class="form-control input-md ng-valid ng-touched ng-dirty ng-valid-parse" type="text" >
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">Save Timeline</button>
+    <button ng-show="editTimelineStatus" ng-click="cancelEditTimeline($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>

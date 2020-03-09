@@ -1,0 +1,163 @@
+{%
+    extends 'base.html'
+%}{%
+    load static i18n
+%}
+
+{% block content %}
+<script>
+var mainData = {{ dimensions|safe }};
+var prisoner_lookup = {{ prisoner_lookup|safe }};
+var detention_stats = {{detention_stats|safe}};
+</script>
+
+<div ng-controller="prisoners" class="prisoners">
+    <div class="row ">
+        <div class="col-sm-4  gradiant">
+            <h1 class="indexTitle">{% trans "Prisoners" %} </h1>
+
+            {{ django_prerendered_component_html.information_overlay_trigger_button.prisoners }}
+
+            <div class="thick-line"></div>
+        </div>
+        <div class="col-sm-8  social socialPholder underline-thin ">
+            <div class="socialP">
+                <font>{% trans "Share Visualization" %}</font>
+                <a target="_blank" ng-href="{$ 'https://twitter.com/intent/tweet?url=' + url $}" class="icon-twitter"></a>
+                <a target="_blank" ng-href="{$ 'https://www.facebook.com/sharer/sharer.php?u=' + url $}" class="icon-facebook"></a>
+                <span class="pad"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row topSpacer ">
+        <div class="col-md-4 col-sm-6">
+            <div class="drop">
+                <div class="dropDownBtn">{% trans "activity" %}
+                    <span class="menuIcon">
+                        <span class="icon-up-dir"></span>
+                    <span class="icon-down-dir"></span>
+                    </span>
+                </div>
+                <ul class="dropMenu setAxisY">
+                    <li ng-class="{ 'deactivate' : yAxisNameSet == 'activity' }" ng-click="setAxisY('activity')">{% trans "activity" %}</li>
+                    <li ng-class="{ 'deactivate' : yAxisNameSet == 'charges' }" ng-click="setAxisY('charges')">{% trans "charges" %}</li>
+                    <li ng-class="{ 'deactivate' : yAxisNameSet == 'ethnicity' }" ng-click="setAxisY('ethnicity')">{% trans "Ethnicity" %}</li>
+                    <li ng-class="{ 'deactivate' : yAxisNameSet == 'mistreatments' }" ng-click="setAxisY('mistreatments')">{% trans "Mistreatments" %}</li>
+                    <li ng-class="{ 'deactivate' : yAxisNameSet == 'religion' }" ng-click="setAxisY('religion')">{% trans "Religion" %}</li>
+                    <li ng-class="{ 'deactivate' : yAxisNameSet == 'sentences' }" ng-click="setAxisY('sentences')">{% trans "Sentences" %}</li>
+                </ul>
+            </div>
+            <div class="blueArea">
+                <div class="infoText infobox topMargin20"><span class="icon-info-circled info info_1"></span>{% trans "Select different variables in the two drop-down menus above to get an overview of the backgrounds, conditions and treatment of political prisoners in Iran." %}</div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="drop">
+                <div class="dropDownBtn">{% trans "Ethnicity" %}
+                    <span class="menuIcon">
+                        <span class="icon-up-dir"></span>
+                    <span class="icon-down-dir"></span>
+                    </span>
+                </div>
+                <ul class="dropMenu setAxisX">
+                    <li ng-class="{ 'deactivate' : xAxisNameSet == 'activity' }" ng-click="setAxisX('activity')">{% trans "activity" %}</li>
+                    <li ng-class="{ 'deactivate' : xAxisNameSet == 'charges' }" ng-click="setAxisX('charges')">{% trans "charges" %}</li>
+                    <li ng-class="{ 'deactivate' : xAxisNameSet == 'ethnicity' }" ng-click="setAxisX('ethnicity')">{% trans "Ethnicity" %}</li>
+                    <li ng-class="{ 'deactivate' : xAxisNameSet == 'mistreatments' }" ng-click="setAxisX('mistreatments')">{% trans "Mistreatments" %}</li>
+                    <li ng-class="{ 'deactivate' : xAxisNameSet == 'religion' }" ng-click="setAxisX('religion')">{% trans "Religion" %}</li>
+                    <li ng-class="{ 'deactivate' : xAxisNameSet == 'sentences' }" ng-click="setAxisX('sentences')">{% trans "Sentences" %}</li>
+                </ul>
+            </div>
+            <div class="blueArea">
+                <div class="row">
+                    <div class="topMargin20"></div>
+                    <div ng-repeat="filter in lookUpArray" ng-click='newValue(filter , $index)' id="{$'dot' + $index $}" class="col-xs-6 pointer filterColors" for="radios-0">
+                        <span ng-style="{ 'background-color' : getColor($index) }"  class="checkboxCircle"><span class="dot"></span></span>
+                        <span>{$filter$}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filterTab"><span class="icon-left-dir"></span></div>
+        <div class="statusArea ">
+            <div class="filterHearder">
+                {% trans "Status of prisoners (OFF/ON)"%}
+            </div>
+            <div class="blueArea">
+                <div class="topMargin20"></div>
+                <div class="clearfix filter">
+                    <div ng-click="setStatusFilter('ALL')" class="switchHolder ALL">
+                        <div class="switch"></div>
+                    </div>
+                    <div class="statusName">{% trans "All" %}</div>
+                    <div class="statusCount">{$ detention_stats.ALL $}</div>
+                </div>
+                <div class="clearfix filter">
+                    <div ng-click="setStatusFilter('DETAINED')" class="switchHolder DETAINED on">
+                        <div class="switch"></div>
+                    </div>
+                    <div class="statusName">{% trans "Detained" %}</div>
+                    <div class="statusCount">{$ detention_stats.DETAINED $}</div>
+                </div>
+                <div class="clearfix filter">
+                    <div ng-click="setStatusFilter('RELEASED')" class="switchHolder RELEASED">
+                        <div class="switch"></div>
+                    </div>
+                    <div class="statusName">{% trans "Released" %}</div>
+                    <div class="statusCount">{$ detention_stats.RELEASED $}</div>
+                </div>
+                <div class="clearfix filter">
+                    <div ng-click="setStatusFilter('EXECUTED')" class="switchHolder EXECUTED">
+                        <div class="switch"></div>
+                    </div>
+                    <div class="statusName">{% trans "Executed" %}</div>
+                    <div class="statusCount">{$ detention_stats.EXECUTED $}</div>
+                </div>
+                 <div class="clearfix filter">
+                    <div ng-click="setStatusFilter('PASSED_AWAY')" class="switchHolder PASSED_AWAY">
+                        <div class="switch"></div>
+                    </div>
+                    <div class="statusName">{% trans "Passed Away" %}</div>
+                    <div class="statusCount">{$ detention_stats.PASSED_AWAY $}</div>
+                </div>
+                <div class="clearfix filter">
+                    <div ng-click="setStatusFilter('UNKNOWN')" class="switchHolder UNKNOWN">
+                        <div class="switch"></div>
+                    </div>
+                    <div class="statusName">{% trans "Unknown" %}</div>
+                    <div class="statusCount">{$ detention_stats.UNKNOWN $}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12  dottedline-seperator "></div>
+    </div>
+    <div id="viz"></div>
+    <div ng-show="unknown" class="unknown">{% trans "Unknown"%}
+        <if ng-if="yAxisNameSet == 'activity'" >{% trans "activity" %}</if>
+        <if ng-if="yAxisNameSet == 'charges'" >{% trans "charges" %}</if>
+        <if ng-if="yAxisNameSet == 'ethnicity'" >{% trans "Ethnicity" %}</if>
+        <if ng-if="yAxisNameSet == 'mistreatments'" >{% trans "Mistreatments" %}</if>
+        <if ng-if="yAxisNameSet == 'religion'" >{% trans "Religion" %}</if>
+        <if ng-if="yAxisNameSet == 'sentences'" >{% trans "Sentences" %}</if>
+         : {$ unknown $}</div>
+</div>
+<div class="toolTipHolder {$ '_' + $parent.$parent.$index + $parent.$index + $index $}">
+    <div class="toolTip">
+        <div class="imageHolder">
+            <img class="profileImage"  alt="{% trans 'Profile Image' %}" src="{% static 'public/img/profile_temp.png' %}?v=2019-08-28" />
+        </div>
+        <div class="name"></div>
+        <div class="dob"></div>
+        <div class="activePersecutedFor"></div>
+        <div class="sentance"><span class="excecuted">Excecuted</span></div>
+    </div>
+    <div class="triangle-down"></div>
+</div>
+<div class="blocker"></div>
+</div>
+
+{{ django_prerendered_component_html.information_overlay.prisoners }}
+
+{% endblock %}

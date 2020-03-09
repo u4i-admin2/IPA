@@ -1,0 +1,109 @@
+// RTL help scss
+@mixin positionRight($val) {
+    @if $is-rtl == true {
+        left: $val;
+    }
+
+    @else {
+        right: $val;
+    }
+}
+
+@mixin positionLeft($val) {
+    @if $is-rtl == true {
+        right: $val;
+    }
+
+    @else {
+        left: $val;
+    }
+}
+
+@mixin padRight($val) {
+    @if $is-rtl == true {
+        padding-left: $val;
+    }
+
+    @else {
+        padding-right: $val;
+    }
+}
+
+@mixin padLeft($val) {
+    @if $is-rtl == true {
+        padding-right: $val;
+    }
+
+    @else {
+        padding-left: $val;
+    }
+}
+
+@mixin marginRight($val) {
+    @if $is-rtl == true {
+        margin-left: $val;
+    }
+
+    @else {
+        margin-right: $val;
+    }
+}
+
+@mixin marginLeft($val) {
+    @if $is-rtl == true {
+        margin-right: $val;
+    }
+
+    @else {
+        margin-left: $val;
+    }
+}
+
+@mixin textAlignRight {
+    @if $is-rtl == true {
+        text-align: left;
+    }
+
+    @else {
+        text-align: right;
+    }
+}
+
+@mixin textAlignLeft {
+    @if $is-rtl == true {
+        text-align: right;
+    }
+
+    @else {
+        text-align: left;
+    }
+}
+
+@mixin floatLeft {
+    @if $is-rtl == true {
+        float: right;
+    }
+
+    @else {
+        float: left;
+    }
+}
+
+@mixin floatRight {
+    @if $is-rtl == true {
+        float: left;
+    }
+
+    @else {
+        float: right;
+    }
+}
+
+@mixin borderRadius($tL, $tR, $bR, $bL) {
+    @if $is-rtl == true {
+        border-radius: $tR $tL $bL $bR;
+    }
+    @else {
+        border-radius: $tL $tR $bR $bL;
+    }
+}

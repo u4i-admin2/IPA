@@ -1,0 +1,21 @@
+{% extends 'ui/base.html' %}
+{% load static %}
+{% block content %}
+    <script>
+        var idTag = 'judge'
+        var tagList = 'judges/judgetaglist';
+        var token = "{{csrf_token}}";
+
+        {% if judge.id %}
+            var id = "{{ judge.pk }}" + '/';
+            var method = 'PUT'
+            var varID = {{ judge.pk }};
+        {% else %}
+            var id = "";
+            var method = 'POST'
+            var varID = '';
+        {% endif %}
+    </script>
+
+    <div ng-include="'{% static 'ui/templates/judge.html' %}?v=2019-08-28'"></div>
+{% endblock %}

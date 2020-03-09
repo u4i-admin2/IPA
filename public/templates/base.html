@@ -1,0 +1,116 @@
+{%
+    load
+        i18n
+        static
+%}{%
+    load
+        current_url_fully_qualified
+        inject_search_variables
+        nav_header
+    from public_tags
+%}<!doctype html>
+<html class="{{LANGUAGE_CODE }} {% if LANGUAGE_CODE == 'en' %}ltr{% else %}rtl{% endif %} {{ request.ipa_site }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <!-- facebook share details -->
+        <meta property="og:url" content="{% current_url_fully_qualified %}" />
+        <meta property="og:type" content="website" />
+        <link rel="icon" href="{% static 'public/img/favicon.ico' %}?v=2019-08-28">
+        <!-- css -->
+        <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+        {% if head_title_document %}
+            <title>{{ head_title_document }}</title>
+        {% endif %}
+
+        {% if head_title_social %}
+            <meta name="twitter:title" content="{{ head_title_social }}" />
+            <meta property="og:title" content="{{ head_title_social }}" />
+        {% endif %}
+
+        {% if head_description %}
+            <meta name="description" content="{{ head_description }}" />
+            <meta property="og:description" content="{{ head_description }}" />
+            <meta name="twitter:description" content="{{ head_description }}" />
+        {% endif %}
+
+        {% if head_image %}
+            <meta property="og:image" content="{{ head_image }}" />
+
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:image" content="{{ head_image }}" />
+        {% else %}
+            <meta name="twitter:card" content="summary" />
+        {% endif %}
+
+        {% if LANGUAGE_CODE == 'en' %}
+            <!--inject:ltr:css-->
+            <link rel="stylesheet" href="{% static 'public/css/style.css' %}">
+            <!--endinject-->
+        {% else %}
+            <!--inject:rtl:css-->
+            <link rel="stylesheet" href="{% static 'public/css/style_fa.css' %}">
+            <!--endinject-->
+        {% endif %}
+
+        <!--inject:modules:css-->
+        <link rel="stylesheet" href="{% static 'public/css/modules.css' %}">
+        <!--endinject-->
+
+        <script>
+            quickSearch = {% inject_search_variables %};
+
+            ipa = {
+                colorsRange: [],
+                commaCharacter: null,
+                dLang: '{{LANGUAGE_CODE }}' == 'en' ? '' : '_fa',
+                mediaPrefix: '{% get_media_prefix %}',
+                lang: '{{LANGUAGE_CODE }}',
+                site: '{{ request.ipa_site }}',
+                staticPrefix: '{% get_static_prefix %}',
+            };
+
+            ipa.commaCharacter = (ipa.lang === 'fa' ? '،' : ',');
+        </script>
+    </head>
+    <body ng-cloak class="{{LANGUAGE_CODE }} bcbcb  ng-cloak" ng-app="UFIF">
+        {% nav_header %}
+
+        <div class="container">
+            <section>
+                {% block body %} {% block content %} (no content) {% endblock %} {% endblock %}
+            </section>
+
+        </div>
+
+        {% include 'footer.html' %}
+
+        <div class="background"></div>
+
+        {% block inline-scripts %}
+
+        <!-- inject:js -->
+        <script src="{% static 'public/js/united.min.js' %}"></script>
+        <!-- endinject -->
+
+        {% endblock %}
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement
+            (o),
+            m=s.getElementsByTagName(o)
+            [0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })
+            (window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-74681238-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+{% extends 'ui/base.html' %} {% block content %}
+<div class="filters"></div>
+<div ng-controller="prisons" ng-cloak>
+    <div class="searchTitle">Prisons</div>
+    <a  href="new" name="save" class="btn btn-primary addnew">ADD PRISON</a>
+    <table ng-table="tableParams">
+        <tr class="header">
+            <th ng-click="order('name_en')">Name</th>
+            <th ng-click="order('administered_by')">Administrated By</th>
+            <th ng-click="order('dean_name_en')">Dean</th>
+            <th ng-click="order('updated')">Last updated</th>
+            <th ng-click="order('updated_by')">Last edited by</th>
+            <th ng-click="order('is_published')">Profile status</th>
+            <th>EDIT</th>
+        </tr>
+        <tr ng-class-odd="'odd'" ng-class-even="'even'" ng-class="{'first': $first , 'last': $last ,}" ng-repeat="prison in data">
+            <td>
+                {$ prison.name_en $}
+            </td>
+            <td>
+                {$ prison.administered_by == 'moi' ? 'Ministry of Information' : "" $} {$ prison.administered_by == 'police' ? 'Police' : "" $}{$ prison.administered_by == 'irgc' ? 'IRGC' : "" $}{$ prison.administered_by == 'pdotj' ? 'Prisons Division of the Judiciary' : "" $}
+            </td>
+            <td>
+                {$ prison.dean_name_en $}
+            </td>
+            <td>
+                {$ prison.updated.substring(0, 9) $} {$ prison.updated.substring(11, 16) $}
+            </td>
+            <td>
+                {$ prison.updated_by $}
+            </td>
+            <td>
+                {$ prison.is_published ? 'published' : 'not published'$}
+            </td>
+            <td>
+                <a href="{$ prison.id $} ">EDIT</a>
+            </td>
+        </tr>
+    </table>
+    <div class="pagination">
+        <button ng-show="prev" ng-click="paginate( prev )" class="btn btn-primary">PREV</button>
+        <button ng-show="next" ng-click="paginate( next )" class="btn btn-primary">NEXT</button>
+    </div>
+</div>
+{% endblock %}

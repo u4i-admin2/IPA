@@ -1,0 +1,418 @@
+<div class="basicInfoStatic">
+    <div class="col-xs-6 formEnglish">
+        <button ng-click="editJudge($event)" ng-hide="method == 'POST'" class="btn btn-primary edit">EDIT
+            <font class="icon-pencil"></font>
+        </button>
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <button ng-click="editJudge($event)" ng-hide="method == 'POST'" class="btn btn-primary edit">ویرایش
+            <font class="icon-pencil"></font>
+        </button>
+    </div>
+    <div class="judgeBasicInfoHolder ">
+        <div class="col-xs-6 formEnglish">
+            <div class="form-group">
+                <label class="control-label" for="textinput">First Name</label>
+                <div>{$ current.forename_en $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Last Name</label>
+                <div>{$ current.surname_en $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Is Judge</label>
+                <div>{$ current.is_judge === true ? 'yes' : 'no' $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Date Of Birth</label>
+                <div>
+                    <font ng-if="current.dob_day">{$ current.dob_day $} /</font>
+                    <font ng-if="current.dob_month"> {$ current.dob_month $} / </font>
+                    <font ng-if="current.dob_year">{$ current.dob_year $} - {$ current.dob_is_estimate ? 'Actual' : 'Estimated' $}</font>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">City</label>
+                <div>{$ current.birth_city.name_en $}
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label class="control-label" for="textinput">Province</label>
+                <div>{$ current.birth_province.name_en $}
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label class="control-label" for="textinput">Ethnicty</label>
+                <div>{$ current.ethnicity.name_en $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Biography</label>
+                <div>{$ current.biography_en $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Explanation (IPA)</label>
+                <div>{$ current.explanation_en $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Explanation (AeA)</label>
+                <div>{$ current.explanation_aea_en $}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 formFarsi">
+            <div class="form-group">
+                <label class="control-label" for="textinput">نام</label>
+                <div>{$ current.forename_fa $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">نام خانوادگی</label>
+                <div>{$ current.surname_fa $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Is Judge</label>
+                <div>{$ current.is_judge === true ? 'yes' : 'no' $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">تاریخ تولد</label>
+                <div>
+                    <font ng-if="current.dob_day_fa">{$ current.dob_day_fa | pNumber $} /</font>
+                    <font ng-if="current.dob_month_fa"> {$ current.dob_month_fa | pNumber $} / </font>
+                    <font ng-if="current.dob_year_fa">{$ current.dob_year_fa | pNumber $} - {$ current.dob_is_estimate ? 'Actual' : 'Estimated' $}</font>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">شهر</label>
+                <div>{$ current.birth_city.name_fa $}
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label class="control-label" for="textinput">استان</label>
+                <div>{$ current.birth_province.name_fa $}
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label class="control-label" for="textinput">قومیت</label>
+                <div>{$ current.ethnicity.name_fa $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">بیوگرافی</label>
+                <div>{$ current.biography_fa $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Explanation (IPA)</label>
+                <div>{$ current.explanation_fa $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Explanation (AeA)</label>
+                <div>{$ current.explanation_aea_fa $}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- English -->
+<form id="basicInfo" class="basicInfo" name="basicInfo" novalidate ng-submit="basicInfo.$valid && saveBasicInfo()">
+    <div class="col-xs-6 formEnglish">
+        <!-- Full name -->
+        <div class="form-group" ng-class="{'has-error' : basicInfo.forename_en.$error.required && basicInfo.forename_en.$touched ,'has-error' : basicInfo.forename_en.$error.required && basicInfo.$submitted  }">
+            <label class="control-label" for="textinput">First Name</label>
+            <input ng-model="judgeBasicInfo.forename_en" id="textinput" name="forename_en"  placeholder="First Name" class="form-control input-md" type="text">
+        </div>
+        <div class="form-group" ng-class="{'has-error' : basicInfo.surname_en.$error.required && basicInfo.surname_en.$touched ,'has-error' : basicInfo.surname_en.$error.required && basicInfo.$submitted  }">
+            <label class="control-label" for="textinput">Last Name</label>
+            <input ng-model="judgeBasicInfo.surname_en" id="textinput" name="surname_en" required placeholder="Last Name" class="form-control input-md" type="text">
+        </div>
+        <!--
+
+        Is Judge
+
+        -->
+        <div class="form-group IsJudge">
+            <label class="control-label" for="textinput">Is Judge</label>
+            <input type="checkbox" ng-checked="judgeBasicInfo.is_judge === true" ng-model="judgeBasicInfo.is_judge" ng-true-value="true" style="display: block;">
+        </div>
+        <!-- Date of birth -->
+        <label class="control-label" for="textinput">Date of Birth</label>
+        <date local-model="'dob'" />
+        <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="judgeBasicInfo.dob_is_estimate" ng-value="false" type="radio">
+                <span class="radioBtn" ng-click='judgeBasicInfo.dob_is_estimate = false' ng-class="{'checked': judgeBasicInfo.dob_is_estimate==false}"></span> <span class="radioTag">Estimated</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="judgeBasicInfo.dob_is_estimate" ng-value="true" type="radio">
+                <span class="radioBtn" ng-click='judgeBasicInfo.dob_is_estimate = true' ng-class="{'checked': judgeBasicInfo.dob_is_estimate==true}"></span> <span class="radioTag">Actual</span>
+            </label>
+            <div class="error" ng-show="basicInfo.$submitted && !date.dob && judgeBasicInfo.dob_is_estimate != undefined">Please choose date of birth</div>
+        </div>
+        <!--
+
+        city
+
+        -->
+        <div class="placeOfBirth">
+            <label class="control-label" for="textinput">City</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('city' , judgeBasicInfo.city ,  'judgeBasicInfo' ,'placeOfBirthDD' , 'core_types' , 'name')" ng-model="judgeBasicInfo.city" id="textinput" name="textinput" placeholder="City" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeBasicInfo.placeOfBirthDD" ng-show="judgeBasicInfo.placeOfBirthDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeBasicInfo.placeOfBirthDD">{$ item.name_en $}</div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Province
+
+        -->
+        <!-- <div class="placeOfBirth">
+            <label class="control-label" for="textinput">Province</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('province' , judgeBasicInfo.province ,  'judgeBasicInfo' ,'provinceDD' , 'core_types' , 'name')" ng-model="judgeBasicInfo.province" id="textinput" name="textinput" placeholder="Province" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeBasicInfo.provinceDD" ng-show="judgeBasicInfo.provinceDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeBasicInfo.provinceDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+        </div> -->
+        <!--
+
+        Ethnicity
+
+        -->
+        <div class="ethnicity">
+            <label class="control-label" for="textinput">Ethnicity</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('ethnicity' , judgeBasicInfo.ethnicity ,  'judgeBasicInfo' ,'ethnicityDD','core_types' , 'name')" ng-model="judgeBasicInfo.ethnicity" val="" id="textinput" name="textinput" placeholder="Ethnicity" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeBasicInfo.ethnicityDD" ng-show="judgeBasicInfo.ethnicityDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeBasicInfo.ethnicityDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!-- Judge Type 1  -->
+        <div>
+            <label class="control-label" for="radios">Judge Type 1</label>
+            <div class="row">
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="judgeBasicInfo.is_cleric" ng-value="true" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.is_cleric = true' ng-class="{'checked': judgeBasicInfo.is_cleric==true}"></span> <span class="radioTag">Cleric</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input ng-model="judgeBasicInfo.is_cleric" ng-value="false" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.is_cleric = false' ng-class="{'checked': judgeBasicInfo.is_cleric==false}"></span> <span class="radioTag">Not Cleric</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-2">
+                    <input ng-model="judgeBasicInfo.is_cleric" ng-value="null" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.is_cleric = null' ng-class="{'checked': judgeBasicInfo.is_cleric==null}"></span> <span class="radioTag">Unknown</span>
+                </label>
+            </div>
+        </div>
+        <!-- Judge Type 2 -->
+        <div>
+            <label class="control-label" for="radios">Judge Type 2</label>
+            <div class="row">
+                <label class="col-xs-3 radio-inline" for="radios-0">
+                    <input ng-model="judgeBasicInfo.judge_type" ng-value="'research'" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.judge_type = "research"' ng-class="{'checked': judgeBasicInfo.judge_type=='research'}"></span> <span class="radioTag">Research</span>
+                </label>
+                <label class="col-xs-3 radio-inline" for="radios-1">
+                    <input ng-model="judgeBasicInfo.judge_type" ng-value="'primary'" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.judge_type = "primary"' ng-class="{'checked': judgeBasicInfo.judge_type=='primary'}"></span> <span class="radioTag">Primary</span>
+                </label>
+                <label class="col-xs-3 radio-inline" for="radios-2">
+                    <input ng-model="judgeBasicInfo.judge_type" ng-value="'appeal'" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.judge_type = "appeal"' ng-class="{'checked': judgeBasicInfo.judge_type=='appeal'}"></span> <span class="radioTag">Appeal</span>
+                </label>
+                <label class="col-xs-3 radio-inline" for="radios-2">
+                    <input ng-model="judgeBasicInfo.judge_type" ng-value="'supreme'" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.judge_type = "supreme"' ng-class="{'checked': judgeBasicInfo.judge_type=='supreme'}"></span> <span class="radioTag">Supreme</span>
+                </label>
+            </div>
+        </div>
+        <!--
+
+        Biography
+
+        -->
+        <div class="form-group Biography" ng-class="{'has-error' : basicInfo.$submitted && formBio.biography_en.$error.required }">
+            <label class="control-label" for="textinput">Biography</label>
+            <textarea ng-model="judgeBasicInfo.biography_en" name="biography_en" placeholder="Biography" class="form-control input-md" type="text" maxlength="350"></textarea>
+        </div>
+        <!--
+
+        Explanation (IPA)
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation (IPA)</label>
+            <textarea ng-model="judgeBasicInfo.explanation_en" name="explanation_en" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+        <!--
+
+        Explanation (AeA)
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation (AeA)</label>
+            <textarea ng-model="judgeBasicInfo.explanation_aea_en" name="explanation_aea_en" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+    </div>
+    <!-- Farsi -->
+    <div class="col-xs-6 formFarsi">
+        <!-- Full name -->
+        <div class="form-group" ng-class="{'has-error' : basicInfo.forename_fa.$error.required && basicInfo.forename_fa.$touched ,'has-error' : basicInfo.forename_fa.$error.required && basicInfo.$submitted  }">
+            <label class="control-label" for="textinput">نام</label>
+            <input ng-model="judgeBasicInfo.forename_fa" id="textinput"  name="forename_fa" placeholder="نام" class="form-control input-md" type="text">
+        </div>
+        <div class="form-group" ng-class="{'has-error' : basicInfo.surname_fa.$error.required && basicInfo.surname_fa.$touched ,'has-error' : basicInfo.surname_fa.$error.required && basicInfo.$submitted  }">
+            <label class="control-label" for="textinput">نام خانوادگی</label>
+            <input ng-model="judgeBasicInfo.surname_fa" id="textinput" required name="surname_fa" placeholder="نام خانوادگی" class="form-control input-md" type="text">
+        </div>
+        <!--
+
+        Is Judge
+
+        -->
+        <div class="form-group IsJudge">
+            <label class="control-label" for="textinput">Is Judge</label>
+            <input type="checkbox" ng-checked="judgeBasicInfo.is_judge === true" ng-model="judgeBasicInfo.is_judge" ng-true-value="true" style="display: block;">
+        </div>
+        <!-- Date of birth -->
+        <label class="control-label" for="textinput">تاریخ تولد</label>
+        <datefa local-model="'dob'" />
+        <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="judgeBasicInfo.dob_is_estimate" ng-value="false" type="radio">
+                <span class="radioBtn" ng-click='judgeBasicInfo.dob_is_estimate = false' ng-class="{'checked': judgeBasicInfo.dob_is_estimate==false}"></span> <span class="radioTag">حدودی</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="judgeBasicInfo.dob_is_estimate" ng-value="true" type="radio">
+                <span class="radioBtn" ng-click='judgeBasicInfo.dob_is_estimate = true' ng-class="{'checked': judgeBasicInfo.dob_is_estimate==true}"></span> <span class="radioTag">حقیقی</span>
+            </label>
+            <!-- <div class="error" ng-show="basicInfo.$submitted && date.dob && judgeBasicInfo.dob_is_estimate == undefined">Please specify date type</div> -->
+            <div class="error" ng-show="basicInfo.$submitted && !date.dob && judgeBasicInfo.dob_is_estimate != undefined">Please choose date of birth</div>
+        </div>
+        <!--
+
+        city
+
+        -->
+        <div class="placeOfBirth">
+            <label class="control-label" for="textinput">شهر</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('city' , judgeBasicInfo.city_fa ,  'judgeBasicInfo' ,'placeOfBirthDD_fa' , 'core_types' , 'name')" ng-model="judgeBasicInfo.city_fa" id="textinput" name="textinput" placeholder="شهر" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeBasicInfo.placeOfBirthDD" ng-show="judgeBasicInfo.placeOfBirthDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeBasicInfo.placeOfBirthDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Province
+
+        -->
+        <!--  <div class="placeOfBirth">
+            <label class="control-label" for="textinput">قومیت</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('province' , judgeBasicInfo.province ,  'judgeBasicInfo' ,'provinceDD_fa' , 'core_types' , 'name')" ng-model="judgeBasicInfo.province_fa" id="textinput" name="textinput" placeholder="قومیت" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeBasicInfo.provinceDD" ng-show="judgeBasicInfo.provinceDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeBasicInfo.provinceDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+        </div> -->
+        <!--
+
+        Ethnicity
+
+        -->
+        <div class="ethnicity">
+            <label class="control-label" for="textinput">قومیت</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('ethnicity' , judgeBasicInfo.ethnicity_fa ,  'basicInfo' ,'ethnicityDD_fa','core_types' , 'name')" ng-model="judgeBasicInfo.ethnicity_fa" id="textinput" name="textinput" placeholder="قومیت" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="judgeBasicInfo.ethnicityDD" ng-show="judgeBasicInfo.ethnicityDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in judgeBasicInfo.ethnicityDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+        </div>
+        <!-- Judge Type 1  -->
+        <div>
+            <label class="control-label" for="radios">Judge Type 1</label>
+            <div class="row">
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="judgeBasicInfo.is_cleric" ng-value="true" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.is_cleric = true' ng-class="{'checked': judgeBasicInfo.is_cleric==true}"></span> <span class="radioTag">Cleric</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input ng-model="judgeBasicInfo.is_cleric" ng-value="false" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.is_cleric = false' ng-class="{'checked': judgeBasicInfo.is_cleric==false}"></span> <span class="radioTag">Not Cleric</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-2">
+                    <input ng-model="judgeBasicInfo.is_cleric" ng-value="null" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.is_cleric = null' ng-class="{'checked': judgeBasicInfo.is_cleric==null}"></span> <span class="radioTag">Unknown</span>
+                </label>
+            </div>
+        </div>
+        <!-- Judge Type 2 -->
+        <div>
+            <label class="control-label" for="radios">Judge Type 2</label>
+            <div class="row">
+                <label class="col-xs-3 radio-inline" for="radios-0">
+                    <input ng-model="judgeBasicInfo.judge_type" ng-value="'research'" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.judge_type = "research"' ng-class="{'checked': judgeBasicInfo.judge_type=='research'}"></span> <span class="radioTag">Research</span>
+                </label>
+                <label class="col-xs-3 radio-inline" for="radios-1">
+                    <input ng-model="judgeBasicInfo.judge_type" ng-value="'primary'" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.judge_type = "primary"' ng-class="{'checked': judgeBasicInfo.judge_type=='primary'}"></span> <span class="radioTag">Primary</span>
+                </label>
+                <label class="col-xs-3 radio-inline" for="radios-2">
+                    <input ng-model="judgeBasicInfo.judge_type" ng-value="'appeal'" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.judge_type = "appeal"' ng-class="{'checked': judgeBasicInfo.judge_type=='appeal'}"></span> <span class="radioTag">Appeal</span>
+                </label>
+                <label class="col-xs-3 radio-inline" for="radios-2">
+                    <input ng-model="judgeBasicInfo.judge_type" ng-value="'supreme'" type="radio">
+                    <span class="radioBtn" ng-click='judgeBasicInfo.judge_type = "supreme"' ng-class="{'checked': judgeBasicInfo.judge_type=='supreme'}"></span> <span class="radioTag">Supreme</span>
+                </label>
+            </div>
+        </div>
+        <!--
+
+        Biography
+
+        -->
+        <div class="form-group Biography" ng-class="{'has-error' : formBio.$submitted && formBio.biography_fa.$error.required }">
+            <label class="control-label" for="textinput">بیوگرافی</label>
+            <textarea ng-model="judgeBasicInfo.biography_fa" name="biography_fa" placeholder="بیوگرافی" class="form-control input-md" type="text" maxlength="350" ></textarea>
+        </div>
+        <!--
+
+        Explanation (IPA)
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation (IPA)</label>
+            <textarea ng-model="judgeBasicInfo.explanation_fa" name="explanation_fa" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+        <!--
+
+        Explanation (AeA)
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation (AeA)</label>
+            <textarea ng-model="judgeBasicInfo.explanation_aea_fa" name="explanation_aea_fa" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+    </div>
+    </div>
+    <button type="submit" id="submitBasicInfo" class="btn btn-primary submitButton">Submit</button>
+    <button ng-click="editJudge($event)" id="submitBasicInfo" class="btn btn-primary submitButton">Cancel</button>
+</form>

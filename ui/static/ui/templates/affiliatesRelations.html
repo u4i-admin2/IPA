@@ -1,0 +1,268 @@
+<!-- 
+
+static 
+
+-->
+<div ng-hide="method == 'POST'" class="col-xs-12 relationships">
+    <label class="control-label " for="textinput">Relationships list</label>
+    <div class=" row" ng-repeat="relation in current.relationships">
+        <div class="  col-xs-6 formEnglish">
+            <div class="form-group">
+                <label class="control-label" for="textinput">Relationship
+                    <font class="icon-cancel" ng-click="delete(relation.id , 'relationship')"></font>
+                    <font ng-click="editRelationship(relation)" class="icon-pencil"></font>
+                </label>
+                <div>{$ relation.relationship_type.name_en $} {$ relation.forename_en $} {$ relation.surname_en $}
+                </div>
+            </div>
+        </div>
+        <div class=" col-xs-6 formFarsi">
+            <div class="form-group">
+                <label class="control-label" for="textinput">Relationship
+                    <font class="icon-cancel" ng-click="delete(relation.id , 'relationship')"></font>
+                    <font ng-click="editRelationship(relation)" class="icon-pencil"></font>
+                </label>
+                <div>{$ relation.relationship_type.name_fa $} {$ relation.forename_fa $} {$ relation.surname_fa $}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+
+relatioship 
+
+-->
+<form ng-hide="method == 'POST'" class="relationshipForm" name="relationshipForm" novalidate ng-submit="relationshipForm.$valid && saveRelationship()">
+    <div class="col-xs-6 formEnglish">
+        <!-- 
+
+        Related Person
+
+        -->
+        <div class="relation form-group" ng-class="{'has-error' : relationshipForm.prisoner.$error.required && relationshipForm.$submitted  }">
+            <label class="control-label" for="textinput">Related Person</label>
+            <input ng-required="true" autocomplete="off" ng-value="" ng-change="predict('prisoner' , relationship.prisoner ,  'relationship' ,'prisonerDD','prisoners' , 'surname' , true)" ng-model="relationship.prisoner" id="textinput" name="prisoner" placeholder="قومیت" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="relationship.prisonerDD" ng-show="relationship.prisonerDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-click="selectFrom()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in relationship.prisonerDD ">{$ item.forename_en $} {$ item.surname_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Nature of Relationship
+
+        -->
+        <div class="relation form-group" ng-class="{'has-error' : relationshipForm.relationship_type_id.$error.required &&relationshipForm.$submitted  }">
+            <label class="control-label" for="radios">Nature of Relationship</label>
+            <div class="row">
+                <label class="col-xs-2 radio-inline" for="radios-0">
+                    <input name="" ng-model="relationship.gender" ng-value="1" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 1' ng-class="{'checked': relationship.relationship_type_id == 1}"></span> <span class="radioTag">Child of</span>
+                </label>
+                <label class="col-xs-2 radio-inline" for="radios-1">
+                    <input name="" ng-model="relationship.relationship_type_id" ng-value="2" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 2' ng-class="{'checked': relationship.relationship_type_id==2}"></span> <span class="radioTag">Parent of</span>
+                </label>
+                <label class="col-xs-2 radio-inline" for="radios-1">
+                    <input name="" ng-model="relationship.relationship_type_id" ng-value="3" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 3' ng-class="{'checked': relationship.relationship_type_id==3}"></span> <span class="radioTag">Spouse</span>
+                </label>
+                <label class="col-xs-2 radio-inline" for="radios-1">
+                    <input name="" ng-model="relationship.relationship_type_id" ng-value="4" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 4' ng-class="{'checked': relationship.relationship_type_id==4}"></span> <span class="radioTag">Extended Family</span>
+                </label>
+                <label class="col-xs-3 radio-inline" for="radios-1">
+                    <input name="" ng-model="relationship.relationship_type_id" ng-value="5" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 5' ng-class="{'checked': relationship.relationship_type_id==5}"></span> <span class="radioTag">Sibling</span>
+                </label>
+            </div>
+        </div>
+        <!-- 
+
+        Affiliated with 
+
+        -->
+        <!-- <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="relationship.is_confirmed" ng-value="false" type="radio">
+                <span class="radioBtn" ng-click='relationship.is_confirmed = false' ng-class="{'checked': relationship.is_confirmed==false}"></span> <span class="radioTag">Confirmed</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="relationship.is_confirmed" ng-value="true" type="radio">
+                <span class="radioBtn" ng-click='relationship.is_confirmed = true' ng-class="{'checked': relationship.is_confirmed==true}"></span> <span class="radioTag">Alleged</span>
+            </label>
+        </div> -->
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <!-- 
+
+        Related Person
+
+        -->
+        <div class="relation form-group" ng-class="{'has-error' : relationshipForm.prisoner_fa.$error.required &&relationshipForm.$submitted  }">
+            <label class="control-label" for="textinput">Related Person</label>
+            <input autocomplete="off" ng-required="true" ng-value="" ng-change="predict('prisoner' , relationship.prisoner_fa ,  'relationship' ,'prisonerDD_fa','prisoners' , 'surname')" ng-model="relationship.prisoner_fa" id="textinput" name="prisoner_fa" placeholder="قومیت" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="relationship.prisonerDD" ng-show="relationship.prisonerDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-click="selectFrom()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in relationship.prisonerDD_fa ">{$ item.forename_fa $} {$ item.surname_fa $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Nature of Relationship
+
+        -->
+        <div class="relation form-group" ng-class="{'has-error' : relationshipForm.relationship_type_id.$error.required &&relationshipForm.$submitted  }">
+            <label class="control-label" for="radios">Nature of Relationship</label>
+            <div class="row">
+                <label class="col-xs-2 radio-inline" for="radios-0">
+                    <input ng-required="true" name="relationship_type_id" ng-model="relationship.relationship_type_id" ng-value="1" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 1' ng-class="{'checked': relationship.relationship_type_id == 1}"></span> <span class="radioTag">Child of</span>
+                </label>
+                <label class="col-xs-2 radio-inline" for="radios-1">
+                    <input ng-required="true" name="relationship_type_id" ng-model="relationship.relationship_type_id" ng-value="2" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 2' ng-class="{'checked': relationship.relationship_type_id==2}"></span> <span class="radioTag">Parent of</span>
+                </label>
+                <label class="col-xs-2 radio-inline" for="radios-1">
+                    <input ng-required="true" name="relationship_type_id" ng-model="relationship.relationship_type_id" ng-value="3" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 3' ng-class="{'checked': relationship.relationship_type_id==3}"></span> <span class="radioTag">Spouse</span>
+                </label>
+                <label class="col-xs-2 radio-inline" for="radios-1">
+                    <input ng-required="true" name="relationship_type_id" ng-model="relationship.relationship_type_id" ng-value="4" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 4' ng-class="{'checked': relationship.relationship_type_id==4}"></span> <span class="radioTag">Extended Family</span>
+                </label>
+                <label class="col-xs-3 radio-inline" for="radios-1">
+                    <input ng-required="true" name="relationship_type_id" ng-model="relationship.relationship_type_id" ng-value="5" type="radio">
+                    <span class="radioBtn" ng-click='relationship.relationship_type_id = 5' ng-class="{'checked': relationship.relationship_type_id==5}"></span> <span class="radioTag">Sibling</span>
+                </label>
+            </div>
+        </div>
+        <!-- 
+
+        Affiliated with 
+
+        -->
+        <!-- <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="relationship.is_confirmed" ng-value="false" type="radio">
+                <span class="radioBtn" ng-click='relationship.   
+is_confirmed = false' ng-class="{'checked': relationship.is_confirmed==false}"></span> <span class="radioTag">Confirmed</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="relationship.is_confirmed" ng-value="true" type="radio">
+                <span class="radioBtn" ng-click='relationship.   
+is_confirmed = true' ng-class="{'checked': relationship.is_confirmed==true}"></span> <span class="radioTag">Alleged</span>
+            </label>
+        </div> -->
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">SAVE RELATIONSHIP</button>
+    <button ng-show="editRelationshipMode" ng-click="cancelEditRelationship($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>
+<!-- 
+
+static  Affiliation
+
+-->
+<div ng-hide="method == 'POST'" class="col-xs-12 relationships">
+    <label class="control-label " for="textinput">Affiliates list</label>
+    <div class=" row" ng-repeat="affiliation in current.affiliations">
+        <div class="  col-xs-6 formEnglish">
+            <div class="form-group">
+                <label class="control-label" for="textinput">Affiliation
+                    <font class="icon-cancel" ng-click="delete(affiliation.id , 'affiliation')"></font>
+                    <font ng-click="editAffiliation(affiliation)" class="icon-pencil"></font>
+                </label>
+                <div>{$ affiliation.organisation.name_en $}</div>
+                <div>{$ affiliation.confirmed == true ? "Confirmed" : "Alleged" $}</div>
+            </div>
+        </div>
+        <div class=" col-xs-6 formFarsi">
+            <div class="form-group">
+                <label class="control-label" for="textinput">Affiliation
+                    <font class="icon-cancel" ng-click="delete(affiliation.id , 'affiliation')"></font>
+                    <font ng-click="editAffiliation(affiliation)" class="icon-pencil"></font>
+                </label>
+                <div>{$ affiliation.organisation.name_fa $}</div>
+                <div>{$ affiliation.confirmed == true ? "Confirmed" : "Alleged" $}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+
+Affiliation  
+
+-->
+<form ng-hide="method == 'POST'" class="affiliationForm" name="affiliationForm" novalidate ng-submit="affiliationForm.$valid && saveAffiliation()">
+    <div class="col-xs-6 formEnglish">
+        <!-- 
+
+        Affiliation orginisation
+
+        -->
+        <div class="relation form-group" ng-class="{'has-error' : affiliationForm.organisation.$error.required &&affiliationForm.$submitted  }">
+            <label class="control-label" for="textinput">Affiliated orginisation</label>
+            <input ng-required="true" autocomplete="off" ng-value="" ng-change="predict('organisation' , affiliation.organisation ,  'affiliation' ,'organisationDD','prisoners' , 'name')" ng-model="affiliation.organisation" id="textinput" name="organisation" placeholder="قومیت" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="affiliation.organisationDD" ng-show="affiliation.organisationDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-click="selectFrom()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in affiliation.organisationDD ">{$ item.name_en $} {$ item.surname_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+
+        Affiliation with 
+
+        -->
+        <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="affiliation.confirmed" ng-value="true" type="radio">
+                <span class="radioBtn" ng-click='affiliation.   
+confirmed = true' ng-class="{'checked': affiliation.confirmed==true}"></span> <span class="radioTag">Confirmed</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="affiliation.confirmed" ng-value="false" type="radio">
+                <span class="radioBtn" ng-click='affiliation.   
+confirmed = false' ng-class="{'checked': affiliation.confirmed==false}"></span> <span class="radioTag">Alleged</span>
+            </label>
+        </div>
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <!-- 
+
+        Affiliation orginisation
+
+        -->
+        <div class="relation form-group" ng-class="{'has-error' : affiliationForm.organisation.$error.required &&affiliationForm.$submitted  }">
+            <label class="control-label" for="textinput">Affiliated orginisation</label>
+            <input ng-required="true" autocomplete="off" ng-value="" ng-change="predict('organisation' , affiliation.organisation_fa ,  'affiliation' ,'organisationDD_fa','prisoners' , 'name')" ng-model="affiliation.organisation_fa" id="textinput" name="prisoner" placeholder="قومیت" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="affiliation.organisationDD" ng-show="affiliation.organisationDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-click="selectFrom()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in affiliation.organisationDD_fa ">{$ item.name_fa $} {$ item.surname_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+
+        Affiliation with 
+
+        -->
+        <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="affiliation.confirmed" ng-value="true" type="radio">
+                <span class="radioBtn" ng-click='affiliation.   
+confirmed = true' ng-class="{'checked': affiliation.confirmed==true}"></span> <span class="radioTag">Confirmed</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="affiliation.confirmed" ng-value="false" type="radio">
+                <span class="radioBtn" ng-click='affiliation.   
+confirmed = false' ng-class="{'checked': affiliation.confirmed==false}"></span> <span class="radioTag">Alleged</span>
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">SAVE AFFILIATES</button>
+    <button ng-show="editAffiliationMode" ng-click="cancelEditAffiliation($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>

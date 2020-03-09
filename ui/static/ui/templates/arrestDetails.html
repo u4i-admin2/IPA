@@ -1,0 +1,332 @@
+<!-- 
+
+static area  
+
+-->
+<div class="arrest col-xs-12" ng-repeat="arrest in current.arrests">
+    <div data-id="{$$index$}" class="arrestHeader">
+        <div class="row" ng-class-odd="'odd'">
+            <div class="col-xs-6 formEnglish">
+                <div>
+                    <font class="index">{$$index + 1$}</font>
+                    <font ng-if="arrest.arrest_day_fa">{$arrest.arrest_year$} </font>
+                    <font ng-if="arrest.activity_persecuted_for.name_en && arrest.arrest_year">-</font>
+                    <font> {$ arrest.activity_persecuted_for.name_en $} </font>
+                    <font ng-if="arrest.city.name_en ">-</font>
+                    <font>{$ arrest.city.name_en $}</font>
+                </div>
+            </div>
+            <div class="col-xs-6 formFarsi">
+                <div>
+                    <font class="index">{$$index + 1 | pNumber $}</font>
+                    <font>{$ arrest.activity_persecuted_for.name_fa $}</font>
+                    <font ng-if="arrest.activity_persecuted_for.name_fa && arrest.arrest_year_fa">-</font>
+                    <font ng-if="arrest.arrest_year_fa">- {$arrest.arrest_year_fa | pNumber $} </font>
+                    <font ng-if="arrest.city.name_fa ">-</font>
+                    <font ng-if="arrest.city.name_fa">- {$ arrest.city.name_fa $}</font>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="arrestBody arrestBody{$$index$}">
+        <div class="row">
+            <div class="col-xs-6 formEnglish">
+                <button ng-click="editArrest($index)" class="btn btn-primary edit">EDIT
+                    <font class="icon-pencil"></font>
+                </button>
+                <button ng-click="delete(arrest.id ,'arrest')" class="btn btn-primary edit">Delete
+                    <font class="icon-pencil"></font>
+                </button>
+            </div>
+            <div class="col-xs-6 formFarsi">
+                <button ng-click="editArrest($index)" class="btn btn-primary edit">EDIT
+                    <font class="icon-pencil"></font>
+                </button>
+                <button ng-click="delete(arrest.id , 'arrest')" class="btn btn-primary edit">Delete
+                    <font class="icon-pencil"></font>
+                </button>
+            </div>
+        </div>
+        <div arrest-form class="row arrestFormHolderEdit">
+        </div>
+        <div class="staticViewArrest">
+            <div class="row">
+                <div class="col-xs-6 formEnglish">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Date of Arrest</label>
+                        <div>
+                            <font ng-if="arrest.arrest_day">{$arrest.arrest_day $} /</font>
+                            <font ng-if="arrest.arrest_month"> {$arrest.arrest_month $} /</font>{$arrest.arrest_year $}</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 formFarsi">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Date of Arrest</label>
+                        <div>
+                            <font ng-if="arrest.arrest_day_fa">{$arrest.arrest_day_fa | pNumber$} / </font>
+                            <font ng-if="arrest.arrest_month_fa">{$arrest.arrest_month_fa | pNumber$} /</font> {$arrest.arrest_year_fa | pNumber$}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 formEnglish">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Case ID </label>
+                        <div>{$ arrest.case_id.name_en $}</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 formFarsi">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Case ID </label>
+                        <div>{$ arrest.case_id.name_fa $}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 formEnglish">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Activity Persecuted For </label>
+                        <div>{$ arrest.activity_persecuted_for.name_en $}</div>
+                        <div ng-if="arrest.secondary_activity">
+                            <label class="control-label" for="textinput">Secondary Activity </label>
+                            <div>{$ arrest.secondary_activity.name_en $}</div>
+                        </div>
+                        <div ng-if="arrest.tertiary_activity">
+                            <label class="control-label" for="textinput">Tertiary Activity </label>
+                            <div>{$ arrest.tertiary_activity.name_en $}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 formFarsi">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Activity Persecuted For </label>
+                        <div>{$ arrest.activity_persecuted_for.name_fa $}</div>
+                    </div>
+                    <div ng-if="arrest.secondary_activity">
+                        <label class="control-label" for="textinput">Secondary Activity </label>
+                        <div>{$ arrest.secondary_activity.name_fa $}</div>
+                    </div>
+                    <div ng-if="arrest.tertiary_activity">
+                        <label class="control-label" for="textinput">Tertiary Activity </label>
+                        <div>{$ arrest.tertiary_activity.name_fa $}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 formEnglish">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">City of Arrest </label>
+                        <div>{$ arrest.city.name_en $}</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 formFarsi">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">City of Arrest </label>
+                        <div>{$ arrest.city.name_fa $}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 formEnglish">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Charged With</label>
+                        <ul>
+                            <li ng-repeat="item in arrest.charged_with_objs">{$ item.name_en $}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-6 formFarsi">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Charged With</label>
+                        <ul>
+                            <li ng-repeat="item in arrest.charged_with_objs">{$ item.name_fa $}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 formEnglish">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Domestic Law Violated </label>
+                        <div ng-repeat="item in arrest.domestic_law_violated_objs">{$ item.name_en $}</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 formFarsi">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">Domestic Law Violated </label>
+                        <div ng-repeat="item in arrest.domestic_law_violated_objs">{$ item.name_fa $}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 formEnglish">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">International Law Violated</label>
+                        <div ng-repeat="item in arrest.international_law_violated_objs">{$ item.name_en $}</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 formFarsi">
+                    <div class="form-group">
+                        <label class="control-label" for="textinput">International Law Violated</label>
+                        <div ng-repeat="item in arrest.international_law_violated_objs">{$ item.name_fa $}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+
+Judge sentence  
+
+-->
+        <div class="row">
+            <div class="sentenceHolder col-xs-12">
+                <div class="row">
+                    <div class="col-xs-6 formEnglish ">
+                        <div class="quoteForm ">
+                            <div class="subTitle">
+                                SENTENCES
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 formFarsi">
+                        <div class="quoteForm ">
+                            <div class="subTitle">
+                                SENTENCES
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-repeat="sentence in arrest.sentences">
+                    <div class="sentances">
+                        <div class="row" ng-class-odd="'odd'" ng-class-even="'even'" ng-click="slideItem('sentances' + $index + $parent.$index , 'sentence')">
+                            <div class="col-xs-6 formEnglish ">
+                                Sentence {$$index + 1 $}: {$sentence.judge.surname_en$} - Years: {$sentence.sentence_years$} Months: {$sentence.sentence_months$}
+                            </div>
+                            <div class="col-xs-6 formFarsi ">
+                                Sentence {$$index + 1 | pNumber $}: {$sentence.judge.surname_en$} - Years: {$sentence.sentence_years | pNumber $} Months: {$sentence.sentence_months | pNumber $}
+                            </div>
+                        </div>
+                        <div class="sentence sentances{$$index$}{$$parent.$index$}">
+                            <div class="row">
+                                <div class="col-xs-6 formEnglish">
+                                    <button ng-click="editSentance($index , $parent.$index)" class="btn btn-primary edit">EDIT
+                                        <font class="icon-pencil"></font>
+                                    </button>
+                                    <button ng-click="delete(sentence.id , 'sentence')" class="btn btn-primary edit">Delete
+                                        <font class="icon-pencil"></font>
+                                    </button>
+                                </div>
+                                <div class="col-xs-6 formFarsi">
+                                    <button ng-click="editSentance($index , $parent.$index)" class="btn btn-primary edit">EDIT
+                                        <font class="icon-pencil"></font>
+                                    </button>
+                                    <button ng-click="delete(sentence.id , 'sentence')" class="btn btn-primary edit">Delete
+                                        <font class="icon-pencil"></font>
+                                    </button>
+                                </div>
+                            </div>
+                            <div sentance-form-edit></div>
+                            <div class="row sentenceStatic sentancesHolder{$$index$}{$$parent.$index$}">
+                                <div class="col-xs-6 formEnglish ">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Judge</label>
+                                        <div>{$sentence.judge.surname_en$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Judge Behaviour</label>
+                                        <div ng-repeat="behaviour in sentence.behaviours">
+                                            {$behaviour.behaviour_type.name_en$} {$behaviour.description_en$}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Death Penalty</label>
+                                        <div>{$sentence.death_penalty == true ? 'Yes' : 'No'$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Life in Prison</label>
+                                        <div>{$sentence.life == true ? 'Yes' : 'No'$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Exiled</label>
+                                        <div>{$sentence.exiled == true ? 'Yes' : 'No'$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Sentence</label>
+                                        <div>Years:{$sentence.sentence_years$} Months:{$sentence.sentence_months$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Fine</label>
+                                        <div>{$sentence.fine$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Lashes</label>
+                                        <div>{$sentence.number_of_lashes $}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Social Depravation </label>
+                                        <div>{$sentence.social_depravation_en$}</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 formFarsi ">
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Judge</label>
+                                        <div>{$sentence.judge.surname_en$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Judge Behaviour</label>
+                                        <div ng-repeat="behaviour in sentence.behaviours">
+                                            {$behaviour.behaviour_type.name_fa$} {$behaviour.description_fa$}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Death Penalty</label>
+                                        <div>{$sentence.death_penalty == true ? 'Yes' : 'No'$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Life in Prison</label>
+                                        <div>{$sentence.life == true ? 'Yes' : 'No'$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Exiled</label>
+                                        <div>{$sentence.exiled == true ? 'Yes' : 'No'$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Sentence</label>
+                                        <div>Years:{$sentence.sentence_years | pNumber $} Months:{$sentence.sentence_months | pNumber $}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Fine</label>
+                                        <div>{$sentence.fine | pNumber$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Lashes</label>
+                                        <div>{$sentence.number_of_lashes | pNumber$}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="textinput">Social Depravation </label>
+                                        <div>{$sentence.social_depravation_fa$}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 buttonHolder">
+                <button ng-click="showSentenceForm($event ,$index)" class="btn btn-primary pull-right showSentenceForm" name="addSource" id="addSource">ADD SENTENCE </button>
+            </div>
+            <div sentance-form></div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 ">
+    <br/>
+    <button class="btn btn-primary pull-right" name="addSource" ng-click="showArrestDetailsForm($event)" id="addSource">ADD ARREST</button>
+</div>
+<!-- 
+
+Arrest Form 
+
+-->
+<div arrest-form class="arrestFormHolder">
+</div>

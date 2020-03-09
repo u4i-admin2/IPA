@@ -1,0 +1,338 @@
+<div class="col-xs-12">
+    <div class="staticView row">
+        <div class="col-xs-6 formEnglish">
+            <button ng-click="editPrisonBasicInfo($event)" ng-hide="method == 'POST'" class="btn btn-primary edit">EDIT
+                <font class="icon-pencil"></font>
+            </button>
+        </div>
+        <div class="col-xs-6 formFarsi">
+            <button ng-click="editPrisonBasicInfo($event)" ng-hide="method == 'POST'" class="btn btn-primary edit">EDIT
+                <font class="icon-pencil"></font>
+            </button>
+        </div>
+    </div>
+    <div class="row addBasicInfo">
+        <div class="col-xs-6 formEnglish">
+            <div class="form-group">
+                <label class="control-label" for="textinput">Name of prison </label>
+                <div>{$ current.name_en $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Address </label>
+                <div>{$ current.address_en $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Latitude & Longitude</label>
+                <div>{$ current.latitude $}
+                    <font ng-if="current.longitude">,</font> {$ current.longitude $}
+                </div>
+            </div>
+            <label class="control-label" for="textinput">Dean of Prison</label>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Name</label>
+                <div>{$ current.dean_name_en $}
+                </div>
+                <label class="control-label" for="textinput">Telephone</label>
+                <div>{$ current.dean_phone $}
+                </div>
+                <label class="control-label" for="textinput">Email</label>
+                <div>{$ current.dean_email $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Open Date</label>
+                <div>
+                    <!-- <font ng-if="current.opened_day">{$ current.opened_day $} / </font>
+                    <font ng-if="current.opened_month">{$ current.opened_month $} /</font> -->{$ current.opened_year $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Capacity</label>
+                <div>{$ current.capacity $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Administered by</label>
+                <div>{$ current.administered_by == 'moi' ? 'Ministry of Information' : "" $} {$ current.administered_by == 'police' ? 'Police' : "" $}{$ current.administered_by == 'irgc' ? 'IRGC' : "" $}{$ current.administered_by == 'pdotj' ? 'Prisons Division of the Judiciary' : "" $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Explanation (IPA)</label>
+                <div>{$ current.explanation_en $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Explanation (AeA)</label>
+                <div>{$ current.explanation_aea_en $}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 formFarsi">
+            <div class="form-group">
+                <label class="control-label" for="textinput">Name of prison </label>
+                <div>{$ current.name_fa $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Address</label>
+                <div>{$ current.address_fa $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Latitude & Longitude</label>
+                <div>{$ current.latitude | pNumber$}
+                    <font ng-if="current.longitude">,</font> {$ current.longitude | pNumber$}
+                </div>
+            </div>
+            <label class="control-label" for="textinput">Dean of Prison</label>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Name</label>
+                <div>{$ current.dean_name_fa $}
+                </div>
+                <label class="control-label" for="textinput">Telephone</label>
+                <div>{$ current.dean_phone | pNumber $}
+                </div>
+                <label class="control-label" for="textinput">Email</label>
+                <div>{$ current.dean_email $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Open Date</label>
+                <div>
+                    <!-- <font ng-if="current.opened_day">{$ current.opened_day | pNumber $} / </font>
+                    <font ng-if="current.opened_month">{$ current.opened_month | pNumber $} /</font> -->{$ current.opened_year_fa | pNumber $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Capacity</label>
+                <div>{$ current.capacity | pNumber $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Administered by</label>
+                <div>{$ current.administered_by == 'moi' ? 'Ministry of Information' : "" $} {$ current.administered_by == 'police' ? 'Police' : "" $}{$ current.administered_by == 'irgc' ? 'IRGC' : "" $}{$ current.administered_by == 'pdotj' ? 'Prisons Division of the Judiciary' : "" $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Explanation (IPA)</label>
+                <div>{$ current.explanation_fa $}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="textinput">Explanation (AeA)</label>
+                <div>{$ current.explanation_aea_fa $}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- English -->
+<form id="prisonbasicInfoform" class="prisonbasicInfoform" name="prisonbasicInfoform" novalidate ng-submit="prisonbasicInfoform.$valid && addPrisonbasicInfo()">
+    <div class="col-xs-6 formEnglish">
+        <!-- Prison name -->
+        <div class="form-group" ng-class="{'has-error' : prisonbasicInfoform.name_en.$error.required && prisonbasicInfoform.$submitted  }">
+            <label class="control-label" for="textinput">Name of prison</label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.name_en" name="name_en" required placeholder="Name of prison" class="form-control input-md" type="text">
+        </div>
+        <!-- Address -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Address - separate lines by comma</label>
+            <input maxlength="100" autocomplete="off" ng-model="prisonbasicInfo.address_en" name="address_en" placeholder="Address" class="form-control input-md" type="text">
+        </div>
+        <!-- Coordinates -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Latitude & Longitude</label>
+            <div class="row">
+                <div class="col-xs-6">
+                    <input autocomplete="off" ng-model="prisonbasicInfo.latitude" name="latitude" placeholder="latitude" class="form-control input-md" input type="text" pattern="[0-9\.]*">
+                </div>
+                <div class="col-xs-6">
+                    <input autocomplete="off" ng-model="prisonbasicInfo.longitude" name="longitude" placeholder="longitude" class="form-control input-md" input type="text" pattern="[0-9\.]*">
+                </div>
+            </div>
+            <div class="error" ng-show="prisonbasicInfoform.latitude.$error.number ||  prisonbasicInfoform.longitude.$error.number">Please enter valid Number</div>
+        </div>
+        <!-- Dean of Prison -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Dean of Prison</label>
+            <br/>
+            <label class="control-label" for="textinput">Name</label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.dean_name_en" name="dean_name_en" placeholder="Name of Dean" class="form-control input-md" type="text">
+            <label class="control-label" for="textinput">Telephone</label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.dean_phone" name="dean_name_en" placeholder="Telephone" class="form-control input-md" type="tel">
+            <label class="control-label" for="textinput">Email</label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.dean_email" name="dean_email" placeholder="Email" class="form-control input-md" type="email">
+            <div class="error" ng-show="prisonbasicInfoform.dean_email.$error.email">Not valid email!</div>
+        </div>
+        <!-- opening date -->
+        <div class="form-group" ng-class="{'has-error' : formerPosition.$submitted }">
+            <label class="control-label" for="textinput">Start Date</label>
+            <dateyear local-model="'od'" />
+        </div>
+        <!-- Prison Capacity-->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Prison Capicity </label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.capacity" name="capacity" placeholder="Capacity" class="form-control input-md" type="number">
+            <div class="error" ng-show="prisonbasicInfoform.capacity.$error.number">Please enter valid Number</div>
+            <div class="row extraField">
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="prisonbasicInfo.capacity_is_estimate" ng-value="false" type="radio">
+                    <span class="radioBtn" ng-click='prisonbasicInfo.
+capacity_is_estimate = false' ng-class="{'checked': prisonbasicInfo.capacity_is_estimate==false}"></span> <span class="radioTag">Estimated</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input ng-model="prisonbasicInfo.capacity_is_estimate" ng-value="true" type="radio">
+                    <span class="radioBtn" ng-click='prisonbasicInfo.
+capacity_is_estimate = true' ng-class="{'checked': prisonbasicInfo.capacity_is_estimate==true}"></span> <span class="radioTag">Actual</span>
+                </label>
+            </div>
+        </div>
+        <label class="control-label" for="textinput">Administered by</label>
+        <div class="row">
+            <label class="col-xs-3 radio-inline" for="radios-0">
+                <input ng-model="prisonbasicInfo.administered_by" ng-value="'moi'" type="radio">
+                <span class="radioBtn" ng-click='prisonbasicInfo.
+administered_by = "moi"' ng-class="{'checked': prisonbasicInfo.administered_by== 'moi'}"></span> <span class="radioTag">Ministry of Information</span>
+            </label>
+            <label class="col-xs-3 radio-inline" for="radios-1">
+                <input ng-model="prisonbasicInfo.administered_by" ng-value="'police'" type="radio">
+                <span class="radioBtn" ng-click='prisonbasicInfo.
+administered_by = "police"' ng-class="{'checked': prisonbasicInfo.administered_by== 'police' }"></span> <span class="radioTag">Police</span>
+            </label>
+            <label class="col-xs-3 radio-inline" for="radios-0">
+                <input ng-model="prisonbasicInfo.administered_by" ng-value="'irgc'" type="radio">
+                <span class="radioBtn" ng-click='prisonbasicInfo.
+administered_by = "irgc" ' ng-class="{'checked': prisonbasicInfo.administered_by== 'irgc' }"></span> <span class="radioTag">IRGC</span>
+            </label>
+            <label class="col-xs-3 radio-inline" for="radios-1">
+                <input ng-model="prisonbasicInfo.administered_by" ng-value="'pdotj'" type="radio">
+                <span class="radioBtn" ng-click='prisonbasicInfo.
+administered_by = "pdotj"' ng-class="{'checked': prisonbasicInfo.administered_by=='pdotj'}"></span> <span class="radioTag">Prisons Division of the Judiciary</span>
+            </label>
+        </div>
+        <!--
+
+        Explanation (IPA)
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation (IPA)</label>
+            <textarea ng-model="prisonbasicInfo.explanation_en" name="explanation_en" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+        <!--
+
+        Explanation (AeA)
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation (AeA)</label>
+            <textarea ng-model="prisonbasicInfo.explanation_aea_en" name="explanation_aea_en" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+    </div>
+    <!-- Farsi -->
+    <div class="col-xs-6 formFarsi">
+        <!-- Prison name -->
+        <div class="form-group" ng-class="{'has-error' : prisonbasicInfoform.name_fa.$error.required && prisonbasicInfoform.$submitted  }">
+            <label class="control-label" for="textinput">Name of prison</label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.name_fa" name="name_fa" required placeholder="Name of prison" class="form-control input-md" type="text">
+        </div>
+        <!-- Address -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Address - separate lines by comma</label>
+            <input maxlength="100" autocomplete="off" ng-model="prisonbasicInfo.address_fa" name="address_fa" placeholder="Address" class="form-control input-md" type="text">
+        </div>
+        <!-- Coordinates -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Latitude & Longitude</label>
+            <div class="row">
+                <div class="col-xs-6">
+                    <input autocomplete="off" ng-model="prisonbasicInfo.latitude" name="latitude" placeholder="latitude" class="form-control input-md" input type="text" pattern="[0-9\.]*">
+                </div>
+                <div class="col-xs-6">
+                    <input autocomplete="off" ng-model="prisonbasicInfo.longitude" name="longitude" placeholder="longitude" class="form-control input-md" input type="text" pattern="[0-9\.]*">
+                </div>
+            </div>
+            <div class="error" ng-show="prisonbasicInfoform.latitude.$error.number ||  prisonbasicInfoform.longitude.$error.number">Please enter valid Number</div>
+        </div>
+        <!-- Dean of Prison -->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Dean of Prison</label>
+            <br/>
+            <label class="control-label" for="textinput">Name</label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.dean_name_fa" name="dean_name_fa" placeholder="Name of Dean" class="form-control input-md" type="text">
+            <label class="control-label" for="textinput">Telephone</label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.dean_phone" name="dean_name_en" placeholder="Telephone" class="form-control input-md" type="tel">
+            <label class="control-label" for="textinput">Email</label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.dean_email" name="dean_email" placeholder="Email" class="form-control input-md" type="email">
+            <div class="error" ng-show="prisonbasicInfoform.dean_email.$error.email">Not valid email!</div>
+        </div>
+        <!-- opening date -->
+        <div class="form-group" ng-class="{'has-error' : formerPosition.$submitted }">
+            <label class="control-label" for="textinput">Start Date</label>
+            <datefayear local-model="'od'" />
+        </div>
+        <!-- Prison Capacity-->
+        <div class="form-group">
+            <label class="control-label" for="textinput">Prison Capicity </label>
+            <input maxlength="55" autocomplete="off" ng-model="prisonbasicInfo.capacity" name="capacity" placeholder="Capacity" class="form-control input-md" type="number">
+            <div class="error" ng-show="prisonbasicInfoform.capacity.$error.number">Please enter valid Number</div>
+            <div class="row extraField">
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="prisonbasicInfo.capacity_is_estimate" ng-value="false" type="radio">
+                    <span class="radioBtn" ng-click='prisonbasicInfo.
+capacity_is_estimate = false' ng-class="{'checked': prisonbasicInfo.capacity_is_estimate==false}"></span> <span class="radioTag">Estimated</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input ng-model="prisonbasicInfo.capacity_is_estimate" ng-value="true" type="radio">
+                    <span class="radioBtn" ng-click='prisonbasicInfo.
+capacity_is_estimate = true' ng-class="{'checked': prisonbasicInfo.capacity_is_estimate==true}"></span> <span class="radioTag">Actual</span>
+                </label>
+            </div>
+        </div>
+        <label class="control-label" for="textinput">Administered by</label>
+        <div class="row">
+            <label class="col-xs-3 radio-inline" for="radios-0">
+                <input ng-model="prisonbasicInfo.administered_by" ng-value="'moi'" type="radio">
+                <span class="radioBtn" ng-click='prisonbasicInfo.
+administered_by = "moi"' ng-class="{'checked': prisonbasicInfo.administered_by== 'moi'}"></span> <span class="radioTag">Ministry of Information</span>
+            </label>
+            <label class="col-xs-3 radio-inline" for="radios-1">
+                <input ng-model="prisonbasicInfo.administered_by" ng-value="'police'" type="radio">
+                <span class="radioBtn" ng-click='prisonbasicInfo.
+administered_by = "police"' ng-class="{'checked': prisonbasicInfo.administered_by== 'police' }"></span> <span class="radioTag">Police</span>
+            </label>
+            <label class="col-xs-3 radio-inline" for="radios-0">
+                <input ng-model="prisonbasicInfo.administered_by" ng-value="'irgc'" type="radio">
+                <span class="radioBtn" ng-click='prisonbasicInfo.
+administered_by = "irgc" ' ng-class="{'checked': prisonbasicInfo.administered_by== 'irgc' }"></span> <span class="radioTag">IRGC</span>
+            </label>
+            <label class="col-xs-3 radio-inline" for="radios-1">
+                <input ng-model="prisonbasicInfo.administered_by" ng-value="'pdotj'" type="radio">
+                <span class="radioBtn" ng-click='prisonbasicInfo.
+administered_by = "pdotj"' ng-class="{'checked': prisonbasicInfo.administered_by=='pdotj'}"></span> <span class="radioTag">Prisons Division of the Judiciary</span>
+            </label>
+        </div>
+        <!--
+
+        Explanation (IPA)
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation (IPA)</label>
+            <textarea ng-model="prisonbasicInfo.explanation_fa" name="explanation_fa" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+        <!--
+
+        Explanation (AeA)
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation (AeA)</label>
+            <textarea ng-model="prisonbasicInfo.explanation_aea_fa" name="explanation_aea_fa" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">Save Basic Info</button>
+    <button ng-click="editPrisonBasicInfo($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>

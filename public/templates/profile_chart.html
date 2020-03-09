@@ -1,0 +1,116 @@
+{% load static i18n %}
+<div
+    profile-chart
+    class="hideOnTablet"
+    data-profile-chart-variant="{{ variant }}"
+    {% if is_primary %}
+        data-profile-chart-is-primary="true"
+    {% endif %}
+>
+    <div class="largeSpacer"></div>
+    <div class="col-lg-8 profile-chart-content">
+        <div class="holder">
+            <h3>{% trans "Visualization" %}</h3>
+            <h2
+                ng-if="variant === 'humanRightsViolations'"
+                class="underline-thin  extend-left  thick-border-mobile"
+            >{% trans "Human rights violations" context "Profile chart title" %}</h2>
+            <h2
+                ng-if="variant === 'proceduralViolations'"
+                class="underline-thin  extend-left  thick-border-mobile"
+            >{% trans "Procedural violations" context "Profile chart title" %}</h2>
+            <h2
+                ng-if="variant === 'mistreatments'"
+                class="underline-thin  extend-left  thick-border-mobile"
+            >{% trans "Mistreatments in prison" context "Profile chart title" %}</h2>
+        </div>
+        <div class="profileBarHolder" ng-repeat="(key, entityList) in chartData">
+            <div class="barLegend">{$ key $}</div>
+            <div class="entityRow">
+                <div ng-class=" {'entitySquare' : profileChartsHoveredEntity != entity , 'entitySquare selectedEntity' : profileChartsHoveredEntity == entity , 'selectedEntity' : profileChartsSelectedEntity == entity }" ng-repeat="entity in entityList track by $index" ng-mouseover="hoverEntity(entity)" ng-click="getEntity(entity)" ng-mouseout="hoverOutEntity(entity)"></div>
+            </div>
+            <div class="entityCount">{$ entityList.length $}</div>
+        </div>
+    </div>
+    <div class="toolTipHolder">
+        <div class="toolTip">
+            <div>{$ entityInfoHover.forename $} {$ entityInfoHover.surname $}</div>
+        </div>
+        <div class="triangle-down"></div>
+    </div>
+    <div ng-show="profileChartsSelectedEntityInfo && isPrimary" class="col-sm-4 hideOnlg">
+        <div class="holder">
+            <div class="sp"></div>
+            <h2
+                ng-if="ipa.site === 'aea'"
+                class="thick-border extend-right"
+            >{% trans "Selected Report" context "Profile chart sidebar title" %}</h2>
+            <h2
+                ng-if="ipa.site === 'ipa'"
+                class="thick-border extend-right"
+            >{% trans "Selected Prisoner" context "Profile chart sidebar title" %}</h2>
+        </div>
+        <div ng-if="ipa.site === 'aea'">
+            <div class="row selectedEntityImage">
+                <div class="col-xs-6">
+                    <div class="imageHolder"><img class="profileImage"  alt="{% trans 'Profile Image' %}" ng-src="{$ profileChartsSelectedEntityInfo.picture_resized $}" src="{% static 'public/img/profile_temp.png' %}?v=2019-08-28" /></div>
+                </div>
+                <div
+                    class="col-xs-6 selectedName"
+                    ng-if="profileChartsSelectedEntityInfo.city"
+                >
+                    <div
+                        class="prionerName"
+                        ng-if="ipa.lang === 'en'"
+                    >{$ profileChartsSelectedEntityInfo.city.name_en $}</div>
+                    <div
+                        class="prionerName"
+                        ng-if="ipa.lang === 'fa'"
+                    >{$ profileChartsSelectedEntityInfo.city.name_fa $}</div>
+                </div>
+            </div>
+            <div>
+                <div><b>{% trans "Number of Victims" context "Profile chart sidebar label (AeA)" %}:</b> {$ profileChartsSelectedEntityInfo.victim_count $}</div>
+                <div
+                    ng-if="ipa.lang === 'en'"
+                >
+                    <b>{% trans "Detention Date" context "Profile chart sidebar label (AeA)" %}:</b> {$ profileChartsSelectedEntityInfo.detention_day $}.{$ profileChartsSelectedEntityInfo.detention_month $}.{$ profileChartsSelectedEntityInfo.detention_year $}
+                </div>
+                <div
+                    ng-if="ipa.lang === 'fa'"
+                >
+                    <b>{% trans "Detention Date" %}:</b> {$ profileChartsSelectedEntityInfo.detention_day_fa $}.{$ profileChartsSelectedEntityInfo.detention_month_fa $}.{$ profileChartsSelectedEntityInfo.detention_year_fa $}
+                </div>
+                <div>
+                    <b>{% trans "Domestic Laws Violated" context "Profile chart sidebar label (AeA)" %}:</b>
+                    <span ng-repeat="domestic_law_violated in profileChartsSelectedEntityInfo.domestic_law_violated">{$ ipa.lang === 'en' ? domestic_law_violated.name_en : domestic_law_violated.name_fa $}<span ng-if="!$last">{$ ipa.commaCharacter $} </span></span>
+                </div>
+                <div>
+                    <b>{% trans "International Laws Violated" context "Profile chart sidebar label (AeA)" %}:</b>
+                    <span ng-repeat="international_law_violated in profileChartsSelectedEntityInfo.international_law_violated">{$ ipa.lang === 'en' ? international_law_violated.name_en : international_law_violated.name_fa $}<span ng-if="!$last">{$ ipa.commaCharacter $} </span></span>
+                </div>
+            </div>
+        </div>
+        <div ng-if="ipa.site === 'ipa'">
+            <div class="row selectedEntityImage">
+                <div class="col-xs-6">
+                    <div class="imageHolder"><img class="profileImage"  alt="{% trans 'Profile Image' %}" ng-src="{$ profileChartsSelectedEntityInfo.picture_resized $}" src="{% static 'public/img/profile_temp.png' %}?v=2019-08-28" /></div>
+                </div>
+                <div class="col-xs-6 selectedName">
+                    <div class="prionerName">{$ profileChartsSelectedEntityInfo.forename $} {$ profileChartsSelectedEntityInfo.surname $}</div>
+                    <a ng-href="{$ '/{{LANGUAGE_CODE}}/' + entityType + '/' + profileChartsSelectedEntityInfo.id$}">{% trans "See full profile" %}</a>
+                </div>
+            </div>
+            <div ng-if="$first" ng-repeat="arrest in profileChartsSelectedEntityInfo.arrests | orderBy:order:true ">
+                <div><b>{% trans "Date Arrested" context "Profile chart sidebar label (IPA)" %}:</b> {$ arrest.arrest_day $}.{$ arrest.arrest_month $}.{$ arrest.arrest_year $}</div>
+                <div><b>{% trans "Activity" context "Profile chart sidebar label (IPA)" %}:</b> {$ arrest.activity_persecuted_for.name_{{LANGUAGE_CODE}} $}</div>
+                <div><b>{% trans "Charged" context "Profile chart sidebar label (IPA)" %}:</b><span ng-repeat="charged in arrest.charged_with_objs"><if ng-if="!$first">{$ ipa.commaCharacter $}</if> {$ charged.name_{{LANGUAGE_CODE}} $}</span></div>
+                <div><b>{% trans "Sentenced" context "Profile chart sidebar label (IPA)" %}:</b> <span>{$ getHighestsentance(arrest.sentences)$}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 topSpacer">
+        <div class="thick-line hideOnMobile"></div>
+    </div>
+    <div class="col-sm-4 underline-thin topSpacer hideOnTablet"></div>
+</div>

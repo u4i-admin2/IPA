@@ -1,0 +1,250 @@
+<div class=" row dention">
+    <div class="col-xs-6 formEnglish">
+        <button class="btn btn-primary edit" ng-click="editDetention($event)">EDIT
+            <font class="icon-pencil"></font>
+        </button>
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <button class="btn btn-primary edit" ng-click="editDetention($event)">EDIT
+            <font class="icon-pencil"></font>
+        </button>
+    </div>
+</div>
+<div class=" row dentionHolder">
+    <div class="col-xs-6 formEnglish">
+        <div class="form-group">
+            <label class="control-label" for="textinput">Detained</label>
+            <div>{$ isDetained(current.detention_status) $}</div>
+        </div>
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <div class="form-group">
+            <label class="control-label" for="textinput">Detained</label>
+            <div>{$ isDetained(current.detention_status) $}</div>
+        </div>
+    </div>
+    <div class="col-xs-6 formEnglish">
+        <div class="form-group">
+            <label class="control-label" for="textinput">Status</label>
+            <div>{$ current.detention_status.name_en $}</div>
+        </div>
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <div class="form-group">
+            <label class="control-label" for="textinput">Status</label>
+            <div>{$ current.detention_status.name_fa $}</div>
+        </div>
+    </div>
+    <div class="col-xs-6 formEnglish">
+        <div class="form-group">
+            <label class="control-label" for="textinput">Date</label>
+            <div>
+                <font ng-if="current.detention_day">{$ current.detention_day $} /</font>
+                <font ng-if="current.detention_month">{$ current.detention_month $} /</font>
+                <font ng-if="current.detention_year">{$ current.detention_year $} : {$ current.detention_is_approx ? 'Accurate' : 'Estimated'$}</font>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <div class="form-group">
+            <label class="control-label" for="textinput">Date</label>
+            <div>
+                <font ng-if="current.detention_day_fa">{$ current.detention_day_fa | pNumber$} /</font>
+                <font ng-if="current.detention_month_fa">{$ current.detention_month_fa | pNumber$} /</font>
+                <font ng-if="current.detention_year_fa">{$ current.detention_year_fa | pNumber$} : {$ current.detention_is_approx ? 'Accurate' : 'Estimated'$}</font>
+            </div>
+        </div>
+    </div>
+</div>
+<form class=" row detentionForm" name="detentionForm" novalidate ng-submit="detentionForm.$valid && saveDetention()">
+    <div class="col-xs-6 formEnglish">
+        <!-- 
+
+        detained 
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : detentionForm.$submitted && detentionForm.detained.$error.required }">
+            <label class="control-label" for="radios">Detained</label>
+            <div class="row">
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input required ng-model="detention_status.detained" name="detained" ng-value="false" type="radio">
+                    <span class="radioBtn" ng-click='detention_status.detained = false' ng-class="{'checked': detention_status.detained==false}"></span> <span class="radioTag">Yes</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input required ng-model="detention_status.detained" name="detained" ng-value="true" type="radio">
+                    <span class="radioBtn" ng-click='detention_status.detained = true' ng-class="{'checked': detention_status.detained==true}"></span> <span class="radioTag">No</span>
+                </label>
+            </div>
+        </div>
+        <!--
+    
+        Yes Statuses
+
+        -->
+        <div ng-show="detention_status.detained == false" class="form-group" ng-class="{'has-error' : detention_statusForm.$submitted }">
+            <label class="control-label" for="textinput">Yes Statuses</label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectDetention('name_fa')" ng-model="detention_status.activity_persecuted_for_objs" theme="bootstrap">
+                    <ui-select-match placeholder="Yes - Detention Statuses">{$$select.selected.name_en$}</ui-select-match>'
+                    <ui-select-choices repeat="item in detentionstatusYes">
+                        <div ng-bind-html="item.name_en"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!--
+    
+        NO Statuses
+
+        -->
+        <div ng-show="detention_status.detained == true" class="form-group" ng-class="{'has-error' : detention_statusForm.$submitted }">
+            <label class="control-label" for="textinput">No Statuses</label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectDetention('name_fa')" ng-model="detention_status.activity_persecuted_for_objs" theme="bootstrap">
+                    <ui-select-match placeholder="No - Detention Statuses">{$$select.selected.name_en$}</ui-select-match>'
+                    <ui-select-choices repeat="item in detentionstatusNo">
+                        <div ng-bind-html="item.name_en"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!--
+    
+        Arrest Link
+
+        -->
+        <div ng-hide="editPrisonerDetailsMode" class="form-group" ng-class="{'has-error' : arrestDetailsForm.$submitted }">
+            <label class="control-label" for="textinput">Choose arrest to auto populate date </label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectDetentionDate()" ng-model="prisonerPrison.arrest" theme="bootstrap">
+                    <ui-select-match placeholder="Activity Persecuted For">
+                        <font>{$ $select.selected.activity_persecuted_for.name_en $}</font>
+                        <font ng-if="$select.selected.arrest_day">{$$select.selected.arrest_day$} / {$$select.selected.arrest_month$} / {$$select.selected.arrest_year$} </font>
+                        <font>{$ $select.selected.case_id.name_en $}</font>
+                    </ui-select-match>
+                    <ui-select-choices repeat="item in current.arrests">
+                        <font>{$$index + 1$}</font>
+                        <font>{$ item.activity_persecuted_for.name_en $}</font>
+                        <font ng-if="item.arrest_day">{$item.arrest_day$} / {$item.arrest_month$} / {$item.arrest_year$} </font>
+                        <font>{$ item.case_id.name_en $}</font>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!-- 
+
+        Date of Detention 
+
+        -->
+        <label class="control-label" for="textinput">Date of Detention</label>
+        <date local-model="'dod'" />
+        <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="detention_status.detention_is_approx" ng-value="false"  type="radio">
+                <span class="radioBtn" ng-click='detention_status.   
+detention_is_approx = false' ng-class="{'checked': detention_status.detention_is_approx==false}"></span> <span class="radioTag">Estimated</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="detention_status.detention_is_approx" ng-value="true" type="radio" >
+                <span class="radioBtn" ng-click='detention_status.   
+detention_is_approx = true' ng-class="{'checked': detention_status.detention_is_approx==true}"></span> <span class="radioTag">Actual</span>
+            </label>
+        </div>
+    </div>
+    <div class="col-xs-6 formFarsi">
+        <!-- 
+
+        detained 
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : detentionForm.$submitted && detentionForm.detained.$error.required }">
+            <label class="control-label" for="radios">Detained</label>
+            <div class="row">
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input required ng-model="detention_status.detained" name="detained" ng-value="false" type="radio">
+                    <span class="radioBtn" ng-click='detention_status.detained = false' ng-class="{'checked': detention_status.detained==false}"></span> <span class="radioTag">Yes</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input required ng-model="detention_status.detained" name="detained" ng-value="true" type="radio">
+                    <span class="radioBtn" ng-click='detention_status.detained = true' ng-class="{'checked': detention_status.detained==true}"></span> <span class="radioTag">No</span>
+                </label>
+            </div>
+        </div>
+        <!--
+    
+        Yes Statuses
+
+        -->
+        <div ng-show="detention_status.detained == false" class="form-group" ng-class="{'has-error' : detention_statusForm.$submitted }">
+            <label class="control-label" for="textinput">Yes Statuses</label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectDetention('name_fa')" ng-model="detention_status.activity_persecuted_for_objs" theme="bootstrap">
+                    <ui-select-match placeholder="Yes - Detention Statuses">{$$select.selected.name_fa$}</ui-select-match>'
+                    <ui-select-choices repeat="item in detentionstatusYes">
+                        <div ng-bind-html="item.name_fa"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!--
+    
+        NO Statuses
+
+        -->
+        <div ng-show="detention_status.detained == true" class="form-group" ng-class="{'has-error' : detention_statusForm.$submitted }">
+            <label class="control-label" for="textinput">No Statuses</label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectDetention('name_fa')" ng-model="detention_status.activity_persecuted_for_objs" theme="bootstrap">
+                    <ui-select-match placeholder="No - Detention Statuses">{$$select.selected.name_fa$}</ui-select-match>'
+                    <ui-select-choices repeat="item in detentionstatusNo">
+                        <div ng-bind-html="item.name_fa"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!--
+    
+        Arrest Link
+
+        -->
+        <div ng-hide="editPrisonerDetailsMode" class="form-group" ng-class="{'has-error' : arrestDetailsForm.$submitted }">
+            <label class="control-label" for="textinput">Choose arrest to auto populate date  </label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectDetentionDate()" ng-model="prisonerPrison.arrest" theme="bootstrap">
+                    <ui-select-match placeholder="Activity Persecuted For">
+                        <font>{$ $select.selected.activity_persecuted_for.name_fa $}</font>
+                        <font ng-if="$select.selected.arrest_day_fa">{$$select.selected.arrest_day_fa$} / {$$select.selected.arrest_month_fa$} / {$$select.selected.arrest_year_fa$} </font>
+                        <font>{$ $select.selected.case_id.name_fa $}</font>
+                    </ui-select-match>
+                    <ui-select-choices repeat="item in current.arrests">
+                        <font>{$$index + 1$}</font>
+                        <font>{$ item.activity_persecuted_for.name_fa $}</font>
+                        <font ng-if="item.arrest_day_fa">{$item.arrest_day_fa | pNumber$} / {$item.arrest_month_fa | pNumber$} / {$item.arrest_year_fa | pNumber$} </font>
+                        <font>{$ item.case_id.name_fa $}</font>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!-- 
+
+        Date of Detention 
+
+        -->
+        <label class="control-label" for="textinput">Date of Detention</label>
+        <datefa local-model="'dod'" />
+        <div class="row extraField">
+            <label class="col-xs-4 radio-inline" for="radios-0">
+                <input ng-model="detention_status.detention_is_approx" ng-value="false"  type="radio">
+                <span class="radioBtn" ng-click='detention_status.   
+detention_is_approx = false' ng-class="{'checked': detention_status.detention_is_approx==false}"></span> <span class="radioTag">Estimated</span>
+            </label>
+            <label class="col-xs-4 radio-inline" for="radios-1">
+                <input ng-model="detention_status.detention_is_approx" ng-value="true" type="radio" >
+                <span class="radioBtn" ng-click='detention_status.   
+detention_is_approx = true' ng-class="{'checked': detention_status.detention_is_approx==true}"></span> <span class="radioTag">Actual</span>
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">SAVE DETENTION</button>
+    <button ng-click="editDetention($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>

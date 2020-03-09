@@ -1,0 +1,2747 @@
+// main style sheet
+//hello 1
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+// rotate
+@mixin rotate($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+@font-face {
+    font-family: 'Nazanin';
+    src: url("../font/BNazanin.eot");
+    src: url("../font/BNazanin.eot?#iefix") format("embedded-opentype"), url("../font/BNazanin.woff") format("woff"), url("../font/BNazanin.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+// skdlhsdsdfsdwedfljjbdbdfbdebfbsdfdsgdssldknvlsdnvlsdbnvljn
+
+.test{
+    display: none;
+}
+
+// standards
+body {
+    word-wrap: break-word;
+
+    @if $is-rtl == true {
+        font-family: 'Nazanin', sans-serif;
+    }
+
+    @else {
+        font-family: 'PT Sans', sans-serif;
+    }
+
+    background: #fff;
+    font-size: $main-font-size;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+
+.date {
+    @if $is-rtl == true {}
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
+.hideOnMobile {
+    display: block;
+}
+
+div {
+    // transition-duration: 1s;
+}
+
+.clearboth {
+    clear: both;
+}
+
+.showOnMobile {
+    display: none;
+}
+
+a,
+a:visited,
+a:focus {
+    text-decoration: none;
+
+    html.aea & {
+        color: $ipaGreenDark;
+    }
+    html.ipa & {
+        color: $ipaTeal;
+    }
+}
+
+a:hover {
+    color: $ipaOrangeLight;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: ceil($main-font-size * 2.5);
+    line-height: 60px;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: ceil($main-font-size * 1.7);
+    line-height: 40px;
+}
+
+h3 {
+    text-transform: uppercase;
+
+    @if $is-rtl == true {
+        font-size: ceil($main-font-size * 0.8);
+    }
+
+    @else {
+        font-size: ceil($main-font-size * 0.7);
+    }
+
+    padding: 0px 0px 5px;
+}
+
+h4 {
+    text-transform: uppercase;
+    font-size: ceil($main-font-size * 1.3);
+    padding: 0 0 20px;
+    min-height: 43px;
+}
+
+h5 {
+    @if $is-rtl == true {
+        font-size: ceil($main-font-size * 0.8);
+    }
+
+    @else {
+        font-size: ceil($main-font-size * 0.7);
+    }
+
+    color: $ipaTeal;
+}
+
+h6 {
+    font-size: ceil($main-font-size * 0.8);
+    line-height: 23px;
+}
+
+p {
+    margin: 0 0 40px;
+}
+
+.heading {
+    padding: 0 0 3px;
+}
+
+.orange {
+    padding: 0;
+
+    html.aea & {
+        color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        color: $ipaOrangeLight;
+    }
+}
+
+.blocker {
+    width: 3000px;
+    height: 1000%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 14;
+    cursor: progress;
+}
+
+.infoText {
+    color: #808080;
+    font-style: italic;
+    font-size: ceil($main-font-size * 0.85);
+    position: relative;
+    margin-top: 20px;
+}
+
+.info {
+    color: #808080;
+    position: absolute;
+}
+
+.info_1 {
+    @if $is-rtl == true {
+        right: -15px;
+    }
+
+    @else {
+        left: -10px;
+    }
+
+    top: 0px;
+}
+
+.largeNumber {
+    font-size: 65px;
+}
+
+.smallNumber {
+    font-size: 26px;
+}
+
+.holder {
+    position: relative;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.double-quote {
+    font-size: 30px;
+}
+
+.unexpanded {
+    display: none;
+}
+
+.expandArea {
+    margin: 30px 0 0;
+}
+
+.topSpacerM {
+    margin: 50px 0 0;
+}
+
+.padderTop5 {
+    padding: 5px 0 0;
+}
+
+.padderV {
+    margin: 10px 0;
+}
+
+.padderVP {
+    padding: 10px 0;
+}
+
+.paddingB {
+    padding: 0 0 10px;
+}
+
+.paddingBLarge {
+    padding: 0 0 30px;
+}
+
+.topSpacer {
+    padding: 50px 0 0;
+}
+
+.largeSpacer {
+    padding: 120px 0 0;
+}
+
+.topMargin20 {
+    margin: 20px 0px 0px;
+}
+
+.padder15 {
+    padding: 15px 0 0;
+}
+
+.drop {
+    font-size: ceil($main-font-size * 1.68);
+    padding: 0;
+    position: relative;
+
+    .menuIcon {
+        @include floatRight;
+
+        position: relative;
+
+        .icon-up-dir {
+            position: absolute;
+
+            @include positionRight(-15px);
+
+            top: -8px;
+        }
+
+        .icon-down-dir {
+            position: absolute;
+
+            @include positionRight(-15px);
+
+            top: 8px;
+        }
+    }
+
+    .dropDownBtn {
+        color: #2A9EBB;
+        cursor: pointer;
+        background: #EAF3F3;
+        border: 1px solid #D6E8E8;
+        padding: 0px 15px;
+        text-transform: uppercase;
+        box-shadow: 1px 1px 4.3px rgba(0, 0, 0, 0.1);
+        height: 40px;
+    }
+
+    .dropMenu {
+        position: absolute;
+        padding: 0px;
+        left: 0;
+        right: 0;
+        top: 40px;
+        display: none;
+        margin: 0;
+        z-index: 14;
+        color: #2A9EBB;
+        box-shadow: 1px 1px 4.3px rgba(0, 0, 0, 0.1);
+        text-transform: uppercase;
+
+        li {
+            padding: 0px 15px;
+            background: #EAF3F3;
+            border: 1px solid #D6E8E8;
+            cursor: pointer;
+            height: 40px;
+
+            &.deactivate {
+                color: #D6E8E8;
+                pointer-events: none;
+            }
+        }
+
+        li:hover {
+            background: $ipaOrangeLight;
+            border: 1px solid $ipaOrangeLight;
+            color: #FFF;
+        }
+    }
+}
+
+.light-blue-btn {
+    background: $ipaBlueLight;
+    padding: 2px;
+    padding: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.light-blue-btn:hover {
+    color: #fff;
+    background: $ipaOrangeLight;
+}
+
+.extend-right {
+    @include marginRight(-15px);
+
+    @include padRight(15px);
+}
+
+.extend-left {
+    @include marginLeft(-15px);
+
+    @include padLeft(15px);
+}
+
+.underline-thin {
+    border-bottom: 1px solid #000;
+}
+
+.thick-border {
+    border-bottom: 7px solid #000;
+}
+
+.icon-right-dir {
+    color: $ipaTeal;
+    font-size: 24px;
+    margin: 0 -10px 0;
+    transition-duration: 0.5s;
+    transition-property: transform;
+    width: 29px;
+
+    &.open {
+        @include transform(rotate(90deg));
+    }
+}
+
+.filter-btn {
+    @extend h5;
+    color: $ipaBlack;
+
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+
+    html.aea & {
+        background-color: $ipaGreenLight;
+    }
+    html.ipa & {
+        background-color: $ipaBlueLight;
+    }
+}
+
+.filter-btn:hover,
+.filter-btn.selected {
+    color: $ipaWhite;
+
+    html.aea & {
+        background-color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        background-color: $ipaOrangeLight;
+    }
+
+}
+
+//header
+.nav-header {
+    background: #F2F2F2;
+    height: 110px;
+    margin: 0 0 50px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    padding: 18px 0px;
+}
+
+html.aea .nav-header {
+    border-bottom: 2px solid $ipaGreen;
+}
+html.ipa .nav-header {
+    border-bottom: 2px solid $ipaTeal;
+}
+
+.logo {
+    @include marginLeft(-15px);
+
+    background: url("../img/united_logo_new.png?v=2019-10-03");
+    height: 92px;
+    width: 132px;
+    margin-top: -30px;
+    display: block;
+    background-size: 100% auto;
+}
+
+.desktopMenu {
+    margin: 10px 0px;
+
+    .main-menu {
+        @include floatRight;
+    }
+
+    .menuLine {
+        border-left: 2px solid #E6E6E6;
+
+        @include floatLeft;
+
+        margin: 5px 0px;
+        height: 40px;
+    }
+
+    .quickSearchHolder {
+        position: relative;
+
+        @include floatLeft;
+
+        margin: 7px 0;
+        font-family: 'PT Sans', sans-serif;
+        transition-duration: 0.5s;
+        transition-delay: 0s;
+
+        &.open {
+            transition-delay: 0.5s;
+        }
+    }
+
+    .quicksearch {
+        border: none;
+        color: #2A9EBB;
+        float: left;
+        width: 0px;
+        background: #fff;
+        border: 1px solid #F2F2F2;
+
+        @include borderRadius(0px, 0px, 0px, 0px);
+
+        padding: 5px 0px;
+        outline: none;
+
+        @include floatRight;
+
+        transition-duration: 0.5s;
+        height: 35px;
+
+        &.open {
+            width: 250px;
+            transition-delay: 0.5s;
+            transition-duration: 0.5s;
+            padding: 5px 10px;
+            border: 1px solid #fff;
+
+            @include borderRadius(10px, 0px, 0px, 10px);
+        }
+
+        &.searching {
+            transition-delay: 0s;
+
+            @include borderRadius(10px, 0px, 0px, 0px);
+        }
+    }
+
+    .linkholder {
+        width: 250px;
+    }
+
+    .menuHider {
+        @include floatLeft;
+
+        float: left;
+        overflow: hidden;
+        transition-duration: 0.5s;
+        height: 45px;
+        width: 250px;
+        transition-delay: 0s;
+
+        &.hideMe {
+            transition-delay: 0.5s;
+            width: 0px;
+        }
+    }
+
+    .searchGo {
+        background: $ipaWhite;
+
+        @include borderRadius(10px, 10px, 0, 0);
+
+        height: 35px;
+
+        @include floatRight;
+
+        transition-duration: 0.5s;
+        transition-delay: 0.5s;
+
+        html.aea & {
+            color: $ipaGreen;
+        }
+        html.ipa & {
+            color: $ipaTeal;
+        }
+
+        cursor: pointer;
+        border: 1px solid $ipaGreyDark;
+
+        .icon-search {
+            font-size: 20px;
+            margin: 0;
+            display: inline-block;
+        }
+        .icon-search:before {
+            line-height: 35px;
+        }
+
+        &.open {
+            transition-delay: 0s;
+            background: $ipaTeal;
+
+            @include borderRadius(0px, 10px, 10px, 0px);
+
+            height: 35px;
+            width: 35px;
+
+            @include floatRight;
+
+            color: #fff;
+            border: 1px solid $ipaTeal;
+        }
+
+        &.searching {
+            @include borderRadius(0px, 10px, 0px, 0px);
+        }
+    }
+
+    .searchLabel {
+        font-family: 'Oswald', sans-serif;
+        color: $ipaGreyDark;
+    }
+
+    .quicksearch:focus {}
+
+    .searchResultsHolder {
+        color: $ipaTeal;
+        position: absolute;
+        top: 34px;
+        z-index: 15;
+        left: 0px;
+        width: 100%;
+    }
+
+    .quickSearchResult {
+        background: rgba(233, 243, 243, 0.9);
+        border: 1px solid #D6E8E8;
+        padding: 5px 10px;
+        display: block;
+
+        &.advance {
+            @include borderRadius(0px, 0px, 10px, 10px);
+
+            background: $ipaTeal;
+            border: 1px solid $ipaTeal;
+            color: #EAF3F3;
+            font-style: italic;
+
+            .icon-right-dir {
+                color: #EAF3F3;
+                margin: -6px -8px;
+                display: block;
+            }
+        }
+    }
+
+    .advanceBtn {
+        display: none;
+    }
+
+    .quickSearchResult:hover {
+        background: $ipaOrangeLight;
+        color: #fff;
+        border: 1px solid $ipaOrangeLight;
+
+        .icon-right-dir {
+            color: #fff;
+        }
+    }
+
+    .result {
+        @include floatLeft;
+    }
+
+    .resultType {
+        @include floatRight;
+    }
+
+    .menuItem {
+        html.ltr & {
+            padding: 15px;
+        }
+        html.rtl & {
+            padding: 15px 15px 6px 15px;
+        }
+
+        color: $ipaBlack;
+
+        html.aea &.link:hover {
+            color: $ipaGreen;
+        }
+        html.ipa &.link:hover {
+            color: $ipaTeal;
+        }
+
+        @include floatLeft;
+
+        height: 10px;
+
+        .icon-search {
+            font-size: 24px;
+            margin: -10px 0 0;
+            display: inline-block;
+        }
+
+        &.sub {
+            @include floatRight;
+
+            font-size: 24px;
+
+            @if $is-rtl == true {
+                padding: 26px 10px 9px;
+            }
+
+            @else {
+                padding: 18px 10px 17px;
+            }
+        }
+
+        // &.selected {
+        //     color: #44CA67;
+        // }
+
+        &.signup {
+            border: 1px solid;
+            padding: 5px 15px !important;
+            height: auto;
+            margin: 10px;
+        }
+    }
+
+    // .link:hover {
+    //     cursor: pointer;
+    //     color: #44CA67;
+    // }
+}
+
+.dropDown,
+.mobileMenu {
+    display: none;
+}
+
+// footer
+footer {
+    margin: 100px 0 0;
+    min-height: 270px;
+    background: #F2F2F2;
+
+    @if $is-rtl == true {
+        font-family: 'Nazanin', sans-serif;
+    }
+
+    @else {
+        font-family: 'Oswald', sans-serif;
+    }
+
+    nav {
+        padding: 30px 0;
+    }
+
+    .logo {
+        margin-top: 0;
+    }
+
+    .fTitle {
+        // color: $ipaTeal;
+        padding: 0 0 10px;
+    }
+
+    .icon {
+        font-size: 20px;
+        margin-left: -9px;
+    }
+
+    .fInfo {
+        color: #808080;
+
+        @if $is-rtl == true {
+            font-family: 'Nazanin', sans-serif;
+        }
+
+        @else {
+            font-family: 'PT Sans', sans-serif;
+        }
+
+        font-size: 13px;
+    }
+
+    .fItem {
+        color: #808080;
+
+        @if $is-rtl == true {
+            font-family: 'Nazanin', sans-serif;
+        }
+
+        @else {
+            font-family: 'PT Sans', sans-serif;
+        }
+    }
+
+    .sml {
+        width: 200px;
+        margin: -10px 0 30px;
+    }
+}
+
+// profile page layouts
+.female {
+    white-space: nowrap;
+}
+
+.thick-line {
+    height: 7px;
+    width: 100%;
+    background: #000;
+    position: absolute;
+    left: 0px;
+    bottom: -4px;
+}
+
+.social {
+    padding: 20px 15px 40px;
+
+    a {
+        @extend .light-blue-btn;
+
+        margin: 0 5px;
+        cursor: pointer;
+        color: #fff !important;
+
+        @if $is-rtl == true {
+            padding: 10px 3px 0px;
+        }
+
+        html.aea & {
+            background-color: $ipaGreen;
+        }
+        html.ipa & {
+            background-color: $ipaTeal;
+        }
+    }
+
+    a:hover {
+        color: #fff;
+        background: $ipaOrangeLight;
+    }
+}
+
+.filters {
+    &.row {
+        margin: 0 -5px;
+
+        .col-xs-3,
+        .col-xs-6,
+        .col-xs-4 {
+            padding: 5px;
+        }
+    }
+}
+
+.dottedline-seperator {
+    @extend .clearfix;
+
+    width: 100%;
+    background: url("../img/dot.png?v=2019-08-28") repeat-x;
+    margin: 20px 0;
+}
+
+.dottedline {
+    @extend .dottedline-seperator;
+
+    opacity: 0;
+    transition-duration: 0.5s;
+    position: absolute;
+    bottom: 0px;
+    transition-duration: 0.5s;
+    padding: 1px;
+    margin: -2px 0;
+}
+
+.prison {
+    margin: 20px 0px;
+}
+
+.arrest {
+    cursor: pointer;
+    position: relative;
+    background: $ipaBluePale;
+    padding: 10px 0 30px;
+    border-radius: 15px;
+    margin: 10px 0px;
+    transition-duration: 0.5s;
+
+    &.open {
+        border-radius: 15px 15px 0 0;
+
+        .dottedline {
+            opacity: 1;
+        }
+    }
+
+    .col-with-information-box {
+        .ltr & {
+            padding-right: 2em;
+        }
+        .rtl & {
+            padding-left: 2em;
+        }
+    }
+}
+
+.arrest:hover {
+    .arrestArrow {
+        color: $ipaOrangeLight;
+    }
+}
+
+.expandArea {
+    .icon-info-circled {
+        color: $ipaTeal;
+        cursor: pointer;
+
+        @include marginLeft(-25px);
+
+        position: relative;
+    }
+
+    .icon-info-circled:hover {
+        color: $ipaOrangeLight;
+    }
+}
+
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 7.5px 0 7.5px;
+    position: absolute;
+    bottom: -15px;
+    left: 10px;
+
+    html.aea & {
+        border-color: $ipaOrangeDarkTranslucent transparent transparent transparent;
+    }
+    html.ipa & {
+        border-color: $ipaOrangeLightTranslucent transparent transparent transparent;
+    }
+}
+
+.toolTipHolder {
+    position: absolute;
+    display: none;
+    left: -5px;
+    pointer-events: none;
+}
+
+.toolTip {
+    pointer-events: none;
+    position: relative;
+    color: #fff;
+    padding: 5px;
+    box-shadow: 4px 3px 12px rgba(0, 0, 0, 0.2);
+    width: 200px;
+
+    html.aea & {
+        background: $ipaOrangeDarkTranslucent;
+    }
+    html.ipa & {
+        background: $ipaOrangeLightTranslucent;
+    }
+
+    .imageHolder {
+        height: 30px;
+        width: 30px;
+        border-radius: 0px;
+    }
+}
+
+.file {
+    margin: 15px 0px;
+
+    a {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+        display: block;
+
+        img {
+            &.wider {
+                height: 100%;
+                width: auto;
+            }
+
+            &.taller {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+img {
+    &.wider {
+        height: 100%;
+        width: auto;
+    }
+
+    &.taller {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.supporting-image {
+    display: none;
+}
+
+.file:hover {
+    .fileHover {
+        opacity: 1;
+    }
+}
+
+.imageHolder {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.fileHover {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    background: rgba(42, 158, 187, 0.8);
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    transition-duration: 0.5s;
+
+    .hoverText {
+        position: absolute;
+        bottom: 10px;
+        line-height: 18px;
+    }
+}
+
+.icon-plus {
+    font-size: 32px;
+    cursor: pointer;
+    display: block;
+    clear: both;
+    text-align: center;
+
+    html.aea & {
+        color: $ipaGreen;
+    }
+    html.ipa & {
+        color: $ipaTeal;
+    }
+}
+
+.icon-plus:hover {
+    color: $ipaOrangeLight;
+}
+
+.quote {
+    text-align: center;
+    font-size: ceil($main-font-size * 1.55);
+    line-height: 28px;
+    font-style: italic;
+    width: 60%;
+    margin: 50px auto 0;
+}
+
+.quote-author {
+    font-size: $main-font-size;
+    font-style: normal;
+}
+
+.profileImage {
+    width: auto;
+    height: auto;
+}
+
+.author {
+    padding: 10px 0px;
+}
+
+.reverseTimeline {
+    position: absolute;
+    bottom: 1px;
+
+    @include positionRight(15px);
+
+    border-radius: 5px 5px 0px 0px;
+}
+
+.tab-btn {
+    bottom: 1px;
+}
+
+.time {
+    @include textAlignRight;
+}
+
+// prisoners scss
+.title {
+    color: $ipaBlack !important;
+    margin: 0px -15px;
+    cursor: pointer;
+    border: 1px solid #D6E8E8;
+    padding: 0 15px;
+
+    html.aea & {
+        background-color: $ipaGreenLight;
+    }
+    html.ipa & {
+        background-color: $ipaBlueLight;
+    }
+
+    .icon-right-dir,
+    .icon-down-dir {
+        @include marginLeft(-10px);
+
+        @include marginRight(0px);
+    }
+
+    .icon-right-dir,
+    .icon-down-dir {
+        color: $ipaTeal;
+        font-size: 24px;
+        transition-duration: 0.5s;
+        transition-property: transform;
+        width: 29px;
+
+        &.open {
+            @include transform(rotate(90deg));
+        }
+    }
+
+    .icon-right-dir,
+    .icon-down-dir {
+        position: absolute;
+
+        @include positionLeft(15px);
+
+        top: -4px;
+    }
+
+    &.open {
+        color: #fff;
+        background: $ipaOrangeLight;
+        border: 1px solid $ipaOrangeLight;
+
+        .icon-right-dir,
+        .icon-down-dir {
+            color: #fff;
+        }
+    }
+}
+
+.prisoners {
+    .title {
+        @include padLeft(30px);
+
+        @include padRight(15px);
+    }
+}
+
+.title:hover {
+    color: #fff;
+    background: $ipaOrangeLight;
+    border: 1px solid $ipaOrangeLight;
+
+    .icon-right-dir,
+    .icon-down-dir {
+        color: #fff;
+    }
+}
+
+.totalNo {
+    @include floatRight;
+}
+
+.square {
+    cursor: pointer;
+
+    &.selected {
+        fill: #EFA954 !important;
+    }
+}
+
+.square:hover {
+    fill: #EFA954 !important;
+}
+
+.barHolder {
+    padding: 0 17px 15px;
+    margin: 30px 0;
+    border: #D7E9E9;
+    border-radius: 0 0 10px 10px;
+    min-height: 85px;
+
+    html.aea & {
+        background-color: $ipaGreenPale;
+    }
+    html.ipa & {
+        background-color: $ipaBluePale;
+    }
+}
+
+.squares {
+    margin: 11px 0px 0;
+    float: left;
+}
+
+.barHolder {
+    position: relative;
+    overflow: hidden;
+}
+
+svg.bar {
+    float: left;
+}
+
+.checkboxCircle {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: -2px 0px;
+    position: relative;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background: #F7FBFB;
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display: none;
+}
+
+.checked {
+    .dot {
+        display: block;
+    }
+}
+
+.indexTitle {
+    padding: 30px 0 10px;
+}
+
+.blueArea {
+    padding: 5px 17px 20px;
+    margin: 0 0 30px;
+    border: 1px solid #F1F7F7;
+    border-radius: 0 0 10px 10px;
+}
+html.aea .blueArea {
+    background-color: $ipaGreenPale;
+}
+html.ipa .blueArea {
+    background-color: $ipaBluePale;
+}
+
+.prisonsFilters {
+    .blueArea {
+        padding: 0px 17px 0px;
+    }
+}
+
+.seprator-pos {
+    height: 1px;
+    padding: 0px;
+    margin: 10px 0px;
+}
+
+.header-pos {
+    padding: 0px 15px 10px;
+}
+
+.positions {
+    margin: 30px 0px 70px;
+}
+
+.statusName {
+    @include floatLeft;
+
+    @include padLeft(10px);
+
+    text-transform: uppercase;
+    font-size: ceil($main-font-size * 0.8);
+}
+
+.filterHearder {
+    color: $ipaBluePale;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+    height: 40px;
+    padding: 9px;
+
+    html.aea & {
+        background-color: $ipaGreen;
+    }
+    html.ipa & {
+        background-color: $ipaTeal;
+    }
+}
+
+.infobox {
+    @include padLeft(10px);
+}
+
+.statusArea {
+    width: 280px;
+
+    @include floatRight;
+
+    margin: 0 15px;
+}
+
+.filterTab {
+    display: none;
+}
+
+.filter {
+    margin: 0px 0px 5px;
+}
+
+.socialPholder {
+    height: 101px;
+}
+
+.socialP {
+    position: absolute;
+    bottom: 10px;
+
+    @include positionRight(0px);
+}
+
+.pad {
+    padding: 5px;
+}
+
+.statusCount {
+    @include floatRight;
+
+    color: #808080;
+}
+
+.unknown {
+    color: #808080;
+}
+
+.secondaryActivities {
+    padding: 0px;
+    min-height: 0px;
+}
+
+// switch
+.switchHolder {
+    background: #EBECEC;
+    width: 35px;
+    height: 20px;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+
+    @include floatLeft;
+
+    .switch {
+        height: 14px;
+        width: 14px;
+        border-radius: 5px;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        transition: left 0.5s;
+
+        html.aea & {
+            background-color: $ipaGreen;
+        }
+        html.ipa & {
+            background-color: $ipaTeal;
+        }
+    }
+
+    &.on {
+        .switch {
+            transition: left 0.5s;
+            left: 17px;
+
+            html.aea & {
+                background-color: $ipaOrangeDark;
+            }
+            html.ipa & {
+                background-color: $ipaOrangeLight;
+            }
+        }
+    }
+}
+
+// facility
+.facility {
+    height: 55px;
+    width: 50px;
+    margin: 20px 2px;
+
+    path,
+    line,
+    rect,
+    circle {
+        html.aea & {
+            fill: $ipaGreenOff;
+        }
+        html.ipa & {
+            fill: $ipaBlueOff;
+        }
+    }
+
+    .stroke {
+        html.aea & {
+            stroke: $ipaGreenOff;
+        }
+        html.ipa & {
+            stroke: $ipaBlueOff;
+        }
+    }
+}
+
+.facility.on {
+    path,
+    line,
+    rect,
+    circle {
+        html.aea & {
+            fill: $ipaGreen;
+        }
+        html.ipa & {
+            fill: $ipaTeal;
+        }
+    }
+
+    .stroke {
+        html.aea & {
+            stroke: $ipaGreen;
+        }
+        html.ipa & {
+            stroke: $ipaTeal;
+        }
+    }
+}
+
+.facility.on:hover,
+.facility.selected {
+    cursor: pointer;
+
+    path,
+    line,
+    rect,
+    circle {
+        html.aea & {
+            fill: $ipaOrangeDark;
+        }
+        html.ipa & {
+            fill: $ipaOrangeLight;
+        }
+    }
+
+    .stroke {
+        html.aea & {
+            stroke: $ipaOrangeDark;
+        }
+        html.ipa & {
+            stroke: $ipaOrangeLight;
+        }
+    }
+}
+
+.factName {
+    padding: 0;
+
+    html.aea & {
+        color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        color: $ipaOrangeLight;
+    }
+}
+
+.factInfoHolder {
+    height: 101px;
+}
+
+// profile chart stuff
+.profileBarHolder {
+    padding: 15px 0px 0px;
+
+    @extend .clearfix;
+}
+
+.barLegend {
+    padding: 0px;
+    float: left;
+    width: 170px;
+    text-align: right;
+    font-size: ceil($main-font-size * 0.8);
+}
+
+.entityRow {
+    padding: 0px;
+    width: 530px;
+    min-height: 10px;
+    float: left;
+    margin: 4px 10px;
+    background: $ipaBluePale;
+}
+
+.entitySquare {
+    padding: 0px;
+    float: left;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin: 1px 1px 0 0px;
+    cursor: pointer;
+
+    html.aea & {
+        background-color: $ipaGreenOff;
+    }
+    html.ipa & {
+        background-color: $ipaBlueOff;
+    }
+}
+
+.entityCount {
+    padding: 0px;
+    float: left;
+    font-size: ceil($main-font-size * 0.8);
+}
+
+.selectedEntity {
+    html.aea & {
+        background-color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        background-color: $ipaOrangeLight;
+    }
+}
+
+.selectedEntity {
+    html.aea & {
+        background-color: $ipaGreenDark;
+    }
+    html.ipa & {
+        background-color: $ipaTeal;
+    }
+}
+
+.prionerName {
+    font-size: 30px;
+    text-transform: uppercase;
+    line-height: 35px;
+}
+
+.sp {
+    height: 14px;
+}
+
+.selectedEntityImage {
+    padding: 15px 0px 15px;
+}
+
+.selectedName {
+    @include padLeft(0px);
+}
+
+// prisons map
+.prisonsPage {
+    position: relative;
+}
+
+.infoArea {
+    min-height: 1000px;
+}
+
+.unknown {
+    color: #808080;
+    text-align: right;
+}
+
+.filterHeaderPrison {
+    @include textAlignLeft;
+
+    padding: 9px 20px;
+    cursor: pointer;
+}
+
+.map {
+    // position: relative;
+    height: 543px;
+    width: 610px;
+
+    @if $is-rtl == true {
+        transform: matrix(0.292, 0, 0, 0.292, 125.988, -120.774);
+    }
+
+    @else {
+        transform: matrix(0.292, 0, 0, 0.292, -119.012, -117.774);
+    }
+}
+
+#D3grid_D3way,
+.mapholder,
+.mapData,
+.test-map {
+    position: absolute;
+    top: 0;
+
+    @include positionLeft(0px);
+}
+
+.mapholder {
+    height: 1820px;
+    width: 2020px;
+
+    html.aea & {
+        background: url("../img/prison-map-background-aea.png?v=2019-08-28");
+    }
+    html.ipa & {
+        background: url("../img/prison-map-background-ipa.png?v=2019-08-28");
+    }
+}
+
+.gridMarker {
+    width: 8px;
+    height: 8px;
+    background: #000;
+    float: left;
+    margin: 1px;
+}
+
+.mapMarker {
+    cursor: pointer;
+}
+
+.mapMarker.selectedPrison {
+    animation-name: pulsate;
+    animation-direction: alternate;
+    animation-duration: 0.75s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+    /* Chrome, Safari, Opera */
+    transform-origin: 50% 50%;
+}
+
+@keyframes pulsate {
+    0% {
+        r: 10px;
+    }
+
+    100% {
+        r: 30px;
+    }
+}
+
+.barHolderPrison {
+    min-height: 65px;
+    margin: 10px 0;
+
+    .title {
+        margin: 0px -17px;
+        display: block;
+    }
+}
+
+.barPrison {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+.barPrisonPadder {
+    padding: 20px 0 30px;
+    height: 15px;
+}
+
+.barPrisonMarker {
+    border-radius: 7px;
+    height: 15px;
+    position: absolute;
+    bottom: 15px;
+    left: 17px;
+    background-color: #EAF3F3;
+    width: 100%;
+    z-index: 0;
+}
+
+.chartSelector {
+    padding: 10px 17px;
+    margin: 10px 0;
+    border-radius: 10px;
+
+    html.aea & {
+        background-color: $ipaGreenPale;
+    }
+    html.ipa & {
+        background-color: $ipaBluePale;
+    }
+
+    .col-sm-6,
+    .col-sm-4 {
+        padding: 5px 10px;
+    }
+}
+
+.multiPrison:hover {
+    cursor: pointer;
+    background: #EFA954;
+
+    .orange {
+        color: #fff;
+    }
+}
+
+.prisonsPage {
+    .cancel {
+        font-size: 33px;
+        position: inherit;
+
+        @if $is-rtl == true {
+            margin: -5px -10px -17px;
+        }
+
+        @else {
+            margin: -12px -10px;
+        }
+
+        display: block;
+        float: left;
+    }
+}
+
+.prisonsFilters {
+    .statusArea {
+        width: 380px;
+        position: absolute;
+        top: 119px;
+
+        @include positionLeft(-29px);
+
+        .blueArea {
+            display: none;
+        }
+
+        .icon-down-dir,
+        .icon-up-dir {
+            font-size: 26px;
+
+            @include floatRight;
+
+            height: 10px;
+            margin-top: -7px;
+
+            @if $is-rtl == true {
+                margin: -2px -8px;
+            }
+
+            @else {
+                margin: -7px;
+            }
+        }
+    }
+}
+
+.mapStuff {
+    position: absolute;
+}
+
+.mapPort {
+    // width: calc(66% + 30px);
+    // min-height: 550px;
+    position: absolute;
+    border: 1px solid #D7E9E9;
+    margin-top: 15px;
+    min-height: 400px;
+    max-height: 650px;
+    cursor: move;
+    max-width: 100%;
+}
+
+.reset {
+    @include floatRight;
+
+    text-transform: uppercase;
+    color: #808080;
+    cursor: pointer;
+    padding: 0px 15px;
+    z-index: 12;
+}
+
+.cancel {
+    font-size: 33px;
+    position: absolute;
+
+    @if $is-rtl == true {
+        right: 68px;
+        top: -4px;
+    }
+
+    @else {
+        right: 68px;
+        top: -4px;
+    }
+}
+
+.filterTab,
+.statusArea {
+    z-index: 13;
+}
+
+.zoomButtons {
+    position: absolute;
+    top: 15px;
+
+    @include positionRight(0%);
+
+    z-index: 12;
+
+    .zoomIn,
+    .zoomOut,
+    .zoomCenter {
+        text-align: center;
+        border-radius: 5px;
+        padding: 0px;
+        cursor: pointer;
+        display: block;
+        font-size: 30px;
+        width: 32px;
+        height: 30px;
+        position: relative;
+        margin: 5px 15px;
+
+        html.aea & {
+            color: $ipaGreen;
+            background-color: $ipaGreenLight;
+        }
+        html.ipa & {
+            color: $ipaTeal;
+            background-color: $ipaBlueLight;
+        }
+
+        .icon-minus {
+            @if $is-rtl == true {
+                top: -1px;
+            }
+
+            @else {
+                top: -6px;
+            }
+
+            position: absolute;
+            left: -5px;
+        }
+
+        .icon-plus {
+            position: absolute;
+
+            @if $is-rtl == true {
+                top: -1px;
+            }
+
+            @else {
+                top: -6px;
+            }
+
+            left: -6px;
+        }
+
+        .dot {
+            display: block;
+            top: 11px;
+            left: 12px;
+
+            html.aea & {
+                background-color: $ipaGreen;
+            }
+            html.ipa & {
+                background-color: $ipaTeal;
+            }
+        }
+
+        .circle {
+            background: none;
+            display: block;
+            top: 5px;
+            left: 6px;
+            border: 2px solid;
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+    }
+
+    .zoomIn:hover,
+    .zoomOut:hover,
+    .zoomCenter:hover {
+        .icon-minus,
+        .icon-plus {
+            color: #fff;
+        }
+
+        .dot {
+            background: #fff;
+        }
+
+        .circle {
+            border-color: #fff;
+        }
+
+        background: $ipaOrangeLight;
+    }
+}
+
+// search page
+
+.most_recent_prison {
+    padding: 10px 0px 0px;
+    font-size: 30px;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+    background-color: #EFA954;
+    border-color: #EFA954;
+    cursor: default;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover {
+    color: #fff;
+    background-color: #EFA954;
+    border-color: #EFA954;
+}
+
+.pagination > li > a,
+.pagination > li > span,
+.pagination > li > span:focus,
+.pagination > li > a:focus {
+    color: #2A9EBB;
+    background-color: #F7FBFB;
+    border: 1px solid #D7E9E9;
+}
+
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+    color: #2A9EBB;
+    background-color: #F7FBFB;
+    border: 1px solid #D7E9E9;
+}
+
+.resultsCount {
+    padding: 5px 0;
+}
+
+.squareBtn {
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px;
+    text-transform: uppercase;
+
+    &.on {
+        pointer-events: none;
+    }
+
+    html.aea & {
+        background-color: $ipaGreen;
+    }
+    html.ipa & {
+        background-color: $ipaTeal;
+    }
+}
+
+.squareBtn:hover,
+.squareBtn.on {
+    html.aea & {
+        background-color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        background-color: $ipaOrangeLight;
+    }
+}
+
+.filterSection {
+    color: #fff;
+    cursor: pointer;
+    padding: 11px 10px 10px;
+    text-transform: uppercase;
+    font-size: 19px;
+    margin: 15px 0 15px;
+
+    html.aea & {
+        background-color: $ipaGreen;
+    }
+    html.ipa & {
+        background-color: $ipaTeal;
+    }
+
+    &.addinfo {
+        font-size: 16px;
+        padding: 15px 10px;
+    }
+
+    .icon-plus,
+    .icon-minus {
+        html.aea &,
+        html.ipa & {
+            color: $ipaWhite;
+        }
+
+        font-size: 26px;
+        cursor: pointer;
+        position: absolute;
+
+        @include positionRight(18px);
+
+        top: 23px;
+    }
+}
+
+.filterSection:hover {
+    background: $ipaOrangeLight;
+}
+
+.filterSubSection {
+    margin: 0px 15px -1px;
+    cursor: pointer;
+    background: #EAF3F3;
+    border: 1px solid #D6E8E8;
+    padding: 0 15px;
+    text-transform: uppercase;
+    position: relative;
+
+    html.aea & {
+        color: $ipaGreenDark;
+    }
+    html.ipa & {
+        color: $ipaTeal;
+    }
+
+    .icon-plus,
+    .icon-minus {
+        font-size: 20px;
+        cursor: pointer;
+        position: absolute;
+
+        @include positionRight(5px);
+
+        top: -2px;
+    }
+}
+
+.filterSubSection:hover {
+
+
+    html.aea &,
+    html.ipa & {
+        color: $ipaWhite;
+    }
+
+    html.aea & {
+        border: 1px solid $ipaOrangeDark;
+        background-color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        border: 1px solid $ipaOrangeLight;
+        background-color: $ipaOrangeLight;
+    }
+
+    .icon-plus,
+    .icon-minus {
+        color: #fff;
+    }
+}
+
+.filterHolder {
+    padding: 5px 0px;
+}
+
+.filtersHolder {
+    display: none;
+}
+
+.clear {
+    text-align: right;
+    color: #808080;
+
+    .cancel {
+        font-size: 21px;
+        position: absolute;
+
+        @if $is-rtl == true {
+            left: 100px;
+            top: -5px;
+        }
+
+        else {
+            right: 69px;
+            top: -3px;
+        }
+    }
+}
+
+.searchFilters {
+    background: $ipaGreyPale;
+    padding: 10px 17px 15px;
+    margin: 0px 15px;
+    border: 1px solid #D7E9E9;
+    border-radius: 0 0 10px 10px;
+    display: none;
+
+    .col-xs-6,
+    .col-xs-12,
+    .col-xs-1,
+    .col-xs-11 {
+        padding: 0 10px;
+    }
+}
+
+.filterDot {
+    display: inline-block;
+    background: #EAF3F3;
+    border: 1px solid #D6E8E8;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin: 5px 5px 0;
+}
+
+.over {
+    .filterDot {
+        html.aea & {
+            background-color: $ipaGreen;
+        }
+        html.ipa & {
+            background-color: $ipaTeal;
+        }
+    }
+}
+
+.on {
+    .filterDot {
+        html.aea & {
+            background-color: $ipaOrangeDark;
+        }
+        html.ipa & {
+            background-color: $ipaOrangeLight;
+        }
+    }
+}
+
+.filterBTN {
+    cursor: pointer;
+    padding: 5px 0px;
+}
+
+.littleSearch {
+    width: 100%;
+    margin: 0px 0px 10px;
+    border: none;
+    padding: 5px 15px;
+    border: 1px solid #D7E9E9;
+}
+
+.filtersScroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 150px;
+    width: 100%;
+}
+
+.resultInfo {
+    background-color: $ipaGreyPale;
+    padding: 10px 17px 15px;
+    border-radius: 10px;
+}
+
+.lists {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {}
+
+    li:before {
+        content: '\00B7';
+        color: $ipaTeal;
+        font-size: 33px;
+        line-height: 7px;
+
+        /* or whatever color you prefer */
+    }
+}
+
+a:hover {
+    .resultInfo {
+        color: #fff;
+
+        html.aea & {
+            background-color: $ipaOrangeDark;
+        }
+        html.ipa & {
+            background-color: $ipaOrangeLight;
+        }
+    }
+
+    li:before {
+        content: '\00B7';
+        color: #fff;
+
+        /* or whatever color you prefer */
+    }
+}
+
+.searchResult {
+    padding: 0px 0px 20px;
+}
+
+.clearFilters:hover {
+    cursor: pointer;
+
+    html.aea & {
+        color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        color: $ipaOrangeLight;
+    }
+}
+
+// loader
+.loadingText {
+    width: 100%;
+    position: fixed;
+    top: calc(50% + 52px);
+    left: 0;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 4px;
+    z-index: 11;
+    color: rgba(42, 158, 187, 1);
+}
+
+.loading {
+    animation: 1s linear 0s normal none infinite running rotate;
+    border-color: rgba(42, 158, 187, 1) rgba(42, 158, 187, 0.3) rgba(42, 158, 187, 0.3);
+    border-radius: 100%;
+    border-style: solid;
+    border-width: 8px;
+    box-sizing: border-box;
+    height: 100px;
+    left: calc(50% - 50px);
+    position: fixed;
+    top: calc(50% - 50px);
+    width: 100px;
+    z-index: 11;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: rotate(359deg) translate3d(0, 0, 0);
+    }
+}
+
+// slider css
+rzslider {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 4px;
+    margin: 20px 0px;
+    vertical-align: middle;
+}
+
+rzslider span {
+    position: absolute;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+rzslider span.rz-base {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+rzslider span.rz-bar-wrapper {
+    left: 0;
+    width: 100%;
+    height: 32px;
+    padding-top: 16px;
+    margin-top: -16px;
+    box-sizing: border-box;
+}
+
+rzslider span.rz-bar {
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 1px;
+    background: #808080;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+rzslider span.rz-bar.rz-selection {
+    z-index: 1;
+    background: $ipaOrangeLight;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    height: 2px;
+}
+
+rzslider span.rz-pointer {
+    top: -4px;
+    z-index: 2;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+
+    html.aea & {
+        background-color: $ipaOrangeDark;
+    }
+    html.ipa & {
+        background-color: $ipaOrangeLight;
+    }
+}
+
+rzslider span.rz-pointer:hover:after {
+    background-color: #ffffff;
+}
+
+rzslider span.rz-pointer.rz-active:after {
+    background-color: #451aff;
+}
+
+rzslider span.rz-bubble {
+    top: 8px;
+    padding: 1px 3px;
+    color: #55637d;
+    cursor: default;
+    font-size: 12px;
+}
+
+rzslider span.rz-bubble.rz-selection {
+    top: 16px;
+}
+
+rzslider span.rz-bubble.rz-limit {
+    color: #55637d;
+    font-size: 14px;
+}
+
+// judges page extra css
+.circlevis-vis {
+    position: absolute;
+    left: 0px;
+}
+
+.tiles-container .circlevis .circlevis-about-full .circlevis-sentenced {
+    @if $is-rtl == true {
+        position: absolute;
+        left: 0;
+        top: 0;
+        text-align: right;
+        right: auto;
+    }
+}
+
+.tiles-container .circlevis .circlevis-about .circlevis-legend .circlevis-item {
+    @include padLeft(1%);
+
+    svg {
+        @if $is-rtl == true {
+            padding: 0px 5px;
+        }
+    }
+}
+
+.landscape {
+    .introMenu {
+        width: 33.3%;
+        display: block;
+
+        @include floatLeft;
+    }
+
+    .introMenu:last-child {
+        width: 33.4%;
+    }
+
+    &.introRow {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .slideUp {
+        position: absolute;
+        width: 33.3%;
+        z-index: 1;
+    }
+
+    .slideUp:last-child {
+        width: 33.4%;
+    }
+
+    .clickHover {
+        background: $ipaOrangeLight;
+        color: #fff;
+        padding: 30px;
+        width: 100%;
+        text-align: center;
+        font-size: ceil($main-font-size * 1.6);
+    }
+
+    .menubackdrop {
+        width: 100%;
+    }
+
+    .arrowDown {
+        font-size: 30px;
+        padding: 15px 0 0;
+    }
+
+    .introMenuPrisoners {
+        background: url("../img/Prisoners.jpg?v=2019-08-28");
+        background-size: auto 100%;
+        background-position: center;
+    }
+
+    .introMenuPrisons {
+        background: url("../img/Prison.jpg?v=2019-08-28");
+        background-size: auto 100%;
+        background-position: center;
+    }
+
+    .introMenuJudges {
+        background: url("../img/Judges.jpg?v=2019-08-28");
+        background-size: auto 100%;
+        background-position: center;
+    }
+
+    .menuCount {
+        font-size: 100px;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .menuInfo {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        top: calc(50% - 250px);
+    }
+
+    .breaker {
+        height: 4px;
+        width: 60px;
+        background: #fff;
+        margin: 0 auto;
+    }
+
+    .menuTitle {
+        color: #fff;
+        font-size: 30px;
+        margin: 20px 0 0;
+    }
+}
+
+.portrait {
+    .introMenu {
+        height: 33.3%;
+        width: 100%;
+        display: block;
+    }
+
+    .introMenu:last-child {
+        height: 33.4%;
+    }
+
+    &.introRow {
+        margin: 0;
+    }
+
+    .slideUp {
+        position: absolute;
+        height: 33.3%;
+        width: 200%;
+        z-index: 1;
+    }
+
+    .slideUp:last-child {
+        height: 33.4%;
+    }
+
+    .clickHover {
+        background: #EFA954;
+        color: #fff;
+        padding: 60px;
+        width: 300px;
+        text-align: center;
+        height: 100%;
+        float: left;
+        font-size: ceil($main-font-size * 1.6);
+    }
+
+    .menubackdrop {
+        height: 100%;
+        float: left;
+    }
+
+    .arrowDown {
+        font-size: 30px;
+        padding: 15px 0 0;
+    }
+
+    .introMenuPrisoners {
+        background: url("../img/Prisoners.jpg?v=2019-08-28");
+        background-size: 100% auto;
+        background-position: center;
+        position: relative;
+    }
+
+    .introMenuPrisons {
+        background: url("../img/Prison.jpg?v=2019-08-28");
+        background-size: 100% auto;
+        background-position: center;
+        position: relative;
+    }
+
+    .introMenuJudges {
+        background: url("../img/Judges.jpg?v=2019-08-28");
+        background-size: 100% auto;
+        background-position: center;
+        position: relative;
+    }
+
+    .menuCount {
+        font-size: 100px;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .menuInfo {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        top: calc(50% - 112px);
+    }
+
+    .breaker {
+        height: 4px;
+        width: 60px;
+        background: #fff;
+        margin: 0 auto;
+    }
+
+    .menuTitle {
+        color: #fff;
+        font-size: 30px;
+        margin: 20px 0 0;
+    }
+}
+
+.clickHover {
+    opacity: 0;
+}
+
+.clickHover a {
+    color: white;
+
+}
+
+.clickHover a:hover {
+    color: $ipaTeal;
+}
+
+.clickHover .breaker {
+    margin: 20px auto;
+}
+
+.introRow {}
+
+.splashScreen {
+    text-align: center;
+    background: url("../img/Intro_image.jpg?v=2019-08-28");
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.landscape {
+    &.splashScreen {
+        background-size: 100% auto;
+    }
+}
+
+.portrait {
+    &.splashScreen {
+        background-size: auto 100%;
+    }
+}
+
+.splashText {
+    font-size: ceil($main-font-size * 1.6);
+    width: 610px;
+    color: #fff;
+    position: absolute;
+    left: calc(50% - 305px);
+    top: calc(50% - 100px);
+    animation: mymove 2.5s normal forwards;
+}
+
+.titleSplash {
+    text-transform: inherit;
+    font-size: ceil($main-font-size * 3.5);
+    margin: 0px 0px 30px;
+}
+
+@keyframes mymove {
+    0% {
+        text-shadow: 0 0 60px rgba(250, 250, 250, 0);
+        color: rgba(250, 250, 250, 0);
+    }
+
+    40% {
+        text-shadow: 0 0 20px rgba(250, 250, 250, 0.9);
+        color: rgba(250, 250, 250, 0);
+    }
+
+    100% {
+        color: rgba(250, 250, 250, 1);
+        text-shadow: 0 0 0px rgba(250, 250, 250, 0.9);
+    }
+}
+
+// judge
+.circlevis-photo {
+    padding-left: 40px;
+}
+
+.page {
+    h1 {}
+
+    .mainImage {
+        padding: 30px 0;
+    }
+
+    h3 {
+        text-transform: uppercase;
+        font-size: 24px;
+        padding: 0px 0px 5px;
+    }
+
+    h5 {
+        font-size: 20px;
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    ol, ul {
+        list-style: initial;
+        padding: 0px 50px;
+    }
+
+    .content {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .sidebard {
+        @include textAlignRight;
+
+        a {
+            @include padRight(50px);
+
+            &.selected {
+                color: $ipaOrangeLight;
+            }
+        }
+    }
+}
+
+.pageTop {
+    height: 31px;
+    width: 40px;
+    background: #2A9EBB;
+    font-size: 24px;
+    position: fixed;
+    bottom: 10px;
+
+    @include positionRight(10%);
+
+    text-align: center;
+
+    .icon-up-dir {
+        color: #fff;
+    }
+}
+
+.prisonsStatement {
+    position: absolute;
+    top: 770px;
+    font-size: 12px;
+    @include positionLeft(-15px);
+    margin-top: 15px;
+    width: 100%;
+}
+
+.circlevis-dob {
+    height: 18px;
+    width: 100%;
+}
+
+.supportingEvidence .col-sm-4 {
+    padding-top: 50px;
+
+    @media (min-width: 768px) {
+        html.ltr & {
+            float: right;
+        }
+        html.rtl & {
+            float: left;
+        }
+    }
+}
+
+.explanationSubtitle {
+    margin-bottom: 16px;
+}
+
+.explanationBody {
+    white-space: pre-line;
+}
+
+.profile-chart-content {
+    margin-bottom: 48px;
+}

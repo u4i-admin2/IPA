@@ -1,0 +1,388 @@
+<div class="col-xs-12">
+    <div class="staticView row">
+        <div class="col-xs-6 formEnglish">
+            <button ng-click="editPrisoner($event)" ng-hide="method == 'POST'" class="btn btn-primary edit">EDIT
+                <font class="icon-pencil"></font>
+            </button>
+        </div>
+        <div class="col-xs-6 formFarsi">
+            <button ng-click="editPrisoner($event)" ng-hide="method == 'POST'" class="btn btn-primary edit">EDIT
+                <font class="icon-pencil"></font>
+            </button>
+        </div>
+        <div class="pBasicInfoHolder ">
+            <div class="col-xs-6 formEnglish">
+                <div class="form-group">
+                    <label class="control-label" for="textinput">First Name</label>
+                    <div>{$ current.forename_en $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Last Name</label>
+                    <div>{$ current.surname_en $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Gender</label>
+                    <div>{$ current.gender == 'M' ? 'Male' : 'Female' $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Date Of Birth</label>
+                    <div>
+                        <font ng-if="prisonerBasicInfo.dob_day">{$ current.dob_day $} /</font>
+                        <font ng-if="prisonerBasicInfo.dob_month">{$ current.dob_month $} /</font> {$ current.dob_year $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Country of Citizenship </label>
+                    <div ng-repeat="country in current.home_countries_objs ">{$ country.name_en $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Ethnicty</label>
+                    <div>{$ current.ethnicity.name_en $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Religion</label>
+                    <div>{$ current.religion.name_en $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Biography</label>
+                    <div>{$ current.biography_en $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Explanation</label>
+                    <div>{$ current.explanation_en $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Featured</label>
+                    <div>{$ current.featured === true ? 'yes' : 'no' $}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 formFarsi">
+                <div class="form-group">
+                    <label class="control-label" for="textinput">First Name</label>
+                    <div>{$ current.forename_fa $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Last Name</label>
+                    <div>{$ current.surname_fa $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Gender</label>
+                    <div>{$ current.gender == 'M' ? 'Male' : 'Female' $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Date Of Birth</label>
+                    <div>
+                        <font ng-if="prisonerBasicInfo.dob_day_fa">{$ current.dob_day_fa | pNumber $} / </font>
+                        <font ng-if="prisonerBasicInfo.dob_month_fa">{$ current.dob_month_fa | pNumber $} / </font>{$ current.dob_year_fa | pNumber $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Country of Citizenship </label>
+                    <div ng-repeat="country in current.home_countries_objs ">{$ country.name_fa $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Ethnicty</label>
+                    <div>{$ current.ethnicity.name_fa $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Religion</label>
+                    <div>{$ current.religion.name_fa $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Biography</label>
+                    <div>{$ current.biography_fa $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Explanation</label>
+                    <div>{$ current.explanation_fa $}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="textinput">Featured</label>
+                    <div>{$ current.featured === true ? 'yes' : 'no' $}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 buttonHolder">
+    </div>
+</div>
+<!-- English -->
+<form class="prisonerBasicInfoForm" name="prisonerBasicInfoForm" novalidate ng-submit="prisonerBasicInfoForm.$valid && savePrisonerBasicInfo()">
+    <div class="col-xs-6 formEnglish">
+        <!--
+
+        First name
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : prisonerBasicInfoForm.forename_en.$error.required && prisonerBasicInfoForm.forename_en.$touched ,'has-error' : prisonerBasicInfoForm.forename_en.$error.required && prisonerBasicInfoForm.$submitted  }">
+            <label class="control-label" for="textinput">First Name</label>
+            <input ng-model="prisonerBasicInfo.forename_en" id="textinput" name="forename_en" required placeholder="First Name" class="form-control input-md" type="text">
+        </div>
+        <!--
+
+        Last name
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : prisonerBasicInfoForm.surname_en.$error.required && prisonerBasicInfoForm.surname_en.$touched ,'has-error' : prisonerBasicInfoForm.surname_en.$error.required && prisonerBasicInfoForm.$submitted  }">
+            <label class="control-label" for="textinput">Last Name</label>
+            <input ng-model="prisonerBasicInfo.surname_en" id="textinput" name="surname_en" required placeholder="Last Name" class="form-control input-md" type="text">
+        </div>
+        <!--
+
+        Gender
+
+        -->
+        <div ng-class="{'has-error' : !prisonerBasicInfo.gender && prisonerBasicInfoForm.$submitted }">
+            <label class="control-label" for="radios">Gender</label>
+            <div class="row">
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="prisonerBasicInfo.gender" ng-value="'M'" type="radio" required>
+                    <span class="radioBtn" ng-click='prisonerBasicInfo.gender = "M"' ng-class="{'checked': prisonerBasicInfo.gender=='M'}"></span> <span class="radioTag">Male</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input ng-model="prisonerBasicInfo.gender" ng-value="'F'" type="radio">
+                    <span class="radioBtn" ng-click='prisonerBasicInfo.gender = "F"' ng-class="{'checked': prisonerBasicInfo.gender=='F'}"></span> <span class="radioTag">Female</span>
+                </label>
+            </div>
+        </div>
+        <!--
+
+        Date of birth
+
+        -->
+        <label class="control-label" for="textinput">Date of Birth</label>
+        <date local-model="'dob'" />
+        <!--
+
+        Country of citzenship
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">Coutry of Citizenship </label>
+            <div class="input-group">
+                <input autocomplete="off" ng-value="" ng-change="predict('country' , prisonerBasicInfo.country ,  'prisonerBasicInfo' ,'countryDD' , 'core_types' ,'name')" ng-model="prisonerBasicInfo.country" id="textinput" name="textinput" placeholder="Coutry of Citizenship" class="form-control input-md" type="text">
+                <font ng-click="addToList('country' , 'home_countries_ids', 'prisonerBasicInfo')" class="input-group-addon pointer">
+                    <font class="icon-plus"></font>
+                </font>
+            </div>
+            <div class="holder">
+                <div ng-model="prisonerBasicInfo.countryDD" ng-show="prisonerBasicInfo.countryDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerBasicInfo.countryDD">{$ item.name_en $} </div>
+                </div>
+            </div>
+            <div>
+                <div ng-repeat="item in prisonerBasicInfo.country_array">
+                    <div ng-click="removeFromList($index , 'country', 'home_countries_ids', 'prisonerBasicInfo')" class="fieldname">{$ item.name_en $}
+                        <div class="remove"> X </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Religion
+
+        -->
+        <div class="placeOfBirth">
+            <label class="control-label" for="textinput">Religion</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('religion' , prisonerBasicInfo.religion ,  'prisonerBasicInfo' ,'placeOfBirthDD' , 'core_types' , 'name')" ng-model="prisonerBasicInfo.religion" id="textinput" name="textinput" placeholder="Religion" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="prisonerBasicInfo.placeOfBirthDD" ng-show="prisonerBasicInfo.placeOfBirthDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-click="selectFrom()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerBasicInfo.placeOfBirthDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Ethnicity
+
+        -->
+        <div class="ethnicity">
+            <label class="control-label" for="textinput">Ethnicity</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('ethnicity' , prisonerBasicInfo.ethnicity ,  'prisonerBasicInfo' ,'ethnicityDD','core_types' , 'name')" ng-model="prisonerBasicInfo.ethnicity" val="" id="textinput" name="textinput" placeholder="Ethnicity" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="prisonerBasicInfo.ethnicityDD" ng-show="prisonerBasicInfo.ethnicityDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-click="selectFrom()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerBasicInfo.ethnicityDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Biography
+
+        -->
+        <div class="form-group Biography">
+            <label class="control-label" for="textinput">Biography</label>
+            <textarea ng-model="prisonerBasicInfo.biography_en" name="biography_en" placeholder="Biography" class="form-control input-md" type="text" maxlength="350"></textarea>
+        </div>
+        <!--
+
+        Explanation
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation</label>
+            <textarea ng-model="prisonerBasicInfo.explanation_en" name="explanation_en" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+        <!--
+
+        Featured
+
+        -->
+        <div class="form-group Featured">
+            <label class="control-label" for="textinput">Featured</label>
+            <input type="checkbox" ng-checked="prisonerBasicInfo.featured === true" ng-model="prisonerBasicInfo.featured" ng-true-value="true" style="display: block;">
+        </div>
+    </div>
+    <!--
+
+    Farsi
+
+    -->
+    <div class="col-xs-6 formFarsi">
+        <!--
+
+        Full name
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : prisonerBasicInfoForm.forename_fa.$error.required && prisonerBasicInfoForm.forename_fa.$touched ,'has-error' : prisonerBasicInfoForm.forename_fa.$error.required && prisonerBasicInfoForm.$submitted  }">
+            <label class="control-label" for="textinput">نام</label>
+            <input ng-model="prisonerBasicInfo.forename_fa" id="textinput" required name="forename_fa" placeholder="نام" class="form-control input-md" type="text">
+        </div>
+        <!--
+
+        Last name
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : prisonerBasicInfoForm.surname_fa.$error.required && prisonerBasicInfoForm.surname_fa.$touched ,'has-error' : prisonerBasicInfoForm.surname_fa.$error.required && prisonerBasicInfoForm.$submitted  }">
+            <label class="control-label" for="textinput">نام خانوادگی</label>
+            <input ng-model="prisonerBasicInfo.surname_fa" id="textinput" required name="surname_fa" placeholder="نام خانوادگی" class="form-control input-md" type="text">
+        </div>
+        <!--
+
+        Gender
+
+        -->
+        <div ng-class="{'has-error' : !prisonerBasicInfo.gender && prisonerBasicInfoForm.$submitted }">
+            <label class="control-label" for="radios">Gender</label>
+            <div class="row">
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="prisonerBasicInfo.gender" ng-value="'M'" type="radio" required>
+                    <span class="radioBtn" ng-click='prisonerBasicInfo.gender = "M"' ng-class="{'checked': prisonerBasicInfo.gender=='M'}"></span> <span class="radioTag">Male</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input ng-model="prisonerBasicInfo.gender" ng-value="'F'" type="radio">
+                    <span class="radioBtn" ng-click='prisonerBasicInfo.gender = "F"' ng-class="{'checked': prisonerBasicInfo.gender=='F'}"></span> <span class="radioTag">Female</span>
+                </label>
+            </div>
+        </div>
+        <!--
+
+        Date of birth
+
+         -->
+        <label class="control-label" for="textinput">تاریخ تولد</label>
+        <datefa local-model="'dob'" />
+        <!--
+
+        Coutry of Citizenship
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">Coutry of Citizenship </label>
+            <div class="input-group">
+                <input autocomplete="off" ng-value="" ng-change="predict('country' , prisonerBasicInfo.country_fa ,  'prisonerBasicInfo' ,'countryDD_fa' , 'core_types' ,'name')" ng-model="prisonerBasicInfo.country_fa" id="textinput" name="textinput" placeholder="Coutry of Citizenship" class="form-control input-md" type="text">
+                <font ng-click="addToList('country' , 'home_countries_ids', 'prisonerBasicInfo')" class="input-group-addon pointer">
+                    <font class="icon-plus"></font>
+                </font>
+            </div>
+            <div class="holder">
+                <div ng-model="prisonerBasicInfo.countryDD" ng-show="prisonerBasicInfo.countryDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerBasicInfo.countryDD_fa">{$ item.name_en $} </div>
+                </div>
+            </div>
+            <div>
+                <div ng-repeat="item in prisonerBasicInfo.country_array">
+                    <div ng-click="removeFromList($index , 'country', 'home_countries_ids', 'prisonerBasicInfo')" class="fieldname">{$ item.name_en $}
+                        <div class="remove"> X </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Religion
+
+        -->
+        <div class="placeOfBirth">
+            <label class="control-label" for="textinput">دین</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('religion' , prisonerBasicInfo.religion_fa ,  'prisonerBasicInfo' ,'placeOfBirthDD_fa' , 'core_types' , 'name')" ng-model="prisonerBasicInfo.religion_fa" id="textinput" name="textinput" placeholder="دین" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="prisonerBasicInfo.placeOfBirthDD" ng-show="prisonerBasicInfo.placeOfBirthDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-click="selectFrom()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerBasicInfo.placeOfBirthDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Ethnicity
+
+        -->
+        <div class="ethnicity">
+            <label class="control-label" for="textinput">قومیت</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('ethnicity' , prisonerBasicInfo.ethnicity_fa ,  'prisonerBasicInfo' ,'ethnicityDD_fa','core_types' , 'name')" ng-model="prisonerBasicInfo.ethnicity_fa" id="textinput" name="textinput" placeholder="قومیت" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="prisonerBasicInfo.ethnicityDD" ng-show="prisonerBasicInfo.ethnicityDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-click="selectFrom()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerBasicInfo.ethnicityDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Biography
+
+        -->
+        <div class="form-group Biography">
+            <label class="control-label" for="textinput">بیوگرافی</label>
+            <textarea ng-model="prisonerBasicInfo.biography_fa" name="biography_fa" placeholder="بیوگرافی" class="form-control input-md" type="text" maxlength="350"></textarea>
+        </div>
+        <!--
+
+        Explanation
+
+        -->
+        <div class="form-group Explanation">
+            <label class="control-label" for="textinput">Explanation</label>
+            <textarea ng-model="prisonerBasicInfo.explanation_fa" name="explanation_fa" placeholder="Explanation" class="form-control input-md" type="text" maxlength="1500"></textarea>
+        </div>
+        <!--
+
+        Featured
+
+        -->
+        <div class="form-group Featured">
+            <label class="control-label" for="textinput">Featured</label>
+            <input type="checkbox" ng-checked="prisonerBasicInfo.featured === true" ng-model="prisonerBasicInfo.featured" ng-true-value="true" style="display: block;">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">SAVE BASIC INFO</button>
+    <button ng-click="editPrisoner($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>

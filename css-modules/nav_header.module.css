@@ -1,0 +1,329 @@
+@value breakpoints: 'breakpoints.module.css';
+@value colours: 'colours.module.css';
+@value general: 'general.module.css';
+
+@value (
+    mediumMaxWidth,
+    largeMinWidth
+) from breakpoints;
+@value (
+    ipaBlack,
+    ipaGreen,
+    ipaGrey,
+    ipaTeal,
+    ipaWhite
+) from colours;
+
+.boxed {
+    border-radius: 0.25em;
+    padding: 0 0.5em;
+    height: 2.5em;
+    line-height: 2.5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+    height: 6.875em;
+    background-color: ipaGrey;
+    border-bottom: 2px solid transparent;
+}
+:global(html.aea) .wrapper {
+    border-bottom-color: ipaGreen;
+}
+:global(html.ipa) .wrapper {
+    border-bottom-color: ipaTeal;
+}
+
+.nav {
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex: 0 0;
+}
+.nav::before,
+.nav::after {
+    content: initial;
+    display: initial;
+}
+
+.segment::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    top: calc(-0.25em);
+    width: 2px;
+    height: 100%;
+    height: calc(100% + 0.5em);
+}
+:global(html.ltr) .segment::after {
+    right: 0;
+}
+:global(html.rtl) .segment::after {
+    left: 0;
+}
+:global(html.aea) .segment::after {
+    background-color: ipaGreen;
+}
+:global(html.ipa) .segment::after {
+    background-color: ipaTeal;
+}
+
+.wrapper:global(.shouldShowSisterSiteLink) .segment:nth-last-child(2)::after {
+    display: none;
+}
+.wrapper:global(:not(.shouldShowSisterSiteLink)) .segment:nth-last-child(3)::after {
+    display: none;
+}
+
+.logoLink,
+.logo {
+    display: block;
+}
+
+.logoLink {
+    flex: 0 0;
+    height: 100%;
+}
+:global(html.ltr) .logoLink {
+    margin-right: auto;
+}
+:global(html.rtl) .logoLink {
+    margin-left: auto;
+}
+
+.logo {
+    height: 100%;
+}
+
+.linkList,
+.linkListItem,
+.linkListItemLink {
+    display: block;
+}
+
+.linkList {
+    composes: segment;
+    position: relative;
+    list-style: none;
+    flex: 0 0;
+    margin: 0;
+    display: flex;
+    height: 2.5em;
+    line-height: 2.5em;
+}
+
+.linkListItem,
+.linkListItemLink {
+    height: inherit;
+}
+
+.linkListItem {
+    list-style: none;
+    flex: 0 0;
+    margin: 0 1em;
+}
+:global(html.ipa.en) .linkListItem {
+    margin: 0 0.9em;
+}
+
+.linkListItemLink {
+    color: ipaBlack !important;
+    font-weight: 700;
+    white-space: nowrap;
+}
+:global(html.aea) .linkListItemLink:hover {
+    color: ipaGreen !important;
+}
+:global(html.ipa) .linkListItemLink:hover {
+    color: ipaTeal !important;
+}
+
+.linkListItemLinkBoxed {
+    composes: linkListItemLink;
+    composes: boxed;
+
+    border: 2px solid;
+    line-height: calc(2.5em - 4px);
+}
+:global(html.aea) .linkListItemLinkBoxed {
+    border-color: ipaGreen;
+}
+:global(html.ipa) .linkListItemLinkBoxed {
+    border-color: ipaTeal;
+}
+
+.quickSearchContainer {
+    composes: segment;
+    position: relative;
+}
+
+.quickSearchHolder {
+    position: relative;
+    height: 35px;
+    width: 200px;
+    margin: 0 1em;
+}
+:global(html.ltr) .wrapper:global(:not(.shouldShowSisterSiteLink)) .quickSearchHolder {
+    margin-right: 0;
+}
+:global(html.rtl) .wrapper:global(:not(.shouldShowSisterSiteLink)) .quickSearchHolder {
+    margin-left: 0;
+}
+
+.quickSearchGo {
+    width: 100%;
+    border: none !important;
+}
+.quickSearchGo:global(.open) {
+    background: ipaWhite !important;
+    border: none !important;
+}
+
+.quickSearchInput {
+    position: absolute;
+    border: none !important;
+    transition-delay: initial !important;
+    transition-duration: initial !important;
+}
+.quickSearchInput:global(.open) {
+    width: 80% !important;
+    width: calc(100% - 35px) !important;
+}
+
+.quickSearchIcon {
+    position: absolute;
+    top: 0;
+    width: 35px;
+    height: 35px;
+}
+:global(html.aea) .quickSearchResultAdvance {
+    background-color: ipaGreen !important;
+    border-color: ipaGreen !important;
+}
+:global(html.ipa) .quickSearchResultAdvance {
+    background-color: ipaTeal !important;
+    border-color: ipaTeal !important;
+}
+
+:global(html.ltr) .quickSearchIcon {
+    right: 0;
+}
+:global(html.rtl) .quickSearchIcon {
+    left: 0;
+}
+.advanceBtn {
+    display: block !important;
+}
+
+.menuToggleContainer {
+    position: relative;
+}
+
+.menuToggle {
+    display: none;
+    composes: imageButton from general;
+    width: 2em;
+    height: 2em;
+}
+
+.menuToggleIcon {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+:global(html.aea) .menuToggleIcon {
+    fill: ipaGreen;
+}
+:global(html.ipa) .menuToggleIcon {
+    fill: ipaTeal;
+}
+
+.menuToggleIconClose,
+.menuToggleIconOpen {
+    composes: menuToggleIcon;
+}
+
+.menuToggleIconClose {
+    display: none;
+}
+.menuToggleIconOpen {
+    display: block;
+}
+.wrapper:global(.mobileMenuIsOpen) .menuToggleIconClose {
+    display: block;
+}
+.wrapper:global(.mobileMenuIsOpen) .menuToggleIconOpen {
+    display: none;
+}
+
+.wrapper:global(.mobileMenuIsOpen) .mobileMenu {
+    display: block;
+}
+
+.sisterSiteLink {
+    display: none;
+
+    composes: segment;
+    composes: boxed;
+
+    flex: 0 1 auto;
+    color: ipaWhite !important;
+    margin: 0 1em;
+
+    background-repeat: no-repeat;
+    background-size: auto 14px;
+}
+:global(html.aea) .sisterSiteLink {
+    background-color: ipaTeal;
+}
+:global(html.ipa) .sisterSiteLink {
+    background-color: ipaGreen;
+}
+:global(html.ltr) .sisterSiteLink {
+    background-image: url('../img/chevron-ipaWhite-right.svg?v=2019-09-30');
+    background-position: 95% 50%;
+    background-position: calc(100% - 0.5em) 50%;
+    padding-right: 1.5em;
+}
+:global(html.rtl) .sisterSiteLink {
+    background-image: url('../img/chevron-ipaWhite-left.svg?v=2019-09-30');
+    background-position: 0.5em 50%;
+    padding-left: 1.5em;
+}
+
+.wrapper:global(.shouldShowSisterSiteLink) .sisterSiteLink {
+    display: block;
+}
+
+@media (min-width: largeMinWidth) {
+    :global(html.ltr) .segment:nth-last-child(2) {
+        margin-right: 0;
+    }
+    :global(html.rtl) .segment:nth-last-child(2) {
+        margin-left: 0;
+    }
+}
+@media (max-width: mediumMaxWidth) {
+    .wrapper {
+        height: 3.75em;
+    }
+    .nav {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+    .linkList,
+    .quickSearchContainer {
+        display: none;
+    }
+    .menuToggle {
+        display: block;
+    }
+}

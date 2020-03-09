@@ -1,0 +1,62 @@
+@value colours: 'colours.module.css';
+@value home_showcase_item: 'home_showcase_item.module.css';
+
+@value (
+    ipaBlack,
+    ipaGreen
+) from colours;
+
+.item {
+    composes: item from home_showcase_item;
+}
+
+.content {
+    composes: content from home_showcase_item;
+    justify-content: start;
+}
+
+.title {
+    composes: title from home_showcase_item;
+    font-size: 1.25em;
+}
+
+.picture {
+    composes: picture from home_showcase_item;
+}
+
+.abstractText {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 0;
+}
+.meta {
+    margin: auto 0 0 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.detentionDate {
+    margin: 0;
+}
+
+.readMoreLink {
+    color: ipaGreen !important;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: auto 50%;
+}
+
+:global(html.ltr) .readMoreLink {
+    padding-right: 1em;
+    background-image: url('../img/chevron-ipaGreen-right.svg?v=2019-08-28');
+    background-position: 100% 50%;
+    margin-left: auto;
+}
+:global(html.rtl) .readMoreLink {
+    padding-left: 1em;
+    background-image: url('../img/chevron-ipaGreen-left.svg?v=2019-08-28');
+    background-position: 0 50%;
+    margin-right: auto;
+}

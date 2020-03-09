@@ -1,0 +1,6 @@
+<div ng-cloak class="ng-cloak quote topSpacerM">
+    <font ng-if="entityData.quotes[quoteIndex]['quote_' + lang]" class="double-quote">&#8220;</font>
+    <font>{$entityData.quotesWithCurrentLocaleText[quoteIndex]['quote_' + lang]$}</font>
+    <font ng-if="entityData.quotes[quoteIndex]['quote_' + lang]" class="double-quote">&#8221;</font>
+    <div class="author"><a ng-href="{$entityData.quotesWithCurrentLocaleText[quoteIndex].source$}" target="_blank" class="quote-author">{$entityData.quotesWithCurrentLocaleText[quoteIndex]['name_' + lang]$}</a></div>
+</div>

@@ -1,0 +1,1313 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-17 17:19+0000\n"
+"PO-Revision-Date: 2019-09-26 12:32-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+
+#: public/models.py:20
+msgid "Slug"
+msgstr ""
+
+#: public/models.py:21
+msgid "Title"
+msgstr ""
+
+#: public/models.py:22
+msgid "content"
+msgstr ""
+
+#: public/models.py:34
+msgid "page"
+msgstr ""
+
+#: public/models.py:35
+msgid "pages"
+msgstr ""
+
+#: public/serializers.py:139 public/templates/filters_judges.html:37
+#: public/templates/filters_judges.html:39
+#: public/templates/prisoner_accordian.html:92
+#: public/templates/prisoners.html:135 public/templates/prisoners.html:145
+#: public/templates/prisons.html:179 public/utils.py:171 public/views.py:546
+#: public/views.py:547 public/views.py:558 public/views.py:563
+msgid "Unknown"
+msgstr ""
+
+#: public/templates/filters_judges.html:4
+#: public/templates/filters_prisoner.html:4
+#: public/templates/filters_prisons.html:4
+msgid "basic information"
+msgstr ""
+
+#: public/templates/filters_judges.html:7
+#: public/templates/filters_prisoner.html:26 public/templates/judge.html:152
+#: public/templates/prisoner.html:80
+msgid "Age"
+msgstr ""
+
+#: public/templates/filters_judges.html:21
+msgid "Judge type 1"
+msgstr ""
+
+#: public/templates/filters_judges.html:27
+msgid "Cleric"
+msgstr ""
+
+#: public/templates/filters_judges.html:33
+msgid "Not cleric"
+msgstr ""
+
+#: public/templates/filters_judges.html:46
+msgid "Judge type 2"
+msgstr ""
+
+#: public/templates/filters_judges.html:52 public/templates/judge.html:148
+msgid "Research"
+msgstr ""
+
+#: public/templates/filters_judges.html:58 public/templates/judge.html:145
+msgid "Primary"
+msgstr ""
+
+#: public/templates/filters_judges.html:64 public/templates/judge.html:147
+msgid "Appeal"
+msgstr ""
+
+#: public/templates/filters_judges.html:70 public/templates/judge.html:146
+msgid "Supreme"
+msgstr ""
+
+#: public/templates/filters_judges.html:77
+msgid "judicial position"
+msgstr ""
+
+#: public/templates/filters_judges.html:81
+#: public/templates/filters_prisoner.html:44
+#: public/templates/filters_prisoner.html:62
+#: public/templates/filters_prisoner.html:85
+#: public/templates/filters_prisoner.html:162
+#: public/templates/filters_prisoner.html:180
+#: public/templates/filters_prisoner.html:203
+#: public/templates/filters_prisoner.html:252
+#: public/templates/filters_prisoner.html:275
+#: public/templates/filters_prisons.html:56
+#: public/templates/filters_prisons.html:74
+#: public/templates/filters_prisons.html:92
+msgid "Search"
+msgstr ""
+
+#: public/templates/filters_judges.html:97
+#: public/templates/filters_prisoner.html:268
+#: public/templates/filters_prisons.html:108
+msgid "Additional information"
+msgstr ""
+
+#: public/templates/filters_judges.html:100
+#: public/templates/filters_prisoner.html:293
+#: public/templates/filters_prisons.html:111
+msgid "DOCS/QUOTES"
+msgstr ""
+
+#: public/templates/filters_judges.html:106
+msgid "Show judges with supporting documents"
+msgstr ""
+
+#: public/templates/filters_judges.html:112
+msgid "Show judges with quotes"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:7 public/templates/prisoner.html:76
+#: public/templates/prisons.html:181
+msgid "Gender"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:13 public/templates/prisoner.html:77
+msgid "Male"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:19 public/templates/prisoner.html:77
+msgid "Female"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:40
+msgid "religions"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:58
+msgid "Ethnicities"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:78
+msgid "Sentencing"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:81
+#: public/templates/filters_prisons.html:70 public/templates/prisoner.html:67
+#: public/templates/prisoner_accordian.html:26
+#: public/templates/prisons.html:183
+msgid "Activity persecuted for"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:108
+#: public/templates/prisoner_accordian.html:151
+msgid "Sentenced"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:112
+#: public/templates/prisoner_accordian.html:87
+msgid "Years"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:127 public/views.py:744
+msgid "Life"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:133
+msgid "Flogging"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:139
+msgid "Fine"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:145 public/views.py:740
+msgid "Execution"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:151 public/views.py:742
+msgid "Exile"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:158
+#: public/templates/prisoner_accordian.html:44
+msgid "charged with"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:176
+msgid "Sentenced by"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:196
+msgid "detention"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:199
+#: public/templates/nav_header.html:72 public/templates/prison.html:16
+#: public/templates/prisoner_accordian.html:136
+msgid "Prison"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:217
+msgid "Detention Status "
+msgstr ""
+
+#: public/templates/filters_prisoner.html:221
+msgid "Entered Prison After Date"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:227
+msgid "Exited Prison Before Date"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:233
+msgid "In Prison On Date"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:241
+msgid "Show detained prisoners"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:248
+#: public/templates/filters_prisons.html:88
+#: public/templates/prisoner_accordian.html:146
+msgid "Treatment in prison"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:271
+msgid "Affiliations"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:299
+msgid "Show prisoners with supporting documents"
+msgstr ""
+
+#: public/templates/filters_prisoner.html:305
+msgid "Show prisoners with quotes"
+msgstr ""
+
+#: public/templates/filters_prisons.html:7
+msgid "capacity"
+msgstr ""
+
+#: public/templates/filters_prisons.html:21 public/templates/prison.html:89
+#: public/templates/prisons.html:197
+msgid "Administered by"
+msgstr ""
+
+#: public/templates/filters_prisons.html:27 public/templates/prison.html:94
+#: public/templates/prisons.html:219
+msgid "Ministry of Intelligence"
+msgstr ""
+
+#: public/templates/filters_prisons.html:33 public/templates/prison.html:92
+#: public/templates/prisons.html:235
+msgid "IRGC"
+msgstr ""
+
+#: public/templates/filters_prisons.html:39 public/templates/prison.html:91
+#: public/templates/prisons.html:211
+msgid "Prisons Division of the Judiciary"
+msgstr ""
+
+#: public/templates/filters_prisons.html:45 public/templates/prison.html:93
+#: public/templates/prisons.html:227
+msgid "Police"
+msgstr ""
+
+#: public/templates/filters_prisons.html:52
+msgid "facility"
+msgstr ""
+
+#: public/templates/filters_prisons.html:117
+msgid "Show prisons with supporting documents"
+msgstr ""
+
+#: public/templates/filters_prisons.html:123
+msgid "Show prisons with quotes"
+msgstr ""
+
+#: public/templates/footer.html:13
+msgid "follow us"
+msgstr ""
+
+#: public/templates/footer.html:21
+msgid "connect"
+msgstr ""
+
+#: public/templates/footer.html:22
+msgid "contact"
+msgstr ""
+
+#: public/templates/footer.html:30
+msgid "powered by"
+msgstr ""
+
+#: public/templates/footer.html:33
+msgid "Copyright 2015 United For Iran."
+msgstr ""
+
+#: public/templates/footer.html:34
+msgid "All Rights Reserved"
+msgstr ""
+
+#: public/templates/home.html:15
+msgid "Iran Prison Atlas"
+msgstr ""
+
+#. Translators: Site description text at top of homepage.
+#: public/templates/home.html:18
+msgctxt "Home"
+msgid "Our goal is to share information on individuals, advocate for all political prisoners and highlight systematic abuses by the Islamic Republic of Iran"
+msgstr ""
+
+#: public/templates/home_showcase_item_featured_news.html:27
+msgctxt "Home showcase (AeA featured news)"
+msgid "Read more"
+msgstr ""
+
+#: public/templates/home_showcase_item_prisoner.html:28
+#, python-format
+msgctxt "Home showcase (IPA prisoner)"
+msgid "%(age)s years old"
+msgstr ""
+
+#: public/templates/judge.html:9 public/templates/prison.html:10
+#: public/templates/prisoner.html:14
+msgid "Edit Profile"
+msgstr ""
+
+#: public/templates/judge.html:25 public/templates/nav_header.html:64
+#: public/templates/prisoner_accordian.html:83
+msgid "Judge"
+msgstr ""
+
+#: public/templates/judge.html:36
+msgctxt "Judge heading (AeA)"
+msgid "Total Amputations"
+msgstr ""
+
+#: public/templates/judge.html:48
+msgctxt "Judge heading (AeA)"
+msgid "Total Executions"
+msgstr ""
+
+#: public/templates/judge.html:60
+msgctxt "Judge heading (AeA)"
+msgid "Total Floggings"
+msgstr ""
+
+#: public/templates/judge.html:72
+msgctxt "Judge heading (AeA)"
+msgid "Total Victims"
+msgstr ""
+
+#: public/templates/judge.html:84
+msgctxt "Judge heading (IPA)"
+msgid "Total Sentenced Yrs"
+msgstr ""
+
+#: public/templates/judge.html:96
+msgctxt "Judge heading (IPA)"
+msgid "total verdicts"
+msgstr ""
+
+#: public/templates/judge.html:108
+msgctxt "Judge heading (IPA)"
+msgid "AVG. sentence yrs"
+msgstr ""
+
+#: public/templates/judge.html:120 public/templates/prison.html:60
+#: public/templates/prisoner.html:47
+msgid "Share"
+msgstr ""
+
+#: public/templates/judge.html:120 public/templates/prison.html:60
+#: public/templates/prisoner.html:47
+msgid "Profile"
+msgstr ""
+
+#: public/templates/judge.html:129 public/templates/prison.html:69
+#: public/templates/prisoner.html:56 public/templates/prisoners.html:157
+#: public/templates/profile_chart.html:56
+#: public/templates/profile_chart.html:97 public/templates/search.html:71
+#: public/templates/search.html:72
+msgid "Profile Image"
+msgstr ""
+
+#: public/templates/judge.html:139 public/templates/prisoner.html:87
+#: public/templates/prisoners.html:52 public/templates/prisoners.html:64
+#: public/templates/prisoners.html:73 public/templates/prisoners.html:148
+#: public/templates/prisons.html:180
+msgid "Ethnicity"
+msgstr ""
+
+#: public/templates/judge.html:143
+msgid "Judge type"
+msgstr ""
+
+#: public/templates/judge.html:155
+msgid "Place of birth"
+msgstr ""
+
+#: public/templates/judge.html:160 public/templates/judge.html:171
+#: public/templates/prisoner.html:107
+msgid "BIOGRAPHY"
+msgstr ""
+
+#: public/templates/judge.html:167
+msgid "Most Recent Sentence"
+msgstr ""
+
+#: public/templates/judge.html:177
+msgid "Year"
+msgstr ""
+
+#: public/templates/judge.html:178
+msgid "Position"
+msgstr ""
+
+#: public/templates/judge.html:183
+msgid "Current"
+msgstr ""
+
+#: public/templates/judge.html:200
+msgid "See all sentenced by"
+msgstr ""
+
+#: public/templates/judge.html:221 public/templates/prison.html:149
+#: public/templates/prisoner.html:122
+msgid "Explanation"
+msgstr ""
+
+#: public/templates/judges.html:17 public/templates/nav_header.html:138
+msgid "JUDGES"
+msgstr ""
+
+#: public/templates/judges.html:25 public/templates/prisoners.html:33
+#: public/templates/prisons.html:17
+msgid "Share Visualization"
+msgstr ""
+
+#: public/templates/nav_header.html:68 public/templates/prisoner.html:21
+msgid "Prisoner"
+msgstr ""
+
+#: public/templates/nav_header.html:76
+msgid "Advanced Search"
+msgstr ""
+
+#: public/templates/nav_header.html:132 public/templates/prisoners.html:16
+msgid "Prisoners"
+msgstr ""
+
+#: public/templates/nav_header.html:143 public/templates/prisons.html:12
+msgid "PRISONS"
+msgstr ""
+
+#: public/templates/nav_header.html:148 public/templates/page.html:8
+msgid "about"
+msgstr ""
+
+#. Translators: Act now (united4iran.org) link
+#: public/templates/nav_header.html:153
+#: public/templatetags/public/nav_header.py:115
+msgctxt "Navigation header"
+msgid "Act now"
+msgstr ""
+
+#: public/templates/prison.html:27
+msgid "Victims"
+msgstr ""
+
+#: public/templates/prison.html:39 public/templates/prisons.html:165
+msgid "Political Prisoners"
+msgstr ""
+
+#: public/templates/prison.html:48
+msgid "Prison Capacity"
+msgstr ""
+
+#: public/templates/prison.html:79
+msgid "Address"
+msgstr ""
+
+#: public/templates/prison.html:83
+msgid "Dean of Prison"
+msgstr ""
+
+#: public/templates/prison.html:86
+msgid "Date Prison was opened"
+msgstr ""
+
+#: public/templates/prison.html:100
+msgid "Physical structure"
+msgstr ""
+
+#: public/templates/prison.html:102
+msgid "Size and density"
+msgstr ""
+
+#: public/templates/prison.html:112
+msgid "Facilities"
+msgstr ""
+
+#: public/templates/prison.html:128
+msgid "See all prisoners"
+msgstr ""
+
+#: public/templates/prisoner.html:29
+#: public/templates/prisoner_accordian.html:63
+msgid "Sentence"
+msgstr ""
+
+#: public/templates/prisoner.html:63
+msgid "CURRENT DETENTION STATUS"
+msgstr ""
+
+#: public/templates/prisoner.html:69
+msgid "SECONDARY ACTIVITIES"
+msgstr ""
+
+#: public/templates/prisoner.html:84 public/templates/prisoners.html:54
+#: public/templates/prisoners.html:75 public/templates/prisoners.html:150
+#: public/templates/prisons.html:182
+msgid "Religion"
+msgstr ""
+
+#: public/templates/prisoner.html:90
+msgid "Country of citzenship"
+msgstr ""
+
+#: public/templates/prisoner.html:93
+msgid "Affiliated with"
+msgstr ""
+
+#: public/templates/prisoner.html:98
+msgid "RELATED TO"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:5
+msgid "ARRESTS"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:19
+msgid "Date of arrest"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:69
+msgid "city, province of arrest"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:91
+msgid "Procedural Violation"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:110
+msgid "Domestic law violated"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:118
+msgid "International law violated"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:140
+msgid "Date of incarceration"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:150
+msgid "Type of Detention"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:151
+msgid "Detained Before Sentencing"
+msgstr ""
+
+#: public/templates/prisoner_accordian.html:151
+msgid "Transferred"
+msgstr ""
+
+#: public/templates/prisoners.html:43 public/templates/prisoners.html:50
+#: public/templates/prisoners.html:71 public/templates/prisoners.html:146
+msgid "activity"
+msgstr ""
+
+#: public/templates/prisoners.html:51 public/templates/prisoners.html:72
+#: public/templates/prisoners.html:147
+msgid "charges"
+msgstr ""
+
+#: public/templates/prisoners.html:53 public/templates/prisoners.html:74
+#: public/templates/prisoners.html:149
+#: public/templates/supporting_evidence.html:50
+msgid "Mistreatments"
+msgstr ""
+
+#: public/templates/prisoners.html:55 public/templates/prisoners.html:76
+#: public/templates/prisoners.html:151
+msgid "Sentences"
+msgstr ""
+
+#: public/templates/prisoners.html:59
+msgid "Select different variables in the two drop-down menus above to get an overview of the backgrounds, conditions and treatment of political prisoners in Iran."
+msgstr ""
+
+#: public/templates/prisoners.html:92
+msgid "Status of prisoners (OFF/ON)"
+msgstr ""
+
+#: public/templates/prisoners.html:100 public/templates/prisons.html:204
+#: public/templates/supporting_evidence.html:7
+#: public/templates/supporting_evidence.html:27
+#: public/templates/supporting_evidence.html:44
+msgid "All"
+msgstr ""
+
+#: public/templates/prisoners.html:107
+msgid "Detained"
+msgstr ""
+
+#: public/templates/prisoners.html:114
+msgid "Released"
+msgstr ""
+
+#: public/templates/prisoners.html:121
+msgid "Executed"
+msgstr ""
+
+#: public/templates/prisoners.html:128
+msgid "Passed Away"
+msgstr ""
+
+#: public/templates/prisons.html:41
+msgid "The map only displays prisons which currently hold political prisoners, the 'Administered By' tab displays the total number of prisons."
+msgstr ""
+
+#: public/templates/prisons.html:44
+msgid "reset"
+msgstr ""
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:58
+msgctxt "Prisons map chart data set (AeA)"
+msgid "Procedural Violations"
+msgstr ""
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:65
+msgctxt "Prisons map chart data set (AeA)"
+msgid "Human Rights Violations"
+msgstr ""
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:74
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Ethnicity"
+msgstr ""
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:81
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Gender"
+msgstr ""
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:88
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Religion"
+msgstr ""
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:95
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Activity persecuted for"
+msgstr ""
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:102
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Charged With"
+msgstr ""
+
+#. Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart
+#: public/templates/prisons.html:109
+msgctxt "Prisons map chart data set (IPA)"
+msgid "Mistreatment In Prison"
+msgstr ""
+
+#: public/templates/prisons.html:120 public/templates/prisons.html:163
+msgid "Prison Selected"
+msgstr ""
+
+#. Translators: Label for above total count at the top of the chart
+#: public/templates/prisons.html:126
+msgctxt "Prisons map chart heading (AeA)"
+msgid "Victims"
+msgstr ""
+
+#. Translators: Label for total count at the top of the chart
+#: public/templates/prisons.html:130
+msgctxt "Prisons map chart heading (IPA)"
+msgid "Political Prisoners"
+msgstr ""
+
+#: public/templates/prisons.html:140
+msgid "View Profile"
+msgstr ""
+
+#: public/templates/prisons.html:148
+msgctxt "Prisons map chart heading (AeA)"
+msgid "View All Reports"
+msgstr ""
+
+#: public/templates/prisons.html:152
+msgctxt "Prisons map chart heading (IPA)"
+msgid "View All Prisoners"
+msgstr ""
+
+#: public/templates/prisons.html:184
+msgid "Charged With"
+msgstr ""
+
+#: public/templates/prisons.html:185
+msgid "Mistreatment In Prison"
+msgstr ""
+
+#: public/templates/prisons.html:186
+msgid "Human Rights Violations"
+msgstr ""
+
+#: public/templates/prisons.html:187
+msgid "Procedural Violations"
+msgstr ""
+
+#. Translators: Appears before victim count in hover tooltip (e.g. "15 victims")
+#: public/templates/prisons.html:250
+msgctxt "Prisons map hover tooltip"
+msgid "victims"
+msgstr ""
+
+#. Translators: Appears before prisoner count in hover tooltip (e.g. "15 prisoners")
+#: public/templates/prisons.html:253
+msgctxt "Prisons map hover tooltip"
+msgid "Prisoners"
+msgstr ""
+
+#: public/templates/profile_chart.html:13
+msgid "Visualization"
+msgstr ""
+
+#: public/templates/profile_chart.html:17
+msgctxt "Profile chart title"
+msgid "Human rights violations"
+msgstr ""
+
+#: public/templates/profile_chart.html:21
+msgctxt "Profile chart title"
+msgid "Procedural violations"
+msgstr ""
+
+#: public/templates/profile_chart.html:25
+msgctxt "Profile chart title"
+msgid "Mistreatments in prison"
+msgstr ""
+
+#: public/templates/profile_chart.html:47
+msgctxt "Profile chart sidebar title"
+msgid "Selected Report"
+msgstr ""
+
+#: public/templates/profile_chart.html:51
+msgctxt "Profile chart sidebar title"
+msgid "Selected Prisoner"
+msgstr ""
+
+#: public/templates/profile_chart.html:73
+msgctxt "Profile chart sidebar label (AeA)"
+msgid "Number of Victims"
+msgstr ""
+
+#: public/templates/profile_chart.html:77
+msgctxt "Profile chart sidebar label (AeA)"
+msgid "Detention Date"
+msgstr ""
+
+#: public/templates/profile_chart.html:82
+msgid "Detention Date"
+msgstr ""
+
+#: public/templates/profile_chart.html:85
+msgctxt "Profile chart sidebar label (AeA)"
+msgid "Domestic Laws Violated"
+msgstr ""
+
+#: public/templates/profile_chart.html:89
+msgctxt "Profile chart sidebar label (AeA)"
+msgid "International Laws Violated"
+msgstr ""
+
+#: public/templates/profile_chart.html:101
+msgid "See full profile"
+msgstr ""
+
+#: public/templates/profile_chart.html:105
+msgctxt "Profile chart sidebar label (IPA)"
+msgid "Date Arrested"
+msgstr ""
+
+#: public/templates/profile_chart.html:106
+msgctxt "Profile chart sidebar label (IPA)"
+msgid "Activity"
+msgstr ""
+
+#: public/templates/profile_chart.html:107
+msgctxt "Profile chart sidebar label (IPA)"
+msgid "Charged"
+msgstr ""
+
+#: public/templates/profile_chart.html:108
+msgctxt "Profile chart sidebar label (IPA)"
+msgid "Sentenced"
+msgstr ""
+
+#: public/templates/search.html:10
+msgctxt "Search explanation"
+msgid "Select a database to search on the right and either use the search box or filters below to narrow down your results."
+msgstr ""
+
+#: public/templates/search.html:14
+msgctxt "Search prisoners by prison title"
+msgid "Searching detained prisoners from"
+msgstr ""
+
+#: public/templates/search.html:22
+msgctxt "Search mode link"
+msgid "Prisoners"
+msgstr ""
+
+#: public/templates/search.html:30
+msgctxt "Search mode link"
+msgid "Prisons"
+msgstr ""
+
+#: public/templates/search.html:37
+msgctxt "Search mode link"
+msgid "Judges"
+msgstr ""
+
+#: public/templates/search.html:46
+msgctxt "Search filter expand/collapse link"
+msgid "Refine By"
+msgstr ""
+
+#: public/templates/search.html:49
+msgctxt "Search filter “Clear All” link"
+msgid "Clear All"
+msgstr ""
+
+#: public/templates/search.html:59
+msgctxt "Search result input placeholder"
+msgid "Search"
+msgstr ""
+
+#: public/templates/search.html:65
+msgctxt "Search results"
+msgid "Results"
+msgstr ""
+
+#: public/templates/search.html:79
+msgctxt "Search result label (Prisoner)"
+msgid "Name"
+msgstr ""
+
+#: public/templates/search.html:88
+msgctxt "Search result label (Prisoner)"
+msgid "Activity persecuted for"
+msgstr ""
+
+#: public/templates/search.html:99
+msgid "name"
+msgstr ""
+
+#: public/templates/search.html:106
+msgctxt "Search result label (Prison) (AeA)"
+msgid "Victims"
+msgstr ""
+
+#: public/templates/search.html:113
+msgctxt "Search result label (Prison) (IPA)"
+msgid "Political Prisoners"
+msgstr ""
+
+#: public/templates/search.html:119
+msgctxt "Search result label (Prison)"
+msgid "Capacity"
+msgstr ""
+
+#: public/templates/search.html:123
+msgctxt "Search result label (Prison)"
+msgid "Administered by"
+msgstr ""
+
+#: public/templates/search.html:124
+msgctxt "Search (Prison) “administered by” value"
+msgid "Prisons Division of the Judiciary"
+msgstr ""
+
+#: public/templates/search.html:125
+msgctxt "Search (Prison) “administered by” value"
+msgid "IRGC"
+msgstr ""
+
+#: public/templates/search.html:126
+msgctxt "Search (Prison) “administered by” value"
+msgid "Police"
+msgstr ""
+
+#: public/templates/search.html:127
+msgctxt "Search (Prison) “administered by” value"
+msgid "Ministry of Intelligence"
+msgstr ""
+
+#: public/templates/search.html:135
+msgctxt "Search result label (Judge)"
+msgid "Name"
+msgstr ""
+
+#: public/templates/search.html:139
+msgctxt "Search result label (Judge)"
+msgid "Court and Branch"
+msgstr ""
+
+#: public/templates/search.html:148
+msgctxt "Search result label (Judge) (AeA)"
+msgid "Total Victims"
+msgstr ""
+
+#: public/templates/search.html:156
+msgctxt "Search result label (Judge) (IPA)"
+msgid "Total Verdicts"
+msgstr ""
+
+#: public/templates/search.html:164
+msgctxt "Search result label (Judge) (IPA)"
+msgid "Average Sentence Years"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:3
+msgid "Supporting evidence"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:10
+msgid "Prisoner's Activism"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:13
+msgid "Court"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:16
+msgid "Media"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:19
+msgid "Family"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:22
+#: public/templates/supporting_evidence.html:56
+msgid "Campaigns"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:30
+msgid "Rulings"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:33
+msgid "Verdicts"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:36
+msgid "Transcripts"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:39
+msgid "Images"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:47
+msgid "Visual Records"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:53
+msgid "Testimonials"
+msgstr ""
+
+#: public/templates/supporting_evidence.html:70
+msgid "Supporting Evidence Thumbnail"
+msgstr ""
+
+#: public/templates/timeline.html:4
+msgid "Timeline"
+msgstr ""
+
+#: public/templates/timeline.html:17
+msgid "see source"
+msgstr ""
+
+#. Translators: Nav box description text (small text under divider)
+#: public/templatetags/public/home_nav_boxes.py:74
+msgctxt "Home nav box"
+msgid "Click to explore the sentences handed down by some of Iran’s harshest judges"
+msgstr ""
+
+#. Translators: Nav box description title (large text beneath number)
+#: public/templatetags/public/home_nav_boxes.py:82
+msgctxt "Home nav box"
+msgid "Judges"
+msgstr ""
+
+#. Translators: Nav box description text (small text under divider)
+#: public/templatetags/public/home_nav_boxes.py:102
+msgctxt "Home nav box"
+msgid "Click to explore the lives and sentences of Iran’s political prisoners"
+msgstr ""
+
+#. Translators: Nav box description title (large text beneath number)
+#: public/templatetags/public/home_nav_boxes.py:110
+msgctxt "Home nav box"
+msgid "Prisoners"
+msgstr ""
+
+#. Translators: Nav box description text (small text under divider)
+#: public/templatetags/public/home_nav_boxes.py:129
+msgctxt "Home nav box"
+msgid "Click to explore the prisons that hold Iran’s political prisoners behind their bars"
+msgstr ""
+
+#. Translators: Nav box description title (large text beneath number)
+#: public/templatetags/public/home_nav_boxes.py:137
+msgctxt "Home nav box"
+msgid "Prisons"
+msgstr ""
+
+#: public/templatetags/public/home_showcase.py:42
+msgctxt "Home showcase (IPA prisoner)"
+msgid "Prisoner showcase"
+msgstr ""
+
+#: public/templatetags/public/home_showcase.py:58
+msgctxt "Home showcase (AeA featured news)"
+msgid "Featured news showcase"
+msgstr ""
+
+#. Translators: Used if prisoner has no forename and surname
+#: public/templatetags/public/home_showcase_item_prisoner.py:167
+msgctxt "Home showcase (IPA prisoner)"
+msgid "Name unknown"
+msgstr ""
+
+#. Translators: Prisoners page link
+#: public/templatetags/public/nav_header.py:67
+msgctxt "Navigation header"
+msgid "Prisoners"
+msgstr ""
+
+#. Translators: Prisons page link
+#: public/templatetags/public/nav_header.py:80
+msgctxt "Navigation header"
+msgid "Prisons"
+msgstr ""
+
+#. Translators: Judges page link
+#: public/templatetags/public/nav_header.py:90
+msgctxt "Navigation header"
+msgid "Judges"
+msgstr ""
+
+#. Translators: Blog (prisonatlas.com) link
+#: public/templatetags/public/nav_header.py:98
+msgctxt "Navigation header"
+msgid "Blog"
+msgstr ""
+
+#. Translators: About page link
+#: public/templatetags/public/nav_header.py:126
+msgctxt "Navigation header"
+msgid "About"
+msgstr ""
+
+#. Translators: Boxed IPA link
+#: public/templatetags/public/nav_header.py:181
+msgctxt "Navigation header"
+msgid "Political prisoners"
+msgstr ""
+
+#. Translators: Boxed AeA link
+#: public/templatetags/public/nav_header.py:186
+msgctxt "Navigation header"
+msgid "Non-political prisoners"
+msgstr ""
+
+#. Translators: Social media/search engine site description
+#: public/utils.py:388
+#, python-brace-format
+msgctxt "Home"
+msgid "Prisons across Iran are serving out sentences issued by {judge_count} judges. Want to find out more? Explore Atlas Agahi."
+msgstr ""
+
+#. Translators: Social media/search engine site description
+#: public/utils.py:397
+#, python-brace-format
+msgctxt "Home"
+msgid "{prisoner_count} political prisoners are currently detained in {prison_count} prisons across Iran serving out sentences issued by {judge_count} judges. Want to find out more? Explore Iran Prison Atlas."
+msgstr ""
+
+#: public/utils.py:430
+msgctxt "General"
+msgid "Atlas Agahi"
+msgstr ""
+
+#: public/utils.py:435
+msgctxt "General"
+msgid "Iran Prison Atlas"
+msgstr ""
+
+#: public/views.py:217 public/views.py:331
+#, python-format
+msgid "%d Prisons"
+msgstr ""
+
+#: public/views.py:218
+#, python-format
+msgid "%(prisoners_count)d political prisoners are currently detained in %(prisons_count)d prisons across Iran. Explore our visualization to find out more."
+msgstr ""
+
+#: public/views.py:392 public/views.py:488
+#, python-format
+msgid "%(prison)s | %(count)d prisoners detained"
+msgstr ""
+
+#: public/views.py:430
+msgctxt "Prison error message"
+msgid "Prison not found"
+msgstr ""
+
+#: public/views.py:694
+#, python-format
+msgid "%d Political Prisoners"
+msgstr ""
+
+#: public/views.py:695
+#, python-format
+msgid "%(count)d political prisoners are currently serving a cumulative total of %(total_years)d years in Iran's prisons. Explore our visualization to find out more."
+msgstr ""
+
+#: public/views.py:748
+#, python-format
+msgid "Fine: %s Rial"
+msgstr ""
+
+#: public/views.py:750
+#, python-format
+msgid "%s lashes"
+msgstr ""
+
+#: public/views.py:753
+#, python-format
+msgid "%s years"
+msgstr ""
+
+#: public/views.py:755
+#, python-format
+msgid "%s year"
+msgstr ""
+
+#: public/views.py:758
+#, python-format
+msgid "%s months"
+msgstr ""
+
+#: public/views.py:760
+#, python-format
+msgid "%s month"
+msgstr ""
+
+#: public/views.py:849
+msgctxt "Prisoner(s) information box description"
+msgid "Arrests description"
+msgstr ""
+
+#: public/views.py:853
+msgctxt "Prisoner(s) information box title"
+msgid "Arrests"
+msgstr ""
+
+#: public/views.py:864
+msgctxt "Prisoner(s) information box description"
+msgid "Sentence description"
+msgstr ""
+
+#: public/views.py:868
+msgctxt "Prisoner(s) information box title"
+msgid "Sentence"
+msgstr ""
+
+#: public/views.py:1030
+msgctxt "Judges information box description"
+msgid "Judges description"
+msgstr ""
+
+#: public/views.py:1034
+msgctxt "Judges information box title"
+msgid "Judges"
+msgstr ""
+
+#: public/views.py:1044
+msgctxt "Judges information box description"
+msgid "Lashes description"
+msgstr ""
+
+#: public/views.py:1048
+msgctxt "Judges information box title"
+msgid "Lashes"
+msgstr ""
+
+#: public/views.py:1058
+msgctxt "Judges information box description"
+msgid "Misconduct description"
+msgstr ""
+
+#: public/views.py:1062
+msgctxt "Judges information box title"
+msgid "Misconduct"
+msgstr ""
+
+#: public/views.py:1114 public/views.py:1238
+#, python-format
+msgid "%d Judges"
+msgstr ""
+
+#: public/views.py:1115 public/views.py:1239
+#, python-format
+msgid "%(judges_count)d judges have handed out %(sentences_count)d sentences to Iran's political prisoners. Explore our visualization to find out more."
+msgstr ""
+
+#: public/views.py:1299 public/views.py:1360
+msgctxt "Search"
+msgid "Search"
+msgstr ""
+
+#. Translators: Appears if the server can’t deal with a
+#. request because it contains bad/invalid data, e.g. if an
+#. invalid review is submitted
+#: public/views_v2/error.py:72
+msgctxt "Error title"
+msgid "Bad request"
+msgstr ""
+
+#. Translators: Default error page title
+#: public/views_v2/error.py:78
+msgctxt "Error title"
+msgid "The page you are looking for does not exist"
+msgstr ""
+
+#. Translators: Default error page title
+#: public/views_v2/error.py:84
+msgctxt "Error message"
+msgid "Please contact us if you think this is an error"
+msgstr ""
+
+#. Translators: Appears if the server can’t deal with a
+#. request because of an unexpected server issue.
+#: public/views_v2/error.py:91
+msgctxt "Error title"
+msgid "Internal server error"
+msgstr ""
+
+#: public/views_v2/judge_aea.py:115
+msgctxt "Report sentence human rights violation"
+msgid "Amputations"
+msgstr ""
+
+#: public/views_v2/judge_aea.py:120
+msgctxt "Report sentence human rights violation"
+msgid "Executions"
+msgstr ""
+
+#: public/views_v2/judge_aea.py:125
+msgctxt "Report sentence human rights violation"
+msgid "Floggings"
+msgstr ""
+
+#: public/views_v2/judge_aea.py:245
+#, python-format
+msgid "%(name)s | %(count)d Reports"
+msgstr ""
+
+#: public/views_v2/judge_ipa.py:188
+#, python-format
+msgid "%(name)s | %(count)d Sentences Issued"
+msgstr ""

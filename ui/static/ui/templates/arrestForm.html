@@ -1,0 +1,338 @@
+<form class="arrestDetailsForm" name="arrestDetailsForm" novalidate ng-submit="arrestDetailsForm.$valid && saveArrestDetails()">
+    <!--
+
+    English cvb
+
+    -->
+    <div class="col-xs-6 formEnglish">
+        <div class="subTitle">
+            ARREST FORM
+        </div>
+        <!--
+
+        Date of Arrest
+
+        -->
+        <div class="form-group" >
+            <label class="control-label" for="textinput">Date of Arrest</label>
+            <date local-model="'doa'" />
+
+        </div>
+        <!--
+
+        Case ID
+
+        -->
+        <div class="placeOfBirth">
+            <label class="control-label" for="textinput">Case ID </label>
+            <input autocomplete="off" ng-value="" ng-change="predict('caseid' , arrestDetails.caseid ,  'arrestDetails' ,'caseidDD' , 'prisoners' ,'name')" ng-model="arrestDetails.caseid" id="textinput" name="textinput" placeholder="Case ID" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="arrestDetails.caseidDD" ng-show="arrestDetails.caseidDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.caseidDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Activity Persecuted For
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : arrestDetailsForm.$submitted }">
+            <label class="control-label" for="textinput">Activity Persecuted For </label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectActivity('name_fa')" ng-model="arrestDetails.activity_persecuted_for_objs" theme="bootstrap">
+                    <ui-select-match placeholder="Activity Persecuted For">{$$select.selected.name_en$}</ui-select-match>'
+                    <ui-select-choices repeat="item in activity_persicuted">
+                        <div ng-bind-html="item.name_en"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+
+            <label class="control-label" for="textinput">Secondary Activity</label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" ng-model="arrestDetails.secondary_activity" theme="bootstrap">
+                    <ui-select-match placeholder="Secondary Activity">{$$select.selected.name_en$}</ui-select-match>'
+                    <ui-select-choices repeat="item in activity_persicuted">
+                        <div ng-bind-html="item.name_en"></div>
+                   </ui-select-choices>
+                </ui-select>
+            </div>
+
+            <label class="control-label" for="textinput">Tertiary Activity</label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" ng-model="arrestDetails.tertiary_activity" theme="bootstrap">
+                    <ui-select-match placeholder="Tertiary Activity">{$$select.selected.name_en$}</ui-select-match>'
+                    <ui-select-choices repeat="item in activity_persicuted">
+                        <div ng-bind-html="item.name_en"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!--
+
+        City of Arrest
+
+        -->
+        <div class="placeOfBirth">
+            <label class="control-label" for="textinput">City of Arrest </label>
+            <input autocomplete="off" ng-value="" ng-change="predict('city' , arrestDetails.city ,  'arrestDetails' ,'cityDD' , 'core_types' ,'name')" ng-model="arrestDetails.city" id="textinput" name="textinput" placeholder="City of Arrest" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="arrestDetails.cityDD" ng-show="arrestDetails.cityDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.cityDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Charged With
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">Charged With</label>
+            <div class="input-group">
+                <input autocomplete="off" ng-value="" ng-change="predict('chargedwith' , arrestDetails.chargedwith ,  'arrestDetails' ,'chargedwithDD' , 'prisoners' ,'name')" ng-model="arrestDetails.chargedwith" id="textinput" name="textinput" placeholder="Charged With" class="form-control input-md" type="text">
+                <span ng-click="addToList('chargedwith' , 'charged_with_ids' , 'arrestDetails')" class="input-group-addon pointer">
+                    <span  class="icon-plus"></span>
+                </span>
+            </div>
+            <div class="holder">
+                <div ng-model="arrestDetails.chargedwithDD" ng-show="arrestDetails.chargedwithDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.chargedwithDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+            <div>
+                <div ng-repeat="item in arrestDetails.chargedwith_array">
+                    <div ng-click="removeFromList($index , 'chargedwith' , 'charged_with_ids' , 'arrestDetails')" class="fieldname">{$ item.name_en $}
+                        <div class="remove"> X </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Domestic Law Violated
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">Domestic Law Violated </label>
+            <div class="input-group">
+                <input autocomplete="off" ng-value="" ng-change="predict('domesticlawviolated' , arrestDetails.domesticlawviolated ,  'arrestDetails' ,'domesticlawviolatedDD' , 'prisoners' ,'name')" ng-model="arrestDetails.domesticlawviolated" id="textinput" name="textinput" placeholder="Domestic Law Violated" class="form-control input-md" type="text">
+                <font ng-click="addToList('domesticlawviolated' , 'domestic_law_violated_ids', 'arrestDetails')" class="input-group-addon pointer">
+                    <font class="icon-plus"></font>
+                </font>
+            </div>
+            <div class="holder">
+                <div ng-model="arrestDetails.domesticlawviolatedDD" ng-show="arrestDetails.domesticlawviolatedDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.domesticlawviolatedDD">{$ item.name_en $} </div>
+                </div>
+            </div>
+            <div>
+                <div ng-repeat="item in arrestDetails.domesticlawviolated_array">
+                    <div ng-click="removeFromList($index , 'domesticlawviolated', 'domestic_law_violated_ids', 'arrestDetails')" class="fieldname">{$ item.name_en $}
+                        <div class="remove"> X </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        International Law Violated
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">International Law Violated</label>
+            <div class="input-group">
+                <input autocomplete="off" ng-value="" ng-change="predict('internationallawviolated' , arrestDetails.internationallawviolated ,  'arrestDetails' ,'internationallawviolatedDD' , 'prisoners' ,'name')" ng-model="arrestDetails.internationallawviolated" id="textinput" name="textinput" placeholder="International Law Violated" class="form-control input-md" type="text">
+                <font ng-click="addToList('internationallawviolated' , 'international_law_violated_ids', 'arrestDetails')" class="input-group-addon pointer">
+                    <font class="icon-plus"></font>
+                </font>
+            </div>
+            <div class="holder">
+                <div ng-model="arrestDetails.internationallawviolatedDD" ng-show="arrestDetails.internationallawviolatedDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.internationallawviolatedDD ">{$ item.name_en $} </div>
+                </div>
+            </div>
+            <div>
+                <div ng-repeat="item in arrestDetails.internationallawviolated_array">
+                    <div ng-click="removeFromList($index , 'internationallawviolated' , 'international_law_violated_ids', 'arrestDetails')" class="fieldname">{$ item.name_en $}
+                        <div class="remove"> X </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Button
+
+        -->
+    </div>
+    <!--
+
+    Farsi
+
+    -->
+    <div class="col-xs-6 formFarsi">
+        <div class="subTitle">
+            ARREST FORM
+        </div>
+        <!--
+
+        Date of Arrest
+
+        -->
+        <div class="form-group" >
+            <label class="control-label" for="textinput">Date of Arrest</label>
+            <datefa local-model="'doa'"  />
+
+        </div>
+        <!--
+
+        Case ID
+
+        -->
+        <div class="placeOfBirth">
+            <label class="control-label" for="textinput">Case ID </label>
+            <input autocomplete="off" ng-value="" ng-change="predict('caseid' , arrestDetails.caseid ,  'arrestDetails' ,'caseidDD_fa' , 'prisoners' ,'name')" ng-model="arrestDetails.caseid" id="textinput" name="textinput" placeholder="Case ID" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="arrestDetails.caseidDD" ng-show="arrestDetails.caseidDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.caseidDD_fa ">{$ item.name_en $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Activity Persecuted For
+
+        -->
+        <div class="form-group" ng-class="{'has-error' : arrestDetailsForm.$submitted }">
+            <label class="control-label" for="textinput">Activity Persecuted For </label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectActivity()" ng-model="arrestDetails.activity_persecuted_for_objs" theme="bootstrap">
+                    <ui-select-match placeholder="Activity Persecuted For">{$$select.selected.name_fa$}</ui-select-match>'
+                    <ui-select-choices repeat="item in activity_persicuted">
+                        <div ng-bind-html="item.name_fa"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+
+            <label class="control-label" for="textinput">Secondary Activity</label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" ng-model="arrestDetails.secondary_activity" theme="bootstrap">
+                    <ui-select-match placeholder="Secondary Activity">{$$select.selected.name_fa$}</ui-select-match>'
+                    <ui-select-choices repeat="item in activity_persicuted">
+                        <div ng-bind-html="item.name_fa"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+
+            <label class="control-label" for="textinput">Tertiary Activity</label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" ng-model="arrestDetails.tertiary_activity" theme="bootstrap">
+                    <ui-select-match placeholder="Tertiary Activity">{$$select.selected.name_fa$}</ui-select-match>'
+                    <ui-select-choices repeat="item in activity_persicuted">
+                        <div ng-bind-html="item.name_fa"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!--
+
+        City of Arrest
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">City of Arrest</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('city' , arrestDetails.city_fa ,  'arrestDetails' ,'cityDD_fa' , 'core_types' ,'name')" ng-model="arrestDetails.city_fa" id="textinput" name="textinput" placeholder="دین" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="arrestDetails.cityDD" ng-show="arrestDetails.cityDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.cityDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Charged With
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">Charged With</label>
+            <div class="input-group">
+                <input autocomplete="off" ng-value="" ng-change="predict('chargedwith' , arrestDetails.chargedwith_fa ,  'arrestDetails' ,'chargedwithDD_fa' , 'prisoners' ,'name')" ng-model="arrestDetails.chargedwith_fa" id="textinput" name="textinput" placeholder="دین" class="form-control input-md" type="text">
+                <font ng-click="addToList('chargedwith' , 'charged_with_ids', 'arrestDetails')" class="input-group-addon pointer">
+                    <font class="icon-plus"></font>
+                </font>
+            </div>
+            <div class="holder">
+                <div ng-model="arrestDetails.chargedwithDD" ng-show="arrestDetails.chargedwithDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.chargedwithDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+            <div>
+                <div ng-repeat="item in arrestDetails.chargedwith_array">
+                    <div ng-click="removeFromList($index , 'chargedwith' , 'charged_with_ids', 'arrestDetails')" class="fieldname">{$ item.name_fa $}
+                        <div class="remove"> X </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Domestic Law Violated
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">Domestic Law Violated</label>
+            <div class="input-group">
+                <input autocomplete="off" ng-value="" ng-change="predict('domesticlawviolated' , arrestDetails.domesticlawviolated_fa ,  'arrestDetails' ,'domesticlawviolatedDD_fa' , 'prisoners' ,'name')" ng-model="arrestDetails.domesticlawviolated_fa" id="textinput" name="textinput" placeholder="Domestic Law Violated" class="form-control input-md" type="text">
+                <font ng-click="addToList('domesticlawviolated' , 'domestic_law_violated_ids', 'arrestDetails')" class="input-group-addon pointer">
+                    <font class="icon-plus"></font>
+                </font>
+            </div>
+            <div class="holder">
+                <div ng-model="arrestDetails.domesticlawviolatedDD" ng-show="arrestDetails.domesticlawviolatedDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.domesticlawviolatedDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+            <div>
+                <div ng-repeat="item in arrestDetails.domesticlawviolated_array">
+                    <div ng-click="removeFromList($index , 'domesticlawviolated' , 'domestic_law_violated_ids', 'arrestDetails')" class="fieldname">{$ item.name_fa $}
+                        <div class="remove"> X </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        International Law Violated
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">International Law Violated</label>
+            <div class="input-group">
+                <input autocomplete="off" ng-value="" ng-change="predict('internationallawviolated' , arrestDetails.internationallawviolated_fa ,  'arrestDetails' ,'internationallawviolatedDD_fa' , 'prisoners' ,'name')" ng-model="arrestDetails.internationallawviolated_fa" id="textinput" name="textinput" placeholder="International Law Violated" class="form-control input-md" type="text">
+                <font ng-click="addToList('internationallawviolated' , 'international_law_violated_ids', 'arrestDetails')" class="input-group-addon pointer">
+                    <font class="icon-plus"></font>
+                </font>
+            </div>
+            <div class="holder">
+                <div ng-model="arrestDetails.internationallawviolatedDD" ng-show="arrestDetails.internationallawviolatedDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.internationallawviolatedDD_fa">{$ item.name_fa $} </div>
+                </div>
+            </div>
+            <div>
+                <div ng-repeat="item in arrestDetails.internationallawviolated_array">
+                    <div ng-click="removeFromList($index , 'internationallawviolated' , 'international_law_violated_ids', 'arrestDetails')" class="fieldname">{$ item.name_fa $}
+                        <div class="remove"> X </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+
+        Button
+
+        -->
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">Save ARREST</button>
+    <button ng-click="cancelArrest($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>

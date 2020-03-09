@@ -1,0 +1,331 @@
+<form name="sentenceFrom" class="sentence sentence{$ $index $}" novalidate ng-submit="addSentence(arrest.id)">
+    <div class="col-xs-6 formEnglish ">
+        <div class="quoteForm ">
+            <div class="subTitle">
+                ADD SENTENCE
+            </div>
+            <!--
+
+                        Which Judge
+
+                        -->
+            <div class="placeOfBirth">
+                <label class="control-label" for="textinput">Which Judge</label>
+                <input autocomplete="off" ng-value="" ng-change="predict('judge' , arrestDetails.judge ,  'arrestDetails' ,'judgeDD' , 'judges' ,'surname')" ng-model="arrestDetails.judge" id="textinput" name="textinput" placeholder="Which Judge" class="form-control input-md" type="text">
+                <div class="holder">
+                    <div ng-model="arrestDetails.judgeDD" ng-show="arrestDetails.judgeDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                        <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.judgeDD ">{$ item.forename_en $} {$ item.surname_en $} </div>
+                    </div>
+                </div>
+            </div>
+            <!--
+
+            Judge behaviour
+
+            -->
+            <div>
+                <label class="control-label" for="textinput">Judge behaviour </label>
+                <div class="input-group">
+                    <input autocomplete="off" ng-value="" ng-change="predict('behaviourtype' , arrestDetails.behaviourtype ,  'arrestDetails' ,'behaviourtypeDD' , 'judges' ,'name')" ng-model="arrestDetails.behaviourtype" id="textinput" name="textinput" placeholder="Judge behaviour" class="form-control input-md" type="text">
+                    <font ng-click="addToList('behaviourtype' , 'behaviourtype_ids', 'arrestDetails')" class="input-group-addon pointer">
+                        <font class="icon-plus"></font>
+                    </font>
+                </div>
+                <div class="holder">
+                    <div ng-model="arrestDetails.behaviourtypeDD" ng-show="arrestDetails.behaviourtypeDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                        <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.behaviourtypeDD">{$ item.name_en $} </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="fieldname" ng-repeat="item in arrestDetails.behaviourtype_array">
+                        <div ng-click="removeFromList($index , 'behaviourtype', 'behaviourtype_ids', 'arrestDetails')">
+                            {$ item.name_en $}
+                            <div class="remove"> X </div>
+                        </div>
+                        <label class="control-label descriptionAI">Additional info</label>
+                        <textarea ng-model="arrestDetails.judgebehaviour[$index].description_en"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--
+
+            Death Penalty
+
+            -->
+            <div>
+                <label class="control-label" for="radios">Death Penalty</label>
+                <div class="row ">
+                    <label class="col-xs-4 radio-inline" for="radios-1">
+                        <input ng-model="arrestDetails.death_penalty" ng-value="true" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+death_penalty = true' ng-class="{'checked': arrestDetails.death_penalty==true}"></span> <span class="radioTag">yes</span>
+                    </label>
+                    <label class="col-xs-4 radio-inline" for="radios-0">
+                        <input ng-model="arrestDetails.death_penalty" ng-value="false" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+death_penalty = false' ng-class="{'checked': arrestDetails.death_penalty==false}"></span> <span class="radioTag">no</span>
+                    </label>
+                </div>
+            </div>
+            <!--
+
+            life Penalty
+
+            -->
+            <div>
+                <label class="control-label" for="radios">Life in Prison</label>
+                <div class="row ">
+                    <label class="col-xs-4 radio-inline" for="radios-1">
+                        <input ng-model="arrestDetails.life" ng-value="true" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+life = true' ng-class="{'checked': arrestDetails.life==true}"></span> <span class="radioTag">yes</span>
+                    </label>
+                    <label class="col-xs-4 radio-inline" for="radios-0">
+                        <input ng-model="arrestDetails.life" ng-value="false" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+life = false' ng-class="{'checked': arrestDetails.life==false}"></span> <span class="radioTag">no</span>
+                    </label>
+                </div>
+            </div>
+            <!--
+
+            exiled Penalty
+
+            -->
+            <div>
+                <label class="control-label" for="radios">Exiled</label>
+                <div class="row ">
+                    <label class="col-xs-4 radio-inline" for="radios-1">
+                        <input ng-model="arrestDetails.life" ng-value="true" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+exiled = true' ng-class="{'checked': arrestDetails.exiled==true}"></span> <span class="radioTag">yes</span>
+                    </label>
+                    <label class="col-xs-4 radio-inline" for="radios-0">
+                        <input ng-model="arrestDetails.life" ng-value="false" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+exiled = false' ng-class="{'checked': arrestDetails.exiled==false}"></span> <span class="radioTag">no</span>
+                    </label>
+                </div>
+            </div>
+            <!--
+
+             Numbers of years & months
+
+             -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group name">
+                        <label class="control-label" for="textinput">Numbers of years</label>
+                        <input ng-model="arrestDetails.sentence_years" id="textinput" name="Numbers of years" placeholder="Numbers of years" class="form-control input-md" type="number" min="0">
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group name">
+                        <label class="control-label" for="textinput">Numbers of months</label>
+                        <input ng-model="arrestDetails.sentence_months" id="textinput" name="Numbers of months" placeholder="Numbers of months" class="form-control input-md" type="number" min="0" max="11">
+                    </div>
+                </div>
+            </div>
+            <!--
+
+            Fine (in rials)
+
+            -->
+            <div class="form-group name">
+                <label class="control-label" for="textinput">Fine (in rials)</label>
+                <input ng-model="arrestDetails.fine" id="textinput" name="Numbers of years" placeholder="Fine (in rials) " class="form-control input-md" type="number" min="0">
+            </div>
+            <!--
+
+            Number of lashes
+
+            -->
+            <div class="form-group name">
+                <label class="control-label" for="textinput">Number of lashes</label>
+                <input ng-model="arrestDetails.number_of_lashes" id="textinput" name="Number of lashes" placeholder="Number of lashes" class="form-control input-md" type="number" min="0" limit-to="6">
+            </div>
+            <!--
+
+            Social deprivation
+
+            -->
+            <div class="form-group _quote">
+                <label class="control-label" for="textinput">Social deprivation</label>
+                <textarea ng-model="arrestDetails.social_depravation_en" name="social_depravation" placeholder="Social Pravation" class="form-control input-md" type="text"></textarea>
+            </div>
+            <!--
+
+            Button
+
+            -->
+        </div>
+    </div>
+    <!--
+
+    farsi
+
+    -->
+    <div class="col-xs-6 formFarsi">
+        <div class="quoteForm ">
+            <div class="subTitle">
+                ADD SENTENCE
+            </div>
+            <!--
+
+            Which Judge
+
+            -->
+            <div class="placeOfBirth">
+                <label class="control-label" for="textinput">Which Judge</label>
+                <input autocomplete="off" ng-value="" ng-change="predict('judge' , arrestDetails.judge_fa ,  'arrestDetails' ,'judgeDD_fa' , 'judges' ,'surname')" ng-model="arrestDetails.judge_fa" id="textinput" name="textinput" placeholder="Which Judge" class="form-control input-md" type="text">
+                <div class="holder">
+                    <div ng-model="arrestDetails.judgeDD" ng-show="arrestDetails.judgeDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                        <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.judgeDD_fa ">{$ item.forename_fa $} {$ item.surname_fa $} </div>
+                    </div>
+                </div>
+            </div>
+            <!--
+
+            Judge behaviour
+
+            -->
+            <div>
+                <label class="control-label" for="textinput">Judge behaviour </label>
+                <div class="input-group">
+                    <input autocomplete="off" ng-value="" ng-change="predict('behaviourtype' , arrestDetails.behaviourtype_fa ,  'arrestDetails' ,'behaviourtypeDD_fa' , 'judges' ,'name')" ng-model="arrestDetails.behaviourtype_fa" id="textinput" name="textinput" placeholder="Judge behaviour" class="form-control input-md" type="text">
+                    <font ng-click="addToList('behaviourtype' , 'behaviourtype_ids', 'arrestDetails')" class="input-group-addon pointer">
+                        <font class="icon-plus"></font>
+                    </font>
+                </div>
+                <div class="holder">
+                    <div ng-model="arrestDetails.behaviourtypeDD_fa" ng-show="arrestDetails.behaviourtypeDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                        <div class="item" ng-click="selectFrom()" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in arrestDetails.behaviourtypeDD_fa">{$ item.name_fa $} </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="fieldname" ng-repeat="item in arrestDetails.behaviourtype_array">
+                        <div ng-click="removeFromList($index , 'behaviourtype', 'behaviourtype_ids', 'arrestDetails')">
+                            {$ item.name_fa $}
+                            <div class="remove"> X </div>
+                        </div>
+                        <label class="control-label descriptionAI">Additional info</label>
+                        <textarea ng-model="arrestDetails.judgebehaviour[$index].description_fa"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--
+
+            Death Penalty
+
+            -->
+            <div>
+                <label class="control-label" for="radios">Death Penalty</label>
+                <div class="row ">
+                    <label class="col-xs-4 radio-inline" for="radios-1">
+                        <input ng-model="arrestDetails.death_penalty" ng-value="true" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+death_penalty = true' ng-class="{'checked': arrestDetails.death_penalty==true}"></span> <span class="radioTag">yes</span>
+                    </label>
+                    <label class="col-xs-4 radio-inline" for="radios-0">
+                        <input ng-model="arrestDetails.death_penalty" ng-value="false" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+death_penalty = false' ng-class="{'checked': arrestDetails.death_penalty==false}"></span> <span class="radioTag">no</span>
+                    </label>
+                </div>
+            </div>
+            <!--
+
+            life Penalty
+
+            -->
+            <div>
+                <label class="control-label" for="radios">Life in Prison</label>
+                <div class="row ">
+                    <label class="col-xs-4 radio-inline" for="radios-1">
+                        <input ng-model="arrestDetails.life" ng-value="true" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+life = true' ng-class="{'checked': arrestDetails.life==true}"></span> <span class="radioTag">yes</span>
+                    </label>
+                    <label class="col-xs-4 radio-inline" for="radios-0">
+                        <input ng-model="arrestDetails.life" ng-value="false" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+life = false' ng-class="{'checked': arrestDetails.life==false}"></span> <span class="radioTag">no</span>
+                    </label>
+                </div>
+            </div>
+            <!--
+
+            exiled Penalty
+
+            -->
+            <div>
+                <label class="control-label" for="radios">Exiled</label>
+                <div class="row ">
+                    <label class="col-xs-4 radio-inline" for="radios-1">
+                        <input ng-model="arrestDetails.life" ng-value="true" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+exiled = true' ng-class="{'checked': arrestDetails.exiled==true}"></span> <span class="radioTag">yes</span>
+                    </label>
+                    <label class="col-xs-4 radio-inline" for="radios-0">
+                        <input ng-model="arrestDetails.life" ng-value="false" type="radio">
+                        <span class="radioBtn" ng-click='arrestDetails.
+exiled = false' ng-class="{'checked': arrestDetails.exiled==false}"></span> <span class="radioTag">no</span>
+                    </label>
+                </div>
+            </div>
+            <!--
+
+             Numbers of years & months
+
+             -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group name">
+                        <label class="control-label" for="textinput">Numbers of years</label>
+                        <input ng-model="arrestDetails.sentence_years" id="textinput" name="Numbers of years" placeholder="Numbers of years" class="form-control input-md" numbers-only type="number" min="0">
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group name">
+                        <label class="control-label" for="textinput">Numbers of months</label>
+                        <input ng-model="arrestDetails.sentence_months" id="textinput" name="Numbers of months" placeholder="Numbers of months" class="form-control input-md" type="number" min="0" max="11">
+                    </div>
+                </div>
+            </div>
+            <!--
+
+            Fine (in rials)
+
+            -->
+            <div class="form-group name">
+                <label class="control-label" for="textinput">Fine (in rials)</label>
+                <input ng-model="arrestDetails.fine" id="textinput" name="Numbers of years" placeholder="Fine (in rials) " class="form-control input-md" type="number" min="0">
+            </div>
+            <!--
+
+            Number of lashes
+
+            -->
+            <div class="form-group name">
+                <label class="control-label" for="textinput">Number of lashes</label>
+                <input ng-model="arrestDetails.number_of_lashes" id="textinput" name="Number of lashes" placeholder="Number of lashes" class="form-control input-md" type="number" min="0" limit-to="6">
+            </div>
+            <!--
+
+            Social deprivation
+
+            -->
+            <div class="form-group _quote">
+                <label class="control-label" for="textinput">Social deprivation</label>
+                <textarea ng-model="arrestDetails.social_depravation_fa" name="social_depravation" placeholder="Social Pravation" class="form-control input-md" type="text"></textarea>
+            </div>
+            <!--
+
+            Button
+
+            -->
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">Save SENTANCE</button>
+    <div ng-click="showSentenceForm($event ,$index)" class="btn btn-primary submitButton showSentenceForm" name="addSource" id="addSource"> CANCLE </div>
+</form>

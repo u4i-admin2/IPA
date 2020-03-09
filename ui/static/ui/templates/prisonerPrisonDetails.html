@@ -1,0 +1,255 @@
+<div class="col-xs-12 timelineHolder">
+    <div class="timeline" ng-repeat="arrest in current.arrests">
+        <div class="row">
+            <div class="col-xs-6 formEnglish ">
+                <font class="index">{$$index + 1$}: </font>
+                <font ng-if="arrest.arrest_day_fa">{$arrest.arrest_day$} / {$arrest.arrest_month$} / {$arrest.arrest_year$} -</font>
+                <font>{$ arrest.activity_persecuted_for.name_en $} - </font>
+                <font>{$ arrest.case_id.name_en $}</font>
+            </div>
+            <div class="col-xs-6 formFarsi ">
+                <font class="index">{$$index + 1$}: </font>
+                <font ng-if="arrest.arrest_day_fa">{$arrest.arrest_day_fa | pNumber$} / {$arrest.arrest_month_fa | pNumber$} / {$arrest.arrest_year_fa | pNumber$} -</font>
+                <font>{$ arrest.activity_persecuted_for.name_fa $} - </font>
+                <font>{$ arrest.case_id.name_fa $}</font>
+            </div>
+        </div>
+        <div ng-repeat="detention in arrest.detentions">
+            <div class="row">
+                <div class="col-xs-6 formEnglish ">
+                    <div class="indent">
+                        <font ng-click="delete(detention.id , 'detention')" class="icon-cancel"></font>
+                        <font class="icon-pencil" ng-click="editPrisonerDetails(detention)"></font>
+                        <div>{$ detention.detention_type $}</div>
+                        <div ng-if="detention.detention_day">{$detention.detention_day$} / {$detention.detention_month$} / {$detention.detention_year$} </div>
+                        <div>{$ detention.prison.name_en $}</div>
+                        <div ng-repeat="treatment in  detention.treatment_objs">{$ treatment.name_en $}</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 formFarsi ">
+                    <div class="indent">
+                        <font ng-click="delete(detention.id , 'detention')" class="icon-cancel"></font>
+                        <font class="icon-pencil" ng-click="editPrisonerDetails(detention)"></font>
+                        <div>{$ detention.detention_type $} </div>
+                        <div ng-if="detention.detention_day">{$detention.detention_day_fa | pNumber$} / {$detention.detention_month_fa | pNumber$} / {$detention.detention_year_fa | pNumber$} </div>
+                        <div>{$ detention.prison.name_fa $}</div>
+                        <div ng-repeat="treatment in  detention.treatment_objs">{$ treatment.name_fa $}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+
+prisonerPrisonDetailsForm 
+
+-->
+<form name="prisonerPrisonDetailsForm" novalidate ng-submit="prisonerPrisonDetailsForm.$valid && savePrisonerPrisonDetails()">
+    <!-- 
+
+    English 
+
+    -->
+    <div class="col-xs-6 formEnglish">
+        <!--
+    
+        Arrest Link
+
+        -->
+        <div ng-hide="editPrisonerDetailsMode" class="form-group" ng-class="{'has-error' : arrestDetailsForm.$submitted }">
+            <label class="control-label" for="textinput">Arrest </label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectArrest()" ng-model="prisonerPrison.arrest" theme="bootstrap">
+                    <ui-select-match placeholder="Activity Persecuted For">
+                        <font>{$ $select.selected.activity_persecuted_for.name_en $}</font>
+                        <font ng-if="$select.selected.arrest_day">{$$select.selected.arrest_day$} / {$$select.selected.arrest_month$} / {$$select.selected.arrest_year$} </font>
+                        <font>{$ $select.selected.case_id.name_en $}</font>
+                    </ui-select-match>
+                    <ui-select-choices repeat="item in current.arrests">
+                        <font>{$$index + 1$}</font>
+                        <font>{$ item.activity_persecuted_for.name_en $}</font>
+                        <font ng-if="item.arrest_day">{$item.arrest_day$} / {$item.arrest_month$} / {$item.arrest_year$} </font>
+                        <font>{$ item.case_id.name_en $}</font>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!-- 
+
+        Type of Detention
+
+        -->
+        <div>
+            <label class="control-label" for="radios">Type of Detention</label>
+            <div class="row ">
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input ng-model="prisonerPrison.detention_type" ng-value="'detained_before_sentencing'" type="radio">
+                    <span class="radioBtn" ng-click='prisonerPrison.   
+detention_type = "detained_before_sentencing"' ng-class="{'checked': prisonerPrison.detention_type=='detained_before_sentencing'}"></span> <span class="radioTag">Detained before Sentencing</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="prisonerPrison.detention_type" ng-value="'sentenced'" type="radio">
+                    <span class="radioBtn" ng-click='prisonerPrison.   
+detention_type = "sentenced"' ng-class="{'checked': prisonerPrison.detention_type=='sentenced'}"></span> <span class="radioTag">Sentenced</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="prisonerPrison.detention_type" ng-value="'transferred'" type="radio">
+                    <span class="radioBtn" ng-click='prisonerPrison.   
+detention_type = "transferred"' ng-class="{'checked': prisonerPrison.detention_type=='transferred'}"></span> <span class="radioTag">Transferred</span>
+                </label>
+            </div>
+            <!-- 
+
+            Date of Incarceration 
+        
+            -->
+            <label class="control-label" for="textinput">Date of Incarceration</label>
+            <date local-model="'doi'" />
+            <!-- 
+
+            Which Prison 
+
+            -->
+            <div>
+                <label class="control-label" for="textinput">Which Prison</label>
+                <input autocomplete="off" ng-value="" ng-change="predict('prison' , prisonerPrison.prison ,  'prisonerPrison' ,'prisonDD' , 'prisons' ,'name')" ng-model="prisonerPrison.prison" id="textinput" name="textinput" placeholder="Which Prison" class="form-control input-md" type="text">
+                <div class="holder">
+                    <div ng-model="prisonerPrison.prisonDD" ng-show="prisonerPrison.prisonDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                        <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerPrison.prisonDD ">{$ item.name_en $} </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 
+
+            Treatment During Detention 
+
+            -->
+            <div>
+                <label class="control-label" for="textinput">Treatment During Detention </label>
+                <div class="input-group">
+                    <input autocomplete="off" ng-value="" ng-change="predict('prisontreatment' , prisonerPrison.prisontreatment ,  'prisonerPrison' ,'treatmentDD' , 'prisoners' ,'name')" ng-model="prisonerPrison.prisontreatment" id="textinput" name="textinput" placeholder="Type of Detention" class="form-control input-md" type="text">
+                    <span ng-click="addToList('prisontreatment' , 'id' , 'prisonerPrison')" class="input-group-addon pointer">
+                    <span  class="icon-plus"></span>
+                    </span>
+                </div>
+                <div class="holder">
+                    <div ng-model="prisonerPrison.treatmentDD" ng-show="prisonerPrison.treatmentDD.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                        <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerPrison.treatmentDD ">{$ item.name_en $} </div>
+                    </div>
+                </div>
+                <div>
+                    <div ng-repeat="item in prisonerPrison.prisontreatment_array">
+                        <div ng-click="removeFromList($index , 'prisontreatment' , 'id' , 'prisonerPrison')" class="fieldname">{$ item.name_en $}
+                            <div class="remove"> X </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 
+
+    Farsi 
+
+    -->
+    <div class="col-xs-6 formFarsi">
+        <!--
+    
+        Arrest Link
+
+        -->
+        <div ng-hide="editPrisonerDetailsMode" class="form-group" ng-class="{'has-error' : arrestDetailsForm.$submitted }">
+            <label class="control-label" for="textinput">Arrest </label>
+            <div class="row">
+                <ui-select class="col-xs-8 date" on-select="onSelectArrest()" ng-model="prisonerPrison.arrest" theme="bootstrap">
+                    <ui-select-match placeholder="Activity Persecuted For">
+                        <font>{$ $select.selected.activity_persecuted_for.name_fa $}</font>
+                        <font ng-if="$select.selected.arrest_day_fa">{$$select.selected.arrest_day_fa$} / {$$select.selected.arrest_month_fa$} / {$$select.selected.arrest_year_fa$} </font>
+                        <font>{$ $select.selected.case_id.name_fa $}</font>
+                    </ui-select-match>
+                    <ui-select-choices repeat="item in current.arrests">
+                        <font>{$$index + 1$}</font>
+                        <font>{$ item.activity_persecuted_for.name_fa $}</font>
+                        <font ng-if="item.arrest_day_fa">{$item.arrest_day_fa$} / {$item.arrest_month_fa$} / {$item.arrest_year_fa$} </font>
+                        <font>{$ item.case_id.name_fa $}</font>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <!-- 
+
+        Type of Detention
+
+        -->
+        <div>
+            <label class="control-label" for="radios">Type of Detention</label>
+            <div class="row ">
+                <label class="col-xs-4 radio-inline" for="radios-1">
+                    <input ng-model="prisonerPrison.detention_type" ng-value="'detained_before_sentencing'" type="radio">
+                    <span class="radioBtn" ng-click='prisonerPrison.   
+detention_type = "detained_before_sentencing"' ng-class="{'checked': prisonerPrison.detention_type=='detained_before_sentencing'}"></span> <span class="radioTag">Detained before Sentencing</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="prisonerPrison.detention_type" ng-value="'sentenced'" type="radio">
+                    <span class="radioBtn" ng-click='prisonerPrison.   
+detention_type = "sentenced"' ng-class="{'checked': prisonerPrison.detention_type=='sentenced'}"></span> <span class="radioTag">Sentenced</span>
+                </label>
+                <label class="col-xs-4 radio-inline" for="radios-0">
+                    <input ng-model="prisonerPrison.detention_type" ng-value="'transferred'" type="radio">
+                    <span class="radioBtn" ng-click='prisonerPrison.   
+detention_type = "transferred"' ng-class="{'checked': prisonerPrison.detention_type=='transferred'}"></span> <span class="radioTag">Transferred</span>
+                </label>
+            </div>
+        </div>
+        <!-- 
+
+        Date of Incarceration 
+
+        -->
+        <label class="control-label" for="textinput">Date of Incarceration</label>
+        <datefa local-model="'doi'" />
+        <!-- 
+
+        Which Prison 
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">Which Prison</label>
+            <input autocomplete="off" ng-value="" ng-change="predict('prison' , prisonerPrison.prison_fa ,  'prisonerPrison' ,'prisonDD_fa' , 'prisons' ,'name')" ng-model="prisonerPrison.prison_fa" id="textinput" name="textinput" placeholder="Which Prison" class="form-control input-md" type="text">
+            <div class="holder">
+                <div ng-model="prisonerPrison.prisonDD" ng-show="prisonerPrison.prisonDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerPrison.prisonDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+
+        Treatment During Detention 
+
+        -->
+        <div>
+            <label class="control-label" for="textinput">Treatment During Detention </label>
+            <div class="input-group">
+                <input autocomplete="off" ng-value="" ng-change="predict('prisontreatment' , prisonerPrison.prisontreatment_fa ,  'prisonerPrison' ,'treatmentDD_fa' , 'prisoners' ,'name')" ng-model="prisonerPrison.prisontreatment_fa" id="textinput" name="textinput" placeholder="Type of Detention" class="form-control input-md" type="text">
+                <font ng-click="addToList('prisontreatment' , 'id' , 'prisonerPrison')" class="input-group-addon pointer">
+                    <font class="icon-plus"></font>
+                </font>
+            </div>
+            <div class="holder">
+                <div ng-model="prisonerPrison.treatmentDD" ng-show="prisonerPrison.treatmentDD_fa.length  > 0" ng class="col-xs-12 dropdownPredictive">
+                    <div class="item" ng-mouseover="selectDD()" ng-class="{'selected': item.selected == true}" ng-repeat=" item in prisonerPrison.treatmentDD_fa ">{$ item.name_fa $} </div>
+                </div>
+            </div>
+            <div>
+                <div ng-repeat="item in prisonerPrison.prisontreatment_array">
+                    <div ng-click="removeFromList($index , 'prisontreatment' , 'id' , 'prisonerPrison')" class="fieldname">{$ item.name_fa $}
+                        <div class="remove"> X </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary submitButton">SAVE PRISON</button>
+    <button ng-show="editPrisonerDetailsMode" ng-click="cancelEditPrisonerDetails($event)" class="btn btn-primary submitButton">Cancel</button>
+</form>

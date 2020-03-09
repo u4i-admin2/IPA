@@ -1,0 +1,56 @@
+---
+
+  - name: Install node.js
+    apt: pkg=nodejs state=present update_cache={{ update_apt_cache }}
+
+  - name: Install NPM
+    apt: pkg=npm state=present update_cache={{ update_apt_cache }}
+
+  - name: Symlink /usr/bin/nodejs to /usr/bin/node
+    action: file src=/usr/bin/nodejs dest=/usr/bin/node state=link
+
+  # - name: Delete Bower directory
+  #   file: path={{ js_directory }}/bower_components state=absent
+
+  - name: Delete node modules directory
+    file: path={{ js_directory }}/node_modules state=absent
+
+  # - name: Install Bower
+  #   npm: name=bower global=yes
+
+  - name: Install Gulp
+    npm: name=gulp global=yes
+
+  - name: Install packages based on package.json
+    become: yes
+    become_user: "{{ application_user }}"
+    npm: path={{ js_directory }}
+    tags:
+      - npm
+
+  # - name: Install Bower packages
+  #   become: yes
+  #   remote_user: "{{ application_user }}"
+  #   shell: bower install | xargs echo
+  #   args:
+  #     chdir: "{{ js_directory }}"
+  #   tags:
+  #     - bower
+
+  - name: Run gulp build
+    become: yes
+    become_user: "{{ application_user }}"
+    shell: gulp
+    args:
+      chdir: "{{ js_directory }}"
+    tags:
+      - static
+
+  - name: Collectstatic
+    shell: . {{ virtualenv_path }}/bin/activate
+           && . {{ virtualenv_path }}/bin/postactivate
+           && cd {{ django_dir }}
+           && python manage.py collectstatic --noinput --settings={{ django_settings_file }}
+    when: run_django_collectstatic
+    tags:
+      - deploy

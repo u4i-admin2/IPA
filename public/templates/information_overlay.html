@@ -1,0 +1,31 @@
+{%
+    load
+        classname
+    from public_tags
+%}{%
+    load
+        static
+    from static
+%}<div
+    class="
+        ipa-information-overlay
+        {% classname 'overlay' %}
+    "
+    data-action="click->ipa-information-overlay#onClick"
+    data-controller="ipa-information-overlay"
+    data-ipa-information-overlay-slug="{{ slug }}"
+    data-target="ipa-information-overlay.overlay"
+>
+    <div class="{% classname 'boxPositioningAndPaddingContainer' %}">
+        <section class="{% classname 'box' %}">
+            <button
+                class="{% classname 'closeButton' %}"
+                data-action="click->ipa-information-overlay#onCloseButtonClick"
+            >Close</button>
+
+            <h2 class="{% classname 'title' %}">{{ title }}</h2>
+
+            <p class="{% classname 'text' %}">{{ text }}</p>
+        </section>
+    </div>
+</div>

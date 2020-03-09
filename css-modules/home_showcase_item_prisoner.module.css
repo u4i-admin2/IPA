@@ -1,0 +1,75 @@
+@value colours: 'colours.module.css';
+@value home_showcase_item: 'home_showcase_item.module.css';
+
+@value (
+    ipaBlack
+) from colours;
+
+.item {
+    composes: item from home_showcase_item;
+}
+
+.content {
+    composes: content from home_showcase_item;
+}
+
+.nameLink {
+    composes: titleLink from home_showcase_item;
+}
+
+.name {
+    composes: title from home_showcase_item;
+}
+
+.picture {
+    composes: picture from home_showcase_item;
+}
+
+.meta {
+    /* Reset global footer element styles */
+    margin: initial;
+    min-height: initial;
+    background: initial;
+    font-family: inherit;
+
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    margin: 0 0 16px 0; /* stylelint-disable-line */
+}
+
+.metaItem {
+    display: block;
+    position: relative;
+    padding: 0 0.5em;
+    margin: 0;
+    height: 1.25em;
+    line-height: 1.25em;
+}
+:global(html.ltr) .metaItem:first-child {
+    padding-left: 0;
+}
+:global(html.rtl) .metaItem:first-child {
+    padding-right: 0;
+}
+:global(html.ltr) .metaItem:not(:last-child) {
+    border-right: 1px solid ipaBlack;
+}
+:global(html.rtl) .metaItem:not(:last-child) {
+    border-left: 1px solid ipaBlack;
+}
+
+.age,
+.country,
+.ethnicity,
+.religion {
+    composes: metaItem;
+}
+
+.biography {
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 0;
+}

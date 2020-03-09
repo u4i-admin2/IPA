@@ -1,0 +1,118 @@
+{% extends 'ui/base.html' %} {% block content %}
+<div ng-controller="prisoners" ng-cloak>
+    <div class="searchTitle">Prisoners</div>
+    <a href="new" name="save" class="btn btn-primary addnew">ADD PRISONERS</a>
+    <div class="filters">
+        <div class="row">
+            <!-- Gender -->
+            <ui-select class="col-sm-2 date" on-select="updateTable()" ng-model="filters.gender" theme="bootstrap">
+                <ui-select-match placeholder="Gender">{$ $select.selected.text $}</ui-select-match>
+                <ui-select-choices repeat="item in gender">
+                    <div ng-bind-html="item.text"></div>
+                </ui-select-choices>
+            </ui-select>
+            <!-- is_detained -->
+            <ui-select class="col-sm-2 date" on-select="updateTable()" ng-model="filters.is_detained" theme="bootstrap">
+                <ui-select-match placeholder="Detention Statu">{$ $select.selected.text $}</ui-select-match>
+                <ui-select-choices repeat="item in is_detained">
+                    <div ng-bind-html="item.text"></div>
+                </ui-select-choices>
+            </ui-select>
+            <!-- ethnicity -->
+            <ui-select class="col-sm-2 date" on-select="updateTable()" ng-model="filters.ethnicity" theme="bootstrap">
+                <ui-select-match placeholder="Ethnicity">{$ $select.selected.text $}</ui-select-match>
+                <ui-select-choices repeat="item in ethnicity">
+                    <div ng-bind-html="item.text"></div>
+                </ui-select-choices>
+            </ui-select>
+            <!-- has_comments -->
+            <ui-select class="col-sm-2 date" on-select="updateTable()" ng-model="filters.has_comments" theme="bootstrap">
+                <ui-select-match placeholder="Conflicts & Consideration">{$ $select.selected.text $}</ui-select-match>
+                <ui-select-choices repeat="item in has_comments">
+                    <div ng-bind-html="item.text"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <div class="filters">
+    <!--
+    followiing keyword parameters for filtering by sentence are available:
+        sentence_min
+        sentence_max
+        exiled, life, execution
+    -->
+        <div class="row">
+            <!-- Religion -->
+            <ui-select class="col-sm-2 date" on-select="updateTable()" ng-model="filters.religion" theme="bootstrap">
+                <ui-select-match placeholder="Religion">{$ $select.selected.text $}</ui-select-match>
+                <ui-select-choices repeat="item in religion">
+                    <div ng-bind-html="item.text"></div>
+                </ui-select-choices>
+            </ui-select>
+            <!-- date start -->
+            <ui-select class="col-sm-2 date" on-select="updateTable()" ng-model="filters.arrest_year_min" theme="bootstrap">
+                <ui-select-match placeholder="Arrest Year Start">{$ $select.selected.text $}</ui-select-match>
+                <ui-select-choices repeat="item in arrest_year_min">
+                    <div ng-bind-html="item.text"></div>
+                </ui-select-choices>
+            </ui-select>
+            <!-- date end -->
+            <ui-select class="col-sm-2 date" on-select="updateTable()" ng-model="filters.arrest_year_max" theme="bootstrap">
+                <ui-select-match placeholder="Arrest Year End">{$ $select.selected.text $}</ui-select-match>
+                <ui-select-choices repeat="item in arrest_year_max">
+                    <div ng-bind-html="item.text"></div>
+                </ui-select-choices>
+            </ui-select>
+            <div class="col-sm-2 date">
+            <button ng-click="resetFilters()"  class="btn btn-primary " >RESET</button>
+            </div>
+        </div>
+    </div>
+    <table ng-table="tableParams">
+        <tr class="header">
+            <th ng-click="order('forename_en')">First name</th>
+            <th ng-click="order('surname_en')">Last name</th>
+            <th ng-click="order('prison')">Prison</th>
+            <th ng-click="order('activity_persecuted_for')">Activity persecuted for</th>
+            <th ng-click="order('forename_en')">Current sentence</th>
+            <th ng-click="order('updated')">Last updated</th>
+            <th ng-click="order('updated_by')">Last edited by</th>
+            <th ng-click="order('is_published')">Profile status</th>
+            <th>EDIT</th>
+        </tr>
+        <tr ng-class-odd="'odd'" ng-class-even="'even'" ng-class="{'first': $first , 'last': $last ,}" ng-repeat="prisoners in data">
+            <td>
+                {$ prisoners.forename_en $}
+            </td>
+            <td>
+                {$ prisoners.surname_en $}
+            </td>
+            <td>
+                {$ prisoners.latest_prison_name_en $}
+            </td>
+            <td>
+                {$ prisoners.latest_activity_persecuted_for_name_en $}
+            </td>
+            <td>
+                {$ prisoners.latest_detention_status_name_en $}
+            </td>
+            <td>
+                {$ prisoners.updated.substring(0, 9) $} {$ prisoners.updated.substring(11, 16) $}
+            </td>
+            <td>
+                {$ prisoners.updated_by $}
+            </td>
+            <td>
+                {$ prisoners.is_published ? 'published' : 'not published'$}
+            </td>
+            <td>
+                <a href="{$ prisoners.id $} ">EDIT</a>
+            </td>
+        </tr>
+    </table>
+    <div class="pagination">
+        <button ng-show="prev" ng-click="paginate( prev )" class="btn btn-primary">PREV</button>
+        <button ng-show="next" ng-click="paginate( next )" class="btn btn-primary">NEXT</button>
+    </div>
+</div>
+{% endblock %}

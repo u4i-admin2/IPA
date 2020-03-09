@@ -1,0 +1,263 @@
+{%
+    extends 'base.html'
+%}{%
+    load static i18n
+%}
+
+{% block content %}
+<script>
+var mainData = {{ prisons|safe }};
+var cumulatives = {{ cumulatives|safe }};
+var administered_by_stats = {{administered_by_stats|safe}};
+</script>
+<div ng-controller="prisons" class="prisonsPage">
+    <div class="row heading">
+        <div class="col-sm-4  gradiant">
+            <h1 class="indexTitle">{% trans "PRISONS" %} </h1>
+            <div class="thick-line"></div>
+        </div>
+        <div class="col-sm-8  social socialPholder underline-thin ">
+            <div class="socialP">
+                <font>{% trans "Share Visualization" %}</font>
+                <a target="_blank" ng-href="{$ 'https://twitter.com/intent/tweet?url=' + url $}" class="icon-twitter"></a>
+                <a target="_blank" ng-href="{$ 'https://www.facebook.com/sharer/sharer.php?u=' + url $}" class="icon-facebook"></a>
+                <span class="pad"></span>
+            </div>
+        </div>
+    </div>
+    <div class="mapPort row">
+        <div class="zoomButtons">
+            <div class="zoomIn"><span class="icon-plus"></span></div>
+            <div class="zoomOut"><span class="icon-minus"></span></div>
+            <div class="zoomCenter"><span class="dot"></span><span class="circle"></span></div>
+        </div>
+        <div class="map ">
+            <div id="D3grid_D3way"></div>
+            <div class="mapStuff">
+                <div class="mapholder">
+                </div>
+                <div class="mapData">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="prisonsStatement">{% trans "The map only displays prisons which currently hold political prisoners, the 'Administered By' tab displays the total number of prisons."%}</div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div ng-show="id" class="reset" ng-click="reset()"><span class="icon-cancel cancel"></span>{% trans "reset" %}</div>
+        </div>
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 infoArea">
+            <div ng-if="allAreas.length <= 1" class="row ">
+                <div class="col-xs-12 ">
+                    <div class="chartSelector">
+                        <div class="row setSelection" ng-if="ipa.site === 'aea'">
+                            <div class="col-sm-6 col-md-6 col-xs-6">
+                                <div
+                                    ng-class="currentDataSetName == 'procedural_violations' ? 'filter-btn selected' : 'filter-btn' "
+                                    ng-click="setSelection('procedural_violations')"
+                                {# Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart #}
+                                >{% trans "Procedural Violations" context "Prisons map chart data set (AeA)" %}</div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-xs-6">
+                                <div
+                                    ng-class="currentDataSetName == 'humanrights_violations' ? 'filter-btn selected' : 'filter-btn' "
+                                    ng-click="setSelection('humanrights_violations')"
+                                {# Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart #}
+                                >{% trans "Human Rights Violations" context "Prisons map chart data set (AeA)" %}</div>
+                            </div>
+                        </div>
+                        <div class="row setSelection" ng-if="ipa.site === 'ipa'">
+                            <div class="col-sm-4 col-md-6 col-xs-6">
+                                <div
+                                    ng-class="currentDataSetName == 'ethnicities' ? 'filter-btn selected' : 'filter-btn' "
+                                    ng-click="setSelection('ethnicities')"
+                                {# Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart #}
+                                >{% trans "Ethnicity" context "Prisons map chart data set (IPA)" %}</div>
+                            </div>
+                            <div class="col-sm-4 col-md-6 col-xs-6">
+                                <div
+                                    ng-class="currentDataSetName == 'genders' ? 'filter-btn selected' : 'filter-btn' "
+                                    ng-click="setSelection('genders')"
+                                {# Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart #}
+                                >{% trans "Gender" context "Prisons map chart data set (IPA)" %}</div>
+                            </div>
+                            <div class="col-sm-4 col-md-6 col-xs-6">
+                                <div
+                                    ng-class="currentDataSetName == 'religions' ? 'filter-btn selected' : 'filter-btn' "
+                                    ng-click="setSelection('religions')"
+                                {# Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart #}
+                                >{% trans "Religion" context "Prisons map chart data set (IPA)" %}</div>
+                            </div>
+                            <div class="col-sm-4 col-md-6 col-xs-6">
+                                <div
+                                    ng-class="currentDataSetName == 'activities' ? 'filter-btn selected' : 'filter-btn' "
+                                    ng-click="setSelection('activities')"
+                                {# Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart #}
+                                >{% trans "Activity persecuted for" context "Prisons map chart data set (IPA)" %}</div>
+                            </div>
+                            <div class="col-sm-4 col-md-6 col-xs-6">
+                                <div
+                                    ng-class="currentDataSetName == 'charges' ? 'filter-btn selected' : 'filter-btn' "
+                                    ng-click="setSelection('charges')"
+                                {# Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart #}
+                                >{% trans "Charged With" context "Prisons map chart data set (IPA)" %}</div>
+                            </div>
+                            <div class="col-sm-4 col-md-6 col-xs-6">
+                                <div
+                                    ng-class="currentDataSetName == 'treatments' ? 'filter-btn selected' : 'filter-btn' "
+                                    ng-click="setSelection('treatments')"
+                                {# Translators: Used for data set selection buttons as well as “Unknown…” text beneath chart #}
+                                >{% trans "Mistreatment In Prison" context "Prisons map chart data set (IPA)" %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="allAreas.length <= 1" class="row ">
+                <div class="col-xs-12 ">
+                    <div class="chartSelector">
+                        <div class="row padderTop5">
+                            <div class="col-xs-6">
+                                <h3>{% trans "Prison Selected" %}</h3>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <h3
+                                    ng-if="ipa.site === 'aea'"
+                                {# Translators: Label for above total count at the top of the chart #}
+                                >{% trans "Victims" context "Prisons map chart heading (AeA)" %}</h3>
+                                <h3
+                                    ng-if="ipa.site === 'ipa'"
+                                {# Translators: Label for total count at the top of the chart #}
+                                >{% trans "Political Prisoners" context "Prisons map chart heading (IPA)" %}</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 ">
+                                <h4 class="orange">{$ name $}</h4></div>
+                            <div class="col-xs-6 text-right">
+                                <h4 class="orange">{$ population $}</h4></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6"><a ng-show="id" ng-href="{$ '/{{LANGUAGE_CODE }}/prison/'+ id + '/'$}">{% trans "View Profile" %}</a>
+                            </div>
+                            <div
+                                class="col-xs-6 text-right"
+                            >
+                                <a
+                                    ng-if="ipa.site === 'aea'"
+                                    ng-href="{$ name == 'all' || name == 'همه' ? '/{{LANGUAGE_CODE}}/search/#/?data=reports&detention_status=true' : '/{{LANGUAGE_CODE}}/search/#/?data=reports&current_prison=' + name $}" target="_blank"
+                                >{% trans "View All Reports" context "Prisons map chart heading (AeA)" %}</a>
+                                <a
+                                    ng-if="ipa.site === 'ipa'"
+                                    ng-href="{$ name == 'all' || name == 'همه' ? '/{{LANGUAGE_CODE}}/search/#/?data=prisoners&detention_status=true' : '/{{LANGUAGE_CODE}}/search/#/?data=prisoners&current_prison=' + name $}" target="_blank"
+                                >{% trans "View All Prisoners" context "Prisons map chart heading (IPA)" %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="allAreas.length > 1" class="row" ng-repeat="_prison in allAreas">
+                <div class="col-xs-12 ">
+                    <div class="chartSelector multiPrison" data-id="{$ _prison.i $}" data-prison="{$ _prison $}">
+                        <div class="row padderTop5">
+                            <div class="col-xs-6">
+                                <h3>{% trans "Prison Selected" %}</h3></div>
+                            <div class="col-xs-6 text-right">
+                                <h3>{% trans "Political Prisoners" %}</h3></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 ">
+                                <h4 class="orange">{$ _prison.name $}</h4></div>
+                            <div class="col-xs-6 text-right">
+                                <h4 class="orange">{$ _prison.total_victims || _prison.total_prisoners $}</h4></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div ng-if="allAreas.length <= 1" id="viz"></div>
+                <div class="col-xs-12">
+                    <div ng-if="allAreas.length <= 1" ng-show="unknown" class="unknown">{% trans "Unknown" %}
+                        <span ng-if="currentDataSetName =='ethnicities'">{% trans "Ethnicity" %}</span>
+                        <span ng-if="currentDataSetName =='genders'">{% trans "Gender" %}</span>
+                        <span ng-if="currentDataSetName =='religions'">{% trans "Religion" %}</span>
+                        <span ng-if="currentDataSetName =='activities'">{% trans "Activity persecuted for" %}</span>
+                        <span ng-if="currentDataSetName =='charges'">{% trans "Charged With" %}</span>
+                        <span ng-if="currentDataSetName =='treatments'">{% trans "Mistreatment In Prison" %}</span>
+                        <span ng-if="currentDataSetName =='humanrights_violations'">{% trans "Human Rights Violations" %}</span>
+                        <span ng-if="currentDataSetName =='procedural_violations'">{% trans "Procedural Violations" %}</span>
+                        <span>{$ unknown $}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="prisonsFilters">
+        <div class="filterTab"><span class="icon-left-dir"></span></div>
+        <div class="statusArea ">
+            <div class="filterHearder filterHeaderPrison">
+                {% trans "Administered by"%} <span class="icon-down-dir"></span><span style="display:none;" class="icon-up-dir"></span></div>
+            <div class="blueArea">
+                <div class="topMargin20"></div>
+                <div class="clearfix filter">
+                    <div ng-click="setStatusFilter('ALL')" class="switchHolder ALL on">
+                        <div class="switch"></div>
+                    </div>
+                    <div class="statusName">{% trans "All" %}</div>
+                    <div class="statusCount">{$ administered_by_stats.ALL $}</div>
+                </div>
+                <div class="clearfix filter">
+                    <div ng-click="setStatusFilter('pdotj')" class="switchHolder pdotj">
+                        <div class="switch"></div>
+                    </div>
+                    <div class="statusName">{% trans "Prisons Division of the Judiciary" %}</div>
+                    <div class="statusCount">{$ administered_by_stats.pdotj $}</div>
+                </div>
+                {% if request.ipa_site == 'ipa' %}
+                    <div class="clearfix filter">
+                        <div ng-click="setStatusFilter('moi')" class="switchHolder moi">
+                            <div class="switch"></div>
+                        </div>
+                        <div class="statusName">{% trans "Ministry of Intelligence" %}</div>
+                        <div class="statusCount">{$ administered_by_stats.moi $}</div>
+                    </div>
+                {% endif %}
+                <div class="clearfix filter">
+                    <div ng-click="setStatusFilter('police')" class="switchHolder police">
+                        <div class="switch"></div>
+                    </div>
+                    <div class="statusName">{% trans "Police" %}</div>
+                    <div class="statusCount">{$ administered_by_stats.police $}</div>
+                </div>
+                {% if request.ipa_site == 'ipa' %}
+                    <div class="clearfix filter">
+                        <div ng-click="setStatusFilter('irgc')" class="switchHolder irgc">
+                            <div class="switch"></div>
+                        </div>
+                        <div class="statusName">{% trans "IRGC" %}</div>
+                        <div class="statusCount">{$ administered_by_stats.irgc $}</div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="toolTipHolder">
+    <div class="toolTip">
+        <div class="name"></div>
+        <div>
+            <span class="population"></span>
+            {% if request.ipa_site == 'aea' %}
+                {# Translators: Appears before victim count in hover tooltip (e.g. "15 victims") #}
+                {% trans "victims" context "Prisons map hover tooltip" %}
+            {% elif request.ipa_site == 'ipa' %}
+                {# Translators: Appears before prisoner count in hover tooltip (e.g. "15 prisoners") #}
+                {% trans "Prisoners" context "Prisons map hover tooltip" %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="triangle-down"></div>
+</div>
+{% endblock %}

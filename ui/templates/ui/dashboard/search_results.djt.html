@@ -1,0 +1,125 @@
+{% extends 'ui/base.html' %} {% block content %}
+<script>
+var searchQ = '{{ request.GET.q }}';
+</script>
+<div ng-controller="searchResults">
+    <div class="searchString">Search results for: <b>{{ request.GET.q }}</b></div>
+    <div class="searchTitle">Prisoners</div>
+    <table ng-table="tableParams">
+        <tr class="header">
+            <th ng-click="order('forename_en')">First name</th>
+            <th ng-click="order('surname_en')">Last name</th>
+            <th ng-click="order('prison')">Prison</th>
+            <th ng-click="order('activity_persecuted_for')">Activity persecuted for</th>
+            <th ng-click="order('forename_en')">Current sentence</th>
+            <th ng-click="order('updated')">Last updated</th>
+            <th ng-click="order('updated_by')">Last edited by</th>
+            <th ng-click="order('is_published')">Profile status</th>
+            <th>EDIT</th>
+        </tr>
+        <tr ng-class-odd="'odd'" ng-class-even="'even'" ng-class="{'first': $first , 'last': $last ,}" ng-repeat="prisoners in _prisoners">
+            <td>
+                {$ prisoners.forename_en $}
+            </td>
+            <td>
+                {$ prisoners.surname_en $}
+            </td>
+            <td>
+                {$ prisoners.latest_prison_name_en $}
+            </td>
+            <td>
+                {$ prisoners.latest_activity_persecuted_for_name_en $}
+            </td>
+            <td>
+                {$ prisoners.latest_detention_status_name_en $}
+            </td>
+            <td>
+                {$ prisoners.updated.substring(0, 9) $} {$ prisoners.updated.substring(11, 16) $}
+            </td>
+            <td>
+                {$ prisoners.updated_by $}
+            </td>
+            <td>
+                {$ prisoners.is_published ? 'published' : 'not published'$}
+            </td>
+            <td>
+                <a href="../prisoners/{$ prisoners.id $} ">EDIT</a>
+            </td>
+        </tr>
+    </table>
+    <div class="searchTitle">Judges</div>
+    <table ng-table="tableParams">
+        <tr class="header">
+            <th ng-click="order('forename_en')">First name</th>
+            <th ng-click="order('surname_en')">Last name</th>
+            <th ng-click="order('court_and_branch')">Court & Branch</th>
+            <th ng-click="order('judge_type')">Judge Type</th>
+            <th ng-click="order('forename_en')">Last updated</th>
+            <th ng-click="order('forename_en')">Last edited by</th>
+            <th ng-click="order('is_published')">Profile status</th>
+            <th>EDIT</th>
+        </tr>
+        <tr ng-class-odd="'odd'" ng-class-even="'even'" ng-class="{'first': $first , 'last': $last ,}" ng-repeat="judges in _judge">
+            <td>
+                {$ judges.forename_en $}
+            </td>
+            <td>
+                {$ judges.surname_en $}
+            </td>
+            <td>
+                {$ judges.court_and_branch.name_en $}
+            </td>
+            <td>
+                {$ judges.judge_type $}
+            </td>
+            <td>
+                {$ judges.updated.substring(0, 9) $} {$ judges.updated.substring(11, 16) $}
+            </td>
+            <td>
+                {$ judges.updated_by $}
+            </td>
+            <td>
+                {$ judges.is_published ? 'published' : 'not published'$}
+            </td>
+            <td>
+                <a href="../judges/{$ judges.id $} ">EDIT</a>
+            </td>
+        </tr>
+    </table>
+    <div class="searchTitle">Prison</div>
+    <table ng-table="tableParams">
+        <tr class="header">
+            <th ng-click="order('name_en')">Name</th>
+            <th ng-click="order('administered_by')">Administrated By</th>
+            <th ng-click="order('dean_name_en')">Dean</th>
+            <th ng-click="order('updated')">Last updated</th>
+            <th ng-click="order('updated_by')">Last edited by</th>
+            <th ng-click="order('is_published')">Profile status</th>
+            <th>EDIT</th>
+        </tr>
+        <tr ng-class-odd="'odd'" ng-class-even="'even'" ng-class="{'first': $first , 'last': $last ,}" ng-repeat="prison in _prison">
+            <td>
+                {$ prison.name_en $}
+            </td>
+            <td>
+                {$ prison.administered_by $}
+            </td>
+            <td>
+                {$ prison.dean_name_en $}
+            </td>
+            <td>
+                {$ prison.updated.substring(0, 9) $} {$ prison.updated.substring(11, 16) $}
+            </td>
+            <td>
+                {$ prison.updated_by $}
+            </td>
+            <td>
+                {$ prison.is_published ? 'published' : 'not published'$}
+            </td>
+            <td>
+                <a href="../prisons/{$ prison.id $} ">EDIT</a>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

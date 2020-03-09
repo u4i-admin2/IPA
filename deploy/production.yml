@@ -1,0 +1,31 @@
+---
+
+- name: 'Provision {{ application_name }}:Production with Ansible'
+  hosts: production
+  gather_facts: no
+  become: yes
+
+  vars:
+    - deploy_env: production
+    - application_name: united
+    - set_up_application_user: yes
+    - update_apt_cache: yes
+    - application_user: united
+    - application_group: united
+    - js_directory: '{{ git_root }}'
+    - virtualenv_path: '/webapps/{{ application_name }}'
+    - django_settings_file: 'united.settings.production'
+    - git_root: "{{ virtualenv_path }}/{{ application_name }}"
+    - web_enable_ssl: true
+
+  vars_files:
+    - vars/db_live.yml
+    - vars/web.yml
+    - vault/secrets.yml
+
+  roles:
+    - base
+    # - db
+    - web
+    - nodejs
+    - unitedcron

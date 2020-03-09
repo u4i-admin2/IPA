@@ -1,0 +1,8 @@
+---
+
+- name: Install resave_prisoners cron.
+  become_user: "{{application_user}}"
+  cron:
+    name="Run resave_prisoners management command"
+    minute="0"
+    job="cd {{django_dir}}; python manage.py resave_prisoners --settings={{django_settings_file}}"

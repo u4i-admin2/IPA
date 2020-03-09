@@ -1,0 +1,37 @@
+{%
+    load
+        trans
+    from i18n
+%}{%
+    load
+        classname
+    from public_tags
+%}<li class="{% classname 'item' %} ipa_home_showcase_item_featured_news">
+    <article class="{% classname 'content' %}">
+        <h3
+            class="{% classname 'title' %}"
+        >{{ featured_news_info.title }}</h3>
+
+        <img
+            alt=""
+            class="{% classname 'picture' %}"
+            src="{{ featured_news_info.photo_path }}"
+        />
+
+        {% if featured_news_info.excerpt %}
+            <p
+                class="{% classname 'abstractText' %}"
+            >{{ featured_news_info.excerpt }}</p>
+        {% endif %}
+
+        <div class="{% classname 'meta' %}">
+            <a
+                class="{% classname 'readMoreLink' %}"
+                href="{{ featured_news_info.link }}"
+            >{%
+                trans 'Read more'
+                context 'Home showcase (AeA featured news)'
+            %}</a>
+        </div>
+    </article>
+</li>

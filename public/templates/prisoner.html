@@ -1,0 +1,149 @@
+{%
+    extends 'base.html'
+%}{%
+    load static i18n
+%}
+
+{% block content %}
+<script>
+var entityData = {{prisoner | safe}};
+var entityData = {{prisoner | safe}};
+
+var prisonerPrerenderedComponentHtml = (
+    {{js_prerendered_component_html_encoded | safe}}
+);
+</script>
+
+<div ng-controller="prisoner">
+{% if user.is_authenticated %}<a ng-href="{$'/dashboard/prisoners/'+  entityData.id $}" target="_blank">{% trans "Edit Profile" %}</a> {% endif %}
+    <div quotes >{% include 'quotes.html' %}</div>
+
+    {# profile #}
+    <div class="row gradiant topSpacer">
+        <div class="col-sm-6 underline-thin no-border-mobile">
+            <div class="">
+                <h3>{% trans "Prisoner" %} </h3></div>
+            <div class="matcher">
+                <h1>{$ entityData.forename_{{LANGUAGE_CODE}} $} {$ entityData.surname_{{LANGUAGE_CODE}} $}</h1>
+            </div>
+        </div>
+        <div  class="col-xs-12  dottedline-seperator showOnMobile top-border"></div>
+        <div class="col-sm-6 profile-info-header">
+            <div class="">
+                <h3> {% trans "Sentence" %}</h3>
+
+                {{ django_prerendered_component_html.information_overlay_trigger_button.sentence }}
+            </div>
+            <div class="matcher">
+                <h1>
+                <div ng-repeat="arrest in entityData.arrests | orderBy:arrestDate:arrestOrder | limitTo:1" class=" clearfix">
+                    {$ getHighestsentance(arrest.sentences) $}
+                </div>
+                </h1>
+            </div>
+            <div class="thick-line"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 social">
+            <a target="_blank" ng-href="{$ 'https://twitter.com/intent/tweet?url=' + url $}" class="icon-twitter"></a>
+            <a target="_blank" ng-href="{$ 'https://www.facebook.com/sharer/sharer.php?u=' + url $}" class="icon-facebook"></a>
+            <font>{% trans "Share" %} {$ entityData.forename_{{LANGUAGE_CODE}} $} {$ entityData.surname_{{LANGUAGE_CODE}} $}<i ng-if="'en' == '{{LANGUAGE_CODE}}' ">'s {% trans "Profile" %}</i></font>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-xs-6 col-sm-2">
+                    <div class="imageHolder" >
+                        <img
+                            alt="{% trans 'Profile Image' %}"
+                            class="profileImage"
+                            ng-src="{$ (entityData.picture_200x200) ? entityData.picture_200x200 : (entityData.gender == 'M') ? '{% static 'public/img/prisoner_male.png' %}?v=2019-08-28' : (entityData.gender == 'F') ? '{% static 'public/img/prisoner_female.png' %}?v=2019-08-28' : '{% static 'public/img/profile_temp.png' %}?v=2019-08-28' $}"
+                        />
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <h3> {% trans "CURRENT DETENTION STATUS" %}</h3>
+                    <h4>{$ entityData.detention_status.name_{{LANGUAGE_CODE}} $}</h4>
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <h3> {% trans "Activity persecuted for" %}</h3>
+                    <h4>{$entityData.latest_activity_persecuted_for_name_{{LANGUAGE_CODE}}$}</h4>
+                    <h3 ng-if="entityData.latest_secondary_activity_name_en || entityData.latest_tertiary_activity_name_en"> {% trans 'SECONDARY ACTIVITIES' %}</h3>
+                    <h4 class="secondaryActivities" ng-if="entityData.latest_secondary_activity_name_en" >{$entityData.latest_secondary_activity_name_{{LANGUAGE_CODE}}$}</h4>
+                    <h4 ng-if="entityData.latest_tertiary_activity_name_en" >{$entityData.latest_tertiary_activity_name_{{LANGUAGE_CODE}}$}</h4>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="row">
+                        <div class="col-xs-6  col-sm-2">
+                            <h3> {% trans "Gender" %}</h3>
+                            <h4 class="female">{$ (entityData.gender == 'M') ? '{% trans "Male" %}' : (entityData.gender == 'F') ? '{% trans "Female" %}' : '' $}</h4>
+                        </div>
+                        <div class=" col-xs-6  col-sm-2">
+                            <h3>{% trans "Age" %}</h3>
+                            <h4> {$ calcAge( entityData.dob_year , entityData.dob_month , entityData.dob_day )  $}</h4>
+                        </div>
+                        <div class=" col-xs-6  col-sm-4">
+                            <h3>{% trans "Religion" %}</h3>
+                            <h4> {$entityData.religion.name_{{LANGUAGE_CODE}}$} </h4></div>
+                        <div class="col-xs-6  col-sm-4">
+                            <h3>{% trans "Ethnicity" %}</h3>
+                            <h4>{$entityData.ethnicity.name_{{LANGUAGE_CODE}}$}</h4></div>
+                        <div class="col-xs-6  col-sm-4">
+                            <h3>{% trans "Country of citzenship" %}</h3>
+                            <div ng-repeat=" country in entityData.home_countries_objs" ><h4>{$country.name_{{LANGUAGE_CODE}}$}</h4></div></div>
+                        <div class=" col-xs-6 col-sm-4">
+                            <h3>{% trans "Affiliated with" %} </h3>
+                            <div ng-if="affiliate.confirmed" ng-repeat="affiliate in entityData.affiliations ">
+                                {$affiliate.organisation.name_{{LANGUAGE_CODE}}$}</div>
+                        </div>
+                        <div class="col-xs-6  col-sm-4">
+                            <h3 class="related">{% trans "RELATED TO" %}</h3>
+                            <div ng-repeat="relation in entityData.relationships ">
+                                <a ng-if="relation.related_prisoner.id" ng-href="{$'../../prisoner/' +  relation.related_prisoner.id + '/'$}">{$relation.forename_{{LANGUAGE_CODE}}$}</a>
+                                <div ng-if="!relation.related_prisoner.id" >{$relation.forename_{{LANGUAGE_CODE}}$}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12  col-sm-4 tod">
+                    <h3>{% trans "BIOGRAPHY" %}</h3>
+                    <p>{$entityData.biography_{{LANGUAGE_CODE}}$}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# arrests accordian #}
+    <div prisoner-accordian class="topSpacer">
+        {% include 'prisoner_accordian.html' %}
+    </div>
+    <div class="row topSpacer">
+        <div timeline>
+            {% include 'timeline.html' %}
+        </div>
+        <div class="explanation col-sm-4">
+            <h2 class="explanationSubtitle underline-thin extend-right  thick-border-mobile paddingV-mobile">{% trans "Explanation" %}</h2>
+            <p
+                class="explanationBody"
+                ng-if="explanationBody"
+                ng-bind-html="explanationBody"
+            ></p>
+        </div>
+        <div supporting-evidence class="supportingEvidence">
+            {% include 'supporting_evidence.html' %}
+        </div>
+    </div>
+</div>
+
+{{ django_prerendered_component_html.information_overlay.sentence }}
+
+{% for information_overlay in django_prerendered_component_html.information_overlay.activity_persecuted_for %}
+    {{ information_overlay }}
+{% endfor %}
+
+{% for information_overlay in django_prerendered_component_html.information_overlay.charged_with %}
+    {{ information_overlay }}
+{% endfor %}
+
+{% endblock %}

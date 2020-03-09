@@ -1,0 +1,163 @@
+{%
+    load
+        trans
+    from i18n
+%}{%
+    load
+        static
+    from static
+%}{%
+    load
+        classname
+    from public_tags
+%}<header
+    class="
+        NavHeaderC
+        {% classname 'wrapper' %}
+        {% if should_show_sister_site_link %}
+            shouldShowSisterSiteLink
+        {% endif %}
+    "
+>
+    <nav class="desktopMenu container {% classname 'nav' %}">
+        <a
+            class="{% classname 'logoLink' %}"
+            href="{% url 'public:homepage' %}"
+        >
+            <img
+                alt="Iran Prison Atlas"
+                class="{% classname 'logo' %}"
+                src="{% static 'public/img/united_logo_new.png' %}?v=2019-10-03"
+            />
+        </a>
+
+        {% for links_segment in links_segments %}
+            <ul class="{% classname 'linkList' %}">
+                {% for link in links_segment %}
+                    <li class="{% classname 'linkListItem' %}">
+                        <a
+                            class="
+                                {% if link.is_boxed %}
+                                    {% classname 'linkListItemLinkBoxed' %}
+                                {% else %}
+                                    {% classname 'linkListItemLink' %}
+                                {% endif %}
+                            "
+                            href="{{ link.href }}"
+                        >{{ link.text }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+
+        <div class="{% classname 'quickSearchContainer' %}">
+            <div
+                class="{% classname 'quickSearchHolder' %} js-quickSearchHolder"
+                ng-controller="quicksearch"
+            >
+                <div class="searchGo {% classname 'quickSearchGo' %}">
+                    <span class="icon-search {% classname 'quickSearchIcon' %}"></span>
+                </div>
+                <input
+                    class="quicksearch {% classname 'quickSearchInput' %}"
+                    type="text"
+                    id="quickSearchBox"
+                    ng-model="quickSearchText"
+                />
+                <div class="searchResultsHolder" >
+                    <a ng-if="quickSearchText" ng-href="{$ '/{{LANGUAGE_CODE}}/judge/'  + resultJudges.id + '/' $}" ng-repeat="resultJudges in quickSearchJudges | filter:quickSearchText | limitTo:limit" class="quickSearchResult clearfix">
+                        <div class="result">{$resultJudges.name$}</div>
+                        <div class="resultType">{% trans "Judge" %}</div>
+                    </a>
+                    <a ng-if="quickSearchText" ng-href="{$ '/{{LANGUAGE_CODE}}/prisoner/'  + resultPrisoners.id + '/' $}" ng-repeat="resultPrisoners in quickSearchPrisoners | filter:quickSearchText | limitTo:limit" class="quickSearchResult clearfix">
+                        <div class="result">{$resultPrisoners.name$}</div>
+                        <div class="resultType">{% trans "Prisoner" %}</div>
+                    </a>
+                    <a ng-if="quickSearchText" ng-href="{$ '/{{LANGUAGE_CODE}}/prison/'  + resultPrisons.id + '/' $}" ng-repeat="resultPrisons in quickSearchPrisons | filter:quickSearchText | limitTo:limit" class="quickSearchResult clearfix">
+                        <div class="result">{$resultPrisons.name$}</div>
+                        <div class="resultType">{% trans "Prison" %}</div>
+                    </a>
+                    <div class="{% classname 'advanceBtn' %} advanceBtn">
+                    <a href="/{{LANGUAGE_CODE }}/search/" class="quickSearchResult advance off clearfix {% classname 'quickSearchResultAdvance' %}">
+                        <div class="result">{% trans "Advanced Search" %}</div>
+                        <div class="resultType"><span class="icon-right-dir"></span></div>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a
+            class="{% classname 'sisterSiteLink' %}"
+            href="{{ sister_site_link_info.href }}"
+        >{{ sister_site_link_info.text }}</a>
+
+        <a
+            class="{% classname 'menuToggle' %} jsMenuToggle"
+            data-open-menu-text="Open menu"
+            data-close-menu-text="Close menu"
+            href="#"
+        >
+            <svg
+                class="{% classname 'menuToggleIconClose' %}"
+                id="menu-close"
+                viewBox="0 0 352 512"
+            >
+                <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/>
+            </svg>
+            <svg
+                class="{% classname 'menuToggleIconOpen' %}"
+                id="menu-open"
+                viewBox="0 0 448 512"
+            >
+                <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/>
+            </svg>
+        </a>
+    </nav>
+
+    <div class="{% classname 'menuToggleContainer' %} container">
+
+    </div>
+
+    <div class="dropDown {% classname 'mobileMenu' %}">
+            <div class="topRow">
+                <a href="/{{LANGUAGE_CODE }}/search/">
+                    <div class=" link sub">
+                        <span class="icon-search"></span>
+                    </div>
+                </a>
+                <a href="{% if LANGUAGE_CODE == 'en'%}/fa/{% else %}/en/{% endif %}">
+                    <div class=" link sub">
+                        {% if LANGUAGE_CODE == 'en'%} فارسی {% else %} ENG {% endif%}
+                    </div>
+                </a>
+            </div>
+            {% if request.ipa_site == 'ipa' %}
+                <a href="{% url 'public:prisoners' %}">
+                    <div class=" menuItem link">
+                        {% trans "Prisoners" %}
+                    </div>
+                </a>
+            {% endif %}
+            <a href="{% url 'public:judges' %}">
+                <div class=" menuItem link">
+                    {% trans "JUDGES" %}
+                </div>
+            </a>
+            <a href="{% url 'public:prisons' %}">
+                <div class=" menuItem link">
+                    {% trans "PRISONS" %}
+                </div>
+            </a>
+            <a href="{% url 'public:about' %}">
+                <div class=" menuItem link">
+                    {% trans "about" %}
+                </div>
+            </a>
+            <a {% if LANGUAGE_CODE == 'en'%} href="http://united4iran.org/en/act-now.html" {% else %} href="https://united4iran.org/fa/act-now.html" {% endif%}  target="_blank">
+                <div class=" menuItem link">
+                    {% trans "Act now" context "Navigation header" %}
+                </div>
+            </a>
+        </div>
+</header>

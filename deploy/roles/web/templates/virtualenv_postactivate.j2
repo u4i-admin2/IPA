@@ -1,0 +1,19 @@
+#!/bin/bash
+
+export DJANGO_SECRET_KEY='{{ django_secret_key }}'
+export DJANGO_SETTINGS_MODULE='{{ django_settings_file }}'
+{% if db_host is defined %}
+export DB_HOST='{{ db_host }}'
+{% endif %}
+{% if db_name is defined %}
+export DB_NAME='{{ db_name }}'
+{% endif %}
+{% if db_user is defined %}
+export DB_USER='{{ db_user }}'
+{% endif %}
+{% if db_password is defined %}
+export DB_PASSWORD='{{ db_password }}'
+{% endif %}
+
+export OPBEAT_SECRET_TOKEN='{{ opbeat_secret_token }}'
+export LOCKDOWN_PASSWORD='{{ lockdown_password }}'

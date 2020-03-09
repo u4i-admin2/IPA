@@ -1,0 +1,21 @@
+{% extends 'ui/base.html' %}
+{% load static %}
+{% block content %}
+    <script>
+        var idTag = 'prison';
+        var tagList = 'prisons/prisontaglist';
+        var token = "{{csrf_token}}";
+
+        {% if prison.id %}
+            var id = "{{ prison.pk }}" + '/';
+            var method = 'PUT'
+            var varID = {{ prison.pk }};
+        {% else %}
+            var id = "";
+            var method = 'POST'
+            var varID = '';
+        {% endif %}
+    </script>
+
+    <div ng-include="'{% static 'ui/templates/prison.html' %}?v=2019-08-28'"></div>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% load static i18n %}
+<div ng-if="searchGroup == 'prisons'" class="row allFilters">
+    <div class="col-xs-12">
+        <div class="filterSection">{% trans "basic information" %} <span class="icon-minus"></span> </div>
+        <div class="filtersHolder" style="display: block;">
+            <div class="filterHolder filter-capacity">
+                <div class="filterSubSection">{% trans "capacity" %} <span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <rzslider
+                                rz-slider-model="mainsearch.capacity.min"
+                                rz-slider-high="mainsearch.capacity.max"
+                                rz-slider-options="sliderOptions.capacity"
+                            ></rzslider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filterHolder filter-administered_by">
+                <div class="filterSubSection">{% trans "Administered by" %} <span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div ng-if="ipa.site === 'ipa'" class="col-xs-12">
+                            <div ng-click="setFilter('administered_by' , 'moi')" ng-class="infilter('administered_by','moi') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Ministry of Intelligence" %}</div>
+                            </div>
+                        </div>
+                        <div ng-if="ipa.site === 'ipa'" class="col-xs-12">
+                            <div ng-click="setFilter('administered_by' , 'irgc')" ng-class="infilter('administered_by','irgc') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "IRGC" %}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('administered_by' , 'pdotj')" ng-class="infilter('administered_by','pdotj') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Prisons Division of the Judiciary" %}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('administered_by' , 'police')" ng-class="infilter('administered_by','police') ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot "></span></div>
+                                <div class="col-xs-10">{% trans "Police" %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filterHolder filter-facilities">
+                <div class="filterSubSection">{% trans "facility" %}<span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input class="littleSearch" ng-show="filterObj.prison_facilities.length >10" type="text" placeholder="{% trans 'Search' %}" ng-model="userSearchtreatments">
+                        </div>
+                        <div class="filtersScroll">
+                            <div class="col-xs-12" ng-repeat="_filter in filterObj.prison_facilities  | filter:userSearchtreatments ">
+                                <div ng-click="setFilter('facilities' , _filter)" ng-class="infilter('facilities',_filter) ? 'filterBTN row on' : 'filterBTN row'">
+                                    <div class="col-xs-1"><span class="filterDot "></span></div>
+                                    <div class="col-xs-10">{$ _filter $}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="ipa.site === 'ipa'" class="filterHolder filter-activities">
+                <div class="filterSubSection">{% trans "Activity persecuted for" %}<span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input class="littleSearch" ng-show="filterObj.activities.length >10" type="text" placeholder="{% trans 'Search' %}" ng-model="userSearchactivities">
+                        </div>
+                        <div class="filtersScroll">
+                            <div ng-class="filterObj.activities.length > 10 ? 'col-xs-12' : 'col-xs-6'" ng-repeat="_filter in filterObj.activities  | filter:userSearchactivities ">
+                                <div ng-click="setFilter('activities' , _filter )" ng-class="infilter('activities',_filter) ? 'filterBTN row on' : 'filterBTN row'">
+                                    <div class="col-xs-1"><span class="filterDot "></span></div>
+                                    <div class="col-xs-10">{$ _filter $}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="ipa.site === 'ipa'" class="filterHolder filter-treatments">
+                <div class="filterSubSection">{% trans "Treatment in prison" %}<span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input class="littleSearch" ng-show="filterObj.treatments.length >10" type="text" placeholder="{% trans 'Search' %}" ng-model="userSearchtreatments">
+                        </div>
+                        <div class="filtersScroll">
+                            <div class="col-xs-12" ng-repeat="_filter in filterObj.treatments  | filter:userSearchtreatments ">
+                                <div ng-click="setFilter('treatments' , _filter)" ng-class="infilter('treatments',_filter) ? 'filterBTN row on' : 'filterBTN row'">
+                                    <div class="col-xs-1"><span class="filterDot "></span></div>
+                                    <div class="col-xs-10">{$ _filter $}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="filterSection addinfo">{% trans "Additional information" %} <span class="icon-plus"></span> </div>
+        <div class="filtersHolder">
+            <div class="filterHolder filter-files filter-quotes">
+                <div class="filterSubSection">{% trans "DOCS/QUOTES" %} <span class="icon-plus"></span> </div>
+                <div class="searchFilters">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div ng-click="setFilter('files' , true)" ng-class="infilter('files',true) ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Show prisons with supporting documents" %}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 ">
+                            <div ng-click="setFilter('quotes' , true)" ng-class="infilter('quotes',true) ? 'filterBTN row on' : 'filterBTN row'">
+                                <div class="col-xs-1"><span class="filterDot"></span></div>
+                                <div class="col-xs-10">{% trans "Show prisons with quotes" %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
