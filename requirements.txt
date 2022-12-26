@@ -37,4 +37,4 @@ requests-oauthlib==0.4.2
 six==1.9.0
 sqlparse==0.3.0
 unicodecsv==0.9.4
-wheel==0.29.0
+wheel==0.38.1
